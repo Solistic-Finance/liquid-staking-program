@@ -30,7 +30,7 @@ pub struct State {
 
     // Target for withdrawing rent reserve SOLs. Save bot wallet account here
     pub operational_sol_account: Pubkey,
-    // treasury - external accounts managed by marinade DAO
+    // treasury - external accounts managed by solistic DAO
     // pub treasury_sol_account: Pubkey,
     pub treasury_msol_account: Pubkey,
 
