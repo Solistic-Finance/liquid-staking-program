@@ -35,15 +35,6 @@ pub mod solistic_finance {
 
     use super::*;
 
-    //----------------------------------------------------------------------------
-    // Base Instructions
-    //----------------------------------------------------------------------------
-    // Includes: initialization, contract parameters
-    // basic user functions: (liquid)stake, liquid-unstake
-    // liq-pool: add-liquidity, remove-liquidity
-    // Validator list management
-    //----------------------------------------------------------------------------
-
     pub fn initialize(ctx: Context<Initialize>, data: InitializeData) -> Result<()> {
         check_context(&ctx)?;
         ctx.accounts.process(data, ctx.bumps.reserve_pda)?;
@@ -110,16 +101,6 @@ pub mod solistic_finance {
         ctx.accounts.process(msol_amount)
     }
 
-    pub fn add_liquidity(ctx: Context<AddLiquidity>, lamports: u64) -> Result<()> {
-        check_context(&ctx)?;
-        ctx.accounts.process(lamports)
-    }
-
-    pub fn remove_liquidity(ctx: Context<RemoveLiquidity>, tokens: u64) -> Result<()> {
-        check_context(&ctx)?;
-        ctx.accounts.process(tokens)
-    }
-
     pub fn config_lp(ctx: Context<ConfigLp>, params: ConfigLpParams) -> Result<()> {
         check_context(&ctx)?;
         ctx.accounts.process(params)
@@ -132,14 +113,6 @@ pub mod solistic_finance {
         check_context(&ctx)?;
         ctx.accounts.process(params)
     }
-
-    //-------------------------------------------------------------------------------------
-    // Advanced instructions: deposit-stake-account, Delayed-Unstake
-    // backend/bot "crank" related functions:
-    // * order_unstake (starts stake-account deactivation)
-    // * withdraw (delete & withdraw from a deactivated stake-account)
-    // * update (compute stake-account rewards & update mSOL price)
-    //-------------------------------------------------------------------------------------
 
     pub fn order_unstake(ctx: Context<OrderUnstake>, msol_amount: u64) -> Result<()> {
         check_context(&ctx)?;

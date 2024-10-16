@@ -1,6 +1,6 @@
 use crate::SolisticError;
 use anchor_lang::prelude::*;
-use anchor_lang::solana_program::stake::state::StakeState;
+use anchor_lang::solana_program::stake::state::{StakeState, StakeStateV2};
 use anchor_spl::token::{Mint, TokenAccount};
 
 pub fn check_owner_program<'info, A: ToAccountInfo<'info>>(
