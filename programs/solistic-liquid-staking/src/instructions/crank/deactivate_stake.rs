@@ -11,7 +11,7 @@ use crate::{
 use std::convert::TryFrom;
 
 use anchor_lang::solana_program::{
-    program::invoke_signed, stake, stake::state::StakeState, system_program,
+    program::invoke_signed, stake, stake::state::StakeStateV2, system_program,
 };
 use anchor_lang::{prelude::*, solana_program::sysvar::stake_history};
 use anchor_spl::stake::{
@@ -58,7 +58,7 @@ pub struct DeactivateStake<'info> {
     #[account(
         init,
         payer = split_stake_rent_payer,
-        space = std::mem::size_of::<StakeState>(),
+        space = std::mem::size_of::<StakeStateV2>(),
         owner = stake::program::ID,
     )]
     pub split_stake_account: Account<'info, StakeAccount>,

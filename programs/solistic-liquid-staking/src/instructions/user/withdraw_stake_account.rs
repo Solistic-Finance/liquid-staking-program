@@ -13,7 +13,7 @@ use anchor_lang::{
     solana_program::{
         program::invoke_signed,
         stake,
-        stake::state::{StakeAuthorize, StakeState},
+        stake::state::{StakeAuthorize, StakeStateV2},
         system_program,
     },
 };
@@ -84,7 +84,7 @@ pub struct WithdrawStakeAccount<'info> {
     #[account(
         init,
         payer = split_stake_rent_payer,
-        space = std::mem::size_of::<StakeState>(),
+        space = std::mem::size_of::<StakeStateV2>(),
         owner = stake::program::ID,
     )]
     pub split_stake_account: Account<'info, StakeAccount>,

@@ -13,7 +13,7 @@ use std::{cmp::min, convert::TryFrom};
 use anchor_lang::prelude::*;
 use anchor_lang::solana_program::{
     program::invoke_signed,
-    stake::{self, state::StakeState},
+    stake::{self, state::StakeStateV2},
     system_program,
 };
 use anchor_spl::stake::{withdraw, Stake, StakeAccount, Withdraw};
@@ -56,7 +56,7 @@ pub struct ReDelegate<'info> {
     #[account(
         init,
         payer = split_stake_rent_payer,
-        space = std::mem::size_of::<StakeState>(),
+        space = std::mem::size_of::<StakeStateV2>(),
         owner = stake::program::ID,
     )]
     pub split_stake_account: Account<'info, StakeAccount>,
@@ -72,7 +72,7 @@ pub struct ReDelegate<'info> {
     #[account(
         init,
         payer = split_stake_rent_payer,
-        space = std::mem::size_of::<StakeState>(),
+        space = std::mem::size_of::<StakeStateV2>(),
         owner = stake::program::ID,
     )]
     pub redelegate_stake_account: Account<'info, StakeAccount>,
