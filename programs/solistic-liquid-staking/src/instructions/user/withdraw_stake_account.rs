@@ -22,6 +22,8 @@ use anchor_spl::{
     token::{burn, transfer, Burn, Mint, Token, TokenAccount, Transfer},
 };
 
+pub use state::stake_account_v2::StakeAccountV2;
+
 use crate::checks::check_stake_amount_and_validator;
 
 #[derive(Accounts)]
@@ -79,7 +81,7 @@ pub struct WithdrawStakeAccount<'info> {
     )]
     pub stake_deposit_authority: UncheckedAccount<'info>,
     #[account(mut)]
-    pub stake_account: Box<Account<'info, StakeAccount>>,
+    pub stake_account: Box<Account<'info, StakeAccountV2>>,
 
     #[account(
         init,
@@ -87,7 +89,7 @@ pub struct WithdrawStakeAccount<'info> {
         space = std::mem::size_of::<StakeStateV2>(),
         owner = stake::program::ID,
     )]
-    pub split_stake_account: Account<'info, StakeAccount>,
+    pub split_stake_account: Account<'info, StakeAccountV2>,
     #[account(
         mut,
         owner = system_program::ID

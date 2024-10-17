@@ -26,6 +26,8 @@ use anchor_lang::{
 use anchor_spl::stake::{withdraw, Stake, StakeAccount, Withdraw};
 use std::convert::TryFrom;
 
+pub use state::stake_account_v2::StakeAccountV2;
+
 #[derive(Accounts)]
 pub struct StakeReserve<'info> {
     #[account(mut)]
@@ -58,7 +60,7 @@ pub struct StakeReserve<'info> {
         space = std::mem::size_of::<StakeStateV2>(),
         owner = stake::program::ID,
     )]
-    pub stake_account: Account<'info, StakeAccount>,
+    pub stake_account: Account<'info, StakeAccountV2>,
     /// CHECK: PDA
     #[account(
         seeds = [

@@ -8,6 +8,8 @@ use crate::state::stake_system::StakeList;
 use crate::state::validator_system::ValidatorList;
 use crate::{error::SolisticError, state::stake_system::StakeSystem, State};
 
+pub use state::stake_account_v2::StakeAccountV2;
+
 #[derive(Accounts)]
 pub struct MergeStakes<'info> {
     #[account(
@@ -26,9 +28,9 @@ pub struct MergeStakes<'info> {
     )]
     pub validator_list: Account<'info, ValidatorList>,
     #[account(mut)]
-    pub destination_stake: Box<Account<'info, StakeAccount>>,
+    pub destination_stake: Box<Account<'info, StakeAccountV2>>,
     #[account(mut)]
-    pub source_stake: Box<Account<'info, StakeAccount>>,
+    pub source_stake: Box<Account<'info, StakeAccountV2>>,
     /// CHECK: PDA
     #[account(
         seeds = [

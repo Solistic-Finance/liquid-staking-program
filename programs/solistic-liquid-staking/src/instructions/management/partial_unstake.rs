@@ -17,6 +17,8 @@ use anchor_spl::stake::{
     deactivate_stake, withdraw, DeactivateStake, Stake, StakeAccount, Withdraw,
 };
 
+pub use state::stake_account_v2::StakeAccountV2;
+
 #[derive(Accounts)]
 pub struct PartialUnstake<'info> {
     #[account(mut)]
@@ -37,7 +39,7 @@ pub struct PartialUnstake<'info> {
     )]
     pub stake_list: Account<'info, StakeList>,
     #[account(mut)]
-    pub stake_account: Box<Account<'info, StakeAccount>>,
+    pub stake_account: Box<Account<'info, StakeAccountV2>>,
     /// CHECK: PDA
     #[account(
         seeds = [
@@ -63,7 +65,7 @@ pub struct PartialUnstake<'info> {
         space = std::mem::size_of::<StakeStateV2>(),
         owner = stake::program::ID,
     )]
-    pub split_stake_account: Account<'info, StakeAccount>,
+    pub split_stake_account: Account<'info, StakeAccountV2>,
     #[account(
         mut,
         owner = system_program::ID
