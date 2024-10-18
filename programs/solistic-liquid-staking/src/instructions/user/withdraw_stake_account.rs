@@ -13,7 +13,7 @@ use anchor_lang::{
     solana_program::{
         program::invoke_signed,
         stake,
-        stake::state::{StakeAuthorize, StakeStateV2},
+        stake::state::{StakeAuthorize, StakeState},
         system_program,
     },
 };
@@ -21,8 +21,6 @@ use anchor_spl::{
     stake::{Stake, StakeAccount},
     token::{burn, transfer, Burn, Mint, Token, TokenAccount, Transfer},
 };
-
-pub use state::stake_account_v2::StakeAccountV2;
 
 use crate::checks::check_stake_amount_and_validator;
 
@@ -81,15 +79,15 @@ pub struct WithdrawStakeAccount<'info> {
     )]
     pub stake_deposit_authority: UncheckedAccount<'info>,
     #[account(mut)]
-    pub stake_account: Box<Account<'info, StakeAccountV2>>,
+    pub stake_account: Box<Account<'info, StakeAccount>>,
 
     #[account(
         init,
         payer = split_stake_rent_payer,
-        space = std::mem::size_of::<StakeStateV2>(),
+        space = std::mem::size_of::<StakeState>(),
         owner = stake::program::ID,
     )]
-    pub split_stake_account: Account<'info, StakeAccountV2>,
+    pub split_stake_account: Account<'info, StakeAccount>,
     #[account(
         mut,
         owner = system_program::ID

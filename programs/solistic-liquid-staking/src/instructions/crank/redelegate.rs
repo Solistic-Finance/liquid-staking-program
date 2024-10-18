@@ -13,12 +13,10 @@ use std::{cmp::min, convert::TryFrom};
 use anchor_lang::prelude::*;
 use anchor_lang::solana_program::{
     program::invoke_signed,
-    stake::{self, state::StakeStateV2},
+    stake::{self, state::StakeState},
     system_program,
 };
 use anchor_spl::stake::{withdraw, Stake, StakeAccount, Withdraw};
-
-pub use state::stake_account_v2::StakeAccountV2;
 
 #[derive(Accounts)]
 pub struct ReDelegate<'info> {
@@ -35,7 +33,7 @@ pub struct ReDelegate<'info> {
     )]
     pub stake_list: Account<'info, StakeList>,
     #[account(mut)]
-    pub stake_account: Box<Account<'info, StakeAccountV2>>,
+    pub stake_account: Box<Account<'info, StakeAccount>>,
     /// CHECK: PDA
     #[account(
         seeds = [
@@ -58,10 +56,10 @@ pub struct ReDelegate<'info> {
     #[account(
         init,
         payer = split_stake_rent_payer,
-        space = std::mem::size_of::<StakeStateV2>(),
+        space = std::mem::size_of::<StakeState>(),
         owner = stake::program::ID,
     )]
-    pub split_stake_account: Account<'info, StakeAccountV2>,
+    pub split_stake_account: Account<'info, StakeAccount>,
     #[account(
         mut,
         owner = system_program::ID
@@ -74,10 +72,10 @@ pub struct ReDelegate<'info> {
     #[account(
         init,
         payer = split_stake_rent_payer,
-        space = std::mem::size_of::<StakeStateV2>(),
+        space = std::mem::size_of::<StakeState>(),
         owner = stake::program::ID,
     )]
-    pub redelegate_stake_account: Account<'info, StakeAccountV2>,
+    pub redelegate_stake_account: Account<'info, StakeAccount>,
 
     pub clock: Sysvar<'info, Clock>,
     /// CHECK: have no CPU budget to parse

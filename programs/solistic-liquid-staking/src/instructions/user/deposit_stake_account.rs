@@ -11,8 +11,6 @@ use crate::state::stake_system::StakeList;
 use crate::state::validator_system::ValidatorList;
 use crate::{error::SolisticError, require_lte, state::stake_system::StakeSystem, State, ID};
 
-pub use state::stake_account_v2::StakeAccountV2;
-
 #[derive(Accounts)]
 pub struct DepositStakeAccount<'info> {
     #[account(
@@ -33,7 +31,7 @@ pub struct DepositStakeAccount<'info> {
     pub stake_list: Account<'info, StakeList>,
 
     #[account(mut)]
-    pub stake_account: Box<Account<'info, StakeAccountV2>>,
+    pub stake_account: Box<Account<'info, StakeAccount>>,
     pub stake_authority: Signer<'info>,
     /// CHECK: manual account processing, only required if adding validator (if allowed)
     #[account(mut)]

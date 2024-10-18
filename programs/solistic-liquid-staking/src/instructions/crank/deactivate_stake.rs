@@ -11,14 +11,13 @@ use crate::{
 use std::convert::TryFrom;
 
 use anchor_lang::solana_program::{
-    program::invoke_signed, stake, stake::state::StakeStateV2, system_program,
+    program::invoke_signed, stake, stake::state::StakeState, system_program,
 };
 use anchor_lang::{prelude::*, solana_program::sysvar::stake_history};
 use anchor_spl::stake::{
     deactivate_stake as solana_deactivate_stake, withdraw,
     DeactivateStake as SolanaDeactivateStake, Stake, StakeAccount, Withdraw,
 };
-pub use state::stake_account_v2::StakeAccountV2;
 
 use crate::checks::check_stake_amount_and_validator;
 
@@ -46,7 +45,7 @@ pub struct DeactivateStake<'info> {
     )]
     pub stake_list: Account<'info, StakeList>,
     #[account(mut)]
-    pub stake_account: Box<Account<'info, StakeAccountV2>>,
+    pub stake_account: Box<Account<'info, StakeAccount>>,
     /// CHECK: PDA
     #[account(
         seeds = [
@@ -59,10 +58,10 @@ pub struct DeactivateStake<'info> {
     #[account(
         init,
         payer = split_stake_rent_payer,
-        space = std::mem::size_of::<StakeStateV2>(),
+        space = std::mem::size_of::<StakeState>(),
         owner = stake::program::ID,
     )]
-    pub split_stake_account: Account<'info, StakeAccountV2>,
+    pub split_stake_account: Account<'info, StakeAccount>,
     #[account(
         mut,
         owner = system_program::ID

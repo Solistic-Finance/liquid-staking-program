@@ -18,8 +18,6 @@ use crate::{
     State,
 };
 
-pub use state::stake_account_v2::StakeAccountV2;
-
 #[derive(Accounts)]
 pub struct UpdateCommon<'info> {
     #[account(
@@ -34,7 +32,7 @@ pub struct UpdateCommon<'info> {
     )]
     pub stake_list: Account<'info, StakeList>,
     #[account(mut)]
-    pub stake_account: Box<Account<'info, StakeAccountV2>>,
+    pub stake_account: Box<Account<'info, StakeAccount>>,
     /// CHECK: PDA
     #[account(
         seeds = [

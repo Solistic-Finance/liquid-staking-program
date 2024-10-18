@@ -17,7 +17,7 @@ use anchor_lang::{
         program::{invoke, invoke_signed},
         stake::{
             self,
-            state::{Authorized, Lockup, StakeStateV2},
+            state::{Authorized, Lockup, StakeState},
         },
         sysvar::stake_history,
     },
@@ -25,8 +25,6 @@ use anchor_lang::{
 };
 use anchor_spl::stake::{withdraw, Stake, StakeAccount, Withdraw};
 use std::convert::TryFrom;
-
-pub use state::stake_account_v2::StakeAccountV2;
 
 #[derive(Accounts)]
 pub struct StakeReserve<'info> {
@@ -57,10 +55,10 @@ pub struct StakeReserve<'info> {
     #[account(
         init,
         payer = rent_payer,
-        space = std::mem::size_of::<StakeStateV2>(),
+        space = std::mem::size_of::<StakeState>(),
         owner = stake::program::ID,
     )]
-    pub stake_account: Account<'info, StakeAccountV2>,
+    pub stake_account: Account<'info, StakeAccount>,
     /// CHECK: PDA
     #[account(
         seeds = [

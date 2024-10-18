@@ -1,6 +1,6 @@
 use crate::SolisticError;
 use anchor_lang::prelude::*;
-use anchor_lang::solana_program::stake::state::{StakeStateV2};
+use anchor_lang::solana_program::stake::state::{StakeState, StakeStateV2};
 use anchor_spl::token::{Mint, TokenAccount};
 
 pub fn check_owner_program<'info, A: ToAccountInfo<'info>>(
@@ -88,7 +88,7 @@ pub fn check_token_owner(token: &TokenAccount, owner: &Pubkey, field_name: &str)
 // check that the account is delegated and to the right validator
 // also that the stake amount is updated
 pub fn check_stake_amount_and_validator(
-    stake_state: &StakeStateV2,
+    stake_state: &StakeState,
     expected_stake_amount: u64,
     validator_vote_pubkey: &Pubkey,
 ) -> Result<()> {
