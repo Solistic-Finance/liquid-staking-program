@@ -1,39 +1,21 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { MarinadeForkingSmartContract } from "../../target/types/marinade_forking_smart_contract";
+import { MarinadeForkingSmartContract } from "../target/types/marinade_forking_smart_contract";
 import {
-    Keypair,
-    PublicKey,
-    Connection,
     sendAndConfirmTransaction,
-    Transaction,
-    StakeProgram,
-    SystemProgram,
-    Authorized,
-    LAMPORTS_PER_SOL,
-    SYSVAR_STAKE_HISTORY_PUBKEY,
-    STAKE_CONFIG_ID,
-    Lockup,
-    EpochSchedule,
-    SYSVAR_EPOCH_SCHEDULE_PUBKEY,
-    ComputeBudgetProgram
 } from '@solana/web3.js';
-import {
-    createMint,
-    mintTo,
-    getOrCreateAssociatedTokenAccount,
-    createAssociatedTokenAccount,
-    getAssociatedTokenAddressSync,
-    createAssociatedTokenAccountInstruction,
-    createMintToInstruction,
-    getAssociatedTokenAddress,
-    TOKEN_PROGRAM_ID,
-    getMinimumBalanceForRentExemptMint
-} from '@solana/spl-token';
-import { ASSOCIATED_PROGRAM_ID } from "@coral-xyz/anchor/dist/cjs/utils/token";
 import { BN } from "bn.js";
-import { bs58 } from "@coral-xyz/anchor/dist/cjs/utils/bytes";
-import { authorityAcc, authorityLpAcc, connection, lpMint, mint_to, mSolLeg, msolMint, operationalSolAccount, payer, solLegPda, stakeAccount, stakeAuthority, stakeList, stateAccount, treasuryMsolAccount, validatorList, voteAccount } from ".";
+import {
+    authorityLpAcc,
+    connection,
+    lpMint,
+    mint_to,
+    mSolLeg,
+    payer,
+    solLegPda,
+    stakeAuthority,
+    stateAccount
+} from ".";
 
 describe("marinade-forking-smart-contract", () => {
     // Configure the client to use the local cluster.
@@ -52,7 +34,7 @@ describe("marinade-forking-smart-contract", () => {
 
     it("add_liquidity", async () => {
 
-          // Retrieve and log the state account to confirm initialization
+        // Retrieve and log the state account to confirm initialization
         const state = await program.account.state.fetch(stateAccount.publicKey);
         console.log("State Account:", state); //  this data
 
@@ -60,7 +42,7 @@ describe("marinade-forking-smart-contract", () => {
             .accounts({
                 state: stateAccount.publicKey,
                 lpMint: lpMint,
-                lpMintAuthority: authorityLpAcc, 
+                lpMintAuthority: authorityLpAcc,
                 liqPoolMsolLeg: mSolLeg,
                 liqPoolSolLegPda: solLegPda,
                 transferFrom: stakeAuthority.publicKey,

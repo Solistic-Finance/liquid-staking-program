@@ -1,6 +1,6 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { MarinadeForkingSmartContract } from "../../target/types/marinade_forking_smart_contract";
+import { MarinadeForkingSmartContract } from "../target/types/marinade_forking_smart_contract";
 import {
     Keypair,
     PublicKey,

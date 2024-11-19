@@ -4,7 +4,7 @@ import {
     PublicKey,
 } from '@solana/web3.js';
 import { bs58 } from "@coral-xyz/anchor/dist/cjs/utils/bytes";
-import { MarinadeForkingSmartContract } from '../../target/types/marinade_forking_smart_contract';
+import { MarinadeForkingSmartContract } from '../target/types/marinade_forking_smart_contract';
 import { Program } from '@coral-xyz/anchor';
 
 const program = anchor.workspace.MarinadeForkingSmartContract as Program<MarinadeForkingSmartContract>;
