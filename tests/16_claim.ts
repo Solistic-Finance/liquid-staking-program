@@ -6,11 +6,7 @@ import {
     sendAndConfirmTransaction,
 } from '@solana/web3.js';
 import {
-    getOrCreateAssociatedTokenAccount,
-} from '@solana/spl-token';
-import {
     connection,
-    msolMint,
     payer,
     reservePda,
     stakeAuthority,
@@ -24,12 +20,16 @@ describe("marinade-forking-smart-contract", () => {
     const program = anchor.workspace.MarinadeForkingSmartContract as Program<MarinadeForkingSmartContract>;
 
     // * -------------------------------------------------------------------------------------
-    // *  Base Instructions
+    // *  Advanced Instructions
     // * -------------------------------------------------------------------------------------
-    // * Advanced instructions: deposit-stake-account, Delayed-Unstake
-    // * backend/bot "crank" related functions:
-    // * order_unstake (starts stake-account deactivation)
-    // * withdraw (delete & withdraw from a deactivated stake-account)
+    // * claim : claim from liq pool
+    // * 
+    // * ================== Required ===================
+    // * State state should be "resume"
+    // * 
+    // * 
+    // * ===============================================
+    // * Tx Route : initialize / claim
     // * -------------------------------------------------------------------------------------
 
 
@@ -37,22 +37,6 @@ describe("marinade-forking-smart-contract", () => {
 
         //! Should double check on this
         const newTicketAccount = Keypair.generate()
-        // const airtx1 = await connection.requestAirdrop(newTicketAccount.publicKey, 2_039_280);
-
-        // await connection.confirmTransaction(airtx1)
-
-        const burnMsolFrom = await getOrCreateAssociatedTokenAccount(connection, stakeAuthority, msolMint, stakeAuthority.publicKey)
-
-        console.log("start sleeping");
-        await new Promise(resolve => setTimeout(resolve, 3000));
-
-        console.log({
-            state: stateAccount.publicKey,
-            msolMint: msolMint,
-            burnMsolFrom: burnMsolFrom.address,
-            burnMsolAuthority: payer.publicKey,
-            newTicketAccount: newTicketAccount.publicKey,
-        });
 
         const tx = await program.methods.claim()
             .accounts({

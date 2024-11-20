@@ -8,8 +8,10 @@ import {
 } from '@solana/web3.js';
 import {
     authorityMsolAcc,
+    connection,
     msolMint,
     operationalSolAccount,
+    payer,
     reservePda,
     stakeAccount,
     stakeAuthority,
@@ -26,12 +28,16 @@ describe("marinade-forking-smart-contract", () => {
     const program = anchor.workspace.MarinadeForkingSmartContract as Program<MarinadeForkingSmartContract>;
 
     // * -------------------------------------------------------------------------------------
-    // *  Base Instructions
+    // *  Advanced Instructions
     // * -------------------------------------------------------------------------------------
-    // * Advanced instructions: deposit-stake-account, Delayed-Unstake
-    // * backend/bot "crank" related functions:
-    // * order_unstake (starts stake-account deactivation)
-    // * withdraw (delete & withdraw from a deactivated stake-account)
+    // * update_deactivated : update_deactivated from liq pool
+    // * 
+    // * ================== Required ===================
+    // * State state should be "resume"
+    // * 
+    // * 
+    // * ===============================================
+    // * Tx Route : initialize / update_deactivated
     // * -------------------------------------------------------------------------------------
 
     it("update_deactivated", async () => {

@@ -9,8 +9,12 @@ import {
     SYSVAR_EPOCH_SCHEDULE_PUBKEY,
 } from '@solana/web3.js';
 import {
+    connection,
+    payer,
+    reservePda,
     stakeAccount,
     stakeAuthority,
+    stakeDepositAuthority,
     stakeList,
     stateAccount,
     validatorList
@@ -23,18 +27,21 @@ describe("marinade-forking-smart-contract", () => {
     const program = anchor.workspace.MarinadeForkingSmartContract as Program<MarinadeForkingSmartContract>;
 
     // * -------------------------------------------------------------------------------------
-    // *  Base Instructions
+    // *  Advanced Instructions
     // * -------------------------------------------------------------------------------------
-    // * Advanced instructions: deposit-stake-account, Delayed-Unstake
-    // * backend/bot "crank" related functions:
-    // * order_unstake (starts stake-account deactivation)
-    // * withdraw (delete & withdraw from a deactivated stake-account)
+    // * deactivate_stake : deactivate_stake from liq pool
+    // * 
+    // * ================== Required ===================
+    // * State state should be "resume"
+    // * 
+    // * 
+    // * ===============================================
+    // * Tx Route : initialize / deactivate_stake
     // * -------------------------------------------------------------------------------------
+    
     const splitStakeAccount = Keypair.generate();
 
     it("deactivate_stake", async () => {
-
-        console.log("===============> ", await connection.getParsedAccountInfo(stakeAccount.publicKey));
 
         const tx = await program.methods.deactivateStake(0, 0)
             .accounts({

@@ -26,10 +26,14 @@ describe("marinade-forking-smart-contract", () => {
     // * -------------------------------------------------------------------------------------
     // *  Base Instructions
     // * -------------------------------------------------------------------------------------
-    // * Advanced instructions: deposit-stake-account, Delayed-Unstake
-    // * backend/bot "crank" related functions:
-    // * order_unstake (starts stake-account deactivation)
-    // * withdraw (delete & withdraw from a deactivated stake-account)
+    // * add_liquidity : add liquidity from liq pool
+    // * 
+    // * ================== Required ===================
+    // * State state should be "resume"
+    // * 
+    // * 
+    // * ===============================================
+    // * Tx Route : initialize / add_liquidity
     // * -------------------------------------------------------------------------------------
 
     it("add_liquidity", async () => {

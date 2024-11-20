@@ -2,25 +2,21 @@ import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
 import { MarinadeForkingSmartContract } from "../target/types/marinade_forking_smart_contract";
 import {
-    Keypair,
     PublicKey,
-    Connection,
     sendAndConfirmTransaction,
     StakeProgram,
 } from '@solana/web3.js';
-import { bs58 } from "@coral-xyz/anchor/dist/cjs/utils/bytes";
 import {
+    connection,
     mint_to,
     msolMint,
+    payer,
     stakeAccount,
     stakeList,
     stateAccount,
     validatorList,
     voteAccount
 } from ".";
-
-const payer = Keypair.fromSecretKey(bs58.decode("5BrUQk416xSy4xbHZq6jXb2JcVA8iRnPNJJr3NZv2wukMhwB39ndpe9eaCXmuFLxzkVUYXbdCB9ydeJkhKCGhnkm"));
-const connection = new Connection("https://devnet.helius-rpc.com/?api-key=f74ec75c-56ba-49df-b67b-71637bf8d115"); // Change to your localnet RPC
 
 describe("marinade-forking-smart-contract", () => {
     // Configure the client to use the local cluster.

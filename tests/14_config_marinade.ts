@@ -2,14 +2,15 @@ import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
 import { MarinadeForkingSmartContract } from "../target/types/marinade_forking_smart_contract";
 import {
-    Keypair,
-    PublicKey,
-    Connection,
     sendAndConfirmTransaction,
 } from '@solana/web3.js';
 import { BN } from "bn.js";
-import { bs58 } from "@coral-xyz/anchor/dist/cjs/utils/bytes";
-import { authorityAcc, connection, payer, stateAccount } from ".";
+import {
+    authorityAcc,
+    connection,
+    payer,
+    stateAccount
+} from ".";
 
 describe("marinade-forking-smart-contract", () => {
     // Configure the client to use the local cluster.
@@ -20,10 +21,14 @@ describe("marinade-forking-smart-contract", () => {
     // * -------------------------------------------------------------------------------------
     // *  Base Instructions
     // * -------------------------------------------------------------------------------------
-    // * Advanced instructions: deposit-stake-account, Delayed-Unstake
-    // * backend/bot "crank" related functions:
-    // * order_unstake (starts stake-account deactivation)
-    // * withdraw (delete & withdraw from a deactivated stake-account)
+    // * config_marinade : config marinade from liq pool
+    // * 
+    // * ================== Required ===================
+    // * State state should be "resume"
+    // * 
+    // * 
+    // * ===============================================
+    // * Tx Route : initialize / config_marinade
     // * -------------------------------------------------------------------------------------
 
     it("config_marinade", async () => {

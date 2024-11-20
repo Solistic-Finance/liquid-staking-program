@@ -28,19 +28,19 @@ describe("marinade-forking-smart-contract", () => {
     const program = anchor.workspace.MarinadeForkingSmartContract as Program<MarinadeForkingSmartContract>;
 
     // * -------------------------------------------------------------------------------------
-    // *  Base Instructions
+    // *  Advanced Instructions
     // * -------------------------------------------------------------------------------------
-    // * Advanced instructions: deposit-stake-account, Delayed-Unstake
-    // * backend/bot "crank" related functions:
-    // * order_unstake (starts stake-account deactivation)
-    // * withdraw (delete & withdraw from a deactivated stake-account)
+    // * update_active : update_active from liq pool
+    // * 
+    // * ================== Required ===================
+    // * State state should be "resume"
+    // * 
+    // * 
+    // * ===============================================
+    // * Tx Route : initialize / update_active
     // * -------------------------------------------------------------------------------------
 
     it("update_active", async () => {
-        // const airtx = await connection.requestAirdrop(reservePda, 10000000000 + 2_039_280);
-
-        // await connection.confirmTransaction(airtx)
-
 
         const updateActive = {
             state: stateAccount.publicKey,

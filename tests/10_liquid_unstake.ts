@@ -2,13 +2,10 @@ import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
 import { MarinadeForkingSmartContract } from "../target/types/marinade_forking_smart_contract";
 import {
-    Keypair,
     PublicKey,
-    Connection,
     sendAndConfirmTransaction,
 } from '@solana/web3.js';
 import { BN } from "bn.js";
-import { bs58 } from "@coral-xyz/anchor/dist/cjs/utils/bytes";
 import {
     connection,
     mint_to,
@@ -31,24 +28,17 @@ describe("marinade-forking-smart-contract", () => {
     // * -------------------------------------------------------------------------------------
     // *  Base Instructions
     // * -------------------------------------------------------------------------------------
-    // * Advanced instructions: deposit-stake-account, Delayed-Unstake
-    // * backend/bot "crank" related functions:
-    // * order_unstake (starts stake-account deactivation)
-    // * withdraw (delete & withdraw from a deactivated stake-account)
+    // * liquid_unstake : liquid unstake from liq pool
+    // * 
+    // * ================== Required ===================
+    // * State state should be "resume"
+    // * 
+    // * 
+    // * ===============================================
+    // * Tx Route : initialize / liquid_unstake
     // * -------------------------------------------------------------------------------------
 
     it("liquid_unstake", async () => {
-
-        console.log({
-            state: stateAccount.publicKey,
-            msolMint: msolMint,
-            liqPoolSolLegPda: solLegPda,
-            liqPoolMsolLeg: mSolLeg,
-            treasuryMsolAccount: treasuryMsolAccount,
-            getMsolFrom: mint_to,
-            getMsolFromAuthority: stakeAuthority.publicKey,
-            transferSolTo: stakeAuthority.publicKey,
-        });
 
         const tx = await program.methods.liquidUnstake(new BN(100))
             .accounts({

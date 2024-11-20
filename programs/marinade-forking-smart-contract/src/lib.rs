@@ -13,7 +13,7 @@ use instructions::*;
 
 pub use state::State;
 
-declare_id!("FTpGe3vcbQBJbZgCMSPvv8GiaFy3R2ApsaoEpBR9s7oQ");
+declare_id!("4ejpMtdY5cy9Gvqp5raVRLo5qQnz3UaDX9YSGUxewaa5");
 
 #[program]
 pub mod marinade_forking_smart_contract {

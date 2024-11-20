@@ -6,16 +6,17 @@ import {
 } from '@solana/web3.js';
 import { BN } from "bn.js";
 import {
-    authorityLpAcc,
+    authorityMSolLegAcc,
     connection,
     lpMint,
-    mint_to,
     mSolLeg,
+    msolMint,
     payer,
     solLegPda,
     stakeAuthority,
     stateAccount
 } from ".";
+import { getAssociatedTokenAddress, getOrCreateAssociatedTokenAccount } from "@solana/spl-token";
 
 describe("marinade-forking-smart-contract", () => {
     // Configure the client to use the local cluster.
@@ -26,27 +27,31 @@ describe("marinade-forking-smart-contract", () => {
     // * -------------------------------------------------------------------------------------
     // *  Base Instructions
     // * -------------------------------------------------------------------------------------
-    // * Advanced instructions: deposit-stake-account, Delayed-Unstake
-    // * backend/bot "crank" related functions:
-    // * order_unstake (starts stake-account deactivation)
-    // * withdraw (delete & withdraw from a deactivated stake-account)
+    // * remove_liquidity : remove liquidity from liq pool
+    // * 
+    // * ================== Required ===================
+    // * State state should be "resume"
+    // * 
+    // * 
+    // * ===============================================
+    // * Tx Route : initialize / remove_liquidity
     // * -------------------------------------------------------------------------------------
 
-    it("add_liquidity", async () => {
+    it("remove_liquidity", async () => {
+        const burnFrom = await getOrCreateAssociatedTokenAccount(connection, payer, lpMint, stakeAuthority.publicKey)
+        const transferMsolTo = await getAssociatedTokenAddress(msolMint, stakeAuthority.publicKey)
 
-        // Retrieve and log the state account to confirm initialization
-        const state = await program.account.state.fetch(stateAccount.publicKey);
-        console.log("State Account:", state); //  this data
-
-        const tx = await program.methods.addLiquidity(new BN(10_000))
+        const tx = await program.methods.removeLiquidity(new BN(10_000))
             .accounts({
                 state: stateAccount.publicKey,
                 lpMint: lpMint,
-                lpMintAuthority: authorityLpAcc,
-                liqPoolMsolLeg: mSolLeg,
+                burnFrom: burnFrom.address,
+                burnFromAuthority: stakeAuthority.publicKey,
+                transferSolTo: stakeAuthority.publicKey,
+                transferMsolTo: transferMsolTo,
                 liqPoolSolLegPda: solLegPda,
-                transferFrom: stakeAuthority.publicKey,
-                mintTo: mint_to,
+                liqPoolMsolLeg: mSolLeg,
+                liqPoolMsolLegAuthority: authorityMSolLegAcc,
             })
             .signers([stakeAuthority])
             .transaction()
