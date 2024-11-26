@@ -1,3 +1,5 @@
+import * as anchor from "@coral-xyz/anchor";
+import { Program } from "@coral-xyz/anchor";
 import {
     Connection,
     Keypair,
@@ -5,7 +7,6 @@ import {
 } from '@solana/web3.js';
 import { bs58 } from "@coral-xyz/anchor/dist/cjs/utils/bytes";
 import { MarinadeForkingSmartContract } from '../target/types/marinade_forking_smart_contract';
-import { Program } from '@coral-xyz/anchor';
 
 const program = anchor.workspace.MarinadeForkingSmartContract as Program<MarinadeForkingSmartContract>;
 
@@ -53,10 +54,10 @@ const mSolLeg = new PublicKey("75bK6919EwLYuw8WsBgSXwrGgAvarymqzU65hyF5MH9Z")
 const treasuryMsolAccount = new PublicKey("Eb7FhgmUc2DnQnnFBG2n5tGJUnp4DgKn14i6jJc311sq")
 
 const [authorityMsolAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("st_mint")], program.programId);
-const [reservePda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("reserve")], program.programId);
 const [authorityLpAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_mint")], program.programId);
-const [authorityMSolLegAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_st_sol_authority")], program.programId);
+const [reservePda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("reserve")], program.programId);
 const [solLegPda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_sol")], program.programId);
+const [authorityMSolLegAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_st_sol_authority")], program.programId);
 const [stakeDepositAuthority] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("deposit")], program.programId)
 const [stakeWithdrawAuthority] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("withdraw")], program.programId);
 
