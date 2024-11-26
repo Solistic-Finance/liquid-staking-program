@@ -1,14 +1,16 @@
-import { BN } from "bn.js";
-import { connection, payer, program } from "./src/config";
-import { initialize, preRequisite } from "./src/instructions";
-import { InitializeDataParam } from "./src/types";
-import { _initialize, _preRequisite } from "./src/order";
+import {
+    _preRequisite,
+    _initialize,
+    _change_authority,
+    _add_validator,
+} from "./src/order";
 
 
 const main = async () => {
     // await _preRequisite()
     // await _initialize()
+    // await _change_authority()
+    await _add_validator()
 }
-
 
 main()

@@ -1,5 +1,6 @@
 import { Keypair, PublicKey } from "@solana/web3.js";
 import BN from "bn.js";
+import { interfaces } from "mocha";
 
 interface InitializeDataParam {
     adminAuthority: PublicKey,
@@ -27,20 +28,21 @@ interface InitializeDataParam {
     pauseAuthority: PublicKey,
 };
 
-
-interface InitializeAccount {
-    stateAccount: Keypair,
-    msolMint: PublicKey,
-    stakeList: Keypair,
-    validatorList: Keypair,
-    operationalSolAccount: Keypair,
+interface ChangeAuthorityData {
+    admin: PublicKey,
+    validatorManager: PublicKey,
+    operationalSolAccount: PublicKey,
     treasuryMsolAccount: PublicKey,
-    lpMint: PublicKey,
-    mSolLeg: PublicKey,
+    pauseAuthority: PublicKey
 }
 
+interface AddValidatorParam {
+    score: number,
+    voteAccount: PublicKey,
+}
 
 export {
     InitializeDataParam,
-    InitializeAccount
+    ChangeAuthorityData,
+    AddValidatorParam
 }

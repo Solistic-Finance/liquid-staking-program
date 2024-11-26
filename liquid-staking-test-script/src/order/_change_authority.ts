@@ -1,13 +1,15 @@
-import { BN } from "bn.js";
-import { connection, payer } from "../config";
-import { initialize, preRequisite } from "../instructions";
-import { InitializeDataParam } from "../types";
+import { BN } from "bn.js"
+import { connection, payer } from "../config"
+import { change_authority, initialize, preRequisite } from "../instructions"
+import { ChangeAuthorityData, InitializeDataParam } from "../types"
 
-export const _initialize = async () => {
+export const _change_authority = async () => {
     const initParam = await preRequisite(connection, payer)
 
     const {
         authorityAcc,
+        operationalSolAccount,
+        treasuryMsolAccount
     } = initParam
 
     const initializeData: InitializeDataParam = {
@@ -28,4 +30,14 @@ export const _initialize = async () => {
     };
 
     await initialize(connection, payer, initializeData, initParam)
+
+    const changeAuthorityData : ChangeAuthorityData = {
+        admin: payer.publicKey,
+        validatorManager: payer.publicKey,
+        operationalSolAccount: operationalSolAccount.publicKey,
+        treasuryMsolAccount: treasuryMsolAccount,
+        pauseAuthority: payer.publicKey
+    }
+
+    await change_authority(connection, payer, changeAuthorityData , initParam)
 }

@@ -2,18 +2,20 @@
 import { Connection, PublicKey, sendAndConfirmTransaction, Signer, SYSVAR_CLOCK_PUBKEY, SYSVAR_RENT_PUBKEY } from "@solana/web3.js";
 import { contractAddr, program } from "../../config";
 import { BN } from "bn.js";
-import { InitializeAccount, InitializeDataParam } from "../../types";
+import {  InitializeDataParam, InitParam } from "../../types";
 
-const initialize = async (connection: Connection, payer: Signer , initializeData : InitializeDataParam , initializeAccount : InitializeAccount) => {
+const initialize = async (connection: Connection, payer: Signer , initializeData : InitializeDataParam , initParam : InitParam) => {
 
-    const {stateAccount,
+    const {
+        stateAccount,
         msolMint,
         stakeList,
         validatorList,
         operationalSolAccount,
         treasuryMsolAccount,
         lpMint,
-        mSolLeg} = initializeAccount
+        mSolLeg
+    } = initParam
 
     const [reservePda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("reserve")], contractAddr);
     const [solLegPda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_sol")], contractAddr);

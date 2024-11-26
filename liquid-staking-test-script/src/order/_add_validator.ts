@@ -1,9 +1,11 @@
-import { BN } from "bn.js";
-import { connection, payer } from "../config";
-import { initialize, preRequisite } from "../instructions";
-import { InitializeDataParam } from "../types";
+import { BN } from "bn.js"
+import { connection, payer } from "../config"
+import { initialize, preRequisite } from "../instructions"
+import { InitializeDataParam } from "../types"
+import { add_validator } from "../instructions/basic_instruction"
+import { voteAccount } from "../constant"
 
-export const _initialize = async () => {
+export const _add_validator = async () => {
     const initParam = await preRequisite(connection, payer)
 
     const {
@@ -28,4 +30,11 @@ export const _initialize = async () => {
     };
 
     await initialize(connection, payer, initializeData, initParam)
+
+    const addValidatorParam = {
+        score: 2,
+        voteAccount: voteAccount[2]
+    }
+
+    await add_validator(connection, payer, addValidatorParam, initParam)
 }
