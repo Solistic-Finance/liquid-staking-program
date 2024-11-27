@@ -5,6 +5,7 @@ import {
     _add_validator,
     _remove_validator,
     _set_validator_score,
+    _config_validator_system,
 } from "./src/order";
 
 
@@ -14,7 +15,8 @@ const main = async () => {
     // await _change_authority()
     // await _add_validator()
     // await _remove_validator()
-    await _set_validator_score()
+    // await _set_validator_score()
+    await _config_validator_system()
 }
 
 main()

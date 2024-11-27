@@ -17,7 +17,14 @@ import {
     getOrCreateAssociatedTokenAccount,
     TOKEN_PROGRAM_ID
 } from "@solana/spl-token";
-import { change_authority, initialize } from "./basic_instruction";
+import {
+    initialize,
+    change_authority,
+    add_validator,
+    remove_validator,
+    set_validator_score,
+    config_validator_system,
+} from "./basic_instruction";
 import { createAtaTx, createMintTrasaction, getInitParam } from "../utils";
 
 const preRequisite = async (connection: Connection, payer: Signer): Promise<InitParam> => {
@@ -154,5 +161,9 @@ const preRequisite = async (connection: Connection, payer: Signer): Promise<Init
 export {
     preRequisite,
     initialize,
-    change_authority
+    change_authority,
+    add_validator,
+    remove_validator,
+    set_validator_score,
+    config_validator_system,
 }

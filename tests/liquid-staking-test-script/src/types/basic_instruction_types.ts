@@ -51,10 +51,15 @@ interface SetValidatorScore {
     score : number
 }
 
+interface ConfigValidatorSystem {
+    extra_runs : number
+}
+
 export {
     InitializeDataParam,
     ChangeAuthorityData,
     AddValidatorParam,
     RemoveValidatorParam,
-    SetValidatorScore
+    SetValidatorScore,
+    ConfigValidatorSystem
 }

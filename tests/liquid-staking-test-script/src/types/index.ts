@@ -4,7 +4,8 @@ import {
     ChangeAuthorityData,
     AddValidatorParam,
     RemoveValidatorParam,
-    SetValidatorScore
+    SetValidatorScore,
+    ConfigValidatorSystem
 } from "./basic_instruction_types"
 
 interface InitParam {
@@ -36,5 +37,6 @@ export {
     ChangeAuthorityData,
     AddValidatorParam,
     RemoveValidatorParam,
-    SetValidatorScore
+    SetValidatorScore,
+    ConfigValidatorSystem
 }
