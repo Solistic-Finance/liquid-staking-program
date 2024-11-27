@@ -2,8 +2,8 @@ import { AnchorProvider, Program } from '@coral-xyz/anchor';
 import NodeWallet from '@coral-xyz/anchor/dist/cjs/nodewallet';
 import { bs58 } from '@coral-xyz/anchor/dist/cjs/utils/bytes';
 import { Connection, Keypair, PublicKey } from '@solana/web3.js';
-import idl from '../../target/idl/marinade_forking_smart_contract.json';
-import { MarinadeForkingSmartContract, IDL } from "../../target/types/marinade_forking_smart_contract";
+import idl from '../../targets/idl/marinade_forking_smart_contract.json';
+import { MarinadeForkingSmartContract, IDL } from "../../targets/types/marinade_forking_smart_contract";
 import { config } from 'dotenv';
 
 config()
