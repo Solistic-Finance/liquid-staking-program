@@ -110,6 +110,8 @@ const preRequisite = async (connection: Connection, payer: Signer): Promise<Init
     };
 
 
+
+
     tx.feePayer = payer.publicKey
     tx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash
 

@@ -60,7 +60,8 @@ interface DepositParam {
 }
 
 interface DepositStakeParam {
-    validatorIndex : number
+    validatorIndex : number,
+    amount : number
 }
 
 interface LiquidUnstakeParam {

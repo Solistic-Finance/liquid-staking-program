@@ -8,6 +8,7 @@ import {
     _config_validator_system,
 } from "./src/order";
 import { _deposit } from "./src/order/_deposit";
+import { _deposit_stake_account } from "./src/order/_deposit_stake_account";
 
 
 const main = async () => {
@@ -18,7 +19,8 @@ const main = async () => {
     // await _remove_validator()
     // await _set_validator_score()
     // await _config_validator_system()
-    await _deposit()
+    // await _deposit()
+    await _deposit_stake_account()
 }
 
 main()
