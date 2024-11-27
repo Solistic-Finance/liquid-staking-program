@@ -55,11 +55,26 @@ interface ConfigValidatorSystem {
     extra_runs : number
 }
 
+interface DepositParam {
+    amount : BN
+}
+
+interface DepositStakeParam {
+    validatorIndex : number
+}
+
+interface LiquidUnstakeParam {
+    msol_amount : BN
+}
+
 export {
     InitializeDataParam,
     ChangeAuthorityData,
     AddValidatorParam,
     RemoveValidatorParam,
     SetValidatorScore,
-    ConfigValidatorSystem
+    ConfigValidatorSystem,
+    DepositParam,
+    DepositStakeParam,
+    LiquidUnstakeParam
 }

@@ -5,7 +5,10 @@ import {
     AddValidatorParam,
     RemoveValidatorParam,
     SetValidatorScore,
-    ConfigValidatorSystem
+    ConfigValidatorSystem,
+    DepositParam,
+    DepositStakeParam,
+    LiquidUnstakeParam
 } from "./basic_instruction_types"
 
 interface InitParam {
@@ -38,5 +41,8 @@ export {
     AddValidatorParam,
     RemoveValidatorParam,
     SetValidatorScore,
-    ConfigValidatorSystem
+    ConfigValidatorSystem,
+    DepositParam,
+    DepositStakeParam,
+    LiquidUnstakeParam
 }

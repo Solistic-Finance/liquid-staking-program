@@ -24,6 +24,9 @@ import {
     remove_validator,
     set_validator_score,
     config_validator_system,
+    deposit,
+    deposit_stake_account,
+    liquid_unstake
 } from "./basic_instruction";
 import { createAtaTx, createMintTrasaction, getInitParam } from "../utils";
 
@@ -166,4 +169,7 @@ export {
     remove_validator,
     set_validator_score,
     config_validator_system,
+    deposit,
+    deposit_stake_account,
+    liquid_unstake
 }
