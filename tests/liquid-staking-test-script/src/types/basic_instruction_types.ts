@@ -45,9 +45,16 @@ interface RemoveValidatorParam {
     voteAccount: PublicKey,
 }
 
+interface SetValidatorScore {
+    index : number,
+    validatorVote : PublicKey,
+    score : number
+}
+
 export {
     InitializeDataParam,
     ChangeAuthorityData,
     AddValidatorParam,
-    RemoveValidatorParam
+    RemoveValidatorParam,
+    SetValidatorScore
 }
