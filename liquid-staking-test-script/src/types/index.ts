@@ -2,7 +2,8 @@ import { Keypair, PublicKey } from "@solana/web3.js";
 import {
     InitializeDataParam,
     ChangeAuthorityData,
-    AddValidatorParam
+    AddValidatorParam,
+    RemoveValidatorParam
 } from "./basic_instruction_types"
 
 interface InitParam {
@@ -32,5 +33,6 @@ export {
     InitParam,
     InitializeDataParam,
     ChangeAuthorityData,
-    AddValidatorParam
+    AddValidatorParam,
+    RemoveValidatorParam
 }

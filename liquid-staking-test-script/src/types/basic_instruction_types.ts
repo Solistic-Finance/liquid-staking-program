@@ -41,8 +41,13 @@ interface AddValidatorParam {
     voteAccount: PublicKey,
 }
 
+interface RemoveValidatorParam {
+    voteAccount: PublicKey,
+}
+
 export {
     InitializeDataParam,
     ChangeAuthorityData,
-    AddValidatorParam
+    AddValidatorParam,
+    RemoveValidatorParam
 }
