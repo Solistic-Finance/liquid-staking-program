@@ -1,10 +1,11 @@
 import { BN } from "bn.js";
 import { connection, payer } from "../config";
-import { add_validator, deposit, deposit_stake_account, initialize, preRequisite } from "../instructions";
-import { InitializeDataParam } from "../types";
+import { add_validator, claim, deposit, deposit_stake_account, initialize, order_unstake, preRequisite } from "../instructions";
+import { ClaimParam, InitializeDataParam, OrderUnstakeParam } from "../types";
 import { voteAccount } from "../constant";
+import { Keypair } from "@solana/web3.js";
 
-export const _deposit_stake_account = async () => {
+export const _claim = async () => {
     const initParam = await preRequisite(connection, payer)
 
     const initializeData: InitializeDataParam = {
@@ -39,4 +40,18 @@ export const _deposit_stake_account = async () => {
     }
 
     await deposit_stake_account(connection, payer, depositStakeAccountParam, initParam)
+
+    //! Should double check on this
+    const newTicketAccount = Keypair.generate()
+
+    const orderUnstakeParam: OrderUnstakeParam = {
+        msol_amount : new BN(1000),
+        newTicketAccount
+    }
+    await order_unstake(connection, payer, orderUnstakeParam, initParam)
+
+    const claimParam: ClaimParam = {
+        newTicketAccount
+    }
+    await claim(connection, payer, claimParam, initParam)
 }

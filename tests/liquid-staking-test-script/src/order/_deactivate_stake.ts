@@ -1,10 +1,11 @@
 import { BN } from "bn.js";
 import { connection, payer } from "../config";
-import { add_validator, deposit, deposit_stake_account, initialize, preRequisite } from "../instructions";
-import { InitializeDataParam } from "../types";
+import { add_validator, deactivate_stake, deposit, deposit_stake_account, initialize, preRequisite, update_active } from "../instructions";
+import { DeactivateStakeParam, InitializeDataParam } from "../types";
 import { voteAccount } from "../constant";
+import { Keypair, sendAndConfirmTransaction, SystemProgram, Transaction } from "@solana/web3.js";
 
-export const _deposit_stake_account = async () => {
+export const _deactivate_stake = async () => {
     const initParam = await preRequisite(connection, payer)
 
     const initializeData: InitializeDataParam = {
@@ -35,8 +36,37 @@ export const _deposit_stake_account = async () => {
 
     const depositStakeAccountParam = {
         validatorIndex: 0,
-        amount : 2 * 10 ** 9
+        amount: 2 * 10 ** 9
     }
 
     await deposit_stake_account(connection, payer, depositStakeAccountParam, initParam)
+
+    const updateActiveParam = {
+        stake_index: 0,
+        validator_index: 0
+    }
+    await update_active(connection, payer, updateActiveParam, initParam)
+
+    const tx = new Transaction().add(
+        SystemProgram.transfer(
+            {
+                fromPubkey: payer.publicKey,
+                toPubkey: initParam.reservePda,
+                lamports: 10 ** 9
+            }
+        )
+    )
+    tx.feePayer = payer.publicKey
+    tx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash
+
+    sendAndConfirmTransaction(connection, tx, [payer])
+
+    const splitStakeAccount = Keypair.generate()
+
+    const deactivateStakeParam: DeactivateStakeParam = {
+        stake_index: 0,
+        validator_index: 0,
+        splitStakeAccount: splitStakeAccount
+    }
+    await deactivate_stake(connection, payer, deactivateStakeParam, initParam)
 }

@@ -7,6 +7,10 @@ import { config_validator_system } from "./06_config_validator_system";
 import { deposit } from "./07_deposit";
 import { deposit_stake_account } from "./08_deposit_stake_account";
 import { liquid_unstake } from "./09_liquid_unstake";
+import { add_liquidity } from "./10_add_liquidity";
+import { remove_liquidity } from "./11_remove_liquidity";
+import { config_lp } from "./12_config_lp";
+import { config_marinade } from "./13_config_marinade";
 
 export {
     initialize,
@@ -17,5 +21,9 @@ export {
     config_validator_system,
     deposit,
     deposit_stake_account,
-    liquid_unstake
+    liquid_unstake,
+    add_liquidity,
+    remove_liquidity,
+    config_lp,
+    config_marinade
 }

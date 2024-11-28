@@ -1,9 +1,9 @@
 import { BN } from "bn.js";
 import { connection, payer } from "../config";
-import { config_validator_system, initialize, preRequisite } from "../instructions";
+import { add_liquidity, deposit, initialize, liquid_unstake, preRequisite, remove_liquidity } from "../instructions";
 import { InitializeDataParam } from "../types";
 
-export const _config_validator_system = async () => {
+export const _remove_liquidity = async () => {
     const initParam = await preRequisite(connection, payer)
 
     const initializeData: InitializeDataParam = {
@@ -25,8 +25,13 @@ export const _config_validator_system = async () => {
 
     await initialize(connection, payer, initializeData, initParam)
 
-    const configValidatorSystem = {
-        extra_runs: 32
+    const addLiquidityParam = {
+        lamports: new BN(10000)
     }
-    await config_validator_system(connection, payer, configValidatorSystem, initParam);
+    await add_liquidity(connection, payer, addLiquidityParam, initParam)
+
+    const removeLiquidityParam = {
+        tokens: new BN(10000)
+    }
+    await remove_liquidity(connection, payer, removeLiquidityParam, initParam)
 }

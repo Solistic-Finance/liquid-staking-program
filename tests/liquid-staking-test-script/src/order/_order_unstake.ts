@@ -1,12 +1,11 @@
-import { BN } from "bn.js"
-import { connection, payer } from "../config"
-import { initialize, preRequisite } from "../instructions"
-import { InitializeDataParam } from "../types"
-import { add_validator, remove_validator } from "../instructions/basic_instruction"
-import { voteAccount } from "../constant"
-import { set_validator_score } from "../instructions/basic_instruction/05_set_validator_score"
+import { BN } from "bn.js";
+import { connection, payer } from "../config";
+import { add_validator, deposit, deposit_stake_account, initialize, order_unstake, preRequisite } from "../instructions";
+import { InitializeDataParam, OrderUnstakeParam } from "../types";
+import { voteAccount } from "../constant";
+import { Keypair } from "@solana/web3.js";
 
-export const _set_validator_score = async () => {
+export const _order_unstake = async () => {
     const initParam = await preRequisite(connection, payer)
 
     const initializeData: InitializeDataParam = {
@@ -30,19 +29,24 @@ export const _set_validator_score = async () => {
 
     const addValidatorParam = {
         score: 2,
-        voteAccount: voteAccount[2]
+        voteAccount: voteAccount[0]
     }
 
     await add_validator(connection, payer, addValidatorParam, initParam)
 
-    //? index should be less than boundery
-    //! AnchorError caused by account: validator_list. Error Code: ListIndexOutOfBounds. Error Number: 6073. Error Message: List index out of bounds.
-
-    const setValidatorScoreParam = {
-        index: 0,   //  1 => error
-        validatorVote: voteAccount[2],
-        score: 3
+    const depositStakeAccountParam = {
+        validatorIndex: 0,
+        amount : 2 * 10 ** 9
     }
 
-    await set_validator_score(connection, payer, setValidatorScoreParam, initParam)
+    await deposit_stake_account(connection, payer, depositStakeAccountParam, initParam)
+
+    //! Should double check on this
+    const newTicketAccount = Keypair.generate()
+
+    const orderUnstakeParam: OrderUnstakeParam = {
+        msol_amount : new BN(1000),
+        newTicketAccount
+    }
+    await order_unstake(connection, payer, orderUnstakeParam, initParam)
 }

@@ -11,10 +11,7 @@ import { InitParam } from "../types";
 import { contractAddr } from "../config";
 import {
     ASSOCIATED_TOKEN_PROGRAM_ID,
-    createAssociatedTokenAccount,
-    createMint,
     getAssociatedTokenAddressSync,
-    getOrCreateAssociatedTokenAccount,
     TOKEN_PROGRAM_ID
 } from "@solana/spl-token";
 import {
@@ -26,9 +23,14 @@ import {
     config_validator_system,
     deposit,
     deposit_stake_account,
-    liquid_unstake
+    liquid_unstake,
+    add_liquidity,
+    remove_liquidity,
+    config_lp,
+    config_marinade
 } from "./basic_instruction";
 import { createAtaTx, createMintTrasaction, getInitParam } from "../utils";
+import { claim, deactivate_stake, order_unstake, stake_reserve, update_active, update_deactivated } from "./advanced_instruction";
 
 const preRequisite = async (connection: Connection, payer: Signer): Promise<InitParam> => {
     const stateAccount = Keypair.generate()
@@ -53,13 +55,14 @@ const preRequisite = async (connection: Connection, payer: Signer): Promise<Init
     const treasuryMsolAccount = getAssociatedTokenAddressSync(msolMint, stateAccount.publicKey, true);
     const mSolLeg = getAssociatedTokenAddressSync(msolMint, authorityMSolLegAcc, true);
     const mint_to = getAssociatedTokenAddressSync(msolMint, payer.publicKey);
+    const mint_to_lp = getAssociatedTokenAddressSync(lpMint, payer.publicKey);
     const burnMsolFrom = getAssociatedTokenAddressSync(msolMint, payer.publicKey);
 
     const tx = new Transaction()
 
-
     const msolMintTx = await createMintTrasaction(connection, payer, authorityMsolAcc, null, 9, msolMintKeypair);
     const lpMintTx = await createMintTrasaction(connection, payer, authorityLpAcc, null, 9, lpMintKeypair);
+    
     tx.add(msolMintTx).add(lpMintTx)
 
     const treasuryMsolAccountTx = await createAtaTx(
@@ -81,11 +84,13 @@ const preRequisite = async (connection: Connection, payer: Signer): Promise<Init
     );
 
     const mint_toTx = await createAtaTx(connection, payer, msolMint, payer.publicKey);
+    const mint_to_lpTx = await createAtaTx(connection, payer, lpMint, payer.publicKey);
 
     tx
         .add(treasuryMsolAccountTx)
         .add(mSolLegTx)
         .add(mint_toTx)
+        .add(mint_to_lpTx)
 
 
 
@@ -155,6 +160,7 @@ const preRequisite = async (connection: Connection, payer: Signer): Promise<Init
         treasuryMsolAccount: treasuryMsolAccount,
         mSolLeg: mSolLeg,
         mint_to: mint_to,
+        mint_to_lp : mint_to_lp,
         burnMsolFrom: burnMsolFrom,
     }
 
@@ -173,5 +179,15 @@ export {
     config_validator_system,
     deposit,
     deposit_stake_account,
-    liquid_unstake
+    liquid_unstake,
+    add_liquidity,
+    remove_liquidity,
+    config_lp,
+    config_marinade,
+    order_unstake,
+    claim,
+    stake_reserve,
+    update_active,
+    update_deactivated,
+    deactivate_stake
 }

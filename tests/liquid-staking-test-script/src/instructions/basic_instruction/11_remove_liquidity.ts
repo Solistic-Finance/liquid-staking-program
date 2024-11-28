@@ -1,32 +1,34 @@
 
 import { Connection, PublicKey, sendAndConfirmTransaction, Signer, StakeProgram } from "@solana/web3.js";
 import { program } from "../../config";
-import { DepositStakeParam, InitParam, LiquidUnstakeParam } from "../../types";
+import { InitParam, RemoveLiquidityParam } from "../../types";
 
-const liquid_unstake = async (connection: Connection, payer: Signer, liquidUnstakeParam: LiquidUnstakeParam, initParam: InitParam) => {
+const remove_liquidity = async (connection: Connection, payer: Signer, removeLiquidityParam: RemoveLiquidityParam, initParam: InitParam) => {
     const {
-        msol_amount
-    } = liquidUnstakeParam;
+        tokens
+    } = removeLiquidityParam;
 
     const {
         stateAccount,
-        msolMint,
-        mint_to,
+        lpMint,
+        authorityMSolLegAcc,
         solLegPda,
         mSolLeg,
-        treasuryMsolAccount,
+        mint_to,
+        mint_to_lp
     } = initParam
 
-    const tx = await program.methods.liquidUnstake(msol_amount)
+    const tx = await program.methods.removeLiquidity(tokens)
         .accounts({
             state: stateAccount.publicKey,
-            msolMint: msolMint,
+            lpMint: lpMint,
+            burnFrom: mint_to_lp,
+            burnFromAuthority: payer.publicKey,
+            transferSolTo: payer.publicKey,
+            transferMsolTo: mint_to,
             liqPoolSolLegPda: solLegPda,
             liqPoolMsolLeg: mSolLeg,
-            treasuryMsolAccount: treasuryMsolAccount,
-            getMsolFrom: mint_to,
-            getMsolFromAuthority: payer.publicKey,
-            transferSolTo: payer.publicKey,
+            liqPoolMsolLegAuthority: authorityMSolLegAcc,
         })
         .signers([payer])
         .transaction()
@@ -45,7 +47,7 @@ const liquid_unstake = async (connection: Connection, payer: Signer, liquidUnsta
 }
 
 export {
-    liquid_unstake
+    remove_liquidity
 }
 
 //? Define the parameters for initializing the state

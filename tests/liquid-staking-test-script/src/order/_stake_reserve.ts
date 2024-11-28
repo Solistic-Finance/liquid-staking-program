@@ -1,10 +1,11 @@
 import { BN } from "bn.js";
 import { connection, payer } from "../config";
-import { add_validator, deposit, deposit_stake_account, initialize, preRequisite } from "../instructions";
-import { InitializeDataParam } from "../types";
+import { add_validator, claim, deposit, deposit_stake_account, initialize, order_unstake, preRequisite, stake_reserve } from "../instructions";
+import { ClaimParam, InitializeDataParam, OrderUnstakeParam, StakeReserveParam } from "../types";
 import { voteAccount } from "../constant";
+import { Keypair } from "@solana/web3.js";
 
-export const _deposit_stake_account = async () => {
+export const _stake_reserve = async () => {
     const initParam = await preRequisite(connection, payer)
 
     const initializeData: InitializeDataParam = {
@@ -25,18 +26,24 @@ export const _deposit_stake_account = async () => {
     };
 
     await initialize(connection, payer, initializeData, initParam)
-
-    const addValidatorParam = {
-        score: 2,
-        voteAccount: voteAccount[0]
+    const stakeReserveParam : StakeReserveParam = {
+        validator_index: 0,
+        validatorVote : voteAccount[0]
     }
+    await stake_reserve(connection, payer, stakeReserveParam, initParam)
 
-    await add_validator(connection, payer, addValidatorParam, initParam)
+    // const addValidatorParam = {
+    //     score: 2,
+    //     voteAccount: voteAccount[0]
+    // }
 
-    const depositStakeAccountParam = {
-        validatorIndex: 0,
-        amount : 2 * 10 ** 9
-    }
+    // await add_validator(connection, payer, addValidatorParam, initParam)
 
-    await deposit_stake_account(connection, payer, depositStakeAccountParam, initParam)
+    // const depositStakeAccountParam = {
+    //     validatorIndex: 0,
+    //     amount : 2 * 10 ** 9
+    // }
+
+    // await deposit_stake_account(connection, payer, depositStakeAccountParam, initParam)
+
 }

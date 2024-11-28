@@ -1,9 +1,10 @@
 import { BN } from "bn.js";
 import { connection, payer } from "../config";
-import { config_validator_system, initialize, preRequisite } from "../instructions";
+import { add_validator, deposit, deposit_stake_account, initialize, preRequisite, update_active } from "../instructions";
 import { InitializeDataParam } from "../types";
+import { voteAccount } from "../constant";
 
-export const _config_validator_system = async () => {
+export const _update_active = async () => {
     const initParam = await preRequisite(connection, payer)
 
     const initializeData: InitializeDataParam = {
@@ -25,8 +26,23 @@ export const _config_validator_system = async () => {
 
     await initialize(connection, payer, initializeData, initParam)
 
-    const configValidatorSystem = {
-        extra_runs: 32
+    const addValidatorParam = {
+        score: 2,
+        voteAccount: voteAccount[0]
     }
-    await config_validator_system(connection, payer, configValidatorSystem, initParam);
+
+    await add_validator(connection, payer, addValidatorParam, initParam)
+
+    const depositStakeAccountParam = {
+        validatorIndex: 0,
+        amount: 2 * 10 ** 9
+    }
+
+    await deposit_stake_account(connection, payer, depositStakeAccountParam, initParam)
+
+    const updateActiveParam = {
+        stake_index: 0,
+        validator_index: 0
+    }
+    await update_active(connection, payer, updateActiveParam, initParam)
 }

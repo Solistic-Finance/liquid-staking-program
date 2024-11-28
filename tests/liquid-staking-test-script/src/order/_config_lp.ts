@@ -1,9 +1,9 @@
 import { BN } from "bn.js";
 import { connection, payer } from "../config";
-import { config_validator_system, initialize, preRequisite } from "../instructions";
+import { config_lp, initialize, preRequisite } from "../instructions";
 import { InitializeDataParam } from "../types";
 
-export const _config_validator_system = async () => {
+export const _config_lp = async () => {
     const initParam = await preRequisite(connection, payer)
 
     const initializeData: InitializeDataParam = {
@@ -25,8 +25,11 @@ export const _config_validator_system = async () => {
 
     await initialize(connection, payer, initializeData, initParam)
 
-    const configValidatorSystem = {
-        extra_runs: 32
-    }
-    await config_validator_system(connection, payer, configValidatorSystem, initParam);
+    const configLpParam = {
+        minFee: { basisPoints: 2 },  // Correct usage for Fee type
+        maxFee: { basisPoints: 20 },
+        liquidityTarget: new BN(70000000000),
+        treasuryCut: { basisPoints: 30 },
+    };
+    await config_lp(connection, payer, configLpParam, initParam)
 }

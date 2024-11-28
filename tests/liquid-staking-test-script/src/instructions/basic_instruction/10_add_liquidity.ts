@@ -1,32 +1,35 @@
 
 import { Connection, PublicKey, sendAndConfirmTransaction, Signer, StakeProgram } from "@solana/web3.js";
 import { program } from "../../config";
-import { DepositStakeParam, InitParam, LiquidUnstakeParam } from "../../types";
+import { AddLiquidityParam, DepositStakeParam, InitParam, LiquidUnstakeParam } from "../../types";
 
-const liquid_unstake = async (connection: Connection, payer: Signer, liquidUnstakeParam: LiquidUnstakeParam, initParam: InitParam) => {
+const add_liquidity = async (connection: Connection, payer: Signer, addLiquidityParam: AddLiquidityParam, initParam: InitParam) => {
     const {
-        msol_amount
-    } = liquidUnstakeParam;
+        lamports
+    } = addLiquidityParam;
 
     const {
         stateAccount,
-        msolMint,
-        mint_to,
+        lpMint,
+        mint_to_lp,
         solLegPda,
         mSolLeg,
-        treasuryMsolAccount,
+        authorityLpAcc,
     } = initParam
 
-    const tx = await program.methods.liquidUnstake(msol_amount)
+    // Retrieve and log the state account to confirm initialization
+    const state = await program.account.state.fetch(stateAccount.publicKey);
+    console.log("State Account:", state); //  this data
+
+    const tx = await program.methods.addLiquidity(lamports)
         .accounts({
             state: stateAccount.publicKey,
-            msolMint: msolMint,
-            liqPoolSolLegPda: solLegPda,
+            lpMint: lpMint,
+            lpMintAuthority: authorityLpAcc,
             liqPoolMsolLeg: mSolLeg,
-            treasuryMsolAccount: treasuryMsolAccount,
-            getMsolFrom: mint_to,
-            getMsolFromAuthority: payer.publicKey,
-            transferSolTo: payer.publicKey,
+            liqPoolSolLegPda: solLegPda,
+            transferFrom: payer.publicKey,
+            mintTo: mint_to_lp,
         })
         .signers([payer])
         .transaction()
@@ -45,7 +48,7 @@ const liquid_unstake = async (connection: Connection, payer: Signer, liquidUnsta
 }
 
 export {
-    liquid_unstake
+    add_liquidity
 }
 
 //? Define the parameters for initializing the state

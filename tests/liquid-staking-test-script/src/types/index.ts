@@ -8,8 +8,22 @@ import {
     ConfigValidatorSystem,
     DepositParam,
     DepositStakeParam,
-    LiquidUnstakeParam
+    LiquidUnstakeParam,
+    AddLiquidityParam,
+    RemoveLiquidityParam,
+    ConfigLpParam,
+    ConfigMarinadeParam,
 } from "./basic_instruction_types"
+
+import {
+    OrderUnstakeParam,
+    ClaimParam,
+    StakeReserveParam,
+    UpdateActiveParam,
+    UpdateDeactivatedParam,
+    DeactivateStakeParam
+} from "./advanced_instruction_types"
+import BN from "bn.js";
 
 interface InitParam {
     stateAccount: Keypair,
@@ -31,7 +45,22 @@ interface InitParam {
     treasuryMsolAccount: PublicKey,
     mSolLeg: PublicKey,
     mint_to: PublicKey,
+    mint_to_lp: PublicKey,
     burnMsolFrom: PublicKey,
+}
+
+interface ParsedStakeAccountInfo {
+    address: PublicKey
+    ownerAddress: PublicKey
+    authorizedStakerAddress: PublicKey | null
+    authorizedWithdrawerAddress: PublicKey | null
+    voterAddress: PublicKey | null
+    activationEpoch: BN | null
+    deactivationEpoch: BN | null
+    isCoolingDown: boolean
+    isLockedUp: boolean
+    balanceLamports: BN | null
+    stakedLamports: BN | null
 }
 
 export {
@@ -44,5 +73,16 @@ export {
     ConfigValidatorSystem,
     DepositParam,
     DepositStakeParam,
-    LiquidUnstakeParam
+    LiquidUnstakeParam,
+    AddLiquidityParam,
+    RemoveLiquidityParam,
+    ConfigLpParam,
+    ConfigMarinadeParam,
+    OrderUnstakeParam,
+    ClaimParam,
+    StakeReserveParam,
+    UpdateActiveParam,
+    UpdateDeactivatedParam,
+    DeactivateStakeParam,
+    ParsedStakeAccountInfo
 }

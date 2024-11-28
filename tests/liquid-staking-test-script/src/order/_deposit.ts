@@ -6,12 +6,8 @@ import { InitializeDataParam } from "../types";
 export const _deposit = async () => {
     const initParam = await preRequisite(connection, payer)
 
-    const {
-        authorityAcc,
-    } = initParam
-
     const initializeData: InitializeDataParam = {
-        adminAuthority: authorityAcc.publicKey,
+        adminAuthority: payer.publicKey,
         validatorManagerAuthority: payer.publicKey,
         minStake: new BN(10000000), // Example value
         rewardsFee: { numerator: 1, denominator: 100 }, // 1%
@@ -32,6 +28,5 @@ export const _deposit = async () => {
     const depositParam = {
         amount: new BN(10000)
     }
-
     await deposit(connection, payer, depositParam, initParam)
 }

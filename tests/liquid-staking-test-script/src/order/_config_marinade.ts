@@ -1,9 +1,9 @@
 import { BN } from "bn.js";
 import { connection, payer } from "../config";
-import { config_validator_system, initialize, preRequisite } from "../instructions";
-import { InitializeDataParam } from "../types";
+import { config_marinade, initialize, preRequisite } from "../instructions";
+import { ConfigMarinadeParam, InitializeDataParam } from "../types";
 
-export const _config_validator_system = async () => {
+export const _config_marinade = async () => {
     const initParam = await preRequisite(connection, payer)
 
     const initializeData: InitializeDataParam = {
@@ -25,8 +25,19 @@ export const _config_validator_system = async () => {
 
     await initialize(connection, payer, initializeData, initParam)
 
-    const configValidatorSystem = {
-        extra_runs: 32
-    }
-    await config_validator_system(connection, payer, configValidatorSystem, initParam);
+    const configMarinadeParam : ConfigMarinadeParam = {
+        rewardsFee: { basisPoints: 1 },
+        slotsForStakeDelta: new BN (3000),  //  minimun
+        minStake: new BN (10000000),            //  minimum
+        minDeposit: new BN (4),
+        minWithdraw: new BN (5),
+        stakingSolCap: new BN (6),
+        liquiditySolCap: new BN (7),
+        withdrawStakeAccountEnabled: true,
+        delayedUnstakeFee: { bpCents: 8 },
+        withdrawStakeAccountFee: { bpCents: 9 },
+        maxStakeMovedPerEpoch: { basisPoints: 10 },
+    };
+
+    await config_marinade(connection, payer, configMarinadeParam, initParam)
 }

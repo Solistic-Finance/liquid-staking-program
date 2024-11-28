@@ -7,13 +7,12 @@ export const _change_authority = async () => {
     const initParam = await preRequisite(connection, payer)
 
     const {
-        authorityAcc,
         operationalSolAccount,
         treasuryMsolAccount
     } = initParam
 
     const initializeData: InitializeDataParam = {
-        adminAuthority: authorityAcc.publicKey,
+        adminAuthority: payer.publicKey,
         validatorManagerAuthority: payer.publicKey,
         minStake: new BN(10000000), // Example value
         rewardsFee: { numerator: 1, denominator: 100 }, // 1%

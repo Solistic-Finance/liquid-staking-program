@@ -46,27 +46,56 @@ interface RemoveValidatorParam {
 }
 
 interface SetValidatorScore {
-    index : number,
-    validatorVote : PublicKey,
-    score : number
+    index: number,
+    validatorVote: PublicKey,
+    score: number
 }
 
 interface ConfigValidatorSystem {
-    extra_runs : number
+    extra_runs: number
 }
 
 interface DepositParam {
-    amount : BN
+    amount: BN
 }
 
 interface DepositStakeParam {
-    validatorIndex : number,
-    amount : number
+    validatorIndex: number,
+    amount: number
 }
 
 interface LiquidUnstakeParam {
-    msol_amount : BN
+    msol_amount: BN
 }
+
+interface AddLiquidityParam {
+    lamports: BN
+}
+
+interface RemoveLiquidityParam {
+    tokens: BN
+}
+
+interface ConfigLpParam {
+    liquidityTarget: BN,
+    minFee: { basisPoints: number },  // Correct usage for Fee type
+    maxFee: { basisPoints: number },
+    treasuryCut: { basisPoints: number },
+}
+
+interface ConfigMarinadeParam {
+    rewardsFee: { basisPoints: number },
+    slotsForStakeDelta: BN,
+    minStake: BN,
+    minDeposit: BN,
+    minWithdraw: BN,
+    stakingSolCap: BN,
+    liquiditySolCap: BN,
+    withdrawStakeAccountEnabled: true,
+    delayedUnstakeFee: { bpCents: number },
+    withdrawStakeAccountFee: { bpCents: number },
+    maxStakeMovedPerEpoch: { basisPoints: number },
+};
 
 export {
     InitializeDataParam,
@@ -77,5 +106,9 @@ export {
     ConfigValidatorSystem,
     DepositParam,
     DepositStakeParam,
-    LiquidUnstakeParam
+    LiquidUnstakeParam,
+    AddLiquidityParam,
+    RemoveLiquidityParam,
+    ConfigLpParam,
+    ConfigMarinadeParam
 }
