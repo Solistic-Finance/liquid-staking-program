@@ -1,10 +1,10 @@
 import { BN } from "bn.js";
 import { connection, payer } from "../config";
-import { add_validator, deposit, deposit_stake_account, initialize, preRequisite, update_active, update_deactivated } from "../instructions";
-import { InitializeDataParam, UpdateDeactivatedParam } from "../types";
+import { add_validator, deposit, deposit_stake_account, initialize, partial_unstake, preRequisite, update_active, update_deactivated } from "../instructions";
+import { InitializeDataParam, PartialUnstakeParam, UpdateDeactivatedParam } from "../types";
 import { voteAccount } from "../constant";
+import { Keypair } from "@solana/web3.js";
 
-//! not yet
 export const _partial_unstake = async () => {
     const initParam = await preRequisite(connection, payer)
 
@@ -47,8 +47,13 @@ export const _partial_unstake = async () => {
     }
     await update_active(connection, payer, updateActiveParam, initParam)
 
-    const updateDeactivatedParam: UpdateDeactivatedParam = {
-        stake_index: 0
+    const splitStakeAccount = Keypair.generate()
+
+    const partialUnstakeParam: PartialUnstakeParam = {
+        stake_index: 0,
+        validator_index: 0,
+        desired_unstake_amount: new BN(10000000),
+        splitStakeAccount: splitStakeAccount,
     }
-    await update_deactivated(connection, payer, updateDeactivatedParam, initParam)
+    await partial_unstake(connection, payer, partialUnstakeParam, initParam)
 }

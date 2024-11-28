@@ -57,8 +57,8 @@ const main = async () => {
     //! await _deactivate_stake()
 
     // await _emergency_unstake()
-    await _partial_unstake()
-    // await _merge_stakes()
+    // await _partial_unstake()
+    await _merge_stakes()
     // await _redelegate()
     // await _pause()
     // await _resume()
