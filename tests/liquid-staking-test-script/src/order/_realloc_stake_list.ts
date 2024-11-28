@@ -1,7 +1,7 @@
 import { BN } from "bn.js";
 import { connection, payer } from "../config";
-import { add_validator, deposit, deposit_stake_account, initialize, preRequisite, update_active, update_deactivated } from "../instructions";
-import { InitializeDataParam, UpdateDeactivatedParam } from "../types";
+import { add_validator, deposit, deposit_stake_account, initialize, preRequisite, realloc_stake_list, update_active, update_deactivated } from "../instructions";
+import { InitializeDataParam, ReallocStakeListParam, UpdateDeactivatedParam } from "../types";
 import { voteAccount } from "../constant";
 
 //! not yet
@@ -27,28 +27,8 @@ export const _realloc_stake_list = async () => {
 
     await initialize(connection, payer, initializeData, initParam)
 
-    const addValidatorParam = {
-        score: 2,
-        voteAccount: voteAccount[0]
+    const reallocStakeListParam : ReallocStakeListParam =  {
+        capacity : 20
     }
-
-    await add_validator(connection, payer, addValidatorParam, initParam)
-
-    const depositStakeAccountParam = {
-        validatorIndex: 0,
-        amount: 2 * 10 ** 9
-    }
-
-    await deposit_stake_account(connection, payer, depositStakeAccountParam, initParam)
-
-    const updateActiveParam = {
-        stake_index: 0,
-        validator_index: 0
-    }
-    await update_active(connection, payer, updateActiveParam, initParam)
-
-    const updateDeactivatedParam: UpdateDeactivatedParam = {
-        stake_index: 0
-    }
-    await update_deactivated(connection, payer, updateDeactivatedParam, initParam)
+    await realloc_stake_list(connection, payer, reallocStakeListParam, initParam)
 }

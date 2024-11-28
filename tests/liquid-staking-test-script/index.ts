@@ -62,9 +62,9 @@ const main = async () => {
     // await _pause()
     // await _resume()
     // await _withdraw_stake_account()
+    // await _realloc_validator_list()
     
-    await _realloc_validator_list()
-    // await _realloc_stake_list()
+    await _realloc_stake_list()
 
     
 }

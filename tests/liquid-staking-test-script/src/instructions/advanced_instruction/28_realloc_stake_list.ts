@@ -29,7 +29,7 @@ const realloc_stake_list = async (connection: Connection, payer: Signer, realloc
   const simulationResult = await connection.simulateTransaction(tx);
   console.log("Simulation Result:", simulationResult);
   // Send the transaction
-  const sig = await sendAndConfirmTransaction(connection, tx, [payer, stakeList]);
+  const sig = await sendAndConfirmTransaction(connection, tx, [payer]);
   console.log("Transaction Signature:", sig);
 }
 
