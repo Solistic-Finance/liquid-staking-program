@@ -5,7 +5,8 @@ import { DeactivateStakeParam, InitializeDataParam } from "../types";
 import { voteAccount } from "../constant";
 import { Keypair, sendAndConfirmTransaction, SystemProgram, Transaction } from "@solana/web3.js";
 
-export const _deactivate_stake = async () => {
+//! not yet
+export const _emergency_unstake = async () => {
     const initParam = await preRequisite(connection, payer)
 
     const initializeData: InitializeDataParam = {

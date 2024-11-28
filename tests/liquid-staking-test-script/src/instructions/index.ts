@@ -30,7 +30,23 @@ import {
     config_marinade
 } from "./basic_instruction";
 import { createAtaTx, createMintTrasaction, getInitParam } from "../utils";
-import { claim, deactivate_stake, order_unstake, stake_reserve, update_active, update_deactivated } from "./advanced_instruction";
+import {
+    claim,
+    deactivate_stake,
+    emergency_unstake,
+    merge_stakes,
+    order_unstake,
+    partial_unstake,
+    pause,
+    realloc_stake_list,
+    realloc_validator_list,
+    redelegate,
+    resume,
+    stake_reserve,
+    update_active,
+    update_deactivated,
+    withdraw_stake_account
+} from "./advanced_instruction";
 
 const preRequisite = async (connection: Connection, payer: Signer): Promise<InitParam> => {
     const stateAccount = Keypair.generate()
@@ -62,7 +78,7 @@ const preRequisite = async (connection: Connection, payer: Signer): Promise<Init
 
     const msolMintTx = await createMintTrasaction(connection, payer, authorityMsolAcc, null, 9, msolMintKeypair);
     const lpMintTx = await createMintTrasaction(connection, payer, authorityLpAcc, null, 9, lpMintKeypair);
-    
+
     tx.add(msolMintTx).add(lpMintTx)
 
     const treasuryMsolAccountTx = await createAtaTx(
@@ -146,7 +162,6 @@ const preRequisite = async (connection: Connection, payer: Signer): Promise<Init
         validatorList: validatorList,
         operationalSolAccount: operationalSolAccount,
         authorityAcc: authorityAcc,
-        stakeAuthority: stakeAuthority,
         stakeAccount: stakeAccount,
         authorityMsolAcc: authorityMsolAcc,
         authorityLpAcc: authorityLpAcc,
@@ -160,7 +175,7 @@ const preRequisite = async (connection: Connection, payer: Signer): Promise<Init
         treasuryMsolAccount: treasuryMsolAccount,
         mSolLeg: mSolLeg,
         mint_to: mint_to,
-        mint_to_lp : mint_to_lp,
+        mint_to_lp: mint_to_lp,
         burnMsolFrom: burnMsolFrom,
     }
 
@@ -189,5 +204,14 @@ export {
     stake_reserve,
     update_active,
     update_deactivated,
-    deactivate_stake
+    deactivate_stake,
+    emergency_unstake,
+    partial_unstake,
+    merge_stakes,
+    redelegate,
+    pause,
+    resume,
+    withdraw_stake_account,
+    realloc_validator_list,
+    realloc_stake_list
 }

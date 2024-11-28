@@ -39,5 +39,5 @@ export {
     _stake_reserve,
     _update_active,
     _update_deactivated,
-    _deactivate_stake
+    _deactivate_stake,
 }

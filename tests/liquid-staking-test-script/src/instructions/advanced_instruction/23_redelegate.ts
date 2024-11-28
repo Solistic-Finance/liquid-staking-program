@@ -1,36 +1,45 @@
 
-import { Connection, sendAndConfirmTransaction, Signer, StakeProgram, SYSVAR_EPOCH_SCHEDULE_PUBKEY, SYSVAR_STAKE_HISTORY_PUBKEY } from "@solana/web3.js";
+import { Connection, sendAndConfirmTransaction, Signer, STAKE_CONFIG_ID, StakeProgram, SYSVAR_EPOCH_SCHEDULE_PUBKEY, SYSVAR_STAKE_HISTORY_PUBKEY } from "@solana/web3.js";
 import { program } from "../../config";
-import { DeactivateStakeParam, InitParam } from "../../types";
+import { EmergencyUnstakeParam, InitParam, MergeStakeParam, PartialUnstakeParam, RedelegateParam } from "../../types";
 
-const deactivate_stake = async (connection: Connection, payer: Signer, deactivateStakeParam: DeactivateStakeParam, initParam: InitParam) => {
+const redelegate = async (connection: Connection, payer: Signer, mergeStakeParam: RedelegateParam, initParam: InitParam) => {
     const {
         stake_index,
-        validator_index,
+        source_validator_index,
+        dest_validator_index,
+        validatorVote,
         splitStakeAccount,
-    } = deactivateStakeParam
+        newRedelegateStakeAccount
+    } = mergeStakeParam
 
     const {
         stateAccount,
-        reservePda,
         stakeList,
         stakeDepositAuthority,
         stakeAccount,
         validatorList,
+        reservePda,
     } = initParam
 
-    const tx = await program.methods.deactivateStake(stake_index, validator_index)
+    const tx = await program.methods.redelegate(
+        stake_index,
+        source_validator_index,
+        dest_validator_index
+    )
         .accounts({
             state: stateAccount.publicKey,
-            reservePda: reservePda,
             validatorList: validatorList.publicKey,
             stakeList: stakeList.publicKey,
             stakeAccount: stakeAccount.publicKey,
             stakeDepositAuthority: stakeDepositAuthority,
+            reservePda: reservePda,
             splitStakeAccount: splitStakeAccount.publicKey,
             splitStakeRentPayer: payer.publicKey,
-            epochSchedule: SYSVAR_EPOCH_SCHEDULE_PUBKEY,
+            destValidatorAccount: validatorVote,
+            redelegateStakeAccount: newRedelegateStakeAccount.publicKey,
             stakeHistory: SYSVAR_STAKE_HISTORY_PUBKEY,
+            stakeConfig: STAKE_CONFIG_ID,
             stakeProgram: StakeProgram.programId
         })
         .signers([payer])
@@ -42,12 +51,16 @@ const deactivate_stake = async (connection: Connection, payer: Signer, deactivat
     const simulationResult = await connection.simulateTransaction(tx);
     console.log("Simulation Result:", simulationResult);
     // Send the transaction
-    const sig = await sendAndConfirmTransaction(connection, tx, [payer , splitStakeAccount]);
+    const sig = await sendAndConfirmTransaction(connection, tx, [
+        payer,
+        splitStakeAccount,
+        newRedelegateStakeAccount
+    ]);
     console.log("Transaction Signature:", sig);
 }
 
 export {
-    deactivate_stake
+    redelegate
 }
 
 //? Define the parameters for initializing the state

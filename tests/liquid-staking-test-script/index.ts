@@ -54,7 +54,7 @@ const main = async () => {
     //   ]
     // await _update_deactivated()
 
-    await _deactivate_stake()
+    // await _deactivate_stake()
 
     
 }

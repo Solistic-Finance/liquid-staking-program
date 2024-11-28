@@ -1,37 +1,17 @@
 
-import { Connection, sendAndConfirmTransaction, Signer, StakeProgram, SYSVAR_EPOCH_SCHEDULE_PUBKEY, SYSVAR_STAKE_HISTORY_PUBKEY } from "@solana/web3.js";
+import { Connection, sendAndConfirmTransaction, Signer, STAKE_CONFIG_ID, StakeProgram, SYSVAR_EPOCH_SCHEDULE_PUBKEY, SYSVAR_STAKE_HISTORY_PUBKEY } from "@solana/web3.js";
 import { program } from "../../config";
-import { DeactivateStakeParam, InitParam } from "../../types";
+import { EmergencyUnstakeParam, InitParam, MergeStakeParam, PartialUnstakeParam, RedelegateParam } from "../../types";
 
-const deactivate_stake = async (connection: Connection, payer: Signer, deactivateStakeParam: DeactivateStakeParam, initParam: InitParam) => {
-    const {
-        stake_index,
-        validator_index,
-        splitStakeAccount,
-    } = deactivateStakeParam
-
+const pause = async (connection: Connection, payer: Signer, initParam: InitParam) => {
     const {
         stateAccount,
-        reservePda,
-        stakeList,
-        stakeDepositAuthority,
-        stakeAccount,
-        validatorList,
     } = initParam
 
-    const tx = await program.methods.deactivateStake(stake_index, validator_index)
+    const tx = await program.methods.pause()
         .accounts({
             state: stateAccount.publicKey,
-            reservePda: reservePda,
-            validatorList: validatorList.publicKey,
-            stakeList: stakeList.publicKey,
-            stakeAccount: stakeAccount.publicKey,
-            stakeDepositAuthority: stakeDepositAuthority,
-            splitStakeAccount: splitStakeAccount.publicKey,
-            splitStakeRentPayer: payer.publicKey,
-            epochSchedule: SYSVAR_EPOCH_SCHEDULE_PUBKEY,
-            stakeHistory: SYSVAR_STAKE_HISTORY_PUBKEY,
-            stakeProgram: StakeProgram.programId
+            pauseAuthority: payer.publicKey,
         })
         .signers([payer])
         .transaction()
@@ -42,12 +22,12 @@ const deactivate_stake = async (connection: Connection, payer: Signer, deactivat
     const simulationResult = await connection.simulateTransaction(tx);
     console.log("Simulation Result:", simulationResult);
     // Send the transaction
-    const sig = await sendAndConfirmTransaction(connection, tx, [payer , splitStakeAccount]);
+    const sig = await sendAndConfirmTransaction(connection, tx, [payer]);
     console.log("Transaction Signature:", sig);
 }
 
 export {
-    deactivate_stake
+    pause
 }
 
 //? Define the parameters for initializing the state

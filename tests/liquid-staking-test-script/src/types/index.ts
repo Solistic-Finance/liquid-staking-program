@@ -21,7 +21,14 @@ import {
     StakeReserveParam,
     UpdateActiveParam,
     UpdateDeactivatedParam,
-    DeactivateStakeParam
+    DeactivateStakeParam,
+    EmergencyUnstakeParam,
+    PartialUnstakeParam,
+    MergeStakeParam,
+    RedelegateParam,
+    WithdrawStakeAccountParam,
+    ReallocStakeListParam,
+    ReallocValidatorListParam,
 } from "./advanced_instruction_types"
 import BN from "bn.js";
 
@@ -31,7 +38,6 @@ interface InitParam {
     validatorList: Keypair,
     operationalSolAccount: Keypair,
     authorityAcc: Keypair,
-    stakeAuthority: Keypair,
     stakeAccount: Keypair,
     authorityMsolAcc: PublicKey,
     authorityLpAcc: PublicKey,
@@ -84,5 +90,12 @@ export {
     UpdateActiveParam,
     UpdateDeactivatedParam,
     DeactivateStakeParam,
-    ParsedStakeAccountInfo
+    ParsedStakeAccountInfo,
+    EmergencyUnstakeParam,
+    PartialUnstakeParam,
+    MergeStakeParam,
+    RedelegateParam,
+    WithdrawStakeAccountParam,
+    ReallocStakeListParam,
+    ReallocValidatorListParam,
 }
