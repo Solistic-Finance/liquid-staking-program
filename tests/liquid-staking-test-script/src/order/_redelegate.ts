@@ -1,8 +1,9 @@
 import { BN } from "bn.js";
 import { connection, payer } from "../config";
-import { add_validator, deposit, deposit_stake_account, initialize, preRequisite, update_active, update_deactivated } from "../instructions";
-import { InitializeDataParam, UpdateDeactivatedParam } from "../types";
+import { add_validator, deposit, deposit_stake_account, initialize, preRequisite, redelegate, update_active, update_deactivated } from "../instructions";
+import { InitializeDataParam, RedelegateParam, UpdateDeactivatedParam } from "../types";
 import { voteAccount } from "../constant";
+import { Keypair } from "@solana/web3.js";
 
 //! not yet
 export const _redelegate = async () => {
@@ -47,8 +48,16 @@ export const _redelegate = async () => {
     }
     await update_active(connection, payer, updateActiveParam, initParam)
 
-    const updateDeactivatedParam: UpdateDeactivatedParam = {
-        stake_index: 0
+    const splitStakeAccount = Keypair.generate()
+    const newRedelegateStakeAccount = Keypair.generate()
+
+    const redelegateParam: RedelegateParam = {
+        stake_index: 0,
+        source_validator_index: 0 ,
+        dest_validator_index: 1,
+        validatorVote: voteAccount[0],
+        splitStakeAccount: splitStakeAccount,
+        newRedelegateStakeAccount: newRedelegateStakeAccount,
     }
-    await update_deactivated(connection, payer, updateDeactivatedParam, initParam)
+    await redelegate(connection, payer, redelegateParam, initParam)
 }

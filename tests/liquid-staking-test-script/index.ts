@@ -58,9 +58,9 @@ const main = async () => {
 
     // await _emergency_unstake()
     // await _partial_unstake()
-    await _merge_stakes()
+    // await _merge_stakes()
     // await _redelegate()
-    // await _pause()
+    await _pause()
     // await _resume()
     // await _withdraw_stake_account()
     // await _realloc_validator_list()
