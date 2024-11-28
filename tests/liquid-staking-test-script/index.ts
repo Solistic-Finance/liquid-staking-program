@@ -18,6 +18,15 @@ import {
     _update_active,
     _update_deactivated,
     _deactivate_stake,
+    _emergency_unstake,
+    _partial_unstake,
+    _merge_stakes,
+    _redelegate,
+    _pause,
+    _resume,
+    _withdraw_stake_account,
+    _realloc_validator_list,
+    _realloc_stake_list,
 } from "./src/order";
 
 
@@ -37,24 +46,25 @@ const main = async () => {
     // await _config_lp()
     // await _config_marinade()
     // await _order_unstake()
-    // await _claim()      //  should invoke after expiration //    double check
-    // await _stake_reserve()      //  check
+    // await _claim()               //  should invoke after expiration //    double check
+    // await _stake_reserve()       //  check
     // await _update_active()
 
-    //  require deactivated or deactivating (deactivation_epoch != u64::MAX)
-    //  Logs: 
-    //   [
-    //     "Program Bu24e3vBZXgFtB9X2BrMysGx99VR5bgf5vupn3YALzDG invoke [1]",
-    //     "Program log: Instruction: UpdateDeactivated",
-    //     "Program log: AnchorError thrown in programs/marinade-forking-smart-contract/src/instructions/crank/update.rs:439. Error Code: RequiredDeactivatingStake. Error Number: 6045. Error Message: Required deactivating stake.",
-    //     "Program log: Left: 18446744073709551615",
-    //     "Program log: Right: 18446744073709551615",
-    //     "Program Bu24e3vBZXgFtB9X2BrMysGx99VR5bgf5vupn3YALzDG consumed 25219 of 200000 compute units",
-    //     "Program Bu24e3vBZXgFtB9X2BrMysGx99VR5bgf5vupn3YALzDG failed: custom program error: 0x179d"
-    //   ]
-    // await _update_deactivated()
+    //! require deactivated or deactivating (deactivation_epoch != u64::MAX)
+    //! await _update_deactivated()
 
-    // await _deactivate_stake()
+    //! require compute total required stake delta (i128, must be negative)
+    //! await _deactivate_stake()
+
+    // await _emergency_unstake()
+    await _partial_unstake()
+    // await _merge_stakes()
+    // await _redelegate()
+    // await _pause()
+    // await _resume()
+    // await _withdraw_stake_account()
+    // await _realloc_validator_list()
+    // await _realloc_stake_list()
 
     
 }

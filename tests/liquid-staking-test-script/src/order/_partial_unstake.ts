@@ -1,12 +1,11 @@
 import { BN } from "bn.js";
 import { connection, payer } from "../config";
-import { add_validator, deactivate_stake, deposit, deposit_stake_account, emergency_unstake, initialize, preRequisite, update_active } from "../instructions";
-import { DeactivateStakeParam, EmergencyUnstakeParam, InitializeDataParam } from "../types";
+import { add_validator, deposit, deposit_stake_account, initialize, preRequisite, update_active, update_deactivated } from "../instructions";
+import { InitializeDataParam, UpdateDeactivatedParam } from "../types";
 import { voteAccount } from "../constant";
-import { Keypair, sendAndConfirmTransaction, SystemProgram, Transaction } from "@solana/web3.js";
 
 //! not yet
-export const _emergency_unstake = async () => {
+export const _partial_unstake = async () => {
     const initParam = await preRequisite(connection, payer)
 
     const initializeData: InitializeDataParam = {
@@ -29,7 +28,7 @@ export const _emergency_unstake = async () => {
     await initialize(connection, payer, initializeData, initParam)
 
     const addValidatorParam = {
-        score: 0,
+        score: 2,
         voteAccount: voteAccount[0]
     }
 
@@ -48,9 +47,8 @@ export const _emergency_unstake = async () => {
     }
     await update_active(connection, payer, updateActiveParam, initParam)
 
-    const emergencyUnstakeParam: EmergencyUnstakeParam = {
-        stake_index: 0,
-        validator_index: 0,
+    const updateDeactivatedParam: UpdateDeactivatedParam = {
+        stake_index: 0
     }
-    await emergency_unstake(connection, payer, emergencyUnstakeParam, initParam)
+    await update_deactivated(connection, payer, updateDeactivatedParam, initParam)
 }

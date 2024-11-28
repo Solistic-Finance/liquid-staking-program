@@ -36,7 +36,7 @@ const emergency_unstake = async (connection: Connection, payer: Signer, emergenc
     const simulationResult = await connection.simulateTransaction(tx);
     console.log("Simulation Result:", simulationResult);
     // Send the transaction
-    const sig = await sendAndConfirmTransaction(connection, tx, [payer, validatorList, stakeList, stakeAccount]);
+    const sig = await sendAndConfirmTransaction(connection, tx, [payer]);
     console.log("Transaction Signature:", sig);
 }
 
