@@ -54,7 +54,6 @@ const preRequisite = async (connection: Connection, payer: Signer): Promise<Init
     const validatorList = Keypair.generate()
     const operationalSolAccount = Keypair.generate()
     const authorityAcc = Keypair.generate()
-    const stakeAuthority = Keypair.generate()
     const stakeAccount = Keypair.generate()
     const msolMintKeypair = Keypair.generate()
     const lpMintKeypair = Keypair.generate()

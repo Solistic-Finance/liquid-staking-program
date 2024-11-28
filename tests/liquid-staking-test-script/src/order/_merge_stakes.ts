@@ -1,8 +1,9 @@
 import { BN } from "bn.js";
 import { connection, payer } from "../config";
-import { add_validator, deposit, deposit_stake_account, initialize, preRequisite, update_active, update_deactivated } from "../instructions";
-import { InitializeDataParam, UpdateDeactivatedParam } from "../types";
+import { add_validator, deposit, deposit_stake_account, initialize, merge_stakes, preRequisite, update_active, update_deactivated } from "../instructions";
+import { InitializeDataParam, InitParam, MergeStakeParam, UpdateDeactivatedParam } from "../types";
 import { voteAccount } from "../constant";
+import { Authorized, Keypair, sendAndConfirmTransaction, StakeProgram, Transaction } from "@solana/web3.js";
 
 
 export const _merge_stakes = async () => {
@@ -40,6 +41,14 @@ export const _merge_stakes = async () => {
     }
 
     await deposit_stake_account(connection, payer, depositStakeAccountParam, initParam)
+    
+    const splitStakeAccount = Keypair.generate()
+
+    const splitInitParam : InitParam = {
+        ...initParam,
+        stakeAccount : splitStakeAccount
+    }
+    await deposit_stake_account(connection, payer, depositStakeAccountParam, splitInitParam)
 
     const updateActiveParam = {
         stake_index: 0,
@@ -47,8 +56,17 @@ export const _merge_stakes = async () => {
     }
     await update_active(connection, payer, updateActiveParam, initParam)
 
-    const updateDeactivatedParam: UpdateDeactivatedParam = {
-        stake_index: 0
+    const updateActiveSplitParam = {
+        stake_index: 1,
+        validator_index: 0
     }
-    await update_deactivated(connection, payer, updateDeactivatedParam, initParam)
+    await update_active(connection, payer, updateActiveSplitParam, splitInitParam)
+
+    const mergeStakeParam: MergeStakeParam = {
+        destination_stake_index: 1,
+        source_stake_index: 0,
+        validator_index: 0,
+        splitStakeAccount: splitStakeAccount
+    }
+    await merge_stakes(connection, payer, mergeStakeParam, initParam)
 }

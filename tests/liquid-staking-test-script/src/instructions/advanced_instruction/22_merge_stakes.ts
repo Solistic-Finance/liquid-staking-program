@@ -1,7 +1,7 @@
 
 import { Connection, sendAndConfirmTransaction, Signer, StakeProgram, SYSVAR_EPOCH_SCHEDULE_PUBKEY, SYSVAR_STAKE_HISTORY_PUBKEY } from "@solana/web3.js";
 import { program } from "../../config";
-import { EmergencyUnstakeParam, InitParam, MergeStakeParam, PartialUnstakeParam } from "../../types";
+import { InitParam, MergeStakeParam } from "../../types";
 
 const merge_stakes = async (connection: Connection, payer: Signer, mergeStakeParam: MergeStakeParam, initParam: InitParam) => {
     const {
@@ -9,7 +9,6 @@ const merge_stakes = async (connection: Connection, payer: Signer, mergeStakePar
         source_stake_index,
         validator_index,
         splitStakeAccount,
-
     } = mergeStakeParam
 
     const {
@@ -31,8 +30,8 @@ const merge_stakes = async (connection: Connection, payer: Signer, mergeStakePar
             state: stateAccount.publicKey,
             stakeList: stakeList.publicKey,
             validatorList: validatorList.publicKey,
-            destinationStake: stakeAccount.publicKey,
-            sourceStake: splitStakeAccount.publicKey,
+            destinationStake: splitStakeAccount.publicKey,
+            sourceStake: stakeAccount.publicKey,
             stakeDepositAuthority: stakeDepositAuthority,
             stakeWithdrawAuthority: stakeWithdrawAuthority,
             operationalSolAccount: operationalSolAccount.publicKey,
@@ -48,7 +47,7 @@ const merge_stakes = async (connection: Connection, payer: Signer, mergeStakePar
     const simulationResult = await connection.simulateTransaction(tx);
     console.log("Simulation Result:", simulationResult);
     // Send the transaction
-    const sig = await sendAndConfirmTransaction(connection, tx, [payer, splitStakeAccount]);
+    const sig = await sendAndConfirmTransaction(connection, tx, [payer]);
     console.log("Transaction Signature:", sig);
 }
 
