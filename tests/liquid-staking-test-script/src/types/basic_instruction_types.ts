@@ -1,6 +1,5 @@
 import { Keypair, PublicKey } from "@solana/web3.js";
 import BN from "bn.js";
-import { interfaces } from "mocha";
 
 interface InitializeDataParam {
     adminAuthority: PublicKey,
