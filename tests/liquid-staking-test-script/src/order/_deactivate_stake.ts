@@ -1,9 +1,9 @@
 import { BN } from "bn.js";
 import { connection, payer } from "../config";
-import { add_validator, deactivate_stake, deposit, deposit_stake_account, emergency_unstake, initialize, partial_unstake, preRequisite, stake_reserve, update_active } from "../instructions";
+import { add_validator, deactivate_stake, deposit, deposit_stake_account, emergency_unstake, initialize, order_unstake, partial_unstake, preRequisite, stake_reserve, update_active } from "../instructions";
 import { DeactivateStakeParam, EmergencyUnstakeParam, InitializeDataParam, InitParam, StakeReserveParam } from "../types";
 import { voteAccount } from "../constant";
-import { Keypair, sendAndConfirmTransaction, SystemProgram, Transaction } from "@solana/web3.js";
+import { Keypair, sendAndConfirmTransaction, StakeProgram, SystemProgram, Transaction } from "@solana/web3.js";
 
 export const _deactivate_stake = async () => {
     const initParam = await preRequisite(connection, payer)
@@ -32,11 +32,6 @@ export const _deactivate_stake = async () => {
         voteAccount: voteAccount[0]
     }
 
-    const depositParam = {
-        amount: new BN(10000000)
-    }
-    await deposit(connection, payer, depositParam, initParam)
-
     await add_validator(connection, payer, addValidatorParam, initParam)
 
     const depositStakeAccountParam = {
@@ -46,40 +41,22 @@ export const _deactivate_stake = async () => {
 
     await deposit_stake_account(connection, payer, depositStakeAccountParam, initParam)
 
+    const newTicketAccount = Keypair.generate()
 
-
-    const partialUnstakeParam = {
-        stake_index: 0,
-        validator_index: 0,
-        desired_unstake_amount: new BN(10000000),
-        splitStakeAccount: Keypair.generate(),
+    const orderUnstakeParam = {
+        msol_amount : new BN(1000),
+        newTicketAccount
     }
-    await partial_unstake(connection, payer, partialUnstakeParam, initParam)
+    await order_unstake(connection, payer, orderUnstakeParam, initParam)
 
-    const updateActiveParam = {
-        stake_index: 0,
-        validator_index: 0
-    }
-    await update_active(connection, payer, updateActiveParam, initParam)
+    const newSplitStakeAccount = Keypair.generate()
 
-    let splitStakeAccount = Keypair.generate()
-
-    const stakeReserveParam : StakeReserveParam = {
-        validator_index: 0,
-        validatorVote : voteAccount[0]
-    }
-    const newInitParam : InitParam= {
-        ...initParam,
-        stakeAccount : splitStakeAccount
-    }
-    await stake_reserve(connection, payer, stakeReserveParam, newInitParam)
-
-    
+    console.log(newSplitStakeAccount.publicKey.toBase58());
 
     const deactivateStakeParam: DeactivateStakeParam = {
         stake_index: 0,
         validator_index: 0,
-        splitStakeAccount: Keypair.generate()
+        splitStakeAccount: newSplitStakeAccount
     }
     
     await deactivate_stake(connection, payer, deactivateStakeParam, initParam)

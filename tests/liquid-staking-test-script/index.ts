@@ -33,7 +33,7 @@ import {
 const main = async () => {
     // await _preRequisite()
     // await _initialize()
-    await _change_authority()
+    // await _change_authority()
     // await _add_validator()
     // await _remove_validator()
     // await _set_validator_score()
@@ -51,7 +51,7 @@ const main = async () => {
     // await _update_active()
 
     // await _update_deactivated()     // require deactivated or deactivating (deactivation_epoch != u64::MAX)
-    // await _deactivate_stake()       // require compute total required stake delta (i128, must be negative)
+    await _deactivate_stake()       // require compute total required stake delta (i128, must be negative)
 
     // await _emergency_unstake()
     // await _partial_unstake()

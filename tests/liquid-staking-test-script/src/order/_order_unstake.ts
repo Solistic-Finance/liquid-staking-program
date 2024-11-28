@@ -41,7 +41,6 @@ export const _order_unstake = async () => {
 
     await deposit_stake_account(connection, payer, depositStakeAccountParam, initParam)
 
-    //! Should double check on this
     const newTicketAccount = Keypair.generate()
 
     const orderUnstakeParam: OrderUnstakeParam = {
