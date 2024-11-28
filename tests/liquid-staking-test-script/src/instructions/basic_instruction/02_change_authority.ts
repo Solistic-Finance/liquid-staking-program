@@ -5,18 +5,18 @@ import { InitParam } from "../../types";
 import { ChangeAuthorityData } from "../../types/basic_instruction_types";
 
 const change_authority = async (connection: Connection, payer: Signer, changeAuthorityData: ChangeAuthorityData, initParam: InitParam) => {
+
     const {
         stateAccount,
-        authorityAcc
     } = initParam;
 
     //  @ts-ignore
     const tx = await program.methods.changeAuthority(changeAuthorityData)
         .accounts({
             state: stateAccount.publicKey,
-            adminAuthority: authorityAcc.publicKey
+            adminAuthority: payer.publicKey
         })
-        .signers([authorityAcc])
+        .signers([payer])
         .transaction()
 
 
@@ -29,7 +29,7 @@ const change_authority = async (connection: Connection, payer: Signer, changeAut
     console.log("Simulation Result:", simulationResult);
 
     // Send the transaction
-    const sig = await sendAndConfirmTransaction(connection, tx, [payer, authorityAcc]);
+    const sig = await sendAndConfirmTransaction(connection, tx, [payer]);
     console.log("Transaction Signature:", sig);
 
 }

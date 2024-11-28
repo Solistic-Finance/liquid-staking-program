@@ -1,8 +1,9 @@
 import { BN } from "bn.js";
 import { connection, payer } from "../config";
-import { add_validator, deposit, deposit_stake_account, initialize, preRequisite, update_active, update_deactivated } from "../instructions";
+import { add_validator, deposit, deposit_stake_account, initialize, partial_unstake, preRequisite, stake_reserve, update_active, update_deactivated } from "../instructions";
 import { InitializeDataParam, UpdateDeactivatedParam } from "../types";
 import { voteAccount } from "../constant";
+import { Keypair } from "@solana/web3.js";
 
 export const _update_deactivated = async () => {
     const initParam = await preRequisite(connection, payer)
@@ -32,19 +33,39 @@ export const _update_deactivated = async () => {
     }
 
     await add_validator(connection, payer, addValidatorParam, initParam)
+    
+    const depositParam = {
+        amount: new BN(10 ** 8)
+    }
+    await deposit(connection, payer, depositParam, initParam)
 
     const depositStakeAccountParam = {
         validatorIndex: 0,
-        amount: 2 * 10 ** 9
+        amount: 10 ** 8
     }
 
     await deposit_stake_account(connection, payer, depositStakeAccountParam, initParam)
 
-    const updateActiveParam = {
-        stake_index: 0,
-        validator_index: 0
+    let splitStakeAccount = Keypair.generate()
+
+    const stakeReserveParam  = {
+        validator_index: 0,
+        validatorVote : voteAccount[0]
     }
-    await update_active(connection, payer, updateActiveParam, initParam)
+    const newInitParam = {
+        ...initParam,
+        stakeAccount : splitStakeAccount
+    }
+    await stake_reserve(connection, payer, stakeReserveParam, newInitParam)
+    
+    const partialUnstakeParam = {
+        stake_index: 0,
+        validator_index: 0,
+        desired_unstake_amount: new BN(2 * 10 ** 8),
+        splitStakeAccount: Keypair.generate(),
+    }
+    await partial_unstake(connection, payer, partialUnstakeParam, initParam)
+
 
     const updateDeactivatedParam: UpdateDeactivatedParam = {
         stake_index: 0

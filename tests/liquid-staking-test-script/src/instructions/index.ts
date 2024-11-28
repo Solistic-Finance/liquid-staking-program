@@ -53,7 +53,6 @@ const preRequisite = async (connection: Connection, payer: Signer): Promise<Init
     const stakeList = Keypair.generate()
     const validatorList = Keypair.generate()
     const operationalSolAccount = Keypair.generate()
-    const authorityAcc = Keypair.generate()
     const stakeAccount = Keypair.generate()
     const msolMintKeypair = Keypair.generate()
     const lpMintKeypair = Keypair.generate()
@@ -160,7 +159,6 @@ const preRequisite = async (connection: Connection, payer: Signer): Promise<Init
         stakeList: stakeList,
         validatorList: validatorList,
         operationalSolAccount: operationalSolAccount,
-        authorityAcc: authorityAcc,
         stakeAccount: stakeAccount,
         authorityMsolAcc: authorityMsolAcc,
         authorityLpAcc: authorityLpAcc,

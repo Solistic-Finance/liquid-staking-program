@@ -7,7 +7,6 @@ const getInitParam = (param: InitParam) => {
         stakeList: `${param.stakeList.publicKey.toBase58()} ${bs58.encode(param.stakeList.secretKey)}`,
         validatorList: `${param.validatorList.publicKey.toBase58()} ${bs58.encode(param.validatorList.secretKey)}`,
         operationalSolAccount: `${param.operationalSolAccount.publicKey.toBase58()} ${bs58.encode(param.operationalSolAccount.secretKey)}`,
-        authorityAcc: `${param.authorityAcc.publicKey.toBase58()} ${bs58.encode(param.authorityAcc.secretKey)}`,
         stakeAccount: `${param.stakeAccount.publicKey.toBase58()} ${bs58.encode(param.stakeAccount.secretKey)}`,
         authorityMsolAcc: param.authorityMsolAcc.toBase58(),
         authorityLpAcc: param.authorityLpAcc.toBase58(),

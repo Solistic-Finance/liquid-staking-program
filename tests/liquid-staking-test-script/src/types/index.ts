@@ -37,7 +37,6 @@ interface InitParam {
     stakeList: Keypair,
     validatorList: Keypair,
     operationalSolAccount: Keypair,
-    authorityAcc: Keypair,
     stakeAccount: Keypair,
     authorityMsolAcc: PublicKey,
     authorityLpAcc: PublicKey,

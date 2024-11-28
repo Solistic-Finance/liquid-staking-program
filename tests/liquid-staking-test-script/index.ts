@@ -33,7 +33,7 @@ import {
 const main = async () => {
     // await _preRequisite()
     // await _initialize()
-    // await _change_authority()
+    await _change_authority()
     // await _add_validator()
     // await _remove_validator()
     // await _set_validator_score()

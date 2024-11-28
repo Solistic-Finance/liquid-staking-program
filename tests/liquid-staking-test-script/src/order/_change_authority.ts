@@ -2,6 +2,7 @@ import { BN } from "bn.js"
 import { connection, payer } from "../config"
 import { change_authority, initialize, preRequisite } from "../instructions"
 import { ChangeAuthorityData, InitializeDataParam } from "../types"
+import { Keypair } from "@solana/web3.js"
 
 export const _change_authority = async () => {
     const initParam = await preRequisite(connection, payer)
@@ -35,7 +36,7 @@ export const _change_authority = async () => {
         validatorManager: payer.publicKey,
         operationalSolAccount: operationalSolAccount.publicKey,
         treasuryMsolAccount: treasuryMsolAccount,
-        pauseAuthority: payer.publicKey
+        pauseAuthority: payer.publicKey,
     }
 
     await change_authority(connection, payer, changeAuthorityData , initParam)

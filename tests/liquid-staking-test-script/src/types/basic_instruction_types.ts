@@ -32,7 +32,7 @@ interface ChangeAuthorityData {
     validatorManager: PublicKey,
     operationalSolAccount: PublicKey,
     treasuryMsolAccount: PublicKey,
-    pauseAuthority: PublicKey
+    pauseAuthority: PublicKey,
 }
 
 interface AddValidatorParam {
