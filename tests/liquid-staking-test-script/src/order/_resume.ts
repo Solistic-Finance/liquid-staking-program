@@ -1,10 +1,8 @@
 import { BN } from "bn.js";
 import { connection, payer } from "../config";
-import { add_validator, deposit, deposit_stake_account, initialize, preRequisite, update_active, update_deactivated } from "../instructions";
-import { InitializeDataParam, UpdateDeactivatedParam } from "../types";
-import { voteAccount } from "../constant";
+import { initialize, pause, preRequisite, resume } from "../instructions";
+import { InitializeDataParam } from "../types";
 
-//! not yet
 export const _resume = async () => {
     const initParam = await preRequisite(connection, payer)
 
@@ -27,28 +25,7 @@ export const _resume = async () => {
 
     await initialize(connection, payer, initializeData, initParam)
 
-    const addValidatorParam = {
-        score: 2,
-        voteAccount: voteAccount[0]
-    }
+    await pause(connection, payer, initParam)
 
-    await add_validator(connection, payer, addValidatorParam, initParam)
-
-    const depositStakeAccountParam = {
-        validatorIndex: 0,
-        amount: 2 * 10 ** 9
-    }
-
-    await deposit_stake_account(connection, payer, depositStakeAccountParam, initParam)
-
-    const updateActiveParam = {
-        stake_index: 0,
-        validator_index: 0
-    }
-    await update_active(connection, payer, updateActiveParam, initParam)
-
-    const updateDeactivatedParam: UpdateDeactivatedParam = {
-        stake_index: 0
-    }
-    await update_deactivated(connection, payer, updateDeactivatedParam, initParam)
+    await resume(connection, payer, initParam)
 }

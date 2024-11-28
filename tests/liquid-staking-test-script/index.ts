@@ -46,22 +46,22 @@ const main = async () => {
     // await _config_lp()
     // await _config_marinade()
     // await _order_unstake()
-    // await _claim()               //  should invoke after expiration //    double check
-    // await _stake_reserve()       //  check
+
+    //! await _claim()                  // should invoke after expiration //    double check
+    //! await _stake_reserve()          // check
+    
     // await _update_active()
 
-    //! require deactivated or deactivating (deactivation_epoch != u64::MAX)
-    //! await _update_deactivated()
-
-    //! require compute total required stake delta (i128, must be negative)
-    //! await _deactivate_stake()
+    //! await _update_deactivated()     // require deactivated or deactivating (deactivation_epoch != u64::MAX)
+    //! await _deactivate_stake()       // require compute total required stake delta (i128, must be negative)
 
     // await _emergency_unstake()
     // await _partial_unstake()
     // await _merge_stakes()
     // await _redelegate()
-    await _pause()
-    // await _resume()
+    // await _pause()
+    
+    await _resume()
     // await _withdraw_stake_account()
     // await _realloc_validator_list()
     // await _realloc_stake_list()
