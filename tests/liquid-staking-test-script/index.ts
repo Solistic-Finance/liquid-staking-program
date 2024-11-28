@@ -50,8 +50,8 @@ const main = async () => {
     // await _stake_reserve()
     // await _update_active()
 
-    // await _update_deactivated()     // require deactivated or deactivating (deactivation_epoch != u64::MAX)
-    await _deactivate_stake()       // require compute total required stake delta (i128, must be negative)
+    await _update_deactivated()     // require deactivated or deactivating (deactivation_epoch != u64::MAX)
+    // await _deactivate_stake()       // require compute total required stake delta (i128, must be negative)
 
     // await _emergency_unstake()
     // await _partial_unstake()
