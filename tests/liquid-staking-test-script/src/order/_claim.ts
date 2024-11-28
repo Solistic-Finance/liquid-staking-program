@@ -27,21 +27,11 @@ export const _claim = async () => {
 
     await initialize(connection, payer, initializeData, initParam)
 
-    const addValidatorParam = {
-        score: 2,
-        voteAccount: voteAccount[0]
+    const depositParam = {
+        amount: new BN(10000)
     }
+    await deposit(connection, payer, depositParam, initParam)
 
-    await add_validator(connection, payer, addValidatorParam, initParam)
-
-    const depositStakeAccountParam = {
-        validatorIndex: 0,
-        amount : 2 * 10 ** 9
-    }
-
-    await deposit_stake_account(connection, payer, depositStakeAccountParam, initParam)
-
-    //! Should double check on this
     const newTicketAccount = Keypair.generate()
 
     const orderUnstakeParam: OrderUnstakeParam = {

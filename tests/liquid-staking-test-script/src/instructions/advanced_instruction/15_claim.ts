@@ -32,7 +32,7 @@ const claim = async (connection: Connection, payer: Signer, claimParam: ClaimPar
         console.log("Simulation Result:", simulationResult);
 
         // Send the transaction
-        const sig = await sendAndConfirmTransaction(connection, tx, [payer, newTicketAccount]);
+        const sig = await sendAndConfirmTransaction(connection, tx, [payer]);
         console.log("Transaction Signature:", sig);
 }
 

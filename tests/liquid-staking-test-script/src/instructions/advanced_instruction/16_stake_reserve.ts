@@ -45,7 +45,7 @@ const stake_reserve = async (connection: Connection, payer: Signer, stakeReserve
     console.log("Simulation Result:", simulationResult);
 
     // Send the transaction
-    const sig = await sendAndConfirmTransaction(connection, tx, [payer]);
+    const sig = await sendAndConfirmTransaction(connection, tx, [payer , stakeAccount]);
     console.log("Transaction Signature:", sig);
 
 }

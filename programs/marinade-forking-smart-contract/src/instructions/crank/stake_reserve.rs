@@ -168,12 +168,11 @@ impl<'info> StakeReserve<'info> {
 
         let last_slot = self.epoch_schedule.get_last_slot_in_epoch(self.clock.epoch);
 
-        //  **  This is for Test
-        // require_gte!(
-        //     self.clock.slot,
-        //     last_slot.saturating_sub(self.state.stake_system.slots_for_stake_delta),
-        //     MarinadeError::TooEarlyForStakeDelta
-        // );
+        require_gte!(
+            self.clock.slot,
+            last_slot.saturating_sub(self.state.stake_system.slots_for_stake_delta),
+            MarinadeError::TooEarlyForStakeDelta
+        );
 
         let validator_stake_target = self
             .state
