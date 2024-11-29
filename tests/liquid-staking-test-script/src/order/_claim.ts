@@ -28,7 +28,7 @@ export const _claim = async () => {
     await initialize(connection, payer, initializeData, initParam)
 
     const depositParam = {
-        amount: new BN(10000)
+        amount: new BN(20000000)
     }
     await deposit(connection, payer, depositParam, initParam)
 

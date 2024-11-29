@@ -3,7 +3,7 @@ import { connection, payer, program } from "../config";
 import { add_validator, claim, deactivate_stake, deposit, deposit_stake_account, initialize, order_unstake, partial_unstake, preRequisite, stake_reserve, update_active, update_deactivated } from "../instructions";
 import { DeactivateStakeParam, InitializeDataParam, InitParam, UpdateDeactivatedParam } from "../types";
 import { voteAccount } from "../constant";
-import { Keypair, PublicKey, sendAndConfirmTransaction, StakeProgram, Transaction } from "@solana/web3.js";
+import { Keypair } from "@solana/web3.js";
 
 export const _update_deactivated = async () => {
     const initParam = await preRequisite(connection, payer)
