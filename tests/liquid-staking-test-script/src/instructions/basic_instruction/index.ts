@@ -11,6 +11,7 @@ import { add_liquidity } from "./10_add_liquidity";
 import { remove_liquidity } from "./11_remove_liquidity";
 import { config_lp } from "./12_config_lp";
 import { config_marinade } from "./13_config_marinade";
+import { attachMetaDataTxn } from './attach_metadata';
 
 export {
     initialize,
@@ -25,5 +26,6 @@ export {
     add_liquidity,
     remove_liquidity,
     config_lp,
-    config_marinade
+    config_marinade,
+    attachMetaDataTxn
 }

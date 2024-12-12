@@ -3,7 +3,7 @@ import { Connection, PublicKey, sendAndConfirmTransaction, Signer, SYSVAR_CLOCK_
 import { contractAddr, program } from "../../config";
 import { BN } from "bn.js";
 import {  InitializeDataParam, InitParam } from "../../types";
-
+ 
 const initialize = async (connection: Connection, payer: Signer , initializeData : InitializeDataParam , initParam : InitParam) => {
 
     const {
@@ -16,6 +16,8 @@ const initialize = async (connection: Connection, payer: Signer , initializeData
         lpMint,
         mSolLeg
     } = initParam
+
+    console.log("<===================== PROGRAM ID =========================>",contractAddr);
 
     const [reservePda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("reserve")], contractAddr);
     const [solLegPda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_sol")], contractAddr);
@@ -51,12 +53,14 @@ const initialize = async (connection: Connection, payer: Signer , initializeData
     tx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
 
     const simulationResult = await connection.simulateTransaction(tx);
-    console.log("Simulation Result:", simulationResult);
+    console.log("INIT Simulation Result:", simulationResult);
 
     const sig = await sendAndConfirmTransaction(connection, tx, [payer, stateAccount, stakeList, validatorList]);
     console.log("Transaction Signature:", sig);
 
     const state = await program.account.state.fetch(stateAccount.publicKey);
+    console.log("state account :",stateAccount)
+    console.log("state account address: ",stateAccount.publicKey);
     console.log("State Account:", state);
 
 }

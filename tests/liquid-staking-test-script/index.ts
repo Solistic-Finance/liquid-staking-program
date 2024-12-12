@@ -27,6 +27,7 @@ import {
     _withdraw_stake_account,
     _realloc_validator_list,
     _realloc_stake_list,
+    _deposit
 } from "./src/order";
 
 
@@ -46,7 +47,7 @@ const main = async () => {
     // await _config_lp()
     // await _config_marinade()
     // await _order_unstake()
-    await _claim()
+    // await _claim()
     // await _stake_reserve()
     // await _update_active()
     // await _update_deactivated()

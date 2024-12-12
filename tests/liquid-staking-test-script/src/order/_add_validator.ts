@@ -4,13 +4,14 @@ import { initialize, preRequisite } from "../instructions"
 import { InitializeDataParam } from "../types"
 import { add_validator } from "../instructions/basic_instruction"
 import { voteAccount } from "../constant"
+import { PublicKey } from '@solana/web3.js'
 
 export const _add_validator = async () => {
     const initParam = await preRequisite(connection, payer)
 
     const initializeData: InitializeDataParam = {
-        adminAuthority: payer.publicKey,
-        validatorManagerAuthority: payer.publicKey,
+        adminAuthority: new PublicKey("4faoaJrcmx5u8tXaoYwg88Ego6VeLe2KjMvVjFdZTVwg"),
+        validatorManagerAuthority: new PublicKey("4faoaJrcmx5u8tXaoYwg88Ego6VeLe2KjMvVjFdZTVwg"),
         minStake: new BN(10000000), // Example value
         rewardsFee: { numerator: 1, denominator: 100 }, // 1%
         liqPool: {
@@ -22,7 +23,7 @@ export const _add_validator = async () => {
         additionalStakeRecordSpace: 3,
         additionalValidatorRecordSpace: 3,
         slotsForStakeDelta: new BN(3000),
-        pauseAuthority: payer.publicKey,
+        pauseAuthority: new PublicKey("4faoaJrcmx5u8tXaoYwg88Ego6VeLe2KjMvVjFdZTVwg"),
     };
 
     await initialize(connection, payer, initializeData, initParam)

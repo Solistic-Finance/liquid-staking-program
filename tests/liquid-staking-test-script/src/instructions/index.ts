@@ -8,7 +8,7 @@ import {
     Transaction
 } from "@solana/web3.js";
 import { InitParam } from "../types";
-import { contractAddr } from "../config";
+import { contractAddr, program } from "../config";
 import {
     ASSOCIATED_TOKEN_PROGRAM_ID,
     getAssociatedTokenAddressSync,
@@ -27,7 +27,8 @@ import {
     add_liquidity,
     remove_liquidity,
     config_lp,
-    config_marinade
+    config_marinade,
+    attachMetaDataTxn
 } from "./basic_instruction";
 import { createAtaTx, createMintTrasaction, getInitParam } from "../utils";
 import {
@@ -47,6 +48,9 @@ import {
     update_deactivated,
     withdraw_stake_account
 } from "./advanced_instruction";
+
+
+console.log("PROGRAM ID ",program.programId);
 
 const preRequisite = async (connection: Connection, payer: Signer): Promise<InitParam> => {
     const stateAccount = Keypair.generate()
@@ -75,6 +79,8 @@ const preRequisite = async (connection: Connection, payer: Signer): Promise<Init
     const tx = new Transaction()
 
     const msolMintTx = await createMintTrasaction(connection, payer, authorityMsolAcc, null, 9, msolMintKeypair);
+    // await attachMetaDataTxn(connection,payer,authorityMsolAcc,msolMintKeypair)
+ 
     const lpMintTx = await createMintTrasaction(connection, payer, authorityLpAcc, null, 9, lpMintKeypair);
 
     tx.add(msolMintTx).add(lpMintTx)

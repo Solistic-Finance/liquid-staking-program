@@ -2,6 +2,7 @@
 import { Connection, PublicKey, sendAndConfirmTransaction, Signer } from "@solana/web3.js";
 import { program } from "../../config";
 import { InitParam } from "../../types";
+import Squads,{Wallet} from '@sqds/sdk';
 import { AddValidatorParam, ChangeAuthorityData } from "../../types/basic_instruction_types";
 
 const add_validator = async (connection: Connection, payer: Signer, addValidatorParam: AddValidatorParam, initParam: InitParam) => {
@@ -21,19 +22,20 @@ const add_validator = async (connection: Connection, payer: Signer, addValidator
         .addValidator(score)
         .accounts({
             state: stateAccount.publicKey,
-            managerAuthority: payer.publicKey,
+            managerAuthority: new PublicKey("4faoaJrcmx5u8tXaoYwg88Ego6VeLe2KjMvVjFdZTVwg"),
             validatorList: validatorList.publicKey,
             validatorVote: voteAccount,
             duplicationFlag: duplicationFlag,
         })
-        .signers([payer])
         .transaction()
 
-    tx.feePayer = payer.publicKey;
-    tx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
+    tx.feePayer = new PublicKey("4faoaJrcmx5u8tXaoYwg88Ego6VeLe2KjMvVjFdZTVwg");
 
-    const simulationResult = await connection.simulateTransaction(tx);
-    console.log("Simulation Result:", simulationResult);
+    tx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
+    
+
+    // const simulationResult = await connection.simulateTransaction(tx);
+    // console.log("Simulation Result:", simulationResult);
 
     const sig = await sendAndConfirmTransaction(connection, tx, [payer]);
     console.log("Transaction Signature:", sig);

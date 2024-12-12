@@ -32,6 +32,9 @@ const change_authority = async (connection: Connection, payer: Signer, changeAut
     const sig = await sendAndConfirmTransaction(connection, tx, [payer]);
     console.log("Transaction Signature:", sig);
 
+    const state = await program.account.state.fetch(stateAccount.publicKey);
+    console.log("State account",state);
+
 }
 
 export {
