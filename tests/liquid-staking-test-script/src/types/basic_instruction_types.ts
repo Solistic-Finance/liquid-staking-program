@@ -1,4 +1,4 @@
-import { Keypair, PublicKey } from "@solana/web3.js";
+import { Keypair, PublicKey, Signer } from "@solana/web3.js";
 import BN from "bn.js";
 
 interface InitializeDataParam {
@@ -96,6 +96,23 @@ interface ConfigMarinadeParam {
     maxStakeMovedPerEpoch: { basisPoints: number },
 };
 
+interface UpdateMsolTokenMetadata {
+    stateAccount: Keypair,
+    msolMint: PublicKey,
+    name: string,
+    symbol: string,
+    uri: string,
+}
+
+interface UpdateLpMintTokenMetadata {
+    stateAccount: Keypair,
+    lpMint: PublicKey,
+    name: string,
+    symbol: string,
+    uri: string,
+}
+
+
 export {
     InitializeDataParam,
     ChangeAuthorityData,
@@ -109,5 +126,7 @@ export {
     AddLiquidityParam,
     RemoveLiquidityParam,
     ConfigLpParam,
-    ConfigMarinadeParam
+    ConfigMarinadeParam,
+    UpdateMsolTokenMetadata,
+    UpdateLpMintTokenMetadata
 }

@@ -13,7 +13,7 @@ use instructions::*;
 
 pub use state::State;
 
-declare_id!("Bu24e3vBZXgFtB9X2BrMysGx99VR5bgf5vupn3YALzDG");
+declare_id!("2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW");
 
 #[program]
 pub mod marinade_forking_smart_contract {
@@ -117,6 +117,24 @@ pub mod marinade_forking_smart_contract {
     ) -> Result<()> {
         // check_context(&ctx)?;
         ctx.accounts.process(params)
+    }
+
+    pub fn update_msol_token_metadata(
+        ctx: Context<UpdateMsolTokenMetadata>,
+        name: String,
+        symbol: String,
+        uri: String,
+    ) -> Result<()> {
+        ctx.accounts.process(name, symbol, uri)
+    }
+
+    pub fn update_lp_token_metadata(
+        ctx: Context<UpdateLpMintTokenMetadata>,
+        name: String,
+        symbol: String,
+        uri: String,
+    ) -> Result<()> {
+        ctx.accounts.process(name, symbol, uri)
     }
 
     //-------------------------------------------------------------------------------------

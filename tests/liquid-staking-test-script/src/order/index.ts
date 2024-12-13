@@ -27,6 +27,7 @@ import { _stake_reserve } from "./_stake_reserve";
 import { _update_active } from "./_update_active";
 import { _update_deactivated } from "./_update_deactivated";
 import { _withdraw_stake_account } from "./_withdraw_stake_account";
+import { _update_msol_and_lp_mint_token_metadata } from "./_update_msol_and_lp_mint_token_metadata"
 
 export {
     _preRequisite,
@@ -58,4 +59,5 @@ export {
     _withdraw_stake_account,
     _realloc_validator_list,
     _realloc_stake_list,
+    _update_msol_and_lp_mint_token_metadata,
 }

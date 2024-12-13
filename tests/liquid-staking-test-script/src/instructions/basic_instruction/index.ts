@@ -11,6 +11,8 @@ import { add_liquidity } from "./10_add_liquidity";
 import { remove_liquidity } from "./11_remove_liquidity";
 import { config_lp } from "./12_config_lp";
 import { config_marinade } from "./13_config_marinade";
+import { update_msol_token_metadata } from "./14_update_msol_token_metadata"
+import { update_lp_mint_token_metadata } from "./15_update_lp_mint_token_metadata"
 
 export {
     initialize,
@@ -25,5 +27,7 @@ export {
     add_liquidity,
     remove_liquidity,
     config_lp,
-    config_marinade
+    config_marinade,
+    update_msol_token_metadata,
+    update_lp_mint_token_metadata,
 }

@@ -27,12 +27,14 @@ import {
     _withdraw_stake_account,
     _realloc_validator_list,
     _realloc_stake_list,
+    _update_msol_and_lp_mint_token_metadata,
 } from "./src/order";
 
 
 const main = async () => {
     // await _preRequisite()
     // await _initialize()
+    // await _update_msol_and_lp_mint_token_metadata()
     // await _change_authority()
     // await _add_validator()
     // await _remove_validator()

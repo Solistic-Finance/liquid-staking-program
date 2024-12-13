@@ -645,6 +645,174 @@
       ]
     },
     {
+      "name": "updateMsolTokenMetadata",
+      "accounts": [
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "state",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "msolMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "msolMintAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "msolMintMetadataAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "Sysvar for token mint and ATA creation"
+          ]
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "Program to create the position manager state account"
+          ]
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "Program to create mint account and mint tokens"
+          ]
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "Program to create an ATA for receiving position NFT"
+          ]
+        },
+        {
+          "name": "metadataProgram",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "Program to create NFT metadata"
+          ]
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "symbol",
+          "type": "string"
+        },
+        {
+          "name": "uri",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "updateLpTokenMetadata",
+      "accounts": [
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "state",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "lpMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "lpMintAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "lpMintMetadataAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "Sysvar for token mint and ATA creation"
+          ]
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "Program to create the position manager state account"
+          ]
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "Program to create mint account and mint tokens"
+          ]
+        },
+        {
+          "name": "associatedTokenProgram",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "Program to create an ATA for receiving position NFT"
+          ]
+        },
+        {
+          "name": "metadataProgram",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "Program to create NFT metadata"
+          ]
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "symbol",
+          "type": "string"
+        },
+        {
+          "name": "uri",
+          "type": "string"
+        }
+      ]
+    },
+    {
       "name": "orderUnstake",
       "accounts": [
         {
@@ -4301,6 +4469,6 @@
     }
   ],
   "metadata": {
-    "address": "Bu24e3vBZXgFtB9X2BrMysGx99VR5bgf5vupn3YALzDG"
+    "address": "2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW"
   }
 }

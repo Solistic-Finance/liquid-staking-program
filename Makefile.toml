@@ -1,0 +1,23 @@
+[config]
+default_to_workspace = false
+skip_core_tasks = true
+
+[tasks.build_program]
+script = """
+anchor build
+"""
+
+[tasks.deploy_program]
+script = """
+anchor deploy
+"""
+dependencies = ["build_program"]
+
+[tasks.copy_files]
+script = """
+cp target/idl/marinade_forking_smart_contract.json tests/liquid-staking-test-script/targets/idl/marinade_forking_smart_contract.json
+cp target/types/marinade_forking_smart_contract.ts tests/liquid-staking-test-script/targets/idl/marinade_forking_smart_contract.ts
+"""
+
+[tasks.do_all]
+dependencies = ["deploy_program", "copy_files"]
