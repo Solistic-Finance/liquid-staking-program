@@ -6,3 +6,4 @@ target
 node_modules
 test-ledger
 .yarn
+tests/liquid-staking-test-script/.env
