@@ -1,6 +1,5 @@
 use anchor_lang::prelude::*;
-use anchor_spl::token::{Mint, Token};
-use anchor_spl::associated_token::AssociatedToken;
+use anchor_spl::token::Mint;
 use anchor_spl::metadata::Metadata;
 use crate::State;
 
@@ -31,10 +30,6 @@ pub struct UpdateMsolTokenMetadata<'info> {
      /// Program to create the position manager state account
      pub system_program: Program<'info, System>,
  
-     /// Program to create mint account and mint tokens
-     pub token_program: Program<'info, Token>,
-     /// Program to create an ATA for receiving position NFT
-     pub associated_token_program: Program<'info, AssociatedToken>,
     /// Program to create NFT metadata
     /// CHECK: Metadata program address constraint applied
     pub metadata_program: Program<'info, Metadata>,

@@ -1,0 +1,3509 @@
+admin :  sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM
+anish :  2s3YT14DmALryjWTjWNr6qXsSJ2jqiv1tLJ2iLVEFyT6
+bhargav :  sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM
+cranker :  iXEnsm2wooZoyB6yGSZtMMz1V7UTQzpJVwmRbXoqNCR
+tx size :  1099
+Already initialized all the accounts :  SendTransactionError: Simulation failed. 
+Message: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0. 
+Logs: 
+[
+  "Program 11111111111111111111111111111111 invoke [1]",
+  "Create Account: account Address { address: msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm, base: None } already in use",
+  "Program 11111111111111111111111111111111 failed: custom program error: 0x0"
+]. 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at Connection.sendEncodedTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6047:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.sendRawTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6003:20)
+    at async Connection.sendTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:5991:12)
+    at async sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:36:21) {
+  signature: '',
+  transactionMessage: 'Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0',
+  transactionLogs: [
+    'Program 11111111111111111111111111111111 invoke [1]',
+    'Create Account: account Address { address: msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm, base: None } already in use',
+    'Program 11111111111111111111111111111111 failed: custom program error: 0x0'
+  ]
+}
+stateAccount: wqikmUShfSU5DC4L3c7tLdmcmTVwkSyvEfi6NP37SSa
+stakeList: PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1
+validatorsList: vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1
+operationalSolAccount: skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC
+stakeAccount: UkX6VTNWmG9nRzabe1Rwo3jh4UWoPJeSNzxBKyNWDSA
+authoritySSolAcc: 3VTdmJYMA1WqgxowapnyAgQfTziEfSwr44hcLket5iaG
+authorityLpAcc: 6zVVnH3ZbihPbdrtmVh2L6hrd5F6T63gM72jiVyWxYte
+reservePda: ByYZs47boR8iyKZadSiEppcXsh2Whf31BYDMLsGjQGeF
+solLegPda: eogTwHmMrVkG8aeVFA4oCDKsH7gXhpgAZTKrzUumJP6
+authoritySSolLegAcc: 9ZG4QGBa9xzzuwtDQErRNGk9MHYwiPGBxS5udyXYYfxL
+stakeDepositAuthority: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq
+stakeWithdrawAuthority: Br7hYTRkPH9FFbRPyVuc9je6uiJoay5dbtCYWkhU3EWi
+ssolMint: msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm
+lpMint: V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm
+treasurySsolAccount: AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6
+sSolLeg: ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc
+payerSSolTokenAccount: 6rnwgn3HNRiiX8A22nGtNfHV5hXntKAhnd3Y8d2YoMMx
+payerLpTokenAccount: Fy2HNYzhspLM199o27nbfLGo2UY3Ve8xGvPtr8tX9mMK
+burnSsolFrom: 6rnwgn3HNRiiX8A22nGtNfHV5hXntKAhnd3Y8d2YoMMx
+stateAccount: wqikmUShfSU5DC4L3c7tLdmcmTVwkSyvEfi6NP37SSa
+reservePda: ByYZs47boR8iyKZadSiEppcXsh2Whf31BYDMLsGjQGeF
+ssolMint: msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm
+stakeList: PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1
+validatorList: vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1
+operationalSolAccount: skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC
+treasurySsolAccount: AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6
+lpMint: V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm
+solLegPda: eogTwHmMrVkG8aeVFA4oCDKsH7gXhpgAZTKrzUumJP6
+sSolLeg: ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc
+Fee Payer: sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM
+Initialize: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348246006 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 11111111111111111111111111111111 invoke [1]',
+      'Create Account: account Address { address: wqikmUShfSU5DC4L3c7tLdmcmTVwkSyvEfi6NP37SSa, base: None } already in use',
+      'Program 11111111111111111111111111111111 failed: custom program error: 0x0'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 150
+  }
+}
+Error in executing initialize ix: SendTransactionError: Transaction 4XhPqDSxiQy8GSdvLomYnn51m5jcc3xZjtM5og7iMahMC6s6kjpCxMAiXVWpFNb7Ac9fDmhSW9NbkZBZTSZfVQHs resulted in an error. 
+Status: ({"err":{"InstructionError":[0,{"Custom":0}]}}). 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:94:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  signature: '4XhPqDSxiQy8GSdvLomYnn51m5jcc3xZjtM5og7iMahMC6s6kjpCxMAiXVWpFNb7Ac9fDmhSW9NbkZBZTSZfVQHs',
+  transactionMessage: 'Status: ({"err":{"InstructionError":[0,{"Custom":0}]}})',
+  transactionLogs: undefined
+}
+State Account after Initialize: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2a357a19>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 100000000>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+addValidator: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348246040 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: AddValidator',
+      'Program 11111111111111111111111111111111 invoke [2]',
+      'Allocate: account Address { address: EmiCMDkW7G3XkQGDog8TsKCRdUr1aemkAmy465hTvNRF, base: None } already in use',
+      'Program 11111111111111111111111111111111 failed: custom program error: 0x0',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 12875 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW failed: custom program error: 0x0'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 12875
+  }
+}
+Error in adding validator:  SendTransactionError: Transaction 2cPGju9nDqE9XtJaco57jutqBHyLhZckEBxZ3rvqDs93XBwHXcCX2BBMNU6rH9u6UQE8Hy6sbHpiDF7m6kCdJujp resulted in an error. 
+Status: ({"err":{"InstructionError":[0,{"Custom":0}]}}). 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:94:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  signature: '2cPGju9nDqE9XtJaco57jutqBHyLhZckEBxZ3rvqDs93XBwHXcCX2BBMNU6rH9u6UQE8Hy6sbHpiDF7m6kCdJujp',
+  transactionMessage: 'Status: ({"err":{"InstructionError":[0,{"Custom":0}]}})',
+  transactionLogs: undefined
+}
+State Account after Adding Validator: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2a357a19>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 100000000>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+addValidator: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348246076 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: AddValidator',
+      'Program 11111111111111111111111111111111 invoke [2]',
+      'Allocate: account Address { address: DScKGf4QX94D8JuN3vP6U2ssKURjVAEUGVDoCugBe9wm, base: None } already in use',
+      'Program 11111111111111111111111111111111 failed: custom program error: 0x0',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 17375 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW failed: custom program error: 0x0'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 17375
+  }
+}
+Error in adding validator:  SendTransactionError: Transaction Nbo9DiepzisbzGWm1SoamwdhwJqor8dyxMPMVdP2TCb6doKxBHGgtRNoKjc16to3Wq79MQjSutncTQmKpLtoQX5 resulted in an error. 
+Status: ({"err":{"InstructionError":[0,{"Custom":0}]}}). 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:94:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  signature: 'Nbo9DiepzisbzGWm1SoamwdhwJqor8dyxMPMVdP2TCb6doKxBHGgtRNoKjc16to3Wq79MQjSutncTQmKpLtoQX5',
+  transactionMessage: 'Status: ({"err":{"InstructionError":[0,{"Custom":0}]}})',
+  transactionLogs: undefined
+}
+State Account after Adding Validator: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2a357a19>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 100000000>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+depositExistingStakeAccount: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348246110 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: DepositStakeAccount',
+      'Program log: AnchorError thrown in programs/marinade-forking-smart-contract/src/instructions/user/deposit_stake_account.rs:170. Error Code: RedepositingMarinadeStake. Error Number: 6067. Error Message: Redepositing marinade stake.',
+      'Program log: Left:',
+      'Program log: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq',
+      'Program log: Right:',
+      'Program log: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 22849 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW failed: custom program error: 0x17b3'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 22849
+  }
+}
+Error in depositing from existing stake account:  SendTransactionError: Transaction 3bGdpG61rfvrTKh37Q3gkMGLWCQmdBmwdhxtZz2jkmnvnbgLqSGs8AJBo5u6BfLfRHKbLyZ7T29rLc9hsJ4577uL resulted in an error. 
+Status: ({"err":{"InstructionError":[0,{"Custom":6067}]}}). 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:94:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  signature: '3bGdpG61rfvrTKh37Q3gkMGLWCQmdBmwdhxtZz2jkmnvnbgLqSGs8AJBo5u6BfLfRHKbLyZ7T29rLc9hsJ4577uL',
+  transactionMessage: 'Status: ({"err":{"InstructionError":[0,{"Custom":6067}]}})',
+  transactionLogs: undefined
+}
+State Account after depositing from existing stake account: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2a357a19>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 100000000>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+ create stake account and delegate to validator
+createStakeAccount: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348246149 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 11111111111111111111111111111111 invoke [1]',
+      'Create Account: account Address { address: qZGZ1gUKr55D9gjbJ34c4XhS9dygiNBH6Cnbixopbsa, base: None } already in use',
+      'Program 11111111111111111111111111111111 failed: custom program error: 0x0'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 150
+  }
+}
+Error in creating stake account and delegating to validator:  SendTransactionError: Simulation failed. 
+Message: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0. 
+Logs: 
+[
+  "Program 11111111111111111111111111111111 invoke [1]",
+  "Create Account: account Address { address: qZGZ1gUKr55D9gjbJ34c4XhS9dygiNBH6Cnbixopbsa, base: None } already in use",
+  "Program 11111111111111111111111111111111 failed: custom program error: 0x0"
+]. 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at Connection.sendEncodedTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6047:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.sendRawTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6003:20)
+    at async Connection.sendTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:5991:12)
+    at async sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:36:21) {
+  signature: '',
+  transactionMessage: 'Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0',
+  transactionLogs: [
+    'Program 11111111111111111111111111111111 invoke [1]',
+    'Create Account: account Address { address: qZGZ1gUKr55D9gjbJ34c4XhS9dygiNBH6Cnbixopbsa, base: None } already in use',
+    'Program 11111111111111111111111111111111 failed: custom program error: 0x0'
+  ]
+}
+depositNewStakeAccount: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348246150 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: DepositStakeAccount',
+      'Program log: AnchorError thrown in programs/marinade-forking-smart-contract/src/instructions/user/deposit_stake_account.rs:170. Error Code: RedepositingMarinadeStake. Error Number: 6067. Error Message: Redepositing marinade stake.',
+      'Program log: Left:',
+      'Program log: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq',
+      'Program log: Right:',
+      'Program log: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 22849 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW failed: custom program error: 0x17b3'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 22849
+  }
+}
+Error in depositing from new stake account:  SendTransactionError: Transaction 4LWX52Fxu8UKkkjF9BMMfiPq1rJ8o7a1sxcknYk8HCwQY45S72XrMZRGw3w85u1vEn96y3kxW64RQmiUThTfiN5k resulted in an error. 
+Status: ({"err":{"InstructionError":[0,{"Custom":6067}]}}). 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:94:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  signature: '4LWX52Fxu8UKkkjF9BMMfiPq1rJ8o7a1sxcknYk8HCwQY45S72XrMZRGw3w85u1vEn96y3kxW64RQmiUThTfiN5k',
+  transactionMessage: 'Status: ({"err":{"InstructionError":[0,{"Custom":6067}]}})',
+  transactionLogs: undefined
+}
+State Account after depositing from new stake account: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2a357a19>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 100000000>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+ create stake account and delegate to validator
+createStakeAccount: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348246196 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 11111111111111111111111111111111 invoke [1]',
+      'Create Account: account Address { address: 14Zv8WTpBjZn5zD1UHeQXi2isQRfyX7mg648KgHvSbS1, base: None } already in use',
+      'Program 11111111111111111111111111111111 failed: custom program error: 0x0'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 150
+  }
+}
+Error in creating stake account and delegating to validator:  SendTransactionError: Simulation failed. 
+Message: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0. 
+Logs: 
+[
+  "Program 11111111111111111111111111111111 invoke [1]",
+  "Create Account: account Address { address: 14Zv8WTpBjZn5zD1UHeQXi2isQRfyX7mg648KgHvSbS1, base: None } already in use",
+  "Program 11111111111111111111111111111111 failed: custom program error: 0x0"
+]. 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at Connection.sendEncodedTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6047:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.sendRawTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6003:20)
+    at async Connection.sendTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:5991:12)
+    at async sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:36:21) {
+  signature: '',
+  transactionMessage: 'Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0',
+  transactionLogs: [
+    'Program 11111111111111111111111111111111 invoke [1]',
+    'Create Account: account Address { address: 14Zv8WTpBjZn5zD1UHeQXi2isQRfyX7mg648KgHvSbS1, base: None } already in use',
+    'Program 11111111111111111111111111111111 failed: custom program error: 0x0'
+  ]
+}
+depositNewStakeAccount: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348246197 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: DepositStakeAccount',
+      'Program log: AnchorError thrown in programs/marinade-forking-smart-contract/src/instructions/user/deposit_stake_account.rs:170. Error Code: RedepositingMarinadeStake. Error Number: 6067. Error Message: Redepositing marinade stake.',
+      'Program log: Left:',
+      'Program log: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq',
+      'Program log: Right:',
+      'Program log: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 22849 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW failed: custom program error: 0x17b3'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 22849
+  }
+}
+Error in depositing from new stake account:  SendTransactionError: Transaction 3wWtETSCNBE3aW9qYQyXCzYJ83LVc344K3APi2bfvstrzuemdD3yftmsyjneLkZLV4SwmStuF8FqhQDUCKufMdNq resulted in an error. 
+Status: ({"err":{"InstructionError":[0,{"Custom":6067}]}}). 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:94:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  signature: '3wWtETSCNBE3aW9qYQyXCzYJ83LVc344K3APi2bfvstrzuemdD3yftmsyjneLkZLV4SwmStuF8FqhQDUCKufMdNq',
+  transactionMessage: 'Status: ({"err":{"InstructionError":[0,{"Custom":6067}]}})',
+  transactionLogs: undefined
+}
+State Account after depositing from new stake account: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2a357a19>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 100000000>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+updateActive: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348246240 },
+  value: {
+    accounts: null,
+    err: null,
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: UpdateActive',
+      'Program log: Extra lamports in stake balance: 0',
+      'Program log: current staked lamports 50218378116',
+      'Program log: Staking rewards: 81155179',
+      'Program log: protocol_rewards_fee 0',
+      'Program data: +xKAS9BQrowODHOTK66VNBRS6ll9czuMgJDKl7R/MT3ouAqwzF/53yYDAAAAAAAAAAAAADI6hBBKe05RuA1VSno8PCBkstsIciWD5Y4jRWvG2dCqAQAAAN30KgSAClTeLlg/lPF7CJclt3LRMzUmJxJBUyd20v/GGU9prAsAAACEoz+xCwAAAAEAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAmV1SAA4AAAAZejUqDwAAAAAAAAABAAAAYahRAAEAAAAAAAAAGXo1Kg8AAAAZejUqDwAAAA==',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 29511 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW success'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 29511
+  }
+}
+updateActive: Transaction Signature: 2FeWgnkUZfRdKGiVjJhXx3zRoesed3cdnnLaRzmMHkPNbESGwKHLF4HMqeBQADhznL8TTydSi4VeEybr6cLK9WVb
+State Account after cranking updateActive: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2f0bce84>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 10051a861>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+updateActive: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348246276 },
+  value: {
+    accounts: null,
+    err: null,
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: UpdateActive',
+      'Program log: Extra lamports in stake balance: 0',
+      'Program log: current staked lamports 9997717120',
+      'Program log: Staking rewards: 0',
+      'Program log: protocol_rewards_fee 0',
+      'Program data: +xKAS9BQrowODHOTK66VNBRS6ll9czuMgJDKl7R/MT3ouAqwzF/53yYDAAAAAAAAAQAAAAxwXVIaaMC+s0WjRENc+qjC20aGpL96lRsebpc5rtoVAQAAAN30KgSAClTeLlg/lPF7CJclt3LRMzUmJxJBUyd20v/GgA7pUwIAAACADulTAgAAAAEAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAABLIoBQ4AAACEzgsvDwAAAGGoUQABAAAAYahRAAEAAAAAAAAAhM4LLw8AAAAZejUqDwAAAA==',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 29439 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW success'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 29439
+  }
+}
+updateActive: Transaction Signature: 2JCN4sjpub8buGvETPRDSpFUoiynPvbDy16JaEfiQz3nDwJxPwXGuMG7hWah8JCbG6amH9BLsS5FK6jdPRZTRsjZ
+State Account after cranking updateActive: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2f0bce84>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 10051a861>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+updateActive: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348246310 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: UpdateActive',
+      'Program log: AnchorError thrown in programs/marinade-forking-smart-contract/src/state/stake_system.rs:191. Error Code: WrongStakeAccountOrIndex. Error Number: 6050. Error Message: Wrong stake account or index.',
+      'Program log: Left:',
+      'Program log: 4P58vbqyt6jdAqZ5Efw9ocBr3PMRYzbDggQecCQfEY2D',
+      'Program log: Right:',
+      'Program log: 14Zv8WTpBjZn5zD1UHeQXi2isQRfyX7mg648KgHvSbS1',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 23192 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW failed: custom program error: 0x17a2'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 23192
+  }
+}
+Error in executing updateActive ix: SendTransactionError: Simulation failed. 
+Message: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x17a2. 
+Logs: 
+[
+  "Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]",
+  "Program log: Instruction: UpdateActive",
+  "Program log: AnchorError thrown in programs/marinade-forking-smart-contract/src/state/stake_system.rs:191. Error Code: WrongStakeAccountOrIndex. Error Number: 6050. Error Message: Wrong stake account or index.",
+  "Program log: Left:",
+  "Program log: 4P58vbqyt6jdAqZ5Efw9ocBr3PMRYzbDggQecCQfEY2D",
+  "Program log: Right:",
+  "Program log: 14Zv8WTpBjZn5zD1UHeQXi2isQRfyX7mg648KgHvSbS1",
+  "Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 23192 of 200000 compute units",
+  "Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW failed: custom program error: 0x17a2"
+]. 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at Connection.sendEncodedTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6047:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.sendRawTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6003:20)
+    at async Connection.sendTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:5991:12)
+    at async sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:36:21) {
+  signature: '',
+  transactionMessage: 'Transaction simulation failed: Error processing Instruction 0: custom program error: 0x17a2',
+  transactionLogs: [
+    'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+    'Program log: Instruction: UpdateActive',
+    'Program log: AnchorError thrown in programs/marinade-forking-smart-contract/src/state/stake_system.rs:191. Error Code: WrongStakeAccountOrIndex. Error Number: 6050. Error Message: Wrong stake account or index.',
+    'Program log: Left:',
+    'Program log: 4P58vbqyt6jdAqZ5Efw9ocBr3PMRYzbDggQecCQfEY2D',
+    'Program log: Right:',
+    'Program log: 14Zv8WTpBjZn5zD1UHeQXi2isQRfyX7mg648KgHvSbS1',
+    'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 23192 of 200000 compute units',
+    'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW failed: custom program error: 0x17a2'
+  ]
+}
+State Account after cranking updateActive: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2f0bce84>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 10051a861>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+Simulation completed
+admin :  sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM
+anish :  2s3YT14DmALryjWTjWNr6qXsSJ2jqiv1tLJ2iLVEFyT6
+bhargav :  sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM
+cranker :  iXEnsm2wooZoyB6yGSZtMMz1V7UTQzpJVwmRbXoqNCR
+tx size :  1099
+Already initialized all the accounts :  SendTransactionError: Simulation failed. 
+Message: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0. 
+Logs: 
+[
+  "Program 11111111111111111111111111111111 invoke [1]",
+  "Create Account: account Address { address: msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm, base: None } already in use",
+  "Program 11111111111111111111111111111111 failed: custom program error: 0x0"
+]. 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at Connection.sendEncodedTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6047:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.sendRawTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6003:20)
+    at async Connection.sendTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:5991:12)
+    at async sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:36:21) {
+  signature: '',
+  transactionMessage: 'Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0',
+  transactionLogs: [
+    'Program 11111111111111111111111111111111 invoke [1]',
+    'Create Account: account Address { address: msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm, base: None } already in use',
+    'Program 11111111111111111111111111111111 failed: custom program error: 0x0'
+  ]
+}
+stateAccount: wqikmUShfSU5DC4L3c7tLdmcmTVwkSyvEfi6NP37SSa
+stakeList: PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1
+validatorsList: vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1
+operationalSolAccount: skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC
+stakeAccount: UkX6VTNWmG9nRzabe1Rwo3jh4UWoPJeSNzxBKyNWDSA
+authoritySSolAcc: 3VTdmJYMA1WqgxowapnyAgQfTziEfSwr44hcLket5iaG
+authorityLpAcc: 6zVVnH3ZbihPbdrtmVh2L6hrd5F6T63gM72jiVyWxYte
+reservePda: ByYZs47boR8iyKZadSiEppcXsh2Whf31BYDMLsGjQGeF
+solLegPda: eogTwHmMrVkG8aeVFA4oCDKsH7gXhpgAZTKrzUumJP6
+authoritySSolLegAcc: 9ZG4QGBa9xzzuwtDQErRNGk9MHYwiPGBxS5udyXYYfxL
+stakeDepositAuthority: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq
+stakeWithdrawAuthority: Br7hYTRkPH9FFbRPyVuc9je6uiJoay5dbtCYWkhU3EWi
+ssolMint: msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm
+lpMint: V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm
+treasurySsolAccount: AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6
+sSolLeg: ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc
+payerSSolTokenAccount: 6rnwgn3HNRiiX8A22nGtNfHV5hXntKAhnd3Y8d2YoMMx
+payerLpTokenAccount: Fy2HNYzhspLM199o27nbfLGo2UY3Ve8xGvPtr8tX9mMK
+burnSsolFrom: 6rnwgn3HNRiiX8A22nGtNfHV5hXntKAhnd3Y8d2YoMMx
+stateAccount: wqikmUShfSU5DC4L3c7tLdmcmTVwkSyvEfi6NP37SSa
+reservePda: ByYZs47boR8iyKZadSiEppcXsh2Whf31BYDMLsGjQGeF
+ssolMint: msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm
+stakeList: PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1
+validatorList: vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1
+operationalSolAccount: skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC
+treasurySsolAccount: AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6
+lpMint: V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm
+solLegPda: eogTwHmMrVkG8aeVFA4oCDKsH7gXhpgAZTKrzUumJP6
+sSolLeg: ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc
+Fee Payer: sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM
+Initialize: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348247077 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 11111111111111111111111111111111 invoke [1]',
+      'Create Account: account Address { address: wqikmUShfSU5DC4L3c7tLdmcmTVwkSyvEfi6NP37SSa, base: None } already in use',
+      'Program 11111111111111111111111111111111 failed: custom program error: 0x0'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 150
+  }
+}
+Error in executing initialize ix: SendTransactionError: Transaction 2r2rScyzo5V8KBJk8XLysv18DWAZfr5jxCz1QS1TBYUrE4PPPemRnsBmhisWQ1muTVdtKRmbvDQ9umfkXNhasNqK resulted in an error. 
+Status: ({"err":{"InstructionError":[0,{"Custom":0}]}}). 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:94:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  signature: '2r2rScyzo5V8KBJk8XLysv18DWAZfr5jxCz1QS1TBYUrE4PPPemRnsBmhisWQ1muTVdtKRmbvDQ9umfkXNhasNqK',
+  transactionMessage: 'Status: ({"err":{"InstructionError":[0,{"Custom":0}]}})',
+  transactionLogs: undefined
+}
+State Account after Initialize: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2f0bce84>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 10051a861>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+addValidator: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348247111 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: AddValidator',
+      'Program 11111111111111111111111111111111 invoke [2]',
+      'Allocate: account Address { address: EmiCMDkW7G3XkQGDog8TsKCRdUr1aemkAmy465hTvNRF, base: None } already in use',
+      'Program 11111111111111111111111111111111 failed: custom program error: 0x0',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 12875 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW failed: custom program error: 0x0'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 12875
+  }
+}
+Error in adding validator:  SendTransactionError: Transaction 35wt4WBTL8417oWGTzcbqZjh3ZD9NcQrKVGZjyj8gCxZfkASJ7csiwNhiVKU15AcbehDhZg7umJnUcEMhM4CGmgQ resulted in an error. 
+Status: ({"err":{"InstructionError":[0,{"Custom":0}]}}). 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:94:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  signature: '35wt4WBTL8417oWGTzcbqZjh3ZD9NcQrKVGZjyj8gCxZfkASJ7csiwNhiVKU15AcbehDhZg7umJnUcEMhM4CGmgQ',
+  transactionMessage: 'Status: ({"err":{"InstructionError":[0,{"Custom":0}]}})',
+  transactionLogs: undefined
+}
+State Account after Adding Validator: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2f0bce84>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 10051a861>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+addValidator: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348247145 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: AddValidator',
+      'Program 11111111111111111111111111111111 invoke [2]',
+      'Allocate: account Address { address: DScKGf4QX94D8JuN3vP6U2ssKURjVAEUGVDoCugBe9wm, base: None } already in use',
+      'Program 11111111111111111111111111111111 failed: custom program error: 0x0',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 17375 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW failed: custom program error: 0x0'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 17375
+  }
+}
+Error in adding validator:  SendTransactionError: Transaction ufXTGabhhvz9fHUEsY8rz5D7k1pSMC6hJRqotxx5nLLRffTcUpEiL2FW8fNPdKMgMde8Pb91hGNfNAwmQ3DsvEP resulted in an error. 
+Status: ({"err":{"InstructionError":[0,{"Custom":0}]}}). 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:94:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  signature: 'ufXTGabhhvz9fHUEsY8rz5D7k1pSMC6hJRqotxx5nLLRffTcUpEiL2FW8fNPdKMgMde8Pb91hGNfNAwmQ3DsvEP',
+  transactionMessage: 'Status: ({"err":{"InstructionError":[0,{"Custom":0}]}})',
+  transactionLogs: undefined
+}
+State Account after Adding Validator: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2f0bce84>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 10051a861>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+depositExistingStakeAccount: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348247180 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: DepositStakeAccount',
+      'Program log: AnchorError thrown in programs/marinade-forking-smart-contract/src/instructions/user/deposit_stake_account.rs:170. Error Code: RedepositingMarinadeStake. Error Number: 6067. Error Message: Redepositing marinade stake.',
+      'Program log: Left:',
+      'Program log: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq',
+      'Program log: Right:',
+      'Program log: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 22849 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW failed: custom program error: 0x17b3'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 22849
+  }
+}
+Error in depositing from existing stake account:  SendTransactionError: Transaction 2bU3oDLmjdK3yYRe88SM2wFk4VYHS4Cg5Ukj6RhzRdD3PoNvng8w86zDwJNnCAumCezAmRvJr6caMEeshJg1VTnp resulted in an error. 
+Status: ({"err":{"InstructionError":[0,{"Custom":6067}]}}). 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:94:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  signature: '2bU3oDLmjdK3yYRe88SM2wFk4VYHS4Cg5Ukj6RhzRdD3PoNvng8w86zDwJNnCAumCezAmRvJr6caMEeshJg1VTnp',
+  transactionMessage: 'Status: ({"err":{"InstructionError":[0,{"Custom":6067}]}})',
+  transactionLogs: undefined
+}
+State Account after depositing from existing stake account: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2f0bce84>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 10051a861>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+ create stake account and delegate to validator
+createStakeAccount: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348247216 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 11111111111111111111111111111111 invoke [1]',
+      'Create Account: account Address { address: qZGZ1gUKr55D9gjbJ34c4XhS9dygiNBH6Cnbixopbsa, base: None } already in use',
+      'Program 11111111111111111111111111111111 failed: custom program error: 0x0'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 150
+  }
+}
+Error in creating stake account and delegating to validator:  SendTransactionError: Simulation failed. 
+Message: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0. 
+Logs: 
+[
+  "Program 11111111111111111111111111111111 invoke [1]",
+  "Create Account: account Address { address: qZGZ1gUKr55D9gjbJ34c4XhS9dygiNBH6Cnbixopbsa, base: None } already in use",
+  "Program 11111111111111111111111111111111 failed: custom program error: 0x0"
+]. 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at Connection.sendEncodedTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6047:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.sendRawTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6003:20)
+    at async Connection.sendTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:5991:12)
+    at async sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:36:21) {
+  signature: '',
+  transactionMessage: 'Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0',
+  transactionLogs: [
+    'Program 11111111111111111111111111111111 invoke [1]',
+    'Create Account: account Address { address: qZGZ1gUKr55D9gjbJ34c4XhS9dygiNBH6Cnbixopbsa, base: None } already in use',
+    'Program 11111111111111111111111111111111 failed: custom program error: 0x0'
+  ]
+}
+depositNewStakeAccount: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348247217 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: DepositStakeAccount',
+      'Program log: AnchorError thrown in programs/marinade-forking-smart-contract/src/instructions/user/deposit_stake_account.rs:170. Error Code: RedepositingMarinadeStake. Error Number: 6067. Error Message: Redepositing marinade stake.',
+      'Program log: Left:',
+      'Program log: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq',
+      'Program log: Right:',
+      'Program log: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 22849 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW failed: custom program error: 0x17b3'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 22849
+  }
+}
+Error in depositing from new stake account:  SendTransactionError: Transaction 3pbUswH89ys7af1zasoibvLfgjXhxZd7MnSSFvoWuBSpzJsXrZwGfATDStyDbQsHvSEPwqTdVAbmcjsDbAju68st resulted in an error. 
+Status: ({"err":{"InstructionError":[0,{"Custom":6067}]}}). 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:94:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  signature: '3pbUswH89ys7af1zasoibvLfgjXhxZd7MnSSFvoWuBSpzJsXrZwGfATDStyDbQsHvSEPwqTdVAbmcjsDbAju68st',
+  transactionMessage: 'Status: ({"err":{"InstructionError":[0,{"Custom":6067}]}})',
+  transactionLogs: undefined
+}
+State Account after depositing from new stake account: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2f0bce84>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 10051a861>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+ create stake account and delegate to validator
+createStakeAccount: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348247260 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 11111111111111111111111111111111 invoke [1]',
+      'Create Account: account Address { address: 14Zv8WTpBjZn5zD1UHeQXi2isQRfyX7mg648KgHvSbS1, base: None } already in use',
+      'Program 11111111111111111111111111111111 failed: custom program error: 0x0'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 150
+  }
+}
+Error in creating stake account and delegating to validator:  SendTransactionError: Simulation failed. 
+Message: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0. 
+Logs: 
+[
+  "Program 11111111111111111111111111111111 invoke [1]",
+  "Create Account: account Address { address: 14Zv8WTpBjZn5zD1UHeQXi2isQRfyX7mg648KgHvSbS1, base: None } already in use",
+  "Program 11111111111111111111111111111111 failed: custom program error: 0x0"
+]. 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at Connection.sendEncodedTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6047:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.sendRawTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6003:20)
+    at async Connection.sendTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:5991:12)
+    at async sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:36:21) {
+  signature: '',
+  transactionMessage: 'Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0',
+  transactionLogs: [
+    'Program 11111111111111111111111111111111 invoke [1]',
+    'Create Account: account Address { address: 14Zv8WTpBjZn5zD1UHeQXi2isQRfyX7mg648KgHvSbS1, base: None } already in use',
+    'Program 11111111111111111111111111111111 failed: custom program error: 0x0'
+  ]
+}
+depositNewStakeAccount: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348247261 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: DepositStakeAccount',
+      'Program log: AnchorError thrown in programs/marinade-forking-smart-contract/src/instructions/user/deposit_stake_account.rs:170. Error Code: RedepositingMarinadeStake. Error Number: 6067. Error Message: Redepositing marinade stake.',
+      'Program log: Left:',
+      'Program log: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq',
+      'Program log: Right:',
+      'Program log: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 22849 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW failed: custom program error: 0x17b3'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 22849
+  }
+}
+Error in depositing from new stake account:  SendTransactionError: Transaction 2ief4nsWR1UTkvHwiw4N9nPfYwLbn2JEcNwF9YgavLixEbrRht8U3HDiGoLGf4Us1KfTkayMU5KEa5EV6azyNavy resulted in an error. 
+Status: ({"err":{"InstructionError":[0,{"Custom":6067}]}}). 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:94:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  signature: '2ief4nsWR1UTkvHwiw4N9nPfYwLbn2JEcNwF9YgavLixEbrRht8U3HDiGoLGf4Us1KfTkayMU5KEa5EV6azyNavy',
+  transactionMessage: 'Status: ({"err":{"InstructionError":[0,{"Custom":6067}]}})',
+  transactionLogs: undefined
+}
+State Account after depositing from new stake account: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2f0bce84>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 10051a861>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+updateActive: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348247300 },
+  value: {
+    accounts: null,
+    err: null,
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: UpdateActive',
+      'Program log: Extra lamports in stake balance: 0',
+      'Program log: current staked lamports 50218378116',
+      'Program log: Staking rewards: 0',
+      'Program log: protocol_rewards_fee 0',
+      'Program data: +xKAS9BQrowODHOTK66VNBRS6ll9czuMgJDKl7R/MT3ouAqwzF/53yYDAAAAAAAAAAAAADI6hBBKe05RuA1VSno8PCBkstsIciWD5Y4jRWvG2dCqAQAAAN30KgSAClTeLlg/lPF7CJclt3LRMzUmJxJBUyd20v/GhKM/sQsAAACEoz+xCwAAAAEAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAABLIoBQ4AAACEzgsvDwAAAGGoUQABAAAAYahRAAEAAAAAAAAAhM4LLw8AAAAZejUqDwAAAA==',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 29459 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW success'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 29459
+  }
+}
+updateActive: Transaction Signature: 3j6FxbakQoq43kpiyAZQLyymyPjjmdUxjLHXuAFhCymRHm7ixY24v5PkUigzjemDfHHLKaLUD9h71k7pjPchuvMA
+State Account after cranking updateActive: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2f0bce84>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 10051a861>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+updateActive: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348247334 },
+  value: {
+    accounts: null,
+    err: null,
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: UpdateActive',
+      'Program log: Extra lamports in stake balance: 0',
+      'Program log: current staked lamports 9997717120',
+      'Program log: Staking rewards: 0',
+      'Program log: protocol_rewards_fee 0',
+      'Program data: +xKAS9BQrowODHOTK66VNBRS6ll9czuMgJDKl7R/MT3ouAqwzF/53yYDAAAAAAAAAQAAAAxwXVIaaMC+s0WjRENc+qjC20aGpL96lRsebpc5rtoVAQAAAN30KgSAClTeLlg/lPF7CJclt3LRMzUmJxJBUyd20v/GgA7pUwIAAACADulTAgAAAAEAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAABLIoBQ4AAACEzgsvDwAAAGGoUQABAAAAYahRAAEAAAAAAAAAhM4LLw8AAAAZejUqDwAAAA==',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 29439 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW success'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 29439
+  }
+}
+updateActive: Transaction Signature: 4uCNWc2SRVAqoUZnGwXsisc54SaU9t2ibaLAoHMiRtvMLSa97ZTFyMpWBjbbmcMQZV2giYwVDV8YWc8QWYV3Kgyk
+State Account after cranking updateActive: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2f0bce84>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 10051a861>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+updateActive: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348247372 },
+  value: {
+    accounts: null,
+    err: null,
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: UpdateActive',
+      'Program log: Extra lamports in stake balance: 0',
+      'Program log: current staked lamports 4997717120',
+      'Program log: Staking rewards: 0',
+      'Program log: protocol_rewards_fee 0',
+      'Program data: +xKAS9BQrowODHOTK66VNBRS6ll9czuMgJDKl7R/MT3ouAqwzF/53yYDAAAAAAAAAgAAAADp9fAgm5sRrjETMozOHtyKe+h7cp0EctVA23aCDlJqAgAAAF4/nWISZ0vhzYq1toeC1qhWeAeZcAmphfdeG/uF0IfrgBzjKQEAAACAHOMpAQAAAAEAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAgBzjKQEAAACEzgsvDwAAAGGoUQABAAAAYahRAAEAAAAAAAAAhM4LLw8AAAAZejUqDwAAAA==',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 29439 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW success'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 29439
+  }
+}
+updateActive: Transaction Signature: kiCeLx3cyiVwdrcAsK7MbdXH1K9kFP4kwJihr7GXrKY8Xcgd4GeAqrYVJ6MJXFBRWZQsbaS37GQ1enYKuvpvjWs
+State Account after cranking updateActive: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2f0bce84>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 10051a861>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+Simulation completed
+admin :  sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM
+anish :  2s3YT14DmALryjWTjWNr6qXsSJ2jqiv1tLJ2iLVEFyT6
+bhargav :  sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM
+cranker :  iXEnsm2wooZoyB6yGSZtMMz1V7UTQzpJVwmRbXoqNCR
+tx size :  1099
+Already initialized all the accounts :  SendTransactionError: Simulation failed. 
+Message: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0. 
+Logs: 
+[
+  "Program 11111111111111111111111111111111 invoke [1]",
+  "Create Account: account Address { address: msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm, base: None } already in use",
+  "Program 11111111111111111111111111111111 failed: custom program error: 0x0"
+]. 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at Connection.sendEncodedTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6047:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.sendRawTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6003:20)
+    at async Connection.sendTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:5991:12)
+    at async sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:36:21) {
+  signature: '',
+  transactionMessage: 'Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0',
+  transactionLogs: [
+    'Program 11111111111111111111111111111111 invoke [1]',
+    'Create Account: account Address { address: msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm, base: None } already in use',
+    'Program 11111111111111111111111111111111 failed: custom program error: 0x0'
+  ]
+}
+stateAccount: wqikmUShfSU5DC4L3c7tLdmcmTVwkSyvEfi6NP37SSa
+stakeList: PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1
+validatorsList: vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1
+operationalSolAccount: skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC
+stakeAccount: UkX6VTNWmG9nRzabe1Rwo3jh4UWoPJeSNzxBKyNWDSA
+authoritySSolAcc: 3VTdmJYMA1WqgxowapnyAgQfTziEfSwr44hcLket5iaG
+authorityLpAcc: 6zVVnH3ZbihPbdrtmVh2L6hrd5F6T63gM72jiVyWxYte
+reservePda: ByYZs47boR8iyKZadSiEppcXsh2Whf31BYDMLsGjQGeF
+solLegPda: eogTwHmMrVkG8aeVFA4oCDKsH7gXhpgAZTKrzUumJP6
+authoritySSolLegAcc: 9ZG4QGBa9xzzuwtDQErRNGk9MHYwiPGBxS5udyXYYfxL
+stakeDepositAuthority: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq
+stakeWithdrawAuthority: Br7hYTRkPH9FFbRPyVuc9je6uiJoay5dbtCYWkhU3EWi
+ssolMint: msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm
+lpMint: V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm
+treasurySsolAccount: AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6
+sSolLeg: ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc
+payerSSolTokenAccount: 6rnwgn3HNRiiX8A22nGtNfHV5hXntKAhnd3Y8d2YoMMx
+payerLpTokenAccount: Fy2HNYzhspLM199o27nbfLGo2UY3Ve8xGvPtr8tX9mMK
+burnSsolFrom: 6rnwgn3HNRiiX8A22nGtNfHV5hXntKAhnd3Y8d2YoMMx
+stateAccount: wqikmUShfSU5DC4L3c7tLdmcmTVwkSyvEfi6NP37SSa
+reservePda: ByYZs47boR8iyKZadSiEppcXsh2Whf31BYDMLsGjQGeF
+ssolMint: msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm
+stakeList: PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1
+validatorList: vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1
+operationalSolAccount: skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC
+treasurySsolAccount: AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6
+lpMint: V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm
+solLegPda: eogTwHmMrVkG8aeVFA4oCDKsH7gXhpgAZTKrzUumJP6
+sSolLeg: ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc
+Fee Payer: sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM
+Initialize: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348964302 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 11111111111111111111111111111111 invoke [1]',
+      'Create Account: account Address { address: wqikmUShfSU5DC4L3c7tLdmcmTVwkSyvEfi6NP37SSa, base: None } already in use',
+      'Program 11111111111111111111111111111111 failed: custom program error: 0x0'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 150
+  }
+}
+Error in executing initialize ix: SendTransactionError: Transaction 4xyaXJ1S2h2BPbgpcLfqb3ZfGbAGhDXEydEB3xNGDSGrdrwNB9sBxZW79oXcLTC7Mck7mYtiqFh5FEyBdxdqbwJ9 resulted in an error. 
+Status: ({"err":{"InstructionError":[0,{"Custom":0}]}}). 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:94:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  signature: '4xyaXJ1S2h2BPbgpcLfqb3ZfGbAGhDXEydEB3xNGDSGrdrwNB9sBxZW79oXcLTC7Mck7mYtiqFh5FEyBdxdqbwJ9',
+  transactionMessage: 'Status: ({"err":{"InstructionError":[0,{"Custom":0}]}})',
+  transactionLogs: undefined
+}
+State Account after Initialize: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2f0bce84>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 10051a861>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+addValidator: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348964345 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: AddValidator',
+      'Program 11111111111111111111111111111111 invoke [2]',
+      'Allocate: account Address { address: EmiCMDkW7G3XkQGDog8TsKCRdUr1aemkAmy465hTvNRF, base: None } already in use',
+      'Program 11111111111111111111111111111111 failed: custom program error: 0x0',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 12875 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW failed: custom program error: 0x0'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 12875
+  }
+}
+Error in adding validator:  { InstructionError: [ 0, { Custom: 0 } ] }
+State Account after Adding Validator: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2f0bce84>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 10051a861>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+addValidator: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348964348 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: AddValidator',
+      'Program 11111111111111111111111111111111 invoke [2]',
+      'Allocate: account Address { address: DScKGf4QX94D8JuN3vP6U2ssKURjVAEUGVDoCugBe9wm, base: None } already in use',
+      'Program 11111111111111111111111111111111 failed: custom program error: 0x0',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 17375 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW failed: custom program error: 0x0'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 17375
+  }
+}
+Error in adding validator:  { InstructionError: [ 0, { Custom: 0 } ] }
+State Account after Adding Validator: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2f0bce84>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 10051a861>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+depositExistingStakeAccount: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348964351 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: DepositStakeAccount',
+      'Program log: AnchorError thrown in programs/marinade-forking-smart-contract/src/instructions/user/deposit_stake_account.rs:170. Error Code: RedepositingMarinadeStake. Error Number: 6067. Error Message: Redepositing marinade stake.',
+      'Program log: Left:',
+      'Program log: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq',
+      'Program log: Right:',
+      'Program log: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 22849 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW failed: custom program error: 0x17b3'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 22849
+  }
+}
+Error in depositing from existing stake account:  SendTransactionError: Transaction 5jqxtKodVSHuXynkf8rYSgsPGyfw9Z7qpvS8UHhxg2KpiupCZzAnVEqzXpPP2EatzWvzGJUGaJwBHWgv7oQApeTb resulted in an error. 
+Status: ({"err":{"InstructionError":[0,{"Custom":6067}]}}). 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:94:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  signature: '5jqxtKodVSHuXynkf8rYSgsPGyfw9Z7qpvS8UHhxg2KpiupCZzAnVEqzXpPP2EatzWvzGJUGaJwBHWgv7oQApeTb',
+  transactionMessage: 'Status: ({"err":{"InstructionError":[0,{"Custom":6067}]}})',
+  transactionLogs: undefined
+}
+State Account after depositing from existing stake account: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2f0bce84>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 10051a861>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+ create stake account and delegate to validator
+createStakeAccount: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348964389 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 11111111111111111111111111111111 invoke [1]',
+      'Create Account: account Address { address: qZGZ1gUKr55D9gjbJ34c4XhS9dygiNBH6Cnbixopbsa, base: None } already in use',
+      'Program 11111111111111111111111111111111 failed: custom program error: 0x0'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 150
+  }
+}
+Error in creating stake account and delegating to validator:  SendTransactionError: Simulation failed. 
+Message: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0. 
+Logs: 
+[
+  "Program 11111111111111111111111111111111 invoke [1]",
+  "Create Account: account Address { address: qZGZ1gUKr55D9gjbJ34c4XhS9dygiNBH6Cnbixopbsa, base: None } already in use",
+  "Program 11111111111111111111111111111111 failed: custom program error: 0x0"
+]. 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at Connection.sendEncodedTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6047:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.sendRawTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6003:20)
+    at async Connection.sendTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:5991:12)
+    at async sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:36:21) {
+  signature: '',
+  transactionMessage: 'Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0',
+  transactionLogs: [
+    'Program 11111111111111111111111111111111 invoke [1]',
+    'Create Account: account Address { address: qZGZ1gUKr55D9gjbJ34c4XhS9dygiNBH6Cnbixopbsa, base: None } already in use',
+    'Program 11111111111111111111111111111111 failed: custom program error: 0x0'
+  ]
+}
+depositNewStakeAccount: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348964391 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: DepositStakeAccount',
+      'Program log: AnchorError thrown in programs/marinade-forking-smart-contract/src/instructions/user/deposit_stake_account.rs:170. Error Code: RedepositingMarinadeStake. Error Number: 6067. Error Message: Redepositing marinade stake.',
+      'Program log: Left:',
+      'Program log: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq',
+      'Program log: Right:',
+      'Program log: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 22849 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW failed: custom program error: 0x17b3'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 22849
+  }
+}
+Error in depositing from new stake account:  SendTransactionError: Transaction 3knpc9XmTCdAEUwvXv7pJnTKaPMNw6ayBaUMR5eM7zA8SVj1gTFNceNVZ1SY71msScVPv4Am2JtuRABtD4LDUkQi resulted in an error. 
+Status: ({"err":{"InstructionError":[0,{"Custom":6067}]}}). 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:94:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  signature: '3knpc9XmTCdAEUwvXv7pJnTKaPMNw6ayBaUMR5eM7zA8SVj1gTFNceNVZ1SY71msScVPv4Am2JtuRABtD4LDUkQi',
+  transactionMessage: 'Status: ({"err":{"InstructionError":[0,{"Custom":6067}]}})',
+  transactionLogs: undefined
+}
+State Account after depositing from new stake account: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2f0bce84>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 10051a861>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+ create stake account and delegate to validator
+createStakeAccount: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348964445 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 11111111111111111111111111111111 invoke [1]',
+      'Create Account: account Address { address: 14Zv8WTpBjZn5zD1UHeQXi2isQRfyX7mg648KgHvSbS1, base: None } already in use',
+      'Program 11111111111111111111111111111111 failed: custom program error: 0x0'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 150
+  }
+}
+Error in creating stake account and delegating to validator:  SendTransactionError: Simulation failed. 
+Message: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0. 
+Logs: 
+[
+  "Program 11111111111111111111111111111111 invoke [1]",
+  "Create Account: account Address { address: 14Zv8WTpBjZn5zD1UHeQXi2isQRfyX7mg648KgHvSbS1, base: None } already in use",
+  "Program 11111111111111111111111111111111 failed: custom program error: 0x0"
+]. 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at Connection.sendEncodedTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6047:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.sendRawTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:6003:20)
+    at async Connection.sendTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/connection.ts:5991:12)
+    at async sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:36:21) {
+  signature: '',
+  transactionMessage: 'Transaction simulation failed: Error processing Instruction 0: custom program error: 0x0',
+  transactionLogs: [
+    'Program 11111111111111111111111111111111 invoke [1]',
+    'Create Account: account Address { address: 14Zv8WTpBjZn5zD1UHeQXi2isQRfyX7mg648KgHvSbS1, base: None } already in use',
+    'Program 11111111111111111111111111111111 failed: custom program error: 0x0'
+  ]
+}
+depositNewStakeAccount: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348964446 },
+  value: {
+    accounts: null,
+    err: { InstructionError: [Array] },
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: DepositStakeAccount',
+      'Program log: AnchorError thrown in programs/marinade-forking-smart-contract/src/instructions/user/deposit_stake_account.rs:170. Error Code: RedepositingMarinadeStake. Error Number: 6067. Error Message: Redepositing marinade stake.',
+      'Program log: Left:',
+      'Program log: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq',
+      'Program log: Right:',
+      'Program log: F7UHs8yttcbux5DkSiu7tpBrMLCZnEXurBExF1eQmGGq',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 22849 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW failed: custom program error: 0x17b3'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 22849
+  }
+}
+Error in depositing from new stake account:  SendTransactionError: Transaction 54dSfChf6G31n6xVPPmfh2qUWMwmYMdhVCbrm289d3sbvmMcpntaksvXm5vuZRWGJAn34XWVcpCt41A7uVYnR6wh resulted in an error. 
+Status: ({"err":{"InstructionError":[0,{"Custom":6067}]}}). 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+    at sendAndConfirmTransaction (/home/ubuntu/solistic/liquid-staking-program/simulation/node_modules/@solana/web3.js/src/utils/send-and-confirm-transaction.ts:94:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  signature: '54dSfChf6G31n6xVPPmfh2qUWMwmYMdhVCbrm289d3sbvmMcpntaksvXm5vuZRWGJAn34XWVcpCt41A7uVYnR6wh',
+  transactionMessage: 'Status: ({"err":{"InstructionError":[0,{"Custom":6067}]}})',
+  transactionLogs: undefined
+}
+State Account after depositing from new stake account: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f2f0bce84>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 10051a861>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+updateActive: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348964489 },
+  value: {
+    accounts: null,
+    err: null,
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: UpdateActive',
+      'Program log: Extra lamports in stake balance: 0',
+      'Program log: current staked lamports 50299609599',
+      'Program log: Staking rewards: 81231483',
+      'Program log: protocol_rewards_fee 0',
+      'Program data: +xKAS9BQrowODHOTK66VNBRS6ll9czuMgJDKl7R/MT3ouAqwzF/53ycDAAAAAAAAAAAAADI6hBBKe05RuA1VSno8PCBkstsIciWD5Y4jRWvG2dCqAQAAAN30KgSAClTeLlg/lPF7CJclt3LRMzUmJxJBUyd20v/GhKM/sQsAAAD/IRe2CwAAAAEAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAABLIoBQ4AAACEzgsvDwAAAGGoUQABAAAAa2SjAAEAAAAAAAAAhM4LLw8AAAAZejUqDwAAAA==',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 29519 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW success'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 29519
+  }
+}
+updateActive: Transaction Signature: 4d5q9fzmb61oc8vBiMuS9Ba7zUB8FGNX7akrKP6A5CWnTNboxUpnisUi6rsX3Q4NPNtPpzydoAbaRv7GNekcEsAX
+State Account after cranking updateActive: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f33e34cff>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 100a3646b>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+updateActive: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348964561 },
+  value: {
+    accounts: null,
+    err: null,
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: UpdateActive',
+      'Program log: Extra lamports in stake balance: 0',
+      'Program log: current staked lamports 9997717120',
+      'Program log: Staking rewards: 0',
+      'Program log: protocol_rewards_fee 0',
+      'Program data: +xKAS9BQrowODHOTK66VNBRS6ll9czuMgJDKl7R/MT3ouAqwzF/53ycDAAAAAAAAAQAAAAxwXVIaaMC+s0WjRENc+qjC20aGpL96lRsebpc5rtoVAQAAAN30KgSAClTeLlg/lPF7CJclt3LRMzUmJxJBUyd20v/GgA7pUwIAAACADulTAgAAAAEAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAfzAACg4AAAD/TOMzDwAAAGtkowABAAAAa2SjAAEAAAAAAAAA/0zjMw8AAAAZejUqDwAAAA==',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 29447 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW success'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 29447
+  }
+}
+updateActive: Transaction Signature: fYM9o5RWyrbGND2y2od7dBMzYg6oVeP6jdETKv2GWyfSyRVvBW1W7sHkMMSWxhbZLLfoXQwwvTrjc2s96rmd1bS
+State Account after cranking updateActive: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f33e34cff>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 100a3646b>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+updateActive: Simulation Result: {
+  context: { apiVersion: '2.0.18', slot: 348964601 },
+  value: {
+    accounts: null,
+    err: null,
+    innerInstructions: null,
+    logs: [
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW invoke [1]',
+      'Program log: Instruction: UpdateActive',
+      'Program log: Extra lamports in stake balance: 0',
+      'Program log: current staked lamports 4997717120',
+      'Program log: Staking rewards: 0',
+      'Program log: protocol_rewards_fee 0',
+      'Program data: +xKAS9BQrowODHOTK66VNBRS6ll9czuMgJDKl7R/MT3ouAqwzF/53ycDAAAAAAAAAgAAAADp9fAgm5sRrjETMozOHtyKe+h7cp0EctVA23aCDlJqAgAAAF4/nWISZ0vhzYq1toeC1qhWeAeZcAmphfdeG/uF0IfrgBzjKQEAAACAHOMpAQAAAAEAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAgBzjKQEAAAD/TOMzDwAAAGtkowABAAAAa2SjAAEAAAAAAAAA/0zjMw8AAAAZejUqDwAAAA==',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW consumed 29447 of 200000 compute units',
+      'Program 2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW success'
+    ],
+    replacementBlockhash: null,
+    returnData: null,
+    unitsConsumed: 29447
+  }
+}
+updateActive: Transaction Signature: 3uWbjyD4avif5juZV1H8ExzTH9A7yXEhvKn3FshTzyv9xkUzLw3DtreEYUDMKLyow48iVEeQsRnGjRv9c8V4bQxR
+State Account after cranking updateActive: {
+  msolMint: PublicKey [PublicKey(msNbZCNwVh32fivnB7ZXvgudSLMpQzmdm8DgcKzmzsm)] {
+    _bn: <BN: b7e8304766d26c6dbb269a71d5e836be326c2dc3716eda3f50a110d3c6ecb74>
+  },
+  adminAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  operationalSolAccount: PublicKey [PublicKey(skVwjd4gvXkpCWbYqkQ7sose5tPPkx22SxYHTurNosC)] {
+    _bn: <BN: d0039972e3bca80562ceb38896d2a42de79d625deec2e4695f12340ee3d8d2f>
+  },
+  treasuryMsolAccount: PublicKey [PublicKey(AYN9LLJFpMs9VpvvrBvDT1vRpPx4eF1yJk8XWpWoCkh6)] {
+    _bn: <BN: 8dc2183b130d1ebda1fe6c743b3bd5898b86125c0f69ec6cddafd3cb2c7c6819>
+  },
+  reserveBumpSeed: 255,
+  msolMintAuthorityBumpSeed: 255,
+  rentExemptForTokenAcc: <BN: 1f1df0>,
+  rewardFee: { basisPoints: 0 },
+  stakeSystem: {
+    stakeList: {
+      account: [PublicKey [PublicKey(PQ47xJZnmrm8Pov9og2CzjNpAAxUUQnET9SS8ppa3S1)]],
+      itemSize: 59,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    delayedUnstakeCoolingDown: <BN: 0>,
+    stakeDepositBumpSeed: 255,
+    stakeWithdrawBumpSeed: 255,
+    slotsForStakeDelta: <BN: bb8>,
+    lastStakeDeltaEpoch: <BN: ffffffffffffffff>,
+    minStake: <BN: 989680>,
+    extraStakeDeltaRuns: 0
+  },
+  validatorSystem: {
+    validatorList: {
+      account: [PublicKey [PublicKey(vukzfmewqz83kxGT4Q9AyZziNhS7KHdvsDHYm9qZwV1)]],
+      itemSize: 63,
+      count: 3,
+      reserved1: [PublicKey [PublicKey(11111111111111111111111111111111)]],
+      reserved2: 0
+    },
+    managerAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+      _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+    },
+    totalValidatorScore: 8,
+    totalActiveBalance: <BN: f33e34cff>,
+    autoAddValidatorEnabled: 0
+  },
+  liqPool: {
+    lpMint: PublicKey [PublicKey(V4rThPYZw8wccW8zXkw6fEp18DwGaWD5sVN5reCb1pm)] {
+      _bn: <BN: 7309e75f9aa90806d21a3e4dcd725f332ff9562447326af1683a44cf7bc4532>
+    },
+    lpMintAuthorityBumpSeed: 253,
+    solLegBumpSeed: 255,
+    msolLegAuthorityBumpSeed: 252,
+    msolLeg: PublicKey [PublicKey(ENAQH6k1hnNnujdPgmNa4qoCp26wKKtxNS5AypAon4sc)] {
+      _bn: <BN: c693c1d530125b2505135d73cf23d0f732ac16d30fbe9da431f55c3326bc262b>
+    },
+    lpLiquidityTarget: <BN: ba43b7400>,
+    lpMaxFee: { basisPoints: 10 },
+    lpMinFee: { basisPoints: 1 },
+    treasuryCut: { basisPoints: 1 },
+    lpSupply: <BN: 0>,
+    lentFromSolLeg: <BN: 0>,
+    liquiditySolCap: <BN: ffffffffffffffff>
+  },
+  availableReserveBalance: <BN: 0>,
+  msolSupply: <BN: f2a357a19>,
+  msolPrice: <BN: 100a3646b>,
+  circulatingTicketCount: <BN: 0>,
+  circulatingTicketBalance: <BN: 0>,
+  lentFromReserve: <BN: 0>,
+  minDeposit: <BN: 1>,
+  minWithdraw: <BN: 1>,
+  stakingSolCap: <BN: ffffffffffffffff>,
+  emergencyCoolingDown: <BN: 0>,
+  pauseAuthority: PublicKey [PublicKey(sLd11y9dm8tLTVHxfeX4BgueJyKMCGc51Nr3SevhdHM)] {
+    _bn: <BN: ce539c3cc29779dc582210de6d4928cd0a3b7597bf33667cf61cd0598625bb4>
+  },
+  paused: false,
+  delayedUnstakeFee: { bpCents: 0 },
+  withdrawStakeAccountFee: { bpCents: 0 },
+  withdrawStakeAccountEnabled: false,
+  lastStakeMoveEpoch: <BN: 0>,
+  stakeMoved: <BN: 0>,
+  maxStakeMovedPerEpoch: { basisPoints: 10000 }
+}
+Simulation completed

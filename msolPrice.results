@@ -1,0 +1,68 @@
+# Constants for the calculation
+initial_price = 4294967296  # Initial mSOL price in integer
+current_price = 4300318817  # Current mSOL price in integer
+current_price = 4305675371
+epoch_duration_days = 2     # Duration of one epoch in days
+days_in_year = 365          # Number of days in a year
+
+# Calculate price ratio
+price_ratio = current_price / initial_price
+
+# Periods per year (how many epochs in a year)
+periods_per_year = days_in_year / epoch_duration_days
+
+# Calculate APR
+apr = (price_ratio - 1) * periods_per_year * 100  # Convert to percentage
+
+# Calculate APY
+apy = ((price_ratio) ** periods_per_year - 1) * 100  # Convert to percentage
+
+apr, apy
+
+(22.7394649409689, 25.51475059884534)
+
+ pub fn calculate_apy(&self, old_msol_price: u64, new_msol_price: u64, periods_per_year: u64) -> Result<u64> {
+        // Ensure old_msol_price is not zero to avoid division by zero
+        if old_msol_price == 0 {
+            return Err(MarinadeError::CalculationFailure.into());
+        }
+
+        // Calculate the percentage change in fixed-point arithmetic
+        let percentage_change = (new_msol_price as i128 - old_msol_price as i128) * Self::PRICE_DENOMINATOR as i128 / old_msol_price as i128;
+
+        // Calculate the APY using fixed-point arithmetic
+        let apy = ((Self::PRICE_DENOMINATOR as i128 + percentage_change) as u128)
+            .checked_pow(periods_per_year as u32)
+            .ok_or(MarinadeError::CalculationFailure)?
+            .checked_sub(Self::PRICE_DENOMINATOR as u128)
+            .ok_or(MarinadeError::CalculationFailure)?;
+
+        // Return the APY as a percentage in fixed-point format
+        Ok(apy)
+    }
+
+    pub fn calculate_apr(&self, old_msol_price: u64, new_msol_price: u64, periods_per_year: u64) -> Result<u64> {
+        // Ensure old_msol_price is not zero to avoid division by zero
+        if old_msol_price == 0 {
+            return Err(MarinadeError::CalculationFailure.into());
+        }
+
+        // Calculate the percentage change in fixed-point arithmetic
+        let percentage_change = (new_msol_price as i128 - old_msol_price as i128) * Self::PRICE_DENOMINATOR as i128 / old_msol_price as i128;
+
+        // Calculate the APR by scaling the percentage change to an annual rate
+        let apr = percentage_change * periods_per_year as i128 / Self::PRICE_DENOMINATOR as i128;
+
+        // Return the APR as a percentage in fixed-point format
+        Ok(apr as u64)
+    }
+
+    pub fn determine_periods_per_year(frequency: &str) -> Result<u64> {
+        match frequency {
+            "daily" => Ok(365),
+            "weekly" => Ok(52),
+            "monthly" => Ok(12),
+            "quarterly" => Ok(4),
+            _ => Err(MarinadeError::InvalidFrequency.into()),
+        }
+    }
