@@ -6,7 +6,7 @@ import {
     SystemProgram, 
     Transaction 
 } from "@solana/web3.js";
-import idl from '../../targets/idl/marinade_forking_smart_contract.json';
+import idl from '../../targets/idl/solistic_staking.json';
 import { 
     ASSOCIATED_TOKEN_PROGRAM_ID, 
     getAssociatedTokenAddressSync, 
@@ -24,7 +24,6 @@ export const stateAccount = loadKeypairFromFile("../../.keys/stateAccount1.json"
 export const stakeList = loadKeypairFromFile("../../.keys/stakeList1.json")
 export const validatorsList = loadKeypairFromFile("../../.keys/validatorsList1.json")
 export const operationalSolAccount = loadKeypairFromFile("../../.keys/operationalSolAccount1.json")
-export const stakeAccount = loadKeypairFromFile("../../.keys/stakeAccount1.json")
 export const ssolMintKeypair = loadKeypairFromFile("../../.keys/ssolMint1.json")
 export const lpMintKeypair = loadKeypairFromFile("../../.keys/lpMint1.json")
 export const ssolMint = ssolMintKeypair.publicKey
@@ -114,7 +113,6 @@ export const preRequisiteSetup = async (connection: Connection, payer: Signer): 
         stakeList: stakeList.publicKey,
         validatorList: validatorsList.publicKey,
         operationalSolAccount: operationalSolAccount.publicKey,
-        stakeAccount: stakeAccount.publicKey,
         authoritySSolAcc: authoritySsolAcc,
         authorityLpAcc: authorityLpAcc,
         reservePda: reservePda,
@@ -135,7 +133,6 @@ export const preRequisiteSetup = async (connection: Connection, payer: Signer): 
     console.log("stakeList:", stakeList.publicKey.toBase58());
     console.log("validatorsList:", validatorsList.publicKey.toBase58());
     console.log("operationalSolAccount:", operationalSolAccount.publicKey.toBase58());
-    console.log("stakeAccount:", stakeAccount.publicKey.toBase58());
     console.log("authoritySSolAcc:", authoritySsolAcc.toBase58());
     console.log("authorityLpAcc:", authorityLpAcc.toBase58());
     console.log("reservePda:", reservePda.toBase58());

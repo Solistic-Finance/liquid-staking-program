@@ -1,6 +1,6 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { MarinadeForkingSmartContract } from "../target/types/marinade_forking_smart_contract";
+import { SolisticStaking } from "../target/types/solistic_staking";
 import {
     Keypair,
     PublicKey,
@@ -33,13 +33,13 @@ import {
 import { ASSOCIATED_PROGRAM_ID } from "@coral-xyz/anchor/dist/cjs/utils/token";
 import { BN } from "bn.js";
 import { bs58 } from "@coral-xyz/anchor/dist/cjs/utils/bytes";
-import { authorityAcc, connection, lpMint, mint_to, mSolLeg, msolMint, operationalSolAccount, payer, stakeAccount, stakeAuthority, stakeDepositAuthority, stakeList, stakeWithdrawAuthority, stateAccount, treasuryMsolAccount, validatorList, voteAccount } from ".";
+import { authorityAcc, connection, lpMint, mint_to, sSolLeg, ssolMint, operationalSolAccount, payer, stakeAccount, stakeAuthority, stakeDepositAuthority, stakeList, stakeWithdrawAuthority, stateAccount, treasurySsolAccount, validatorList, voteAccount } from ".";
 
-describe("marinade-forking-smart-contract", () => {
+describe("solistic-staking", () => {
     // Configure the client to use the local cluster.
     anchor.setProvider(anchor.AnchorProvider.env());
 
-    const program = anchor.workspace.MarinadeForkingSmartContract as Program<MarinadeForkingSmartContract>;
+    const program = anchor.workspace.SolisticStaking as Program<SolisticStaking>;
 
     const validatorVote = voteAccount[0]
     const newsplitStakeAccount = Keypair.generate()
@@ -58,15 +58,15 @@ describe("marinade-forking-smart-contract", () => {
     // * -------------------------------------------------------------------------------------
 
     it("withdraw_stake_account", async () => {
-        const burnMsolFrom = await getOrCreateAssociatedTokenAccount(connection, stakeAuthority, msolMint, stakeAuthority.publicKey)
+        const burnSsolFrom = await getOrCreateAssociatedTokenAccount(connection, stakeAuthority, ssolMint, stakeAuthority.publicKey)
 
         const tx = await program.methods.withdrawStakeAccount(0, 0, new BN(10 ** 10), validatorVote)
             .accounts({
                 state: stateAccount.publicKey,
-                msolMint: msolMint,
-                burnMsolFrom: burnMsolFrom.address,
-                burnMsolAuthority: stakeAuthority.publicKey,
-                treasuryMsolAccount: treasuryMsolAccount,
+                ssolMint: ssolMint,
+                burnSsolFrom: burnSsolFrom.address,
+                burnSsolAuthority: stakeAuthority.publicKey,
+                treasurySsolAccount: treasurySsolAccount,
                 validatorList: validatorList.publicKey,
                 stakeList: stakeList.publicKey,
                 stakeWithdrawAuthority: stakeWithdrawAuthority,

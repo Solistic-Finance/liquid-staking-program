@@ -7,7 +7,7 @@ resolution = true
 skip-lint = false
 
 [programs.devnet]
-marinade_forking_smart_contract = "2PpfLxCrrwb3Eb9pn3uC2FyWWqK6mH7RQDNy9hgF2pTW"
+solistic_staking = "sStz8DdEKCeB5kiNcU634MWvxgPuikAxcE5YnNBsmc4"
 
 [registry]
 url = "https://api.apr.dev"
@@ -17,7 +17,7 @@ cluster = "https://api.devnet.solana.com "
 wallet = "./id.json"
 
 [workspace]
-members = ["programs/marinade-forking-smart-contract"]
+members = ["programs/solistic-staking"]
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"

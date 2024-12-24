@@ -2,12 +2,12 @@ import { BN } from "bn.js";
 import { connection, payer } from "../config";
 import { initialize, preRequisite } from "../instructions";
 import { InitializeDataParam } from "../types";
-import { update_msol_token_metadata } from "../instructions/basic_instruction";
-import { UpdateMsolTokenMetadata } from "../types/basic_instruction_types";
+import { update_ssol_token_metadata } from "../instructions/basic_instruction";
+import { UpdateSsolTokenMetadata } from "../types/basic_instruction_types";
 import { update_lp_mint_token_metadata } from "../instructions/basic_instruction";
 import { UpdateLpMintTokenMetadata } from "../types/basic_instruction_types";
 
-export const _update_msol_and_lp_mint_token_metadata = async () => {
+export const _update_ssol_and_lp_mint_token_metadata = async () => {
     const initParam = await preRequisite(connection, payer)
 
     const initializeData: InitializeDataParam = {
@@ -29,14 +29,14 @@ export const _update_msol_and_lp_mint_token_metadata = async () => {
 
     await initialize(connection, payer, initializeData, initParam)
 
-    const updateMsolTokenMetadataData: UpdateMsolTokenMetadata = {
+    const updateSsolTokenMetadataData: UpdateSsolTokenMetadata = {
         stateAccount: initParam.stateAccount,
-        msolMint: initParam.msolMint,
+        ssolMint: initParam.ssolMint,
         name: "Solistic Staked SOL",
         symbol: "sSOL",
         uri: "https://brown-multiple-bass-497.mypinata.cloud/ipfs/bafkreid25ituozgyh7ort3ydznntqojzu2lwh22b5zuc763mwbwkbtvbxa",
     }
-    await update_msol_token_metadata(connection, payer, updateMsolTokenMetadataData)
+    await update_ssol_token_metadata(connection, payer, updateSsolTokenMetadataData)
 
 
     const updateLpMintTokenMetadataData: UpdateLpMintTokenMetadata = {

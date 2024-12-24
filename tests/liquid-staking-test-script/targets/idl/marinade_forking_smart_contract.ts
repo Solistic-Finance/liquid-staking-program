@@ -1,6 +1,6 @@
-export type MarinadeForkingSmartContract = {
+export type SolisticStaking = {
   "version": "0.1.0",
-  "name": "marinade_forking_smart_contract",
+  "name": "solistic_staking",
   "instructions": [
     {
       "name": "initialize",
@@ -26,7 +26,7 @@ export type MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "msolMint",
+          "name": "ssolMint",
           "isMut": false,
           "isSigner": false
         },
@@ -49,14 +49,14 @@ export type MarinadeForkingSmartContract = {
               "isSigner": false
             },
             {
-              "name": "msolLeg",
+              "name": "ssolLeg",
               "isMut": false,
               "isSigner": false
             }
           ]
         },
         {
-          "name": "treasuryMsolAccount",
+          "name": "treasurySsolAccount",
           "isMut": false,
           "isSigner": false
         },
@@ -266,7 +266,7 @@ export type MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "msolMint",
+          "name": "ssolMint",
           "isMut": true,
           "isSigner": false
         },
@@ -276,12 +276,12 @@ export type MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "liqPoolMsolLeg",
+          "name": "liqPoolSsolLeg",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "liqPoolMsolLegAuthority",
+          "name": "liqPoolSsolLegAuthority",
           "isMut": false,
           "isSigner": false
         },
@@ -300,11 +300,11 @@ export type MarinadeForkingSmartContract = {
           "isMut": true,
           "isSigner": false,
           "docs": [
-            "user mSOL Token account to send the mSOL"
+            "user sSOL Token account to send the sSOL"
           ]
         },
         {
-          "name": "msolMintAuthority",
+          "name": "ssolMintAuthority",
           "isMut": false,
           "isSigner": false
         },
@@ -365,7 +365,7 @@ export type MarinadeForkingSmartContract = {
           "isSigner": true
         },
         {
-          "name": "msolMint",
+          "name": "ssolMint",
           "isMut": true,
           "isSigner": false
         },
@@ -374,11 +374,11 @@ export type MarinadeForkingSmartContract = {
           "isMut": true,
           "isSigner": false,
           "docs": [
-            "user mSOL Token account to send the mSOL"
+            "user sSOL Token account to send the sSOL"
           ]
         },
         {
-          "name": "msolMintAuthority",
+          "name": "ssolMintAuthority",
           "isMut": false,
           "isSigner": false
         },
@@ -424,7 +424,7 @@ export type MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "msolMint",
+          "name": "ssolMint",
           "isMut": true,
           "isSigner": false
         },
@@ -434,22 +434,22 @@ export type MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "liqPoolMsolLeg",
+          "name": "liqPoolSsolLeg",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "treasuryMsolAccount",
+          "name": "treasurySsolAccount",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "getMsolFrom",
+          "name": "getSsolFrom",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "getMsolFromAuthority",
+          "name": "getSsolFromAuthority",
           "isMut": false,
           "isSigner": true
         },
@@ -471,7 +471,7 @@ export type MarinadeForkingSmartContract = {
       ],
       "args": [
         {
-          "name": "msolAmount",
+          "name": "ssolAmount",
           "type": "u64"
         }
       ]
@@ -495,7 +495,7 @@ export type MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "liqPoolMsolLeg",
+          "name": "liqPoolSsolLeg",
           "isMut": false,
           "isSigner": false
         },
@@ -561,7 +561,7 @@ export type MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "transferMsolTo",
+          "name": "transferSsolTo",
           "isMut": true,
           "isSigner": false
         },
@@ -571,12 +571,12 @@ export type MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "liqPoolMsolLeg",
+          "name": "liqPoolSsolLeg",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "liqPoolMsolLegAuthority",
+          "name": "liqPoolSsolLegAuthority",
           "isMut": false,
           "isSigner": false
         },
@@ -622,7 +622,7 @@ export type MarinadeForkingSmartContract = {
       ]
     },
     {
-      "name": "configMarinade",
+      "name": "configSolistic",
       "accounts": [
         {
           "name": "state",
@@ -639,13 +639,13 @@ export type MarinadeForkingSmartContract = {
         {
           "name": "params",
           "type": {
-            "defined": "ConfigMarinadeParams"
+            "defined": "ConfigSolisticParams"
           }
         }
       ]
     },
     {
-      "name": "updateMsolTokenMetadata",
+      "name": "updateSsolTokenMetadata",
       "accounts": [
         {
           "name": "payer",
@@ -658,17 +658,17 @@ export type MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "msolMint",
+          "name": "ssolMint",
           "isMut": false,
           "isSigner": false
         },
         {
-          "name": "msolMintAuthority",
+          "name": "ssolMintAuthority",
           "isMut": false,
           "isSigner": false
         },
         {
-          "name": "msolMintMetadataAccount",
+          "name": "ssolMintMetadataAccount",
           "isMut": true,
           "isSigner": false
         },
@@ -821,17 +821,17 @@ export type MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "msolMint",
+          "name": "ssolMint",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "burnMsolFrom",
+          "name": "burnSsolFrom",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "burnMsolAuthority",
+          "name": "burnSsolAuthority",
           "isMut": false,
           "isSigner": true
         },
@@ -858,7 +858,7 @@ export type MarinadeForkingSmartContract = {
       ],
       "args": [
         {
-          "name": "msolAmount",
+          "name": "ssolAmount",
           "type": "u64"
         }
       ]
@@ -1017,17 +1017,17 @@ export type MarinadeForkingSmartContract = {
               "isSigner": false
             },
             {
-              "name": "msolMint",
+              "name": "ssolMint",
               "isMut": true,
               "isSigner": false
             },
             {
-              "name": "msolMintAuthority",
+              "name": "ssolMintAuthority",
               "isMut": false,
               "isSigner": false
             },
             {
-              "name": "treasuryMsolAccount",
+              "name": "treasurySsolAccount",
               "isMut": true,
               "isSigner": false
             },
@@ -1102,17 +1102,17 @@ export type MarinadeForkingSmartContract = {
               "isSigner": false
             },
             {
-              "name": "msolMint",
+              "name": "ssolMint",
               "isMut": true,
               "isSigner": false
             },
             {
-              "name": "msolMintAuthority",
+              "name": "ssolMintAuthority",
               "isMut": false,
               "isSigner": false
             },
             {
-              "name": "treasuryMsolAccount",
+              "name": "treasurySsolAccount",
               "isMut": true,
               "isSigner": false
             },
@@ -1594,22 +1594,22 @@ export type MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "msolMint",
+          "name": "ssolMint",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "burnMsolFrom",
+          "name": "burnSsolFrom",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "burnMsolAuthority",
+          "name": "burnSsolAuthority",
           "isMut": true,
           "isSigner": true
         },
         {
-          "name": "treasuryMsolAccount",
+          "name": "treasurySsolAccount",
           "isMut": true,
           "isSigner": false
         },
@@ -1679,7 +1679,7 @@ export type MarinadeForkingSmartContract = {
           "type": "u32"
         },
         {
-          "name": "msolAmount",
+          "name": "ssolAmount",
           "type": "u64"
         },
         {
@@ -1792,7 +1792,7 @@ export type MarinadeForkingSmartContract = {
         "kind": "struct",
         "fields": [
           {
-            "name": "msolMint",
+            "name": "ssolMint",
             "type": "publicKey"
           },
           {
@@ -1804,7 +1804,7 @@ export type MarinadeForkingSmartContract = {
             "type": "publicKey"
           },
           {
-            "name": "treasuryMsolAccount",
+            "name": "treasurySsolAccount",
             "type": "publicKey"
           },
           {
@@ -1812,7 +1812,7 @@ export type MarinadeForkingSmartContract = {
             "type": "u8"
           },
           {
-            "name": "msolMintAuthorityBumpSeed",
+            "name": "ssolMintAuthorityBumpSeed",
             "type": "u8"
           },
           {
@@ -1848,11 +1848,11 @@ export type MarinadeForkingSmartContract = {
             "type": "u64"
           },
           {
-            "name": "msolSupply",
+            "name": "ssolSupply",
             "type": "u64"
           },
           {
-            "name": "msolPrice",
+            "name": "ssolPrice",
             "type": "u64"
           },
           {
@@ -2079,7 +2079,7 @@ export type MarinadeForkingSmartContract = {
             }
           },
           {
-            "name": "treasuryMsolAccount",
+            "name": "treasurySsolAccount",
             "type": {
               "option": "publicKey"
             }
@@ -2132,7 +2132,7 @@ export type MarinadeForkingSmartContract = {
       }
     },
     {
-      "name": "ConfigMarinadeParams",
+      "name": "ConfigSolisticParams",
       "type": {
         "kind": "struct",
         "fields": [
@@ -2337,11 +2337,11 @@ export type MarinadeForkingSmartContract = {
             "type": "u8"
           },
           {
-            "name": "msolLegAuthorityBumpSeed",
+            "name": "ssolLegAuthorityBumpSeed",
             "type": "u8"
           },
           {
-            "name": "msolLeg",
+            "name": "ssolLeg",
             "type": "publicKey"
           },
           {
@@ -2363,7 +2363,7 @@ export type MarinadeForkingSmartContract = {
           {
             "name": "lpMinFee",
             "docs": [
-              "SOL/mSOL Liquidity pool min fee"
+              "SOL/sSOL Liquidity pool min fee"
             ],
             "type": {
               "defined": "Fee"
@@ -2383,7 +2383,7 @@ export type MarinadeForkingSmartContract = {
             "type": "u64"
           },
           {
-            "name": "lentFromSolLeg",
+            "name": "lentFrosSolLeg",
             "type": "u64"
           },
           {
@@ -2621,7 +2621,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "treasuryMsolAccountChange",
+          "name": "treasurySsolAccountChange",
           "type": {
             "option": {
               "defined": "PubkeyValueChange"
@@ -2687,7 +2687,7 @@ export type MarinadeForkingSmartContract = {
       ]
     },
     {
-      "name": "ConfigMarinadeEvent",
+      "name": "ConfigSolisticEvent",
       "fields": [
         {
           "name": "state",
@@ -2821,7 +2821,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolMint",
+          "name": "ssolMint",
           "type": "publicKey",
           "index": false
         },
@@ -2836,12 +2836,12 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "lpMsolLeg",
+          "name": "lpSsolLeg",
           "type": "publicKey",
           "index": false
         },
         {
-          "name": "treasuryMsolAccount",
+          "name": "treasurySsolAccount",
           "type": "publicKey",
           "index": false
         }
@@ -3286,7 +3286,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "delegationGrowthMsolFees",
+          "name": "delegationGrowthSsolFees",
           "type": {
             "option": "u64"
           },
@@ -3298,7 +3298,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "extraMsolFees",
+          "name": "extraSsolFees",
           "type": {
             "option": "u64"
           },
@@ -3315,7 +3315,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolPriceChange",
+          "name": "ssolPriceChange",
           "type": {
             "defined": "U64ValueChange"
           },
@@ -3334,7 +3334,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolSupply",
+          "name": "ssolSupply",
           "type": "u64",
           "index": false
         }
@@ -3374,14 +3374,14 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolFees",
+          "name": "ssolFees",
           "type": {
             "option": "u64"
           },
           "index": false
         },
         {
-          "name": "msolPriceChange",
+          "name": "ssolPriceChange",
           "type": {
             "defined": "U64ValueChange"
           },
@@ -3405,7 +3405,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolSupply",
+          "name": "ssolSupply",
           "type": "u64",
           "index": false
         }
@@ -3495,12 +3495,12 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "userMsolBalance",
+          "name": "userSsolBalance",
           "type": "u64",
           "index": false
         },
         {
-          "name": "burnedMsolAmount",
+          "name": "burnedSsolAmount",
           "type": "u64",
           "index": false
         },
@@ -3520,7 +3520,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolSupply",
+          "name": "ssolSupply",
           "type": "u64",
           "index": false
         }
@@ -3575,7 +3575,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolSupply",
+          "name": "ssolSupply",
           "type": "u64",
           "index": false
         }
@@ -3590,7 +3590,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolOwner",
+          "name": "ssolOwner",
           "type": "publicKey",
           "index": false
         },
@@ -3600,19 +3600,19 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "liqPoolMsolBalance",
+          "name": "liqPoolSsolBalance",
           "type": "u64",
           "index": false
         },
         {
-          "name": "treasuryMsolBalance",
+          "name": "treasurySsolBalance",
           "type": {
             "option": "u64"
           },
           "index": false
         },
         {
-          "name": "userMsolBalance",
+          "name": "userSsolBalance",
           "type": "u64",
           "index": false
         },
@@ -3622,17 +3622,17 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolAmount",
+          "name": "ssolAmount",
           "type": "u64",
           "index": false
         },
         {
-          "name": "msolFee",
+          "name": "ssolFee",
           "type": "u64",
           "index": false
         },
         {
-          "name": "treasuryMsolCut",
+          "name": "treasurySsolCut",
           "type": "u64",
           "index": false
         },
@@ -3683,7 +3683,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolLegBalance",
+          "name": "ssolLegBalance",
           "type": "u64",
           "index": false
         },
@@ -3698,7 +3698,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "userMsolBalance",
+          "name": "userSsolBalance",
           "type": "u64",
           "index": false
         },
@@ -3718,7 +3718,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolOutAmount",
+          "name": "ssolOutAmount",
           "type": "u64",
           "index": false
         }
@@ -3850,12 +3850,12 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "userMsolBalance",
+          "name": "userSsolBalance",
           "type": "u64",
           "index": false
         },
         {
-          "name": "msolMinted",
+          "name": "ssolMinted",
           "type": "u64",
           "index": false
         },
@@ -3865,7 +3865,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolSupply",
+          "name": "ssolSupply",
           "type": "u64",
           "index": false
         }
@@ -3890,7 +3890,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "userMsolBalance",
+          "name": "userSsolBalance",
           "type": "u64",
           "index": false
         },
@@ -3900,7 +3900,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolLegBalance",
+          "name": "ssolLegBalance",
           "type": "u64",
           "index": false
         },
@@ -3915,7 +3915,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolSwapped",
+          "name": "ssolSwapped",
           "type": "u64",
           "index": false
         },
@@ -3925,7 +3925,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolMinted",
+          "name": "ssolMinted",
           "type": "u64",
           "index": false
         },
@@ -3935,7 +3935,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolSupply",
+          "name": "ssolSupply",
           "type": "u64",
           "index": false
         }
@@ -3980,22 +3980,22 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "userMsolBalance",
+          "name": "userSsolBalance",
           "type": "u64",
           "index": false
         },
         {
-          "name": "userMsolAuth",
+          "name": "userSsolAuth",
           "type": "publicKey",
           "index": false
         },
         {
-          "name": "msolBurned",
+          "name": "ssolBurned",
           "type": "u64",
           "index": false
         },
         {
-          "name": "msolFees",
+          "name": "ssolFees",
           "type": "u64",
           "index": false
         },
@@ -4025,7 +4025,7 @@ export type MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolSupply",
+          "name": "ssolSupply",
           "type": "u64",
           "index": false
         }
@@ -4369,8 +4369,8 @@ export type MarinadeForkingSmartContract = {
     },
     {
       "code": 6067,
-      "name": "RedepositingMarinadeStake",
-      "msg": "Redepositing marinade stake"
+      "name": "RedepositingSolisticStake",
+      "msg": "Redepositing solistic stake"
     },
     {
       "code": 6068,
@@ -4389,13 +4389,13 @@ export type MarinadeForkingSmartContract = {
     },
     {
       "code": 6071,
-      "name": "UnregisteredMsolMinted",
-      "msg": "Some mSOL tokens was minted outside of marinade contract"
+      "name": "UnregisteredSsolMinted",
+      "msg": "Some sSOL tokens was minted outside of solistic contract"
     },
     {
       "code": 6072,
       "name": "UnregisteredLPMinted",
-      "msg": "Some LP tokens was minted outside of marinade contract"
+      "msg": "Some LP tokens was minted outside of solistic contract"
     },
     {
       "code": 6073,
@@ -4470,9 +4470,9 @@ export type MarinadeForkingSmartContract = {
   ]
 };
 
-export const IDL: MarinadeForkingSmartContract = {
+export const IDL: SolisticStaking = {
   "version": "0.1.0",
-  "name": "marinade_forking_smart_contract",
+  "name": "solistic_staking",
   "instructions": [
     {
       "name": "initialize",
@@ -4498,7 +4498,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "msolMint",
+          "name": "ssolMint",
           "isMut": false,
           "isSigner": false
         },
@@ -4521,14 +4521,14 @@ export const IDL: MarinadeForkingSmartContract = {
               "isSigner": false
             },
             {
-              "name": "msolLeg",
+              "name": "ssolLeg",
               "isMut": false,
               "isSigner": false
             }
           ]
         },
         {
-          "name": "treasuryMsolAccount",
+          "name": "treasurySsolAccount",
           "isMut": false,
           "isSigner": false
         },
@@ -4738,7 +4738,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "msolMint",
+          "name": "ssolMint",
           "isMut": true,
           "isSigner": false
         },
@@ -4748,12 +4748,12 @@ export const IDL: MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "liqPoolMsolLeg",
+          "name": "liqPoolSsolLeg",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "liqPoolMsolLegAuthority",
+          "name": "liqPoolSsolLegAuthority",
           "isMut": false,
           "isSigner": false
         },
@@ -4772,11 +4772,11 @@ export const IDL: MarinadeForkingSmartContract = {
           "isMut": true,
           "isSigner": false,
           "docs": [
-            "user mSOL Token account to send the mSOL"
+            "user sSOL Token account to send the sSOL"
           ]
         },
         {
-          "name": "msolMintAuthority",
+          "name": "ssolMintAuthority",
           "isMut": false,
           "isSigner": false
         },
@@ -4837,7 +4837,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "isSigner": true
         },
         {
-          "name": "msolMint",
+          "name": "ssolMint",
           "isMut": true,
           "isSigner": false
         },
@@ -4846,11 +4846,11 @@ export const IDL: MarinadeForkingSmartContract = {
           "isMut": true,
           "isSigner": false,
           "docs": [
-            "user mSOL Token account to send the mSOL"
+            "user sSOL Token account to send the sSOL"
           ]
         },
         {
-          "name": "msolMintAuthority",
+          "name": "ssolMintAuthority",
           "isMut": false,
           "isSigner": false
         },
@@ -4896,7 +4896,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "msolMint",
+          "name": "ssolMint",
           "isMut": true,
           "isSigner": false
         },
@@ -4906,22 +4906,22 @@ export const IDL: MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "liqPoolMsolLeg",
+          "name": "liqPoolSsolLeg",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "treasuryMsolAccount",
+          "name": "treasurySsolAccount",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "getMsolFrom",
+          "name": "getSsolFrom",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "getMsolFromAuthority",
+          "name": "getSsolFromAuthority",
           "isMut": false,
           "isSigner": true
         },
@@ -4943,7 +4943,7 @@ export const IDL: MarinadeForkingSmartContract = {
       ],
       "args": [
         {
-          "name": "msolAmount",
+          "name": "ssolAmount",
           "type": "u64"
         }
       ]
@@ -4967,7 +4967,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "liqPoolMsolLeg",
+          "name": "liqPoolSsolLeg",
           "isMut": false,
           "isSigner": false
         },
@@ -5033,7 +5033,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "transferMsolTo",
+          "name": "transferSsolTo",
           "isMut": true,
           "isSigner": false
         },
@@ -5043,12 +5043,12 @@ export const IDL: MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "liqPoolMsolLeg",
+          "name": "liqPoolSsolLeg",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "liqPoolMsolLegAuthority",
+          "name": "liqPoolSsolLegAuthority",
           "isMut": false,
           "isSigner": false
         },
@@ -5094,7 +5094,7 @@ export const IDL: MarinadeForkingSmartContract = {
       ]
     },
     {
-      "name": "configMarinade",
+      "name": "configSolistic",
       "accounts": [
         {
           "name": "state",
@@ -5111,13 +5111,13 @@ export const IDL: MarinadeForkingSmartContract = {
         {
           "name": "params",
           "type": {
-            "defined": "ConfigMarinadeParams"
+            "defined": "ConfigSolisticParams"
           }
         }
       ]
     },
     {
-      "name": "updateMsolTokenMetadata",
+      "name": "updateSsolTokenMetadata",
       "accounts": [
         {
           "name": "payer",
@@ -5130,17 +5130,17 @@ export const IDL: MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "msolMint",
+          "name": "ssolMint",
           "isMut": false,
           "isSigner": false
         },
         {
-          "name": "msolMintAuthority",
+          "name": "ssolMintAuthority",
           "isMut": false,
           "isSigner": false
         },
         {
-          "name": "msolMintMetadataAccount",
+          "name": "ssolMintMetadataAccount",
           "isMut": true,
           "isSigner": false
         },
@@ -5293,17 +5293,17 @@ export const IDL: MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "msolMint",
+          "name": "ssolMint",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "burnMsolFrom",
+          "name": "burnSsolFrom",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "burnMsolAuthority",
+          "name": "burnSsolAuthority",
           "isMut": false,
           "isSigner": true
         },
@@ -5330,7 +5330,7 @@ export const IDL: MarinadeForkingSmartContract = {
       ],
       "args": [
         {
-          "name": "msolAmount",
+          "name": "ssolAmount",
           "type": "u64"
         }
       ]
@@ -5489,17 +5489,17 @@ export const IDL: MarinadeForkingSmartContract = {
               "isSigner": false
             },
             {
-              "name": "msolMint",
+              "name": "ssolMint",
               "isMut": true,
               "isSigner": false
             },
             {
-              "name": "msolMintAuthority",
+              "name": "ssolMintAuthority",
               "isMut": false,
               "isSigner": false
             },
             {
-              "name": "treasuryMsolAccount",
+              "name": "treasurySsolAccount",
               "isMut": true,
               "isSigner": false
             },
@@ -5574,17 +5574,17 @@ export const IDL: MarinadeForkingSmartContract = {
               "isSigner": false
             },
             {
-              "name": "msolMint",
+              "name": "ssolMint",
               "isMut": true,
               "isSigner": false
             },
             {
-              "name": "msolMintAuthority",
+              "name": "ssolMintAuthority",
               "isMut": false,
               "isSigner": false
             },
             {
-              "name": "treasuryMsolAccount",
+              "name": "treasurySsolAccount",
               "isMut": true,
               "isSigner": false
             },
@@ -6066,22 +6066,22 @@ export const IDL: MarinadeForkingSmartContract = {
           "isSigner": false
         },
         {
-          "name": "msolMint",
+          "name": "ssolMint",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "burnMsolFrom",
+          "name": "burnSsolFrom",
           "isMut": true,
           "isSigner": false
         },
         {
-          "name": "burnMsolAuthority",
+          "name": "burnSsolAuthority",
           "isMut": true,
           "isSigner": true
         },
         {
-          "name": "treasuryMsolAccount",
+          "name": "treasurySsolAccount",
           "isMut": true,
           "isSigner": false
         },
@@ -6151,7 +6151,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "type": "u32"
         },
         {
-          "name": "msolAmount",
+          "name": "ssolAmount",
           "type": "u64"
         },
         {
@@ -6264,7 +6264,7 @@ export const IDL: MarinadeForkingSmartContract = {
         "kind": "struct",
         "fields": [
           {
-            "name": "msolMint",
+            "name": "ssolMint",
             "type": "publicKey"
           },
           {
@@ -6276,7 +6276,7 @@ export const IDL: MarinadeForkingSmartContract = {
             "type": "publicKey"
           },
           {
-            "name": "treasuryMsolAccount",
+            "name": "treasurySsolAccount",
             "type": "publicKey"
           },
           {
@@ -6284,7 +6284,7 @@ export const IDL: MarinadeForkingSmartContract = {
             "type": "u8"
           },
           {
-            "name": "msolMintAuthorityBumpSeed",
+            "name": "ssolMintAuthorityBumpSeed",
             "type": "u8"
           },
           {
@@ -6320,11 +6320,11 @@ export const IDL: MarinadeForkingSmartContract = {
             "type": "u64"
           },
           {
-            "name": "msolSupply",
+            "name": "ssolSupply",
             "type": "u64"
           },
           {
-            "name": "msolPrice",
+            "name": "ssolPrice",
             "type": "u64"
           },
           {
@@ -6551,7 +6551,7 @@ export const IDL: MarinadeForkingSmartContract = {
             }
           },
           {
-            "name": "treasuryMsolAccount",
+            "name": "treasurySsolAccount",
             "type": {
               "option": "publicKey"
             }
@@ -6604,7 +6604,7 @@ export const IDL: MarinadeForkingSmartContract = {
       }
     },
     {
-      "name": "ConfigMarinadeParams",
+      "name": "ConfigSolisticParams",
       "type": {
         "kind": "struct",
         "fields": [
@@ -6809,11 +6809,11 @@ export const IDL: MarinadeForkingSmartContract = {
             "type": "u8"
           },
           {
-            "name": "msolLegAuthorityBumpSeed",
+            "name": "ssolLegAuthorityBumpSeed",
             "type": "u8"
           },
           {
-            "name": "msolLeg",
+            "name": "ssolLeg",
             "type": "publicKey"
           },
           {
@@ -6835,7 +6835,7 @@ export const IDL: MarinadeForkingSmartContract = {
           {
             "name": "lpMinFee",
             "docs": [
-              "SOL/mSOL Liquidity pool min fee"
+              "SOL/sSOL Liquidity pool min fee"
             ],
             "type": {
               "defined": "Fee"
@@ -6855,7 +6855,7 @@ export const IDL: MarinadeForkingSmartContract = {
             "type": "u64"
           },
           {
-            "name": "lentFromSolLeg",
+            "name": "lentFrosSolLeg",
             "type": "u64"
           },
           {
@@ -7093,7 +7093,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "treasuryMsolAccountChange",
+          "name": "treasurySsolAccountChange",
           "type": {
             "option": {
               "defined": "PubkeyValueChange"
@@ -7159,7 +7159,7 @@ export const IDL: MarinadeForkingSmartContract = {
       ]
     },
     {
-      "name": "ConfigMarinadeEvent",
+      "name": "ConfigSolisticEvent",
       "fields": [
         {
           "name": "state",
@@ -7293,7 +7293,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolMint",
+          "name": "ssolMint",
           "type": "publicKey",
           "index": false
         },
@@ -7308,12 +7308,12 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "lpMsolLeg",
+          "name": "lpSsolLeg",
           "type": "publicKey",
           "index": false
         },
         {
-          "name": "treasuryMsolAccount",
+          "name": "treasurySsolAccount",
           "type": "publicKey",
           "index": false
         }
@@ -7758,7 +7758,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "delegationGrowthMsolFees",
+          "name": "delegationGrowthSsolFees",
           "type": {
             "option": "u64"
           },
@@ -7770,7 +7770,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "extraMsolFees",
+          "name": "extraSsolFees",
           "type": {
             "option": "u64"
           },
@@ -7787,7 +7787,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolPriceChange",
+          "name": "ssolPriceChange",
           "type": {
             "defined": "U64ValueChange"
           },
@@ -7806,7 +7806,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolSupply",
+          "name": "ssolSupply",
           "type": "u64",
           "index": false
         }
@@ -7846,14 +7846,14 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolFees",
+          "name": "ssolFees",
           "type": {
             "option": "u64"
           },
           "index": false
         },
         {
-          "name": "msolPriceChange",
+          "name": "ssolPriceChange",
           "type": {
             "defined": "U64ValueChange"
           },
@@ -7877,7 +7877,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolSupply",
+          "name": "ssolSupply",
           "type": "u64",
           "index": false
         }
@@ -7967,12 +7967,12 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "userMsolBalance",
+          "name": "userSsolBalance",
           "type": "u64",
           "index": false
         },
         {
-          "name": "burnedMsolAmount",
+          "name": "burnedSsolAmount",
           "type": "u64",
           "index": false
         },
@@ -7992,7 +7992,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolSupply",
+          "name": "ssolSupply",
           "type": "u64",
           "index": false
         }
@@ -8047,7 +8047,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolSupply",
+          "name": "ssolSupply",
           "type": "u64",
           "index": false
         }
@@ -8062,7 +8062,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolOwner",
+          "name": "ssolOwner",
           "type": "publicKey",
           "index": false
         },
@@ -8072,19 +8072,19 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "liqPoolMsolBalance",
+          "name": "liqPoolSsolBalance",
           "type": "u64",
           "index": false
         },
         {
-          "name": "treasuryMsolBalance",
+          "name": "treasurySsolBalance",
           "type": {
             "option": "u64"
           },
           "index": false
         },
         {
-          "name": "userMsolBalance",
+          "name": "userSsolBalance",
           "type": "u64",
           "index": false
         },
@@ -8094,17 +8094,17 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolAmount",
+          "name": "ssolAmount",
           "type": "u64",
           "index": false
         },
         {
-          "name": "msolFee",
+          "name": "ssolFee",
           "type": "u64",
           "index": false
         },
         {
-          "name": "treasuryMsolCut",
+          "name": "treasurySsolCut",
           "type": "u64",
           "index": false
         },
@@ -8155,7 +8155,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolLegBalance",
+          "name": "ssolLegBalance",
           "type": "u64",
           "index": false
         },
@@ -8170,7 +8170,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "userMsolBalance",
+          "name": "userSsolBalance",
           "type": "u64",
           "index": false
         },
@@ -8190,7 +8190,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolOutAmount",
+          "name": "ssolOutAmount",
           "type": "u64",
           "index": false
         }
@@ -8322,12 +8322,12 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "userMsolBalance",
+          "name": "userSsolBalance",
           "type": "u64",
           "index": false
         },
         {
-          "name": "msolMinted",
+          "name": "ssolMinted",
           "type": "u64",
           "index": false
         },
@@ -8337,7 +8337,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolSupply",
+          "name": "ssolSupply",
           "type": "u64",
           "index": false
         }
@@ -8362,7 +8362,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "userMsolBalance",
+          "name": "userSsolBalance",
           "type": "u64",
           "index": false
         },
@@ -8372,7 +8372,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolLegBalance",
+          "name": "ssolLegBalance",
           "type": "u64",
           "index": false
         },
@@ -8387,7 +8387,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolSwapped",
+          "name": "ssolSwapped",
           "type": "u64",
           "index": false
         },
@@ -8397,7 +8397,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolMinted",
+          "name": "ssolMinted",
           "type": "u64",
           "index": false
         },
@@ -8407,7 +8407,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolSupply",
+          "name": "ssolSupply",
           "type": "u64",
           "index": false
         }
@@ -8452,22 +8452,22 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "userMsolBalance",
+          "name": "userSsolBalance",
           "type": "u64",
           "index": false
         },
         {
-          "name": "userMsolAuth",
+          "name": "userSsolAuth",
           "type": "publicKey",
           "index": false
         },
         {
-          "name": "msolBurned",
+          "name": "ssolBurned",
           "type": "u64",
           "index": false
         },
         {
-          "name": "msolFees",
+          "name": "ssolFees",
           "type": "u64",
           "index": false
         },
@@ -8497,7 +8497,7 @@ export const IDL: MarinadeForkingSmartContract = {
           "index": false
         },
         {
-          "name": "msolSupply",
+          "name": "ssolSupply",
           "type": "u64",
           "index": false
         }
@@ -8841,8 +8841,8 @@ export const IDL: MarinadeForkingSmartContract = {
     },
     {
       "code": 6067,
-      "name": "RedepositingMarinadeStake",
-      "msg": "Redepositing marinade stake"
+      "name": "RedepositingSolisticStake",
+      "msg": "Redepositing solistic stake"
     },
     {
       "code": 6068,
@@ -8861,13 +8861,13 @@ export const IDL: MarinadeForkingSmartContract = {
     },
     {
       "code": 6071,
-      "name": "UnregisteredMsolMinted",
-      "msg": "Some mSOL tokens was minted outside of marinade contract"
+      "name": "UnregisteredSsolMinted",
+      "msg": "Some sSOL tokens was minted outside of solistic contract"
     },
     {
       "code": 6072,
       "name": "UnregisteredLPMinted",
-      "msg": "Some LP tokens was minted outside of marinade contract"
+      "msg": "Some LP tokens was minted outside of solistic contract"
     },
     {
       "code": 6073,

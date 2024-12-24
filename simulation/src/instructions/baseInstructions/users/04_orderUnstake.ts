@@ -14,16 +14,16 @@ export const orderUnstake = async (connection: Connection, user: Signer, orderUn
     const burnSSolFrom = getAssociatedTokenAddressSync(ssolMint, user.publicKey)
 
     const {
-        msolAmount,
+        ssolAmount,
         newTicketAccount
     } = orderUnstakeParam
 
-    const tx = await program.methods.orderUnstake(msolAmount)
+    const tx = await program.methods.orderUnstake(ssolAmount)
         .accounts({
             state: stateAccount.publicKey,
-            msolMint: ssolMint,
-            burnMsolFrom: burnSSolFrom,
-            burnMsolAuthority: user.publicKey,
+            ssolMint: ssolMint,
+            burnSsolFrom: burnSSolFrom,
+            burnSsolAuthority: user.publicKey,
             newTicketAccount: newTicketAccount.publicKey
         })
         .preInstructions([

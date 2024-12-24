@@ -1,6 +1,7 @@
 
 import { 
     Connection, 
+    Keypair, 
     sendAndConfirmTransaction, 
     Signer, 
     StakeProgram, 
@@ -12,13 +13,12 @@ import {
     stateAccount,
     stakeList,
     validatorsList,
-    stakeAccount,
     stakeDepositAuthority,
     stakeWithdrawAuthority,
     operationalSolAccount,
 } from "../../prerequisite";
 
-export const mergeStakes = async (connection: Connection, cranker: Signer, mergeStakeParam: MergeStakeParam) => {
+export const mergeStakes = async (connection: Connection, cranker: Signer, stakeAccount: Keypair, mergeStakeParam: MergeStakeParam) => {
     const {
         destinationStakeIndex,
         sourceStakeIndex,

@@ -8,13 +8,13 @@ const initialize = async (connection: Connection, payer: Signer , initializeData
 
     const {
         stateAccount,
-        msolMint,
+        ssolMint,
         stakeList,
         validatorList,
         operationalSolAccount,
-        treasuryMsolAccount,
+        treasurySsolAccount,
         lpMint,
-        mSolLeg
+        sSolLeg
     } = initParam
 
     const [reservePda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("reserve")], contractAddr);
@@ -26,15 +26,15 @@ const initialize = async (connection: Connection, payer: Signer , initializeData
         .accounts({
             state: stateAccount.publicKey,
             reservePda: reservePda,
-            msolMint: msolMint,
+            ssolMint: ssolMint,
             stakeList: stakeList.publicKey,
             validatorList: validatorList.publicKey,
             operationalSolAccount: operationalSolAccount.publicKey,
-            treasuryMsolAccount: treasuryMsolAccount,
+            treasurySsolAccount: treasurySsolAccount,
             liqPool: {
                 lpMint: lpMint,
                 solLegPda: solLegPda,
-                msolLeg: mSolLeg,
+                ssolLeg: sSolLeg,
             },
             clock: SYSVAR_CLOCK_PUBKEY,
             rent: SYSVAR_RENT_PUBKEY,

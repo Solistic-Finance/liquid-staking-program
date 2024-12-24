@@ -14,9 +14,9 @@ const update_deactivated = async (connection: Connection, payer: Signer, updateD
         stakeList,
         stakeWithdrawAuthority,
         stakeAccount,
-        msolMint,
-        authorityMsolAcc,
-        treasuryMsolAccount,
+        ssolMint,
+        authoritySsolAcc,
+        treasurySsolAccount,
         operationalSolAccount
     } = initParam
 
@@ -28,9 +28,9 @@ const update_deactivated = async (connection: Connection, payer: Signer, updateD
                 stakeAccount: stakeAccount.publicKey,
                 stakeWithdrawAuthority: stakeWithdrawAuthority,
                 reservePda: reservePda,
-                msolMint: msolMint,
-                msolMintAuthority: authorityMsolAcc,
-                treasuryMsolAccount: treasuryMsolAccount,
+                ssolMint: ssolMint,
+                ssolMintAuthority: authoritySsolAcc,
+                treasurySsolAccount: treasurySsolAccount,
                 stakeHistory: SYSVAR_STAKE_HISTORY_PUBKEY,
                 stakeProgram: StakeProgram.programId
             },

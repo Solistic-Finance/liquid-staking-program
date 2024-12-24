@@ -30,7 +30,7 @@ import {
     AddLiquidityParam,
     RemoveLiquidityParam,
     ConfigLpParam,
-    ConfigMarinadeParam,
+    ConfigSolisticParam,
 } from "./basic_instruction_types"
 
 import {
@@ -45,7 +45,6 @@ interface SSolInitParam {
     stakeList: PublicKey,
     validatorList: PublicKey,
     operationalSolAccount: PublicKey,
-    stakeAccount: PublicKey ,
     authoritySSolAcc: PublicKey,
     authorityLpAcc: PublicKey,
     reservePda: PublicKey,
@@ -91,7 +90,7 @@ export {
     AddLiquidityParam,
     RemoveLiquidityParam,
     ConfigLpParam,
-    ConfigMarinadeParam,
+    ConfigSolisticParam,
     OrderUnstakeParam,
     ClaimParam,
     StakeReserveParam,

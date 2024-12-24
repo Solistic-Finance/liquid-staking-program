@@ -1,6 +1,7 @@
 
 import { 
     Connection, 
+    Keypair, 
     sendAndConfirmTransaction, 
     Signer, 
     StakeProgram, 
@@ -16,14 +17,13 @@ import {
     stakeList,
     stakeWithdrawAuthority,
     stakeDepositAuthority,
-    stakeAccount,
 } from "../../prerequisite";
 
-export const withdrawStakeAccount = async (connection: Connection, user: Signer, withdrawStakeAccountParam: WithdrawStakeAccountParam) => {
+export const withdrawStakeAccount = async (connection: Connection, user: Signer, stakeAccount: Keypair, withdrawStakeAccountParam: WithdrawStakeAccountParam) => {
     const {
         stakeIndex,
         validatorIndex,
-        msolAmount,
+        ssolAmount,
         beneficiary,
         splitStakeAccount
     } = withdrawStakeAccountParam
@@ -33,14 +33,14 @@ export const withdrawStakeAccount = async (connection: Connection, user: Signer,
     const tx = await program.methods.withdrawStakeAccount(
         stakeIndex,
         validatorIndex,
-        msolAmount,
+        ssolAmount,
         beneficiary
     ).accounts({
         state: stateAccount.publicKey,
-        msolMint: ssolMint,
-        burnMsolFrom: burnSSolFrom,
-        burnMsolAuthority: user.publicKey,
-        treasuryMsolAccount: treasurySsolAccount,
+        ssolMint: ssolMint,
+        burnSsolFrom: burnSSolFrom,
+        burnSsolAuthority: user.publicKey,
+        treasurySsolAccount: treasurySsolAccount,
         validatorList: validatorsList.publicKey,
         stakeList: stakeList.publicKey,
         stakeWithdrawAuthority: stakeWithdrawAuthority,

@@ -8,3 +8,4 @@ test-ledger
 .yarn
 tests/liquid-staking-test-script/.env
 simulation/.keys
+simulation/.keys_old

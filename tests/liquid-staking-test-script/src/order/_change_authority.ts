@@ -9,7 +9,7 @@ export const _change_authority = async () => {
 
     const {
         operationalSolAccount,
-        treasuryMsolAccount
+        treasurySsolAccount
     } = initParam
 
     const initializeData: InitializeDataParam = {
@@ -35,7 +35,7 @@ export const _change_authority = async () => {
         admin: payer.publicKey,
         validatorManager: payer.publicKey,
         operationalSolAccount: operationalSolAccount.publicKey,
-        treasuryMsolAccount: treasuryMsolAccount,
+        treasurySsolAccount: treasurySsolAccount,
         pauseAuthority: payer.publicKey,
     }
 

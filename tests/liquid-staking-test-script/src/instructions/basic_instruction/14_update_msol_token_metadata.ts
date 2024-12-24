@@ -2,36 +2,36 @@
 import { Connection, PublicKey, sendAndConfirmTransaction, Signer, SystemProgram, SYSVAR_RENT_PUBKEY } from "@solana/web3.js";
 import { contractAddr, program } from "../../config";
 import { ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID } from "@solana/spl-token";
-import { UpdateMsolTokenMetadata } from "../../types/basic_instruction_types";
+import { UpdateSsolTokenMetadata } from "../../types/basic_instruction_types";
 
 const TOKEN_METADATA_PROGRAM_ID = new PublicKey("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s");
 
-const update_msol_token_metadata = async (connection: Connection, payer: Signer, updateMetadataParams: UpdateMsolTokenMetadata) => {
+const update_ssol_token_metadata = async (connection: Connection, payer: Signer, updateMetadataParams: UpdateSsolTokenMetadata) => {
     const {
         stateAccount,
-        msolMint,
+        ssolMint,
         name,
         symbol,
         uri
     } = updateMetadataParams;
-    const [authorityMsolAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("st_mint")], contractAddr);
+    const [authoritySsolAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("st_mint")], contractAddr);
     const [metadataPDA, _] = await PublicKey.findProgramAddressSync(
         [
           Buffer.from('metadata'),
           TOKEN_METADATA_PROGRAM_ID.toBuffer(),
-          msolMint.toBuffer(),
+          ssolMint.toBuffer(),
         ],
         TOKEN_METADATA_PROGRAM_ID
       );
     const tx = await program.methods
         //  @ts-ignore
-        .updateMsolTokenMetadata(name, symbol, uri)
+        .updateSsolTokenMetadata(name, symbol, uri)
         .accounts({
             payer: payer.publicKey,
             state: stateAccount.publicKey,
-            msolMint: msolMint,
-            msolMintAuthority: authorityMsolAcc,
-            msolMintMetadataAccount: metadataPDA,
+            ssolMint: ssolMint,
+            ssolMintAuthority: authoritySsolAcc,
+            ssolMintMetadataAccount: metadataPDA,
             rent: SYSVAR_RENT_PUBKEY,
             systemProgram: SystemProgram.programId,
             tokenProgram: TOKEN_PROGRAM_ID,
@@ -53,5 +53,5 @@ const update_msol_token_metadata = async (connection: Connection, payer: Signer,
 }
 
 export {
-    update_msol_token_metadata
+    update_ssol_token_metadata
 }

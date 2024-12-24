@@ -41,14 +41,14 @@ export const initialize = async (
             reservePda: reservePda,
             stakeList: stakeList,
             validatorList: validatorList,
-            msolMint: ssolMint,
+            ssolMint: ssolMint,
             operationalSolAccount: operationalSolAccount,
             liqPool: {
                 lpMint: lpMint,
                 solLegPda: solLegPda,
-                msolLeg: sSolLeg,
+                ssolLeg: sSolLeg,
             },
-            treasuryMsolAccount: treasurySsolAccount,
+            treasurySsolAccount: treasurySsolAccount,
             clock: SYSVAR_CLOCK_PUBKEY,
             rent: SYSVAR_RENT_PUBKEY,
         })

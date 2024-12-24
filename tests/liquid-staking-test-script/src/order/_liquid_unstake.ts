@@ -36,7 +36,7 @@ export const _liquid_unstake = async () => {
     await deposit(connection, payer, depositParam, initParam)
 
     const liquidUnstakeParam = {
-        msol_amount: new BN(10000)
+        ssol_amount: new BN(10000)
     }
     await liquid_unstake(connection, payer, liquidUnstakeParam, initParam)
 }

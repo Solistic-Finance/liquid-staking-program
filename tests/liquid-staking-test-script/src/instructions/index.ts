@@ -27,7 +27,7 @@ import {
     add_liquidity,
     remove_liquidity,
     config_lp,
-    config_marinade
+    config_solistic
 } from "./basic_instruction";
 import { createAtaTx, createMintTrasaction, getInitParam } from "../utils";
 import {
@@ -54,55 +54,55 @@ const preRequisite = async (connection: Connection, payer: Signer): Promise<Init
     const validatorList = Keypair.generate()
     const operationalSolAccount = Keypair.generate()
     const stakeAccount = Keypair.generate()
-    const msolMintKeypair = Keypair.generate()
+    const ssolMintKeypair = Keypair.generate()
     const lpMintKeypair = Keypair.generate()
-    const msolMint = msolMintKeypair.publicKey
+    const ssolMint = ssolMintKeypair.publicKey
     const lpMint = lpMintKeypair.publicKey
 
-    const [authorityMsolAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("st_mint")], contractAddr);
+    const [authoritySsolAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("st_mint")], contractAddr);
     const [authorityLpAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_mint")], contractAddr);
     const [reservePda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("reserve")], contractAddr);
     const [solLegPda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_sol")], contractAddr);
-    const [authorityMSolLegAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_st_sol_authority")], contractAddr);
+    const [authoritySSolLegAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_st_sol_authority")], contractAddr);
     const [stakeDepositAuthority] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("deposit")], contractAddr)
     const [stakeWithdrawAuthority] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("withdraw")], contractAddr);
-    const treasuryMsolAccount = getAssociatedTokenAddressSync(msolMint, stateAccount.publicKey, true);
-    const mSolLeg = getAssociatedTokenAddressSync(msolMint, authorityMSolLegAcc, true);
-    const mint_to = getAssociatedTokenAddressSync(msolMint, payer.publicKey);
+    const treasurySsolAccount = getAssociatedTokenAddressSync(ssolMint, stateAccount.publicKey, true);
+    const sSolLeg = getAssociatedTokenAddressSync(ssolMint, authoritySSolLegAcc, true);
+    const mint_to = getAssociatedTokenAddressSync(ssolMint, payer.publicKey);
     const mint_to_lp = getAssociatedTokenAddressSync(lpMint, payer.publicKey);
-    const burnMsolFrom = getAssociatedTokenAddressSync(msolMint, payer.publicKey);
+    const burnSsolFrom = getAssociatedTokenAddressSync(ssolMint, payer.publicKey);
 
     const tx = new Transaction()
 
-    const msolMintTx = await createMintTrasaction(connection, payer, authorityMsolAcc, null, 9, msolMintKeypair);
+    const ssolMintTx = await createMintTrasaction(connection, payer, authoritySsolAcc, null, 9, ssolMintKeypair);
     const lpMintTx = await createMintTrasaction(connection, payer, authorityLpAcc, null, 9, lpMintKeypair);
 
-    tx.add(msolMintTx).add(lpMintTx)
+    tx.add(ssolMintTx).add(lpMintTx)
 
-    const treasuryMsolAccountTx = await createAtaTx(
+    const treasurySsolAccountTx = await createAtaTx(
         connection,
         payer,
-        msolMint,
+        ssolMint,
         stateAccount.publicKey
     );
 
-    const mSolLegTx = await createAtaTx(
+    const sSolLegTx = await createAtaTx(
         connection,
         payer,
-        msolMint,
-        authorityMSolLegAcc,
+        ssolMint,
+        authoritySSolLegAcc,
         {},
         TOKEN_PROGRAM_ID,
         ASSOCIATED_TOKEN_PROGRAM_ID,
         true
     );
 
-    const mint_toTx = await createAtaTx(connection, payer, msolMint, payer.publicKey);
+    const mint_toTx = await createAtaTx(connection, payer, ssolMint, payer.publicKey);
     const mint_to_lpTx = await createAtaTx(connection, payer, lpMint, payer.publicKey);
 
     tx
-        .add(treasuryMsolAccountTx)
-        .add(mSolLegTx)
+        .add(treasurySsolAccountTx)
+        .add(sSolLegTx)
         .add(mint_toTx)
         .add(mint_to_lpTx)
 
@@ -147,7 +147,7 @@ const preRequisite = async (connection: Connection, payer: Signer): Promise<Init
         tx,
         [
             payer,
-            msolMintKeypair,
+            ssolMintKeypair,
             lpMintKeypair
         ])
 
@@ -160,20 +160,20 @@ const preRequisite = async (connection: Connection, payer: Signer): Promise<Init
         validatorList: validatorList,
         operationalSolAccount: operationalSolAccount,
         stakeAccount: stakeAccount,
-        authorityMsolAcc: authorityMsolAcc,
+        authoritySsolAcc: authoritySsolAcc,
         authorityLpAcc: authorityLpAcc,
         reservePda: reservePda,
         solLegPda: solLegPda,
-        authorityMSolLegAcc: authorityMSolLegAcc,
+        authoritySSolLegAcc: authoritySSolLegAcc,
         stakeDepositAuthority: stakeDepositAuthority,
         stakeWithdrawAuthority: stakeWithdrawAuthority,
-        msolMint: msolMint,
+        ssolMint: ssolMint,
         lpMint: lpMint,
-        treasuryMsolAccount: treasuryMsolAccount,
-        mSolLeg: mSolLeg,
+        treasurySsolAccount: treasurySsolAccount,
+        sSolLeg: sSolLeg,
         mint_to: mint_to,
         mint_to_lp: mint_to_lp,
-        burnMsolFrom: burnMsolFrom,
+        burnSsolFrom: burnSsolFrom,
     }
 
     getInitParam(returnValue);
@@ -195,7 +195,7 @@ export {
     add_liquidity,
     remove_liquidity,
     config_lp,
-    config_marinade,
+    config_solistic,
     order_unstake,
     claim,
     stake_reserve,

@@ -12,7 +12,7 @@ import {
     AddLiquidityParam,
     RemoveLiquidityParam,
     ConfigLpParam,
-    ConfigMarinadeParam,
+    ConfigSolisticParam,
 } from "./basic_instruction_types"
 
 import {
@@ -38,20 +38,20 @@ interface InitParam {
     validatorList: Keypair,
     operationalSolAccount: Keypair,
     stakeAccount: Keypair,
-    authorityMsolAcc: PublicKey,
+    authoritySsolAcc: PublicKey,
     authorityLpAcc: PublicKey,
     reservePda: PublicKey,
     solLegPda: PublicKey,
-    authorityMSolLegAcc: PublicKey,
+    authoritySSolLegAcc: PublicKey,
     stakeDepositAuthority: PublicKey,
     stakeWithdrawAuthority: PublicKey,
-    msolMint: PublicKey,
+    ssolMint: PublicKey,
     lpMint: PublicKey,
-    treasuryMsolAccount: PublicKey,
-    mSolLeg: PublicKey,
+    treasurySsolAccount: PublicKey,
+    sSolLeg: PublicKey,
     mint_to: PublicKey,
     mint_to_lp: PublicKey,
-    burnMsolFrom: PublicKey,
+    burnSsolFrom: PublicKey,
 }
 
 interface ParsedStakeAccountInfo {
@@ -82,7 +82,7 @@ export {
     AddLiquidityParam,
     RemoveLiquidityParam,
     ConfigLpParam,
-    ConfigMarinadeParam,
+    ConfigSolisticParam,
     OrderUnstakeParam,
     ClaimParam,
     StakeReserveParam,

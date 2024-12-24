@@ -1,15 +1,15 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { MarinadeForkingSmartContract } from "../target/types/marinade_forking_smart_contract";
+import { SolisticStaking } from "../target/types/solistic_staking";
 import {
     sendAndConfirmTransaction,
     StakeProgram,
     SYSVAR_STAKE_HISTORY_PUBKEY,
 } from '@solana/web3.js';
 import {
-    authorityMsolAcc,
+    authoritySsolAcc,
     connection,
-    msolMint,
+    ssolMint,
     operationalSolAccount,
     payer,
     reservePda,
@@ -18,14 +18,14 @@ import {
     stakeList,
     stakeWithdrawAuthority,
     stateAccount,
-    treasuryMsolAccount
+    treasurySsolAccount
 } from ".";
 
-describe("marinade-forking-smart-contract", () => {
+describe("solistic-staking", () => {
     // Configure the client to use the local cluster.
     anchor.setProvider(anchor.AnchorProvider.env());
 
-    const program = anchor.workspace.MarinadeForkingSmartContract as Program<MarinadeForkingSmartContract>;
+    const program = anchor.workspace.SolisticStaking as Program<SolisticStaking>;
 
     // * -------------------------------------------------------------------------------------
     // *  Advanced Instructions
@@ -53,9 +53,9 @@ describe("marinade-forking-smart-contract", () => {
             stakeAccount: stakeAccount.publicKey,
             stakeWithdrawAuthority: stakeWithdrawAuthority,
             reservePda: reservePda,
-            msolMint: msolMint,
-            msolMintAuthority: authorityMsolAcc,
-            treasuryMsolAccount: treasuryMsolAccount,
+            ssolMint: ssolMint,
+            ssolMintAuthority: authoritySsolAcc,
+            treasurySsolAccount: treasurySsolAccount,
             stakeHistory: SYSVAR_STAKE_HISTORY_PUBKEY,
             stakeProgram: StakeProgram.programId
         }

@@ -1,6 +1,7 @@
 
 import { 
     Connection, 
+    Keypair, 
     sendAndConfirmTransaction, 
     Signer, 
     STAKE_CONFIG_ID, 
@@ -13,12 +14,11 @@ import {
     stateAccount, 
     validatorsList,
     stakeList,
-    stakeAccount,
     stakeDepositAuthority,
     reservePda 
 } from "../../prerequisite";
 
-export const redelegate = async (connection: Connection, cranker: Signer, mergeStakeParam: RedelegateParam) => {
+export const redelegate = async (connection: Connection, cranker: Signer, stakeAccount: Keypair, mergeStakeParam: RedelegateParam) => {
     const {
         stakeIndex,
         sourceValidatorIndex,

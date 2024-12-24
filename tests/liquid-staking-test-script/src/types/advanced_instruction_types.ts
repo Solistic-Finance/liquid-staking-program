@@ -2,7 +2,7 @@ import { Keypair, PublicKey } from "@solana/web3.js";
 import BN from "bn.js";
 
 interface OrderUnstakeParam {
-    msol_amount: BN,
+    ssol_amount: BN,
     newTicketAccount: Keypair
 }
 
@@ -56,14 +56,6 @@ interface RedelegateParam {
     validatorVote: PublicKey
     splitStakeAccount: Keypair,
     newRedelegateStakeAccount: Keypair,
-}
-
-interface WithdrawStakeAccountParam {
-    stake_index: number,
-    validator_index: number,
-    msol_amount: BN,
-    beneficiary: PublicKey,
-    splitStakeAccount: Keypair,
 }
 
 interface ReallocStakeListParam {

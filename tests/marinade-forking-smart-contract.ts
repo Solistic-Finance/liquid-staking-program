@@ -1,6 +1,6 @@
 // import * as anchor from "@coral-xyz/anchor";
 // import { Program } from "@coral-xyz/anchor";
-// import { MarinadeForkingSmartContract } from "../target/types/marinade_forking_smart_contract";
+// import { SolisticStaking } from "../target/types/solistic_staking";
 // import {
 //   Keypair,
 //   PublicKey,
@@ -36,25 +36,25 @@
 // const payer = Keypair.fromSecretKey(bs58.decode("5BrUQk416xSy4xbHZq6jXb2JcVA8iRnPNJJr3NZv2wukMhwB39ndpe9eaCXmuFLxzkVUYXbdCB9ydeJkhKCGhnkm"));
 // const connection = new Connection("https://mainnet.helius-rpc.com/?api-key=f74ec75c-56ba-49df-b67b-71637bf8d115"); // Change to your localnet RPC
 
-// describe("marinade-forking-smart-contract", () => {
+// describe("solistic-staking", () => {
 //   // Configure the client to use the local cluster.
 //   anchor.setProvider(anchor.AnchorProvider.env());
 
-//   const program = anchor.workspace.MarinadeForkingSmartContract as Program<MarinadeForkingSmartContract>;
+//   const program = anchor.workspace.SolisticStaking as Program<SolisticStaking>;
 
-//   let msolMint;
-//   let mSolLeg;
+//   let ssolMint;
+//   let sSolLeg;
 //   let lpMint;
-//   let treasuryMsolAccount;
-//   // let msolMint = new PublicKey("i8CSXnSWENj7jnkTpDvm1Htd7axLAAByYFcsYa5Qn1m");
-//   // let mSolLeg = new PublicKey("AgVUwTtz16WdemasDyHw7SqrquS93qHZAdUb9rWrZZVU")
+//   let treasurySsolAccount;
+//   // let ssolMint = new PublicKey("i8CSXnSWENj7jnkTpDvm1Htd7axLAAByYFcsYa5Qn1m");
+//   // let sSolLeg = new PublicKey("AgVUwTtz16WdemasDyHw7SqrquS93qHZAdUb9rWrZZVU")
 //   // let lpMint = new PublicKey("EaDBpWrywPGhW6HSCvznarnLr53mfF2v1Z4EEYKkSyNt");
-//   // let treasuryMsolAccount = new PublicKey("Hq4fzSWGepX2TKue7s5nCqp7PPAg9todYSjTBbgcVHJn");
+//   // let treasurySsolAccount = new PublicKey("Hq4fzSWGepX2TKue7s5nCqp7PPAg9todYSjTBbgcVHJn");
 //   console.log({
-//     "msolMint : ": msolMint,
-//     "mSolLeg : ": mSolLeg,
+//     "ssolMint : ": ssolMint,
+//     "sSolLeg : ": sSolLeg,
 //     "lpMint : ": lpMint,
-//     "treasuryMsolAccount : ": treasuryMsolAccount,
+//     "treasurySsolAccount : ": treasurySsolAccount,
 //   });
 
 
@@ -74,18 +74,18 @@
 //   console.log("operationalSolAccount", bs58.encode(stateAccount.secretKey));
 //   console.log("authorityAcc", bs58.encode(authorityAcc.secretKey));
 
-//   const [authorityMsolAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("st_mint")], program.programId);
+//   const [authoritySsolAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("st_mint")], program.programId);
 //   const [reservePda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("reserve")], program.programId);
 //   const [authorityLpAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_mint")], program.programId);
-//   const [authorityMSolLegAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_st_sol_authority")], program.programId);
+//   const [authoritySSolLegAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_st_sol_authority")], program.programId);
 //   const [solLegPda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_sol")], program.programId);
 //   const [stakeDepositAuthority] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("deposit")], program.programId)
 //   const [stakeWithdrawAuthority] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("withdraw")], program.programId);
 //   console.log({
-//     "authorityMsolAcc : ": authorityMsolAcc,
+//     "authoritySsolAcc : ": authoritySsolAcc,
 //     "reservePda : ": reservePda,
 //     "authorityLpAcc : ": authorityLpAcc,
-//     "authorityMSolLegAcc : ": authorityMSolLegAcc,
+//     "authoritySSolLegAcc : ": authoritySSolLegAcc,
 //     "solLegPda : ": solLegPda,
 //   });
 
@@ -108,22 +108,22 @@
 //     console.log(await connection.requestAirdrop(solLegPda, 2_039_280));
 
 //     console.log("===================================================");
-//     // Create MSOL mint
-//     msolMint = await createMint(connection, payer, authorityMsolAcc, null, 9);
+//     // Create SSOL mint
+//     ssolMint = await createMint(connection, payer, authoritySsolAcc, null, 9);
 //     lpMint = await createMint(connection, payer, authorityLpAcc, null, 9);
 
 //     console.log("===================================================");
-//     // Create associated token account for treasury MSOL
-//     treasuryMsolAccount = await getOrCreateAssociatedTokenAccount(connection, payer, msolMint, stateAccount.publicKey);
+//     // Create associated token account for treasury SSOL
+//     treasurySsolAccount = await getOrCreateAssociatedTokenAccount(connection, payer, ssolMint, stateAccount.publicKey);
 //     console.log("**************************");
-//     mSolLeg = await getOrCreateAssociatedTokenAccount(connection, payer, msolMint, authorityMSolLegAcc, true);
+//     sSolLeg = await getOrCreateAssociatedTokenAccount(connection, payer, ssolMint, authoritySSolLegAcc, true);
 //     console.log("**************************");
 
 //     console.log({
-//       "msolMint : ": msolMint,
-//       "mSolLeg : ": mSolLeg,
+//       "ssolMint : ": ssolMint,
+//       "sSolLeg : ": sSolLeg,
 //       "lpMint : ": lpMint,
-//       "treasuryMsolAccount : ": treasuryMsolAccount,
+//       "treasurySsolAccount : ": treasurySsolAccount,
 //     });
 
 
@@ -150,15 +150,15 @@
 //       .accounts({
 //         state: stateAccount.publicKey,
 //         reservePda: reservePda,
-//         msolMint: msolMint,
+//         ssolMint: ssolMint,
 //         stakeList: stakeList.publicKey,
 //         validatorList: validatorList.publicKey,
 //         operationalSolAccount: operationalSolAccount.publicKey,
-//         treasuryMsolAccount: treasuryMsolAccount.address,
+//         treasurySsolAccount: treasurySsolAccount.address,
 //         liqPool: {
 //           lpMint: lpMint,
 //           solLegPda: solLegPda,
-//           msolLeg: mSolLeg.address,
+//           ssolLeg: sSolLeg.address,
 //         },
 //         clock: anchor.web3.SYSVAR_CLOCK_PUBKEY,
 //         rent: anchor.web3.SYSVAR_RENT_PUBKEY,
@@ -198,14 +198,14 @@
 //     const admin = Keypair.generate().publicKey
 //     const validatorManager = Keypair.generate().publicKey
 //     const operationalSolAccount = Keypair.generate().publicKey
-//     const treasuryMsolAccount = Keypair.generate().publicKey
+//     const treasurySsolAccount = Keypair.generate().publicKey
 //     const pauseAuthority = Keypair.generate().publicKey
 
 //     console.log({
 //       reservePda: reservePda,
 //       authorityAcc: authorityAcc,
 //       authorityLpAcc: authorityLpAcc,
-//       authorityMSolLegAcc: authorityMSolLegAcc,
+//       authoritySSolLegAcc: authoritySSolLegAcc,
 //       solLegPda: solLegPda,
 //     });
 
@@ -214,7 +214,7 @@
 //       admin: admin,
 //       validatorManager: validatorManager,
 //       operationalSolAccount: operationalSolAccount,
-//       treasuryMsolAccount: treasuryMsolAccount,
+//       treasurySsolAccount: treasurySsolAccount,
 //       pauseAuthority: pauseAuthority
 //     }
 
@@ -386,20 +386,20 @@
 //     console.log(await connection.requestAirdrop(stakeAuthority.publicKey, 1_000_000));
 //     console.log(await connection.getBalance(stakeAuthority.publicKey));
 //     // // Create associated token account for minting
-//     mint_to = await createAssociatedTokenAccount(connection, payer, msolMint, stakeAuthority.publicKey);
-//     console.log("stakeAuthority : ", stakeAuthority.publicKey, " mint_to : ", mint_to, " authorityMsolAcc , ", authorityMsolAcc);
+//     mint_to = await createAssociatedTokenAccount(connection, payer, ssolMint, stakeAuthority.publicKey);
+//     console.log("stakeAuthority : ", stakeAuthority.publicKey, " mint_to : ", mint_to, " authoritySsolAcc , ", authoritySsolAcc);
 
 //     const tx = await program.methods.deposit(new BN(10000))
 //       .accounts({
 //         state: stateAccount.publicKey,
-//         msolMint: msolMint,
+//         ssolMint: ssolMint,
 //         liqPoolSolLegPda: solLegPda,
-//         liqPoolMsolLeg: mSolLeg.address,
-//         liqPoolMsolLegAuthority: authorityMSolLegAcc,
+//         liqPoolSsolLeg: sSolLeg.address,
+//         liqPoolSsolLegAuthority: authoritySSolLegAcc,
 //         reservePda: reservePda,
 //         transferFrom: stakeAuthority.publicKey,
 //         mintTo: mint_to,
-//         msolMintAuthority: authorityMsolAcc,
+//         ssolMintAuthority: authoritySsolAcc,
 //       })
 //       .signers([stakeAuthority])
 //       .transaction()
@@ -469,9 +469,9 @@
 //         stakeAccount: stakeAccount.publicKey,
 //         stakeAuthority: stakeAuthority.publicKey,
 //         duplicationFlag: Keypair.generate().publicKey,      //  Double check
-//         msolMint: msolMint,
+//         ssolMint: ssolMint,
 //         mintTo: mint_to,
-//         msolMintAuthority: authorityMsolAcc,
+//         ssolMintAuthority: authoritySsolAcc,
 //         stakeProgram: StakeProgram.programId
 //       })
 //       .signers([stakeAuthority])
@@ -539,9 +539,9 @@
 //         stakeAccount: stakeAccount1.publicKey,
 //         stakeAuthority: stakeAuthority.publicKey,
 //         duplicationFlag: Keypair.generate().publicKey,      //  Double check
-//         msolMint: msolMint,
+//         ssolMint: ssolMint,
 //         mintTo: mint_to,
-//         msolMintAuthority: authorityMsolAcc,
+//         ssolMintAuthority: authoritySsolAcc,
 //         stakeProgram: StakeProgram.programId
 //       })
 //       .signers([stakeAuthority])
@@ -573,12 +573,12 @@
 
 //     console.log({
 //       state: stateAccount.publicKey,
-//       "msolMint:": msolMint,
+//       "ssolMint:": ssolMint,
 //       "liqPoolSolLegPda:": solLegPda,
-//       "liqPoolMsolLeg:": mSolLeg,
-//       "treasuryMsolAccount:": treasuryMsolAccount.address,
-//       "getMsolFrom:": mint_to,
-//       "getMsolFromAuthority:": stakeAuthority.publicKey,
+//       "liqPoolSsolLeg:": sSolLeg,
+//       "treasurySsolAccount:": treasurySsolAccount.address,
+//       "getSsolFrom:": mint_to,
+//       "getSsolFromAuthority:": stakeAuthority.publicKey,
 //       "transferSolTo:": stakeAuthority.publicKey,
 //     });
 
@@ -587,7 +587,7 @@
 //         state: stateAccount.publicKey,
 //         lpMint: lpMint,
 //         lpMintAuthority: authorityLpAcc,
-//         liqPoolMsolLeg: mSolLeg.address,
+//         liqPoolSsolLeg: sSolLeg.address,
 //         liqPoolSolLegPda: solLegPda,
 //         transferFrom: stakeAuthority.publicKey,
 //         mintTo: mint_to.address,
@@ -616,28 +616,28 @@
 //     const state = await program.account.state.fetch(stateAccount.publicKey);
 //     console.log("State Account:", state); //  this data
 
-//     const mint_to = await getAssociatedTokenAddress(msolMint, stakeAuthority.publicKey)
+//     const mint_to = await getAssociatedTokenAddress(ssolMint, stakeAuthority.publicKey)
 
 //     console.log({
 //       state: stateAccount.publicKey,
-//       msolMint: msolMint,
+//       ssolMint: ssolMint,
 //       liqPoolSolLegPda: solLegPda,
-//       liqPoolMsolLeg: mSolLeg.address,
-//       treasuryMsolAccount: treasuryMsolAccount.address,
-//       getMsolFrom: mint_to,
-//       getMsolFromAuthority: stakeAuthority.publicKey,
+//       liqPoolSsolLeg: sSolLeg.address,
+//       treasurySsolAccount: treasurySsolAccount.address,
+//       getSsolFrom: mint_to,
+//       getSsolFromAuthority: stakeAuthority.publicKey,
 //       transferSolTo: stakeAuthority.publicKey,
 //     });
 
 //     const tx = await program.methods.liquidUnstake(new BN(100))
 //       .accounts({
 //         state: stateAccount.publicKey,
-//         msolMint: msolMint,
+//         ssolMint: ssolMint,
 //         liqPoolSolLegPda: solLegPda,
-//         liqPoolMsolLeg: mSolLeg.address,
-//         treasuryMsolAccount: treasuryMsolAccount.address,
-//         getMsolFrom: mint_to,
-//         getMsolFromAuthority: stakeAuthority.publicKey,
+//         liqPoolSsolLeg: sSolLeg.address,
+//         treasurySsolAccount: treasurySsolAccount.address,
+//         getSsolFrom: mint_to,
+//         getSsolFromAuthority: stakeAuthority.publicKey,
 //         transferSolTo: stakeAuthority.publicKey,
 //       })
 //       .signers([stakeAuthority])
@@ -662,7 +662,7 @@
 // //!         11-remove_liquidity ( Error )
 //   it("remove_liquidity", async () => {
 //     const burnFrom = await getOrCreateAssociatedTokenAccount(connection, payer, lpMint, stakeAuthority.publicKey)
-//     const transferMsolTo = await getAssociatedTokenAddress(msolMint, stakeAuthority.publicKey)
+//     const transferSsolTo = await getAssociatedTokenAddress(ssolMint, stakeAuthority.publicKey)
 
 //     console.log({
 //       state: stateAccount.publicKey,
@@ -670,10 +670,10 @@
 //       burnFrom: burnFrom.address,
 //       burnFromAuthority: burnFrom.address,
 //       transferSolTo: stakeAuthority.publicKey,
-//       transferMsolTo: transferMsolTo,
+//       transferSsolTo: transferSsolTo,
 //       liqPoolSolLegPda: solLegPda,
-//       liqPoolMsolLeg: mSolLeg.address,
-//       liqPoolMsolLegAuthority: authorityMSolLegAcc,
+//       liqPoolSsolLeg: sSolLeg.address,
+//       liqPoolSsolLegAuthority: authoritySSolLegAcc,
 //     });
 
 //     const tx = await program.methods.removeLiquidity(new BN(10_000))
@@ -683,10 +683,10 @@
 //         burnFrom: burnFrom.address,
 //         burnFromAuthority: stakeAuthority.publicKey,
 //         transferSolTo: stakeAuthority.publicKey,
-//         transferMsolTo: transferMsolTo,
+//         transferSsolTo: transferSsolTo,
 //         liqPoolSolLegPda: solLegPda,
-//         liqPoolMsolLeg: mSolLeg.address,
-//         liqPoolMsolLegAuthority: authorityMSolLegAcc,
+//         liqPoolSsolLeg: sSolLeg.address,
+//         liqPoolSsolLegAuthority: authoritySSolLegAcc,
 //       })
 //       .signers([stakeAuthority])
 //       .transaction()
@@ -739,10 +739,10 @@
 
 //   })
 
-// //*         13-config_marinade
-//   it("config_marinade", async () => {
+// //*         13-config_solistic
+//   it("config_solistic", async () => {
 
-//     const configMarinadeParam = {
+//     const configSolisticParam = {
 //       rewardsFee: { basisPoints: new BN(1) },
 //       slotsForStakeDelta: new BN(5000),
 //       minStake: new BN(20000000),
@@ -756,7 +756,7 @@
 //       maxStakeMovedPerEpoch: { basisPoints: new BN(9) },
 //     };
 
-//     const tx = await program.methods.configMarinade(configMarinadeParam)
+//     const tx = await program.methods.configSolistic(configSolisticParam)
 //       .accounts({
 //         state: stateAccount.publicKey,
 //         adminAuthority: authorityAcc.publicKey,
@@ -785,7 +785,7 @@
 // //   // * backend/bot "crank" related functions:
 // //   // * order_unstake (starts stake-account deactivation)
 // //   // * withdraw (delete & withdraw from a deactivated stake-account)
-// //   // * update (compute stake-account rewards & update mSOL price)
+// //   // * update (compute stake-account rewards & update sSOL price)
 // //   // * -------------------------------------------------------------------------------------
 
 
@@ -844,9 +844,9 @@
 //       stakeAccount: stakeAccount.publicKey,
 //       stakeWithdrawAuthority: stakeWithdrawAuthority,
 //       reservePda: reservePda,
-//       msolMint: msolMint,
-//       msolMintAuthority: authorityMsolAcc,
-//       treasuryMsolAccount: treasuryMsolAccount.address,
+//       ssolMint: ssolMint,
+//       ssolMintAuthority: authoritySsolAcc,
+//       treasurySsolAccount: treasurySsolAccount.address,
 //       stakeHistory: SYSVAR_STAKE_HISTORY_PUBKEY,
 //       stakeProgram: StakeProgram.programId
 //     }
@@ -923,9 +923,9 @@
 //       stakeAccount: stakeAccount.publicKey,
 //       stakeWithdrawAuthority: stakeWithdrawAuthority,
 //       reservePda: reservePda,
-//       msolMint: msolMint,
-//       msolMintAuthority: authorityMsolAcc,
-//       treasuryMsolAccount: treasuryMsolAccount.address,
+//       ssolMint: ssolMint,
+//       ssolMintAuthority: authoritySsolAcc,
+//       treasurySsolAccount: treasurySsolAccount.address,
 //       stakeHistory: SYSVAR_STAKE_HISTORY_PUBKEY,
 //       stakeProgram: StakeProgram.programId
 //     }
@@ -954,25 +954,25 @@
 
 //     // const sigA1 = await connection.confirmTransaction(a1)
 
-//     const burnMsolFrom = await getOrCreateAssociatedTokenAccount(connection, stakeAuthority, msolMint, stakeAuthority.publicKey)
+//     const burnSsolFrom = await getOrCreateAssociatedTokenAccount(connection, stakeAuthority, ssolMint, stakeAuthority.publicKey)
 
-//     console.log(burnMsolFrom.address);
-//     // const burnMsolAuthority = 
+//     console.log(burnSsolFrom.address);
+//     // const burnSsolAuthority = 
 
 //     console.log({
 //       state: stateAccount.publicKey,
-//       msolMint: msolMint,
-//       burnMsolFrom: burnMsolFrom.address,
-//       burnMsolAuthority: stakeAuthority.publicKey,
+//       ssolMint: ssolMint,
+//       burnSsolFrom: burnSsolFrom.address,
+//       burnSsolAuthority: stakeAuthority.publicKey,
 //       newTicketAccount: newTicketAccount.publicKey,
 //     });
 
 //     const tx = await program.methods.orderUnstake(new BN(10 ** 9))
 //       .accounts({
 //         state: stateAccount.publicKey,
-//         msolMint: msolMint,
-//         burnMsolFrom: burnMsolFrom.address,
-//         burnMsolAuthority: stakeAuthority.publicKey,
+//         ssolMint: ssolMint,
+//         burnSsolFrom: burnSsolFrom.address,
+//         burnSsolAuthority: stakeAuthority.publicKey,
 //         newTicketAccount: newTicketAccount.publicKey
 //       })
 //       .preInstructions([
@@ -1025,16 +1025,16 @@
 
 //     await connection.confirmTransaction(airtx1)
 
-//     const burnMsolFrom = await getOrCreateAssociatedTokenAccount(connection, stakeAuthority, msolMint, stakeAuthority.publicKey)
+//     const burnSsolFrom = await getOrCreateAssociatedTokenAccount(connection, stakeAuthority, ssolMint, stakeAuthority.publicKey)
 
 //     console.log("start sleeping");
 //     await new Promise(resolve => setTimeout(resolve, 3000));
 
 //     console.log({
 //       state: stateAccount.publicKey,
-//       msolMint: msolMint,
-//       burnMsolFrom: burnMsolFrom.address,
-//       burnMsolAuthority: payer.publicKey,
+//       ssolMint: ssolMint,
+//       burnSsolFrom: burnSsolFrom.address,
+//       burnSsolAuthority: payer.publicKey,
 //       newTicketAccount: newTicketAccount.publicKey,
 //     });
 
@@ -1278,17 +1278,17 @@
 //   })
 
 //   it("withdraw_stake_account", async () => {
-//     const burnMsolFrom = await getOrCreateAssociatedTokenAccount(connection, stakeAuthority, msolMint, stakeAuthority.publicKey)
+//     const burnSsolFrom = await getOrCreateAssociatedTokenAccount(connection, stakeAuthority, ssolMint, stakeAuthority.publicKey)
 
 //     const airtx = await connection.requestAirdrop(newsplitStakeAccount.publicKey, 10 ** 9)
 
 //     console.log(await connection.confirmTransaction(airtx));
 //     console.log({
 //       state: stateAccount.publicKey,
-//       msolMint: msolMint,
-//       burnMsolFrom: burnMsolFrom.address,
-//       burnMsolAuthority: payer.publicKey,
-//       treasuryMsolAccount: treasuryMsolAccount,
+//       ssolMint: ssolMint,
+//       burnSsolFrom: burnSsolFrom.address,
+//       burnSsolAuthority: payer.publicKey,
+//       treasurySsolAccount: treasurySsolAccount,
 //       validatorList: validatorList.publicKey,
 //       stakeList: stakeList.publicKey,
 //       stakeWithdrawAuthority: stakeWithdrawAuthority,
@@ -1301,10 +1301,10 @@
 //     const tx = await program.methods.withdrawStakeAccount(0, 0, new BN(10 ** 10), validatorVote)
 //       .accounts({
 //         state: stateAccount.publicKey,
-//         msolMint: msolMint,
-//         burnMsolFrom: burnMsolFrom.address,
-//         burnMsolAuthority: stakeAuthority.publicKey,
-//         treasuryMsolAccount: treasuryMsolAccount.address,
+//         ssolMint: ssolMint,
+//         burnSsolFrom: burnSsolFrom.address,
+//         burnSsolAuthority: stakeAuthority.publicKey,
+//         treasurySsolAccount: treasurySsolAccount.address,
 //         validatorList: validatorList.publicKey,
 //         stakeList: stakeList.publicKey,
 //         stakeWithdrawAuthority: stakeWithdrawAuthority,

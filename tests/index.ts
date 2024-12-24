@@ -6,9 +6,9 @@ import {
     PublicKey,
 } from '@solana/web3.js';
 import { bs58 } from "@coral-xyz/anchor/dist/cjs/utils/bytes";
-import { MarinadeForkingSmartContract } from '../target/types/marinade_forking_smart_contract';
+import { SolisticStaking } from '../target/types/solistic_staking';
 
-const program = anchor.workspace.MarinadeForkingSmartContract as Program<MarinadeForkingSmartContract>;
+const program = anchor.workspace.SolisticStaking as Program<SolisticStaking>;
 
 const payer = Keypair.fromSecretKey(bs58.decode("5BrUQk416xSy4xbHZq6jXb2JcVA8iRnPNJJr3NZv2wukMhwB39ndpe9eaCXmuFLxzkVUYXbdCB9ydeJkhKCGhnkm"));
 const connection = new Connection("https://devnet.helius-rpc.com/?api-key=f74ec75c-56ba-49df-b67b-71637bf8d115"); // Change to your localnet RPC
@@ -46,18 +46,18 @@ const stakeAccount = Keypair.fromSecretKey(
 )
 // const stakeAccount1 = Keypair.fromSecretKey()
 
-const msolMint = new PublicKey("2mvRrWtLKB5rWFd74c2hhbMpz1izn4upDyrxejMYPxZy")
+const ssolMint = new PublicKey("2mvRrWtLKB5rWFd74c2hhbMpz1izn4upDyrxejMYPxZy")
 const lpMint = new PublicKey("Bu7ZehQtv7tv4CwMMZG6y22pUqumzpBvWFqmNPvxUtGk")
 
 const mint_to = new PublicKey("AKToWp69enbyCdBuuWTgGqdxtiavS1Fcv6ZYL8ZbADnz")
-const mSolLeg = new PublicKey("75bK6919EwLYuw8WsBgSXwrGgAvarymqzU65hyF5MH9Z")
-const treasuryMsolAccount = new PublicKey("Eb7FhgmUc2DnQnnFBG2n5tGJUnp4DgKn14i6jJc311sq")
+const sSolLeg = new PublicKey("75bK6919EwLYuw8WsBgSXwrGgAvarymqzU65hyF5MH9Z")
+const treasurySsolAccount = new PublicKey("Eb7FhgmUc2DnQnnFBG2n5tGJUnp4DgKn14i6jJc311sq")
 
-const [authorityMsolAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("st_mint")], program.programId);
+const [authoritySsolAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("st_mint")], program.programId);
 const [authorityLpAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_mint")], program.programId);
 const [reservePda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("reserve")], program.programId);
 const [solLegPda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_sol")], program.programId);
-const [authorityMSolLegAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_st_sol_authority")], program.programId);
+const [authoritySSolLegAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_st_sol_authority")], program.programId);
 const [stakeDepositAuthority] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("deposit")], program.programId)
 const [stakeWithdrawAuthority] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("withdraw")], program.programId);
 
@@ -123,18 +123,18 @@ export {
     validatorList,
     operationalSolAccount,
     authorityAcc,
-    msolMint,
-    mSolLeg,
+    ssolMint,
+    sSolLeg,
     lpMint,
-    treasuryMsolAccount,
+    treasurySsolAccount,
     voteAccount,
     stakeAuthority,
     mint_to,
     stakeAccount,
-    authorityMsolAcc,
+    authoritySsolAcc,
     reservePda,
     authorityLpAcc,
-    authorityMSolLegAcc,
+    authoritySSolLegAcc,
     solLegPda,
     stakeDepositAuthority,
     stakeWithdrawAuthority,

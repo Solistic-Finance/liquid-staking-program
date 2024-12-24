@@ -15,7 +15,7 @@ export interface DepositNewStakeParam {
 }
 
 export interface OrderUnstakeParam {
-    msolAmount: BN,
+    ssolAmount: BN,
     newTicketAccount: Keypair,
 }
 
@@ -26,7 +26,7 @@ export interface ClaimParam {
 export interface WithdrawStakeAccountParam {
     stakeIndex: number,
     validatorIndex: number,
-    msolAmount: BN,
+    ssolAmount: BN,
     beneficiary: PublicKey,
     splitStakeAccount: Keypair,
 }

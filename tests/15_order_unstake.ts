@@ -1,6 +1,6 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { MarinadeForkingSmartContract } from "../target/types/marinade_forking_smart_contract";
+import { SolisticStaking } from "../target/types/solistic_staking";
 import {
     Keypair,
     sendAndConfirmTransaction,
@@ -11,17 +11,17 @@ import {
 import { BN } from "bn.js";
 import {
     connection,
-    msolMint,
+    ssolMint,
     payer,
     stakeAuthority,
     stateAccount
 } from ".";
 
-describe("marinade-forking-smart-contract", () => {
+describe("solistic-staking", () => {
     // Configure the client to use the local cluster.
     anchor.setProvider(anchor.AnchorProvider.env());
 
-    const program = anchor.workspace.MarinadeForkingSmartContract as Program<MarinadeForkingSmartContract>;
+    const program = anchor.workspace.SolisticStaking as Program<SolisticStaking>;
 
     // * -------------------------------------------------------------------------------------
     // *  Advanced Instructions
@@ -40,14 +40,14 @@ describe("marinade-forking-smart-contract", () => {
         //! Should double check on this
         const newTicketAccount = Keypair.generate()
 
-        const burnMsolFrom = await getOrCreateAssociatedTokenAccount(connection, stakeAuthority, msolMint, stakeAuthority.publicKey)
+        const burnSsolFrom = await getOrCreateAssociatedTokenAccount(connection, stakeAuthority, ssolMint, stakeAuthority.publicKey)
 
         const tx = await program.methods.orderUnstake(new BN(10 ** 9))
             .accounts({
                 state: stateAccount.publicKey,
-                msolMint: msolMint,
-                burnMsolFrom: burnMsolFrom.address,
-                burnMsolAuthority: stakeAuthority.publicKey,
+                ssolMint: ssolMint,
+                burnSsolFrom: burnSsolFrom.address,
+                burnSsolAuthority: stakeAuthority.publicKey,
                 newTicketAccount: newTicketAccount.publicKey
             })
             .preInstructions([

@@ -11,26 +11,26 @@ const deposit = async (connection: Connection, payer: Signer, depositParam: Depo
 
     const {
         stateAccount,
-        msolMint,
+        ssolMint,
         solLegPda,
-        mSolLeg,
-        authorityMSolLegAcc,
+        sSolLeg,
+        authoritySSolLegAcc,
         reservePda,
         mint_to,
-        authorityMsolAcc
+        authoritySsolAcc
     } = initParam
 
     const tx = await program.methods.deposit(amount)
         .accounts({
             state: stateAccount.publicKey,
-            msolMint: msolMint,
+            ssolMint: ssolMint,
             liqPoolSolLegPda: solLegPda,
-            liqPoolMsolLeg: mSolLeg,
-            liqPoolMsolLegAuthority: authorityMSolLegAcc,
+            liqPoolSsolLeg: sSolLeg,
+            liqPoolSsolLegAuthority: authoritySSolLegAcc,
             reservePda: reservePda,
             transferFrom: payer.publicKey,
             mintTo: mint_to,
-            msolMintAuthority: authorityMsolAcc,
+            ssolMintAuthority: authoritySsolAcc,
         })
         .signers([payer])
         .transaction()

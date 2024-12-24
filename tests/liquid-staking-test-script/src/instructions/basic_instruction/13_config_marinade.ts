@@ -1,14 +1,14 @@
 
 import { Connection, sendAndConfirmTransaction, Signer } from "@solana/web3.js";
 import { program } from "../../config";
-import { ConfigMarinadeParam, InitParam, } from "../../types";
+import { ConfigSolisticParam, InitParam, } from "../../types";
 
-const config_marinade = async (connection: Connection, payer: Signer, configMarinadeParam: ConfigMarinadeParam, initParam: InitParam) => {
+const config_solistic = async (connection: Connection, payer: Signer, configSolisticParam: ConfigSolisticParam, initParam: InitParam) => {
     const {
         stateAccount,
     } = initParam
 
-    const tx = await program.methods.configMarinade(configMarinadeParam)
+    const tx = await program.methods.configSolistic(configSolisticParam)
         .accounts({
             state: stateAccount.publicKey,
             adminAuthority: payer.publicKey,
@@ -30,7 +30,7 @@ const config_marinade = async (connection: Connection, payer: Signer, configMari
 }
 
 export {
-    config_marinade
+    config_solistic
 }
 
 //? Define the parameters for initializing the state

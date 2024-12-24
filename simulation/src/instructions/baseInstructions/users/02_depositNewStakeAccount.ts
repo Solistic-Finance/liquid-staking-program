@@ -82,9 +82,9 @@ export const depositNewStakeAccount = async (
                 stakeAuthority: user.publicKey,
                 duplicationFlag: duplicationFlag,
                 rentPayer: user.publicKey,
-                msolMint: ssolMintKeypair.publicKey,
+                ssolMint: ssolMintKeypair.publicKey,
                 mintTo: userSSolTokenAccount,
-                msolMintAuthority: authoritySsolAcc,
+                ssolMintAuthority: authoritySsolAcc,
                 stakeProgram: StakeProgram.programId
             })
             .signers([user])

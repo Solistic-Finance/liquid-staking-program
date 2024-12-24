@@ -16,9 +16,9 @@ const update_active = async (connection: Connection, payer: Signer, updateActive
         stakeList,
         stakeWithdrawAuthority,
         stakeAccount,
-        msolMint,
-        authorityMsolAcc,
-        treasuryMsolAccount
+        ssolMint,
+        authoritySsolAcc,
+        treasurySsolAccount
     } = initParam
 
     const tx = await program.methods.updateActive(stake_index, validator_index)
@@ -29,9 +29,9 @@ const update_active = async (connection: Connection, payer: Signer, updateActive
                 stakeAccount: stakeAccount.publicKey,
                 stakeWithdrawAuthority: stakeWithdrawAuthority,
                 reservePda: reservePda,
-                msolMint: msolMint,
-                msolMintAuthority: authorityMsolAcc,
-                treasuryMsolAccount: treasuryMsolAccount,
+                ssolMint: ssolMint,
+                ssolMintAuthority: authoritySsolAcc,
+                treasurySsolAccount: treasurySsolAccount,
                 stakeHistory: SYSVAR_STAKE_HISTORY_PUBKEY,
                 stakeProgram: StakeProgram.programId
             },

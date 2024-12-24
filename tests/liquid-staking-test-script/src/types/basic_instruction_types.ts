@@ -31,7 +31,7 @@ interface ChangeAuthorityData {
     admin: PublicKey,
     validatorManager: PublicKey,
     operationalSolAccount: PublicKey,
-    treasuryMsolAccount: PublicKey,
+    treasurySsolAccount: PublicKey,
     pauseAuthority: PublicKey,
 }
 
@@ -64,7 +64,7 @@ interface DepositStakeParam {
 }
 
 interface LiquidUnstakeParam {
-    msol_amount: BN
+    ssol_amount: BN
 }
 
 interface AddLiquidityParam {
@@ -82,7 +82,7 @@ interface ConfigLpParam {
     treasuryCut: { basisPoints: number },
 }
 
-interface ConfigMarinadeParam {
+interface ConfigSolisticParam {
     rewardsFee: { basisPoints: number },
     slotsForStakeDelta: BN,
     minStake: BN,
@@ -96,9 +96,9 @@ interface ConfigMarinadeParam {
     maxStakeMovedPerEpoch: { basisPoints: number },
 };
 
-interface UpdateMsolTokenMetadata {
+interface UpdateSsolTokenMetadata {
     stateAccount: Keypair,
-    msolMint: PublicKey,
+    ssolMint: PublicKey,
     name: string,
     symbol: string,
     uri: string,
@@ -126,7 +126,7 @@ export {
     AddLiquidityParam,
     RemoveLiquidityParam,
     ConfigLpParam,
-    ConfigMarinadeParam,
-    UpdateMsolTokenMetadata,
+    ConfigSolisticParam,
+    UpdateSsolTokenMetadata,
     UpdateLpMintTokenMetadata
 }

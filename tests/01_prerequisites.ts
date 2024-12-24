@@ -1,6 +1,6 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { MarinadeForkingSmartContract } from "../target/types/marinade_forking_smart_contract";
+import { SolisticStaking } from "../target/types/solistic_staking";
 import {
     Keypair,
     PublicKey,
@@ -20,21 +20,21 @@ import {
 import { bs58 } from "@coral-xyz/anchor/dist/cjs/utils/bytes";
 import { connection, payer, stateAccount, voteAccount } from ".";
 
-describe("marinade-forking-smart-contract", () => {
+describe("solistic-staking", () => {
     // Configure the client to use the local cluster.
     anchor.setProvider(anchor.AnchorProvider.env());
 
-    const program = anchor.workspace.MarinadeForkingSmartContract as Program<MarinadeForkingSmartContract>;
+    const program = anchor.workspace.SolisticStaking as Program<SolisticStaking>;
 
-    let msolMint: PublicKey;
-    let mSolLeg: PublicKey;
+    let ssolMint: PublicKey;
+    let sSolLeg: PublicKey;
     let lpMint: PublicKey;
-    let treasuryMsolAccount: PublicKey;
+    let treasurySsolAccount: PublicKey;
 
-    const [authorityMsolAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("st_mint")], program.programId);
+    const [authoritySsolAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("st_mint")], program.programId);
     const [reservePda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("reserve")], program.programId);
     const [authorityLpAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_mint")], program.programId);
-    const [authorityMSolLegAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_st_sol_authority")], program.programId);
+    const [authoritySSolLegAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_st_sol_authority")], program.programId);
     const [solLegPda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_sol")], program.programId);
 
     const stakeAccount = Keypair.generate()
@@ -53,13 +53,13 @@ describe("marinade-forking-smart-contract", () => {
 
     it("initialize", async () => {
 
-        msolMint = await createMint(connection, payer, authorityMsolAcc, null, 9);
+        ssolMint = await createMint(connection, payer, authoritySsolAcc, null, 9);
 
         lpMint = await createMint(connection, payer, authorityLpAcc, null, 9);
 
-        treasuryMsolAccount = (await getOrCreateAssociatedTokenAccount(connection, payer, msolMint, stateAccount.publicKey)).address;
+        treasurySsolAccount = (await getOrCreateAssociatedTokenAccount(connection, payer, ssolMint, stateAccount.publicKey)).address;
 
-        mSolLeg = (await getOrCreateAssociatedTokenAccount(connection, payer, msolMint, authorityMSolLegAcc, true)).address;
+        sSolLeg = (await getOrCreateAssociatedTokenAccount(connection, payer, ssolMint, authoritySSolLegAcc, true)).address;
 
         if (await connection.getBalance(reservePda) != 2_039_280) {
 
@@ -89,9 +89,9 @@ describe("marinade-forking-smart-contract", () => {
 
 
         // // Create associated token account for minting
-        const mint_to = await createAssociatedTokenAccount(connection, payer, msolMint, payer.publicKey);
+        const mint_to = await createAssociatedTokenAccount(connection, payer, ssolMint, payer.publicKey);
 
-        const burnMsolFrom = (await getOrCreateAssociatedTokenAccount(connection, payer, msolMint, payer.publicKey)).address
+        const burnSsolFrom = (await getOrCreateAssociatedTokenAccount(connection, payer, ssolMint, payer.publicKey)).address
 
     })
 

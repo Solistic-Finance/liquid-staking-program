@@ -27,14 +27,14 @@ export const deposit = async (connection: Connection, user: Signer, depositParam
     const tx = await program.methods.deposit(amount)
         .accounts({
             state: stateAccount.publicKey,
-            msolMint: ssolMintKeypair.publicKey,
+            ssolMint: ssolMintKeypair.publicKey,
             liqPoolSolLegPda: solLegPda,
-            liqPoolMsolLeg: sSolLeg,
-            liqPoolMsolLegAuthority: authoritySSolLegAcc,
+            liqPoolSsolLeg: sSolLeg,
+            liqPoolSsolLegAuthority: authoritySSolLegAcc,
             reservePda: reservePda,
             transferFrom: user.publicKey,
             mintTo: userSSolTokenAccount,
-            msolMintAuthority: authoritySsolAcc,
+            ssolMintAuthority: authoritySsolAcc,
         })
         .signers([user])
         .transaction()

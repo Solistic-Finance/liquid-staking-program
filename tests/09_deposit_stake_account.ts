@@ -1,6 +1,6 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { MarinadeForkingSmartContract } from "../target/types/marinade_forking_smart_contract";
+import { SolisticStaking } from "../target/types/solistic_staking";
 import {
     PublicKey,
     sendAndConfirmTransaction,
@@ -9,7 +9,7 @@ import {
 import {
     connection,
     mint_to,
-    msolMint,
+    ssolMint,
     payer,
     stakeAccount,
     stakeList,
@@ -18,15 +18,15 @@ import {
     voteAccount
 } from ".";
 
-describe("marinade-forking-smart-contract", () => {
+describe("solistic-staking", () => {
     // Configure the client to use the local cluster.
     anchor.setProvider(anchor.AnchorProvider.env());
 
-    const program = anchor.workspace.MarinadeForkingSmartContract as Program<MarinadeForkingSmartContract>;
+    const program = anchor.workspace.SolisticStaking as Program<SolisticStaking>;
 
     const validatorVote = voteAccount[1]
     const [duplicationFlag] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("unique_validator"), validatorVote.toBuffer()], program.programId)
-    const [authorityMsolAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("st_mint")], program.programId);
+    const [authoritySsolAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("st_mint")], program.programId);
 
     // * -------------------------------------------------------------------------------------
     // *  Base Instructions
@@ -52,9 +52,9 @@ describe("marinade-forking-smart-contract", () => {
                 stakeAccount: stakeAccount.publicKey,
                 stakeAuthority: payer.publicKey,
                 duplicationFlag: duplicationFlag,      //  Double check
-                msolMint: msolMint,
+                ssolMint: ssolMint,
                 mintTo: mint_to,
-                msolMintAuthority: authorityMsolAcc,
+                ssolMintAuthority: authoritySsolAcc,
                 stakeProgram: StakeProgram.programId
             })
             .signers([payer])

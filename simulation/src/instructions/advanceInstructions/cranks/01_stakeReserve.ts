@@ -1,6 +1,7 @@
 
 import { 
     Connection, 
+    Keypair, 
     sendAndConfirmTransaction, 
     Signer, 
     STAKE_CONFIG_ID, 
@@ -15,11 +16,10 @@ import {
     validatorsList,
     stakeList,
     reservePda,
-    stakeAccount,
     stakeDepositAuthority
 } from "../../prerequisite";
 
-export const stakeReserve = async (connection: Connection, cranker: Signer, stakeReserveParam: StakeReserveParam) => {
+export const stakeReserve = async (connection: Connection, cranker: Signer, stakeAccount: Keypair, stakeReserveParam: StakeReserveParam) => {
     const {
         validatorIndex,
         validatorVote

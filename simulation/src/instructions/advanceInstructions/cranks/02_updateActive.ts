@@ -34,9 +34,9 @@ export const updateActive = async (connection: Connection, cranker: Signer, stak
                 stakeAccount: stakeAccount,
                 stakeWithdrawAuthority: stakeWithdrawAuthority,
                 reservePda: reservePda,
-                msolMint: ssolMint,
-                msolMintAuthority: authoritySsolAcc,
-                treasuryMsolAccount: treasurySsolAccount,
+                ssolMint: ssolMint,
+                ssolMintAuthority: authoritySsolAcc,
+                treasurySsolAccount: treasurySsolAccount,
                 stakeHistory: SYSVAR_STAKE_HISTORY_PUBKEY,
                 stakeProgram: StakeProgram.programId
             },

@@ -1,13 +1,13 @@
-import { Connection } from "@solana/web3.js";
+import { Connection, Keypair } from "@solana/web3.js";
 import { preRequisiteSetup } from "./instructions/prerequisite";
 import { BN } from "bn.js";
 import { initialize, addValidator} from "./instructions/baseInstructions/admin";
-import { depositExistingStakeAccount, depositNewStakeAccount } from "./instructions/baseInstructions/users";
+import { depositExistingStakeAccount, depositNewStakeAccount, withdrawStakeAccount } from "./instructions/baseInstructions/users";
 import { updateActive } from "./instructions/advanceInstructions/cranks";
 import { voteAccount } from "./voteAccounts";
 import { loadKeypairFromFile } from "./utils";
 import { InitializeDataParam, SSolInitParam, UpdateActiveParam} from "./types";
-import { DepositExistingStakeParam, DepositNewStakeParam } from "./types/basicInstructionTypes";
+import { DepositExistingStakeParam, DepositNewStakeParam, WithdrawStakeAccountParam } from "./types/basicInstructionTypes";
 
 const rpcClient = "https://api.devnet.solana.com";
 
@@ -16,6 +16,7 @@ const admin = loadKeypairFromFile("../../.keys/solisticDevAdmin.json");
 const anish = loadKeypairFromFile("../../.keys/anishAuthority.json");
 const bhargav = loadKeypairFromFile("../../.keys/solisticDevAdmin.json");
 const cranker = loadKeypairFromFile("../../.keys/cranker.json");
+const splitStakeAccount = loadKeypairFromFile("../../.keys/splitStakeAccount.json");
 
 console.log("admin : ", admin.publicKey.toBase58());
 console.log("anish : ", anish.publicKey.toBase58());
@@ -45,7 +46,7 @@ const simulate = async () => {
 
     // deleteValidator from index 0
     const addValidatorParam1 = {
-        score: 1,
+        score: 5,
         voteAccount: voteAccount[0]
     }
 
@@ -58,45 +59,42 @@ const simulate = async () => {
 
     await  addValidator(connection, admin, addValidatorParam2)
 
-    const depositExistingStakeAccountParam: DepositExistingStakeParam =  {
-        validatorIndex: 1,
-    }
-    let anishStakeAccount = loadKeypairFromFile("../../.keys/anishStakeAccount.json")
-    await depositExistingStakeAccount(connection, anish, anishStakeAccount.publicKey, depositExistingStakeAccountParam)
-
     const depositNewStakeAccountParam: DepositNewStakeParam = {
-        validatorIndex: 1,
+        validatorIndex: 0,
         amount: 10000000000
     }
     let bhargavStakeAccount = loadKeypairFromFile("../../.keys/bhargavStakeAccount.json")
     await depositNewStakeAccount(connection, bhargav, bhargavStakeAccount, depositNewStakeAccountParam)
 
     const depositNewStakeAccountParam1: DepositNewStakeParam = {
-        validatorIndex: 2,
+        validatorIndex: 1,
         amount: 5000000000
     }
     
     let bhargavStakeAccount1 = loadKeypairFromFile("../../.keys/bhargavStakeAccount1.json")
     await depositNewStakeAccount(connection, bhargav, bhargavStakeAccount1, depositNewStakeAccountParam1)
 
-    const updateActiveParam1: UpdateActiveParam = {
-        stakeIndex: 0,
-        validatorIndex: 1
-    }
-    await updateActive(connection, cranker, anishStakeAccount.publicKey, updateActiveParam1)
-
     const updateActiveParam: UpdateActiveParam = {
-        stakeIndex: 1,
-        validatorIndex: 1
+        stakeIndex: 0,
+        validatorIndex: 0
     }
     await updateActive(connection, cranker, bhargavStakeAccount.publicKey, updateActiveParam)
 
     const updateActiveParam2: UpdateActiveParam = {
-        stakeIndex: 2,
-        validatorIndex: 2
+        stakeIndex: 1,
+        validatorIndex: 1
     }
     await updateActive(connection, cranker, bhargavStakeAccount1.publicKey, updateActiveParam2)
 
+    const withdrawStakeAccountParam: WithdrawStakeAccountParam = {
+        stakeIndex: 0,
+        validatorIndex: 1,
+        ssolAmount: new BN(10 ** 9),
+        beneficiary: voteAccount[1],
+        splitStakeAccount: splitStakeAccount,
+    }
+    await withdrawStakeAccount(connection, cranker, bhargavStakeAccount, withdrawStakeAccountParam)
+    
 }
 
 simulate().then(() => {
