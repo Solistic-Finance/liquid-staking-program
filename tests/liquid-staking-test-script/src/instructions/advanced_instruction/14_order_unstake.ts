@@ -7,22 +7,22 @@ const order_unstake = async (connection: Connection, payer: Signer, orderUnstake
 
 
     const {
-        msol_amount,
+        ssol_amount,
         newTicketAccount
     } = orderUnstakeParam
 
     const {
         stateAccount,
-        msolMint,
-        burnMsolFrom,
+        ssolMint,
+        burnSsolFrom,
     } = initParam
 
-    const tx = await program.methods.orderUnstake(msol_amount)
+    const tx = await program.methods.orderUnstake(ssol_amount)
         .accounts({
             state: stateAccount.publicKey,
-            msolMint: msolMint,
-            burnMsolFrom: burnMsolFrom,
-            burnMsolAuthority: payer.publicKey,
+            ssolMint: ssolMint,
+            burnSsolFrom: burnSsolFrom,
+            burnSsolAuthority: payer.publicKey,
             newTicketAccount: newTicketAccount.publicKey
         })
         .preInstructions([

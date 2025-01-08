@@ -35,7 +35,7 @@ export const _claim = async () => {
     const newTicketAccount = Keypair.generate()
 
     const orderUnstakeParam: OrderUnstakeParam = {
-        msol_amount : new BN(10000000),
+        ssol_amount : new BN(10000000),
         newTicketAccount
     }
     await order_unstake(connection, payer, orderUnstakeParam, initParam)

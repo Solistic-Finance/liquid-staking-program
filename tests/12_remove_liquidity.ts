@@ -1,16 +1,16 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { MarinadeForkingSmartContract } from "../target/types/marinade_forking_smart_contract";
+import { SolisticStaking } from "../target/types/solistic_staking";
 import {
     sendAndConfirmTransaction,
 } from '@solana/web3.js';
 import { BN } from "bn.js";
 import {
-    authorityMSolLegAcc,
+    authoritySSolLegAcc,
     connection,
     lpMint,
-    mSolLeg,
-    msolMint,
+    sSolLeg,
+    ssolMint,
     payer,
     solLegPda,
     stakeAuthority,
@@ -18,11 +18,11 @@ import {
 } from ".";
 import { getAssociatedTokenAddress, getOrCreateAssociatedTokenAccount } from "@solana/spl-token";
 
-describe("marinade-forking-smart-contract", () => {
+describe("solistic-staking", () => {
     // Configure the client to use the local cluster.
     anchor.setProvider(anchor.AnchorProvider.env());
 
-    const program = anchor.workspace.MarinadeForkingSmartContract as Program<MarinadeForkingSmartContract>;
+    const program = anchor.workspace.SolisticStaking as Program<SolisticStaking>;
 
     // * -------------------------------------------------------------------------------------
     // *  Base Instructions
@@ -39,7 +39,7 @@ describe("marinade-forking-smart-contract", () => {
 
     it("remove_liquidity", async () => {
         const burnFrom = await getOrCreateAssociatedTokenAccount(connection, payer, lpMint, stakeAuthority.publicKey)
-        const transferMsolTo = await getAssociatedTokenAddress(msolMint, stakeAuthority.publicKey)
+        const transferSsolTo = await getAssociatedTokenAddress(ssolMint, stakeAuthority.publicKey)
 
         const tx = await program.methods.removeLiquidity(new BN(10_000))
             .accounts({
@@ -48,10 +48,10 @@ describe("marinade-forking-smart-contract", () => {
                 burnFrom: burnFrom.address,
                 burnFromAuthority: stakeAuthority.publicKey,
                 transferSolTo: stakeAuthority.publicKey,
-                transferMsolTo: transferMsolTo,
+                transferSsolTo: transferSsolTo,
                 liqPoolSolLegPda: solLegPda,
-                liqPoolMsolLeg: mSolLeg,
-                liqPoolMsolLegAuthority: authorityMSolLegAcc,
+                liqPoolSsolLeg: sSolLeg,
+                liqPoolSsolLegAuthority: authoritySSolLegAcc,
             })
             .signers([stakeAuthority])
             .transaction()

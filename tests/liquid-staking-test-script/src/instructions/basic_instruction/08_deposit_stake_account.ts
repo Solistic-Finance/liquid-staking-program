@@ -12,9 +12,9 @@ const deposit_stake_account = async (connection: Connection, payer: Signer, depo
 
     const {
         stateAccount,
-        msolMint,
+        ssolMint,
         mint_to,
-        authorityMsolAcc,
+        authoritySsolAcc,
         validatorList,
         stakeList,
         stakeAccount,
@@ -64,9 +64,9 @@ const deposit_stake_account = async (connection: Connection, payer: Signer, depo
                 stakeAccount: stakeAccount.publicKey,
                 stakeAuthority: payer.publicKey,
                 duplicationFlag: duplicationFlag,      //  Double check
-                msolMint: msolMint,
+                ssolMint: ssolMint,
                 mintTo: mint_to,
-                msolMintAuthority: authorityMsolAcc,
+                ssolMintAuthority: authoritySsolAcc,
                 stakeProgram: StakeProgram.programId
             })
             .signers([payer])

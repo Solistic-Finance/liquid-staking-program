@@ -43,6 +43,6 @@ export {
 //     admin: payer.publicKey,
 //     validatorManager: payer.publicKey,
 //     operationalSolAccount: operationalSolAccount,
-//     treasuryMsolAccount: treasuryMsolAccount,
+//     treasurySsolAccount: treasurySsolAccount,
 //     pauseAuthority: payer.publicKey
 // }

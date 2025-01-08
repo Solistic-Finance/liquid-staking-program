@@ -1,6 +1,6 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { MarinadeForkingSmartContract } from "../target/types/marinade_forking_smart_contract";
+import { SolisticStaking } from "../target/types/solistic_staking";
 import {
     PublicKey,
     sendAndConfirmTransaction,
@@ -9,21 +9,21 @@ import { BN } from "bn.js";
 import {
     connection,
     mint_to,
-    mSolLeg,
-    msolMint,
+    sSolLeg,
+    ssolMint,
     payer,
     stateAccount
 } from ".";
 
-describe("marinade-forking-smart-contract", () => {
+describe("solistic-staking", () => {
     // Configure the client to use the local cluster.
     anchor.setProvider(anchor.AnchorProvider.env());
 
-    const program = anchor.workspace.MarinadeForkingSmartContract as Program<MarinadeForkingSmartContract>;
+    const program = anchor.workspace.SolisticStaking as Program<SolisticStaking>;
 
-    const [authorityMsolAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("st_mint")], program.programId);
+    const [authoritySsolAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("st_mint")], program.programId);
     const [reservePda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("reserve")], program.programId);
-    const [authorityMSolLegAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_st_sol_authority")], program.programId);
+    const [authoritySSolLegAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_st_sol_authority")], program.programId);
     const [solLegPda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_sol")], program.programId);
 
     // * -------------------------------------------------------------------------------------
@@ -44,14 +44,14 @@ describe("marinade-forking-smart-contract", () => {
         const tx = await program.methods.deposit(new BN(10000))
             .accounts({
                 state: stateAccount.publicKey,
-                msolMint: msolMint,
+                ssolMint: ssolMint,
                 liqPoolSolLegPda: solLegPda,
-                liqPoolMsolLeg: mSolLeg,
-                liqPoolMsolLegAuthority: authorityMSolLegAcc,
+                liqPoolSsolLeg: sSolLeg,
+                liqPoolSsolLegAuthority: authoritySSolLegAcc,
                 reservePda: reservePda,
                 transferFrom: payer.publicKey,
                 mintTo: mint_to,
-                msolMintAuthority: authorityMsolAcc,
+                ssolMintAuthority: authoritySsolAcc,
             })
             .signers([payer])
             .transaction()

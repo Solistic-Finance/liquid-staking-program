@@ -1,0 +1,26 @@
+[config]
+default_to_workspace = false
+skip_core_tasks = true
+
+[tasks.build_program]
+script = """
+anchor build
+"""
+
+[tasks.deploy_program]
+script = """
+cp simulation/.keys/solistic_staking-keypair.json target/deploy/solistic_staking-keypair.json
+anchor deploy
+"""
+dependencies = ["build_program"]
+
+[tasks.copy_files]
+script = """
+cp target/idl/solistic_staking.json tests/liquid-staking-test-script/targets/idl/solistic_staking.json
+cp target/types/solistic_staking.ts tests/liquid-staking-test-script/targets/types/solistic_staking.ts
+cp target/idl/solistic_staking.json simulation/targets/idl/solistic_staking.json
+cp target/types/solistic_staking.ts simulation/targets/types/solistic_staking.ts
+"""
+
+[tasks.do_all]
+dependencies = ["deploy_program", "copy_files"]

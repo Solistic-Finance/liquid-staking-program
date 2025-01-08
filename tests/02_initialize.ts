@@ -1,6 +1,6 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { MarinadeForkingSmartContract } from "../target/types/marinade_forking_smart_contract";
+import { SolisticStaking } from "../target/types/solistic_staking";
 import {
     PublicKey,
     sendAndConfirmTransaction,
@@ -9,23 +9,23 @@ import {
     authorityAcc,
     connection,
     lpMint,
-    mSolLeg,
-    msolMint,
+    sSolLeg,
+    ssolMint,
     operationalSolAccount,
     payer,
     stakeList,
     stateAccount,
-    treasuryMsolAccount,
+    treasurySsolAccount,
     validatorList
 } from ".";
 
 
 
-describe("marinade-forking-smart-contract", () => {
+describe("solistic-staking", () => {
 
     anchor.setProvider(anchor.AnchorProvider.env());
 
-    const program = anchor.workspace.MarinadeForkingSmartContract as Program<MarinadeForkingSmartContract>;
+    const program = anchor.workspace.SolisticStaking as Program<SolisticStaking>;
 
     const [reservePda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("reserve")], program.programId);
     const [solLegPda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_sol")], program.programId);
@@ -69,15 +69,15 @@ describe("marinade-forking-smart-contract", () => {
             .accounts({
                 state: stateAccount.publicKey,
                 reservePda: reservePda,
-                msolMint: msolMint,
+                ssolMint: ssolMint,
                 stakeList: stakeList.publicKey,
                 validatorList: validatorList.publicKey,
                 operationalSolAccount: operationalSolAccount.publicKey,
-                treasuryMsolAccount: treasuryMsolAccount,
+                treasurySsolAccount: treasurySsolAccount,
                 liqPool: {
                     lpMint: lpMint,
                     solLegPda: solLegPda,
-                    msolLeg: mSolLeg,
+                    ssolLeg: sSolLeg,
                 },
                 clock: anchor.web3.SYSVAR_CLOCK_PUBKEY,
                 rent: anchor.web3.SYSVAR_RENT_PUBKEY,

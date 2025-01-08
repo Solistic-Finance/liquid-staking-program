@@ -7,16 +7,16 @@ const withdraw_stake_account = async (connection: Connection, payer: Signer, wit
     const {
         stake_index,
         validator_index,
-        msol_amount,
+        ssol_amount,
         beneficiary,
         splitStakeAccount
     } = withdrawStakeAccountParam
 
     const {
         stateAccount,
-        msolMint,
-        burnMsolFrom,
-        treasuryMsolAccount,
+        ssolMint,
+        burnSsolFrom,
+        treasurySsolAccount,
         validatorList,
         stakeList,
         stakeWithdrawAuthority,
@@ -27,14 +27,14 @@ const withdraw_stake_account = async (connection: Connection, payer: Signer, wit
     const tx = await program.methods.withdrawStakeAccount(
         stake_index,
         validator_index,
-        msol_amount,
+        ssol_amount,
         beneficiary
     ).accounts({
         state: stateAccount.publicKey,
-        msolMint: msolMint,
-        burnMsolFrom: burnMsolFrom,
-        burnMsolAuthority: payer.publicKey,
-        treasuryMsolAccount: treasuryMsolAccount,
+        ssolMint: ssolMint,
+        burnSsolFrom: burnSsolFrom,
+        burnSsolAuthority: payer.publicKey,
+        treasurySsolAccount: treasurySsolAccount,
         validatorList: validatorList.publicKey,
         stakeList: stakeList.publicKey,
         stakeWithdrawAuthority: stakeWithdrawAuthority,

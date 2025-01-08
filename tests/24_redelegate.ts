@@ -1,6 +1,6 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { MarinadeForkingSmartContract } from "../target/types/marinade_forking_smart_contract";
+import { SolisticStaking } from "../target/types/solistic_staking";
 import {
     Keypair,
     PublicKey,
@@ -33,13 +33,13 @@ import {
 import { ASSOCIATED_PROGRAM_ID } from "@coral-xyz/anchor/dist/cjs/utils/token";
 import { BN } from "bn.js";
 import { bs58 } from "@coral-xyz/anchor/dist/cjs/utils/bytes";
-import { authorityAcc, connection, lpMint, mint_to, mSolLeg, msolMint, operationalSolAccount, payer, reservePda, stakeAccount, stakeAuthority, stakeList, stateAccount, treasuryMsolAccount, validatorList, voteAccount } from ".";
+import { authorityAcc, connection, lpMint, mint_to, sSolLeg, ssolMint, operationalSolAccount, payer, reservePda, stakeAccount, stakeAuthority, stakeList, stateAccount, treasurySsolAccount, validatorList, voteAccount } from ".";
 
-describe("marinade-forking-smart-contract", () => {
+describe("solistic-staking", () => {
     // Configure the client to use the local cluster.
     anchor.setProvider(anchor.AnchorProvider.env());
 
-    const program = anchor.workspace.MarinadeForkingSmartContract as Program<MarinadeForkingSmartContract>;
+    const program = anchor.workspace.SolisticStaking as Program<SolisticStaking>;
 
     const newsplitStakeAccount = Keypair.generate()
     const newsplitStakeAccount1 = Keypair.generate()

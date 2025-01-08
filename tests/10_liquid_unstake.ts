@@ -1,6 +1,6 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { MarinadeForkingSmartContract } from "../target/types/marinade_forking_smart_contract";
+import { SolisticStaking } from "../target/types/solistic_staking";
 import {
     PublicKey,
     sendAndConfirmTransaction,
@@ -9,19 +9,19 @@ import { BN } from "bn.js";
 import {
     connection,
     mint_to,
-    mSolLeg,
-    msolMint,
+    sSolLeg,
+    ssolMint,
     payer,
     stakeAuthority,
     stateAccount,
-    treasuryMsolAccount
+    treasurySsolAccount
 } from ".";
 
-describe("marinade-forking-smart-contract", () => {
+describe("solistic-staking", () => {
     // Configure the client to use the local cluster.
     anchor.setProvider(anchor.AnchorProvider.env());
 
-    const program = anchor.workspace.MarinadeForkingSmartContract as Program<MarinadeForkingSmartContract>;
+    const program = anchor.workspace.SolisticStaking as Program<SolisticStaking>;
 
     const [solLegPda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_sol")], program.programId);
 
@@ -43,12 +43,12 @@ describe("marinade-forking-smart-contract", () => {
         const tx = await program.methods.liquidUnstake(new BN(100))
             .accounts({
                 state: stateAccount.publicKey,
-                msolMint: msolMint,
+                ssolMint: ssolMint,
                 liqPoolSolLegPda: solLegPda,
-                liqPoolMsolLeg: mSolLeg,
-                treasuryMsolAccount: treasuryMsolAccount,
-                getMsolFrom: mint_to,
-                getMsolFromAuthority: stakeAuthority.publicKey,
+                liqPoolSsolLeg: sSolLeg,
+                treasurySsolAccount: treasurySsolAccount,
+                getSsolFrom: mint_to,
+                getSsolFromAuthority: stakeAuthority.publicKey,
                 transferSolTo: stakeAuthority.publicKey,
             })
             .signers([stakeAuthority])

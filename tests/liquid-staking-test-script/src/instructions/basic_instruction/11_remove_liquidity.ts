@@ -11,9 +11,9 @@ const remove_liquidity = async (connection: Connection, payer: Signer, removeLiq
     const {
         stateAccount,
         lpMint,
-        authorityMSolLegAcc,
+        authoritySSolLegAcc,
         solLegPda,
-        mSolLeg,
+        sSolLeg,
         mint_to,
         mint_to_lp
     } = initParam
@@ -25,10 +25,10 @@ const remove_liquidity = async (connection: Connection, payer: Signer, removeLiq
             burnFrom: mint_to_lp,
             burnFromAuthority: payer.publicKey,
             transferSolTo: payer.publicKey,
-            transferMsolTo: mint_to,
+            transferSsolTo: mint_to,
             liqPoolSolLegPda: solLegPda,
-            liqPoolMsolLeg: mSolLeg,
-            liqPoolMsolLegAuthority: authorityMSolLegAcc,
+            liqPoolSsolLeg: sSolLeg,
+            liqPoolSsolLegAuthority: authoritySSolLegAcc,
         })
         .signers([payer])
         .transaction()

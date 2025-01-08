@@ -1,4 +1,4 @@
-import { Keypair, PublicKey } from "@solana/web3.js";
+import { Keypair, PublicKey, Signer } from "@solana/web3.js";
 import BN from "bn.js";
 
 interface InitializeDataParam {
@@ -31,7 +31,7 @@ interface ChangeAuthorityData {
     admin: PublicKey,
     validatorManager: PublicKey,
     operationalSolAccount: PublicKey,
-    treasuryMsolAccount: PublicKey,
+    treasurySsolAccount: PublicKey,
     pauseAuthority: PublicKey,
 }
 
@@ -64,7 +64,7 @@ interface DepositStakeParam {
 }
 
 interface LiquidUnstakeParam {
-    msol_amount: BN
+    ssol_amount: BN
 }
 
 interface AddLiquidityParam {
@@ -82,7 +82,7 @@ interface ConfigLpParam {
     treasuryCut: { basisPoints: number },
 }
 
-interface ConfigMarinadeParam {
+interface ConfigSolisticParam {
     rewardsFee: { basisPoints: number },
     slotsForStakeDelta: BN,
     minStake: BN,
@@ -95,6 +95,23 @@ interface ConfigMarinadeParam {
     withdrawStakeAccountFee: { bpCents: number },
     maxStakeMovedPerEpoch: { basisPoints: number },
 };
+
+interface UpdateSsolTokenMetadata {
+    stateAccount: Keypair,
+    ssolMint: PublicKey,
+    name: string,
+    symbol: string,
+    uri: string,
+}
+
+interface UpdateLpMintTokenMetadata {
+    stateAccount: Keypair,
+    lpMint: PublicKey,
+    name: string,
+    symbol: string,
+    uri: string,
+}
+
 
 export {
     InitializeDataParam,
@@ -109,5 +126,7 @@ export {
     AddLiquidityParam,
     RemoveLiquidityParam,
     ConfigLpParam,
-    ConfigMarinadeParam
+    ConfigSolisticParam,
+    UpdateSsolTokenMetadata,
+    UpdateLpMintTokenMetadata
 }

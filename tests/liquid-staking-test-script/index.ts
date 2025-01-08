@@ -11,7 +11,7 @@ import {
     _add_liquidity,
     _remove_liquidity,
     _config_lp,
-    _config_marinade,
+    _config_solistic,
     _order_unstake,
     _claim,
     _stake_reserve,
@@ -27,12 +27,14 @@ import {
     _withdraw_stake_account,
     _realloc_validator_list,
     _realloc_stake_list,
+    _update_ssol_and_lp_mint_token_metadata,
 } from "./src/order";
 
 
 const main = async () => {
     // await _preRequisite()
     // await _initialize()
+    // await _update_ssol_and_lp_mint_token_metadata()
     // await _change_authority()
     // await _add_validator()
     // await _remove_validator()
@@ -44,7 +46,7 @@ const main = async () => {
     // await _add_liquidity()
     // await _remove_liquidity()
     // await _config_lp()
-    // await _config_marinade()
+    // await _config_solistic()
     // await _order_unstake()
     await _claim()
     // await _stake_reserve()

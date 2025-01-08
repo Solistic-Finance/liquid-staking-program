@@ -1,7 +1,7 @@
 import { BN } from "bn.js";
 import { connection, payer } from "../config";
-import { add_validator, config_marinade, deposit, deposit_stake_account, initialize, preRequisite, update_active, update_deactivated, withdraw_stake_account } from "../instructions";
-import { ConfigMarinadeParam, InitializeDataParam, UpdateDeactivatedParam, WithdrawStakeAccountParam } from "../types";
+import { add_validator, config_solistic, deposit, deposit_stake_account, initialize, preRequisite, update_active, update_deactivated, withdraw_stake_account } from "../instructions";
+import { ConfigSolisticParam, InitializeDataParam, UpdateDeactivatedParam, WithdrawStakeAccountParam } from "../types";
 import { voteAccount } from "../constant";
 import { Keypair } from "@solana/web3.js";
 
@@ -42,7 +42,7 @@ export const _withdraw_stake_account = async () => {
 
     await deposit_stake_account(connection, payer, depositStakeAccountParam, initParam)
 
-    const configMarinadeParam : ConfigMarinadeParam = {
+    const configSolisticParam : ConfigSolisticParam = {
         rewardsFee: { basisPoints: 1 },
         slotsForStakeDelta: new BN (3000),  //  minimun
         minStake: new BN (10000000),            //  minimum
@@ -56,7 +56,7 @@ export const _withdraw_stake_account = async () => {
         maxStakeMovedPerEpoch: { basisPoints: 10 },
     };
 
-    await config_marinade(connection, payer, configMarinadeParam, initParam)
+    await config_solistic(connection, payer, configSolisticParam, initParam)
 
     const updateActiveParam = {
         stake_index: 0,
@@ -69,7 +69,7 @@ export const _withdraw_stake_account = async () => {
     const withdrawStakeAccountParam: WithdrawStakeAccountParam = {
         stake_index: 0,
         validator_index: 0,
-        msol_amount: new BN(10 ** 9),
+        ssol_amount: new BN(10 ** 9),
         beneficiary: voteAccount[0],
         splitStakeAccount: splitStakeAccount,
     }

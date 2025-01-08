@@ -10,7 +10,7 @@ describe("solistic-liquid-staking", () => {
   let state: Keypair;
   let adminAuthority: Keypair;
   let validatorManagerAuthority: Keypair;
-  let msolMint: Keypair;
+  let ssolMint: Keypair;
   let operationalSolAccount: Keypair;
 
   (async () => {
@@ -18,7 +18,7 @@ describe("solistic-liquid-staking", () => {
       state = Keypair.generate();
       adminAuthority = Keypair.generate();
       validatorManagerAuthority = Keypair.generate();
-      msolMint = Keypair.generate();
+      ssolMint = Keypair.generate();
       operationalSolAccount = Keypair.generate();
 
       // Airdrop SOL to authority accounts to pay for transactions
@@ -48,7 +48,7 @@ describe("solistic-liquid-staking", () => {
           reservePda: anchor.web3.PublicKey.findProgramAddressSync([Buffer.from("reserve")], program.programId)[0],
           stakeList: Keypair.generate().publicKey,
           validatorList: Keypair.generate().publicKey,
-          msolMint: msolMint.publicKey,
+          ssolMint: ssolMint.publicKey,
           operationalSolAccount: operationalSolAccount.publicKey,
           clock: anchor.web3.SYSVAR_CLOCK_PUBKEY,
           rent: anchor.web3.SYSVAR_RENT_PUBKEY,
@@ -64,7 +64,7 @@ describe("solistic-liquid-staking", () => {
       admin: new PublicKey(adminAuthority.publicKey),
       validatorManager: new PublicKey(validatorManagerAuthority.publicKey),
       operationalSolAccount: new PublicKey(operationalSolAccount.publicKey),
-      treasuryMsolAccount: new PublicKey(msolMint.publicKey),
+      treasurySsolAccount: new PublicKey(ssolMint.publicKey),
       pauseAuthority: new PublicKey(adminAuthority.publicKey),
     })
       .accounts({

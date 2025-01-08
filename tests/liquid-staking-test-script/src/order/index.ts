@@ -3,7 +3,7 @@ import { _add_validator } from "./_add_validator";
 import { _change_authority } from "./_change_authority";
 import { _claim } from "./_claim";
 import { _config_lp } from "./_config_lp";
-import { _config_marinade } from "./_config_marinade";
+import { _config_solistic } from "./_config_solistic";
 import { _config_validator_system } from "./_config_validator_system";
 import { _deactivate_stake } from "./_deactivate_stake";
 import { _deposit } from "./_deposit";
@@ -27,6 +27,7 @@ import { _stake_reserve } from "./_stake_reserve";
 import { _update_active } from "./_update_active";
 import { _update_deactivated } from "./_update_deactivated";
 import { _withdraw_stake_account } from "./_withdraw_stake_account";
+import { _update_ssol_and_lp_mint_token_metadata } from "./_update_ssol_and_lp_mint_token_metadata"
 
 export {
     _preRequisite,
@@ -42,7 +43,7 @@ export {
     _add_liquidity,
     _remove_liquidity,
     _config_lp,
-    _config_marinade,
+    _config_solistic,
     _order_unstake,
     _claim,
     _stake_reserve,
@@ -58,4 +59,5 @@ export {
     _withdraw_stake_account,
     _realloc_validator_list,
     _realloc_stake_list,
+    _update_ssol_and_lp_mint_token_metadata,
 }

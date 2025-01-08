@@ -1,9 +1,9 @@
 import { BN } from "bn.js";
 import { connection, payer } from "../config";
-import { config_marinade, initialize, preRequisite } from "../instructions";
-import { ConfigMarinadeParam, InitializeDataParam } from "../types";
+import { config_solistic, initialize, preRequisite } from "../instructions";
+import { ConfigSolisticParam, InitializeDataParam } from "../types";
 
-export const _config_marinade = async () => {
+export const _config_solistic = async () => {
     const initParam = await preRequisite(connection, payer)
 
     const initializeData: InitializeDataParam = {
@@ -25,7 +25,7 @@ export const _config_marinade = async () => {
 
     await initialize(connection, payer, initializeData, initParam)
 
-    const configMarinadeParam : ConfigMarinadeParam = {
+    const configSolisticParam : ConfigSolisticParam = {
         rewardsFee: { basisPoints: 1 },
         slotsForStakeDelta: new BN (3000),  //  minimun
         minStake: new BN (10000000),            //  minimum
@@ -39,5 +39,5 @@ export const _config_marinade = async () => {
         maxStakeMovedPerEpoch: { basisPoints: 10 },
     };
 
-    await config_marinade(connection, payer, configMarinadeParam, initParam)
+    await config_solistic(connection, payer, configSolisticParam, initParam)
 }

@@ -44,7 +44,7 @@ export const _update_deactivated = async () => {
     const newTicketAccount = Keypair.generate()
 
     const orderUnstakeParam = {
-        msol_amount : new BN(1000),
+        ssol_amount : new BN(1000),
         newTicketAccount
     }
     await order_unstake(connection, payer, orderUnstakeParam, initParam)

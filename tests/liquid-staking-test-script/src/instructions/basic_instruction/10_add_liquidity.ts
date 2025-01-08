@@ -13,7 +13,7 @@ const add_liquidity = async (connection: Connection, payer: Signer, addLiquidity
         lpMint,
         mint_to_lp,
         solLegPda,
-        mSolLeg,
+        sSolLeg,
         authorityLpAcc,
     } = initParam
 
@@ -26,7 +26,7 @@ const add_liquidity = async (connection: Connection, payer: Signer, addLiquidity
             state: stateAccount.publicKey,
             lpMint: lpMint,
             lpMintAuthority: authorityLpAcc,
-            liqPoolMsolLeg: mSolLeg,
+            liqPoolSsolLeg: sSolLeg,
             liqPoolSolLegPda: solLegPda,
             transferFrom: payer.publicKey,
             mintTo: mint_to_lp,
