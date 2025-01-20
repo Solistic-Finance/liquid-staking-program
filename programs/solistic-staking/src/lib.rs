@@ -13,7 +13,7 @@ use instructions::*;
 
 pub use state::State;
 
-declare_id!("sStz8DdEKCeB5kiNcU634MWvxgPuikAxcE5YnNBsmc4");
+declare_id!("Sstkf2jUrQsoZ2Co1VwMksEyEqPTcQgxyiatpLrn74n");
 
 #[program]
 pub mod solistic_staking {

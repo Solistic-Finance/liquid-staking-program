@@ -118,7 +118,7 @@ impl<'info> Deposit<'info> {
 
         //compute how many sSOL to sell/mint for the user, base on how many lamports being deposited
         let user_ssol_buy_order = self.state.calc_ssol_from_lamports(lamports)?;
-        msg!("--- user_m_sol_buy_order {}", user_ssol_buy_order);
+        msg!("--- user_s_sol_buy_order {}", user_ssol_buy_order);
 
         //First we try to "sell" sSOL to the user from the LiqPool.
         //The LiqPool needs to get rid of their sSOL because it works better if fully "unbalanced", i.e. with all SOL no sSOL
@@ -127,7 +127,7 @@ impl<'info> Deposit<'info> {
         // At max, we can sell all the sSOL in the LiqPool.sSOL_leg
         let ssol_leg_balance = self.liq_pool_ssol_leg.amount;
         let ssol_swapped: u64 = user_ssol_buy_order.min(ssol_leg_balance);
-        msg!("--- swap_m_sol_max {}", ssol_swapped);
+        msg!("--- swap_s_sol_max {}", ssol_swapped);
 
         //if we can sell from the LiqPool
         let sol_swapped = if ssol_swapped > 0 {

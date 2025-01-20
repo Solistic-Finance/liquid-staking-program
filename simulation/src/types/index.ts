@@ -56,9 +56,9 @@ interface SSolInitParam {
     lpMint: PublicKey,
     treasurySsolAccount: PublicKey,
     sSolLeg: PublicKey,
-    payerSSolTokenAccount: PublicKey,
-    payerLpTokenAccount: PublicKey,
-    burnSsolFrom: PublicKey,
+    // payerSSolTokenAccount: PublicKey,
+    // payerLpTokenAccount: PublicKey,
+    // burnSsolFrom: PublicKey,
 }
 
 interface ParsedStakeAccountInfo {

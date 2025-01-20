@@ -47,12 +47,17 @@ pub struct Initialize<'info> {
 
     pub operational_sol_account: SystemAccount<'info>,
 
-    pub liq_pool: LiqPoolInitialize<'info>,
+    pub lp_mint: Box<Account<'info, Mint>>,
+    
+    pub sol_leg_pda: SystemAccount<'info>,
+    
+    pub ssol_leg: Box<Account<'info, TokenAccount>>,
 
     #[account(token::mint = ssol_mint)]
     pub treasury_ssol_account: Box<Account<'info, TokenAccount>>,
 
     pub clock: Sysvar<'info, Clock>,
+    
     pub rent: Sysvar<'info, Rent>,
 }
 
@@ -68,13 +73,6 @@ pub struct InitializeData {
     pub additional_validator_record_space: u32,
     pub slots_for_stake_delta: u64,
     pub pause_authority: Pubkey,
-}
-
-#[derive(Accounts)]
-pub struct LiqPoolInitialize<'info> {
-    pub lp_mint: Box<Account<'info, Mint>>,
-    pub sol_leg_pda: SystemAccount<'info>,
-    pub ssol_leg: Box<Account<'info, TokenAccount>>,
 }
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, AnchorSerialize, AnchorDeserialize)]
@@ -145,6 +143,7 @@ impl<'info> Initialize<'info> {
         );
         self.check_reserve_pda(rent_exempt_for_token_acc)?;
         let ssol_mint_authority_bump_seed = self.check_ssol_mint()?;
+        let initialized_liq_pool = self.initialize_liq_pool(liq_pool, rent_exempt_for_token_acc)?;
         self.state.set_inner(State {
             ssol_mint: *self.ssol_mint.to_account_info().key,
             admin_authority,
@@ -169,7 +168,7 @@ impl<'info> Initialize<'info> {
                 validator_manager_authority,
                 additional_validator_record_space,
             )?,
-            liq_pool: LiqPoolInitialize::process(self, liq_pool, rent_exempt_for_token_acc)?,
+            liq_pool: initialized_liq_pool,
             available_reserve_balance: 0,
             ssol_supply: 0,
             ssol_price: State::PRICE_DENOMINATOR,
@@ -207,49 +206,47 @@ impl<'info> Initialize<'info> {
             validator_list: self.validator_list.key(),
             ssol_mint: self.ssol_mint.key(),
             operational_sol_account: self.operational_sol_account.key(),
-            lp_mint: self.liq_pool.lp_mint.key(),
-            lp_ssol_leg: self.liq_pool.ssol_leg.key(),
+            lp_mint: self.lp_mint.key(),
+            lp_ssol_leg: self.ssol_leg.key(),
             treasury_ssol_account: self.treasury_ssol_account.key(),
         });
 
         Ok(())
     }
-}
-
-impl<'info> LiqPoolInitialize<'info> {
-    pub fn check_lp_mint(parent: &Initialize) -> Result<u8> {
-        require_keys_neq!(parent.liq_pool.lp_mint.key(), parent.ssol_mint.key(),);
+    
+    pub fn check_lp_mint(&self) -> Result<u8> {
+        require_keys_neq!(self.lp_mint.key(), self.ssol_mint.key(),);
         let (authority_address, authority_bump_seed) =
-            LiqPool::find_lp_mint_authority(parent.state_address());
+            LiqPool::find_lp_mint_authority(self.state_address());
 
-        check_mint_authority(&parent.liq_pool.lp_mint, &authority_address, "lp_mint")?;
-        check_mint_empty(&parent.liq_pool.lp_mint, "lp_mint")?;
-        check_freeze_authority(&parent.liq_pool.lp_mint, "lp_mint")?;
+        check_mint_authority(&self.lp_mint, &authority_address, "lp_mint")?;
+        check_mint_empty(&self.lp_mint, "lp_mint")?;
+        check_freeze_authority(&self.lp_mint, "lp_mint")?;
 
         Ok(authority_bump_seed)
     }
 
-    pub fn check_sol_leg(parent: &Initialize, required_lamports: u64) -> Result<u8> {
-        let (address, bump) = LiqPool::find_sol_leg_address(parent.state_address());
-        require_keys_eq!(parent.liq_pool.sol_leg_pda.key(), address);
-        require_eq!(parent.liq_pool.sol_leg_pda.lamports(), required_lamports);
+    pub fn check_sol_leg(&self, required_lamports: u64) -> Result<u8> {
+        let (address, bump) = LiqPool::find_sol_leg_address(self.state_address());
+        require_keys_eq!(self.sol_leg_pda.key(), address);
+        require_eq!(self.sol_leg_pda.lamports(), required_lamports);
         Ok(bump)
     }
 
-    pub fn check_ssol_leg(parent: &Initialize) -> Result<u8> {
+    pub fn check_ssol_leg(&self) -> Result<u8> {
         check_token_mint(
-            &parent.liq_pool.ssol_leg,
-            &parent.ssol_mint.key(),
+            &self.ssol_leg,
+            &self.ssol_mint.key(),
             "liq_ssol",
         )?;
         let (ssol_authority, ssol_authority_bump_seed) =
-            LiqPool::find_ssol_leg_authority(parent.state_address());
-        check_token_owner(&parent.liq_pool.ssol_leg, &ssol_authority, "liq_ssol_leg")?;
+            LiqPool::find_ssol_leg_authority(self.state_address());
+        check_token_owner(&self.ssol_leg, &ssol_authority, "liq_ssol_leg")?;
         Ok(ssol_authority_bump_seed)
     }
 
-    pub fn process(
-        parent: &Initialize,
+    pub fn initialize_liq_pool(
+        &self,
         LiqPoolInitializeData {
             lp_liquidity_target,
             lp_max_fee,
@@ -258,15 +255,15 @@ impl<'info> LiqPoolInitialize<'info> {
         }: LiqPoolInitializeData,
         required_sol_leg_lamports: u64,
     ) -> Result<LiqPool> {
-        let lp_mint_authority_bump_seed = Self::check_lp_mint(parent)?;
-        let sol_leg_bump_seed = Self::check_sol_leg(parent, required_sol_leg_lamports)?;
-        let ssol_leg_authority_bump_seed = Self::check_ssol_leg(parent)?;
+        let lp_mint_authority_bump_seed = self.check_lp_mint()?;
+        let sol_leg_bump_seed = self.check_sol_leg(required_sol_leg_lamports)?;
+        let ssol_leg_authority_bump_seed = self.check_ssol_leg()?;
         let liq_pool = LiqPool {
-            lp_mint: *parent.liq_pool.lp_mint.to_account_info().key,
+            lp_mint: *self.lp_mint.to_account_info().key,
             lp_mint_authority_bump_seed,
             sol_leg_bump_seed,
             ssol_leg_authority_bump_seed,
-            ssol_leg: *parent.liq_pool.ssol_leg.to_account_info().key,
+            ssol_leg: *self.ssol_leg.to_account_info().key,
             lp_liquidity_target,
             lp_max_fee,
             lp_min_fee,

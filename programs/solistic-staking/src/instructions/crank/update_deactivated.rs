@@ -1,25 +1,23 @@
 //get staking rewards & update sSOL price
 
-use std::ops::{Deref, DerefMut};
-
 use anchor_lang::prelude::*;
 use anchor_lang::solana_program::sysvar::stake_history;
 use anchor_lang::system_program::{transfer, Transfer};
 use anchor_spl::stake::{withdraw, Stake, StakeAccount, Withdraw};
 use anchor_spl::token::{mint_to, Mint, MintTo, Token};
 
-use crate::events::crank::{UpdateActiveEvent, UpdateDeactivatedEvent};
+use crate::events::crank::UpdateDeactivatedEvent;
 use crate::events::U64ValueChange;
 use crate::state::stake_system::StakeList;
-use crate::state::validator_system::ValidatorList;
+use crate::BeginOutput;
 use crate::{
     error::SolisticError,
-    state::stake_system::{StakeRecord, StakeSystem},
+    state::stake_system::StakeSystem,
     State,
 };
 
 #[derive(Accounts)]
-pub struct UpdateCommon<'info> {
+pub struct UpdateDeactivated<'info> {
     #[account(
         mut,
         has_one = treasury_ssol_account,
@@ -67,73 +65,27 @@ pub struct UpdateCommon<'info> {
     #[account(mut)]
     pub treasury_ssol_account: UncheckedAccount<'info>, //receives 1% from staking rewards protocol fee
 
+    /// CHECK: not important
+    #[account(
+        mut,
+        address = state.operational_sol_account
+    )]
+    pub operational_sol_account: UncheckedAccount<'info>,
+
     pub clock: Sysvar<'info, Clock>,
     /// CHECK: have no CPU budget to parse
     #[account(address = stake_history::ID)]
     pub stake_history: UncheckedAccount<'info>,
 
     pub stake_program: Program<'info, Stake>,
+
     pub token_program: Program<'info, Token>,
-}
-
-#[derive(Accounts)]
-pub struct UpdateActive<'info> {
-    pub common: UpdateCommon<'info>,
-    #[account(
-        mut,
-        address = common.state.validator_system.validator_list.account,
-    )]
-    pub validator_list: Account<'info, ValidatorList>,
-}
-
-impl<'info> Deref for UpdateActive<'info> {
-    type Target = UpdateCommon<'info>;
-
-    fn deref(&self) -> &Self::Target {
-        &self.common
-    }
-}
-
-impl<'info> DerefMut for UpdateActive<'info> {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.common
-    }
-}
-
-#[derive(Accounts)]
-pub struct UpdateDeactivated<'info> {
-    pub common: UpdateCommon<'info>,
-
-    /// CHECK: not important
-    #[account(
-        mut,
-        address = common.state.operational_sol_account
-    )]
-    pub operational_sol_account: UncheckedAccount<'info>,
 
     pub system_program: Program<'info, System>,
 }
 
-impl<'info> Deref for UpdateDeactivated<'info> {
-    type Target = UpdateCommon<'info>;
 
-    fn deref(&self) -> &Self::Target {
-        &self.common
-    }
-}
-
-impl<'info> DerefMut for UpdateDeactivated<'info> {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.common
-    }
-}
-
-struct BeginOutput {
-    stake: StakeRecord,
-    is_treasury_ssol_ready_for_transfer: bool,
-}
-
-impl<'info> UpdateCommon<'info> {
+impl<'info> UpdateDeactivated<'info> {
     fn begin(&mut self, stake_index: u32) -> Result<BeginOutput> {
         let is_treasury_ssol_ready_for_transfer = self
             .state
@@ -256,166 +208,7 @@ impl<'info> UpdateCommon<'info> {
         self.mint_to_treasury(fee_as_ssol_amount)?;
         Ok(fee_as_ssol_amount)
     }
-}
 
-impl<'info> UpdateActive<'info> {
-    /// Compute rewards for a single stake account
-    /// take 1% protocol fee for treasury & add the rest to validator_system.total_balance
-    /// update sSOL price accordingly
-    /// Future optional expansion: Partial: If the stake-account is a fully-deactivated stake account ready to withdraw,
-    /// (cool-down period is complete) delete-withdraw the stake-account, send SOL to reserve-account
-    //
-    // fn update_active()
-    pub fn process(&mut self, stake_index: u32, validator_index: u32) -> Result<()> {
-        require!(!self.state.paused, SolisticError::ProgramIsPaused);
-
-        let total_virtual_staked_lamports = self.state.total_virtual_staked_lamports();
-        let ssol_supply = self.state.ssol_supply;
-        let BeginOutput {
-            mut stake,
-            is_treasury_ssol_ready_for_transfer,
-        } = self.begin(stake_index)?;
-
-        let delegation = self.stake_account.delegation().ok_or_else(|| {
-            error!(SolisticError::RequiredDelegatedStake).with_account_name("stake_account")
-        })?;
-
-        let mut validator = self.state.validator_system.get_checked(
-            &self.validator_list.to_account_info().data.as_ref().borrow(),
-            validator_index,
-            &delegation.voter_pubkey,
-        )?;
-        // record for event
-        let validator_active_balance = validator.active_balance;
-        let total_active_balance = self.state.validator_system.total_active_balance;
-
-        // require stake is active (deactivation_epoch == u64::MAX)
-        require_eq!(
-            delegation.deactivation_epoch,
-            std::u64::MAX,
-            SolisticError::RequiredActiveStake
-        );
-
-        // current lamports amount, to compare with previous
-        let delegated_lamports = delegation.stake;
-
-        // we don't consider self.stake_account.meta().unwrap().rent_exempt_reserve as part of the stake
-        // the reserve lamports are paid by the solistic-program/bot and return to solistic-program/bot once the account is deleted
-        let stake_balance_without_rent = self.stake_account.to_account_info().lamports()
-            - self.stake_account.meta().unwrap().rent_exempt_reserve;
-        // normally extra-lamports in the native stake means MEV rewards
-        let extra_lamports = stake_balance_without_rent.saturating_sub(delegated_lamports);
-        msg!("Extra lamports in stake balance: {}", extra_lamports);
-        let extra_ssol_fees = if extra_lamports > 0 {
-            // by withdrawing to reserve, we add to the SOL assets under control,
-            // and by that we increase the sSOL price
-            self.withdraw_to_reserve(extra_lamports)?;
-            // after sending to reserve, we take protocol_fees as minted sSOL
-            if is_treasury_ssol_ready_for_transfer {
-                Some(self.mint_protocol_fees(extra_lamports)?)
-            } else {
-                None
-            }
-        } else {
-            if is_treasury_ssol_ready_for_transfer {
-                Some(0)
-            } else {
-                None
-            }
-        };
-
-        msg!("current staked lamports {}", delegated_lamports);
-        let delegation_growth_ssol_fees =
-            if delegated_lamports >= stake.last_update_delegated_lamports {
-                // re-delegated by solana rewards
-                let rewards = delegated_lamports - stake.last_update_delegated_lamports;
-                msg!("Staking rewards: {}", rewards);
-
-                let delegation_growth_ssol_fees = if is_treasury_ssol_ready_for_transfer {
-                    Some(self.mint_protocol_fees(rewards)?)
-                } else {
-                    None
-                };
-
-                // validator active balance is updated with rewards
-                validator.active_balance += rewards;
-                // validator_system.total_active_balance is updated with re-delegated rewards (this impacts price-calculation)
-                self.state.validator_system.total_active_balance += rewards;
-                delegation_growth_ssol_fees
-            } else {
-                //slashed
-                let slashed = stake.last_update_delegated_lamports - delegated_lamports;
-                msg!("slashed {}", slashed);
-                //validator balance is updated with slashed
-                validator.active_balance = validator.active_balance.saturating_sub(slashed);
-                self.state.validator_system.total_active_balance =
-                    total_active_balance.saturating_sub(slashed);
-                if is_treasury_ssol_ready_for_transfer {
-                    Some(0)
-                } else {
-                    None
-                }
-            };
-
-        // mark stake-account as visited
-        stake.last_update_epoch = self.clock.epoch;
-        let delegation_change = {
-            let old = stake.last_update_delegated_lamports;
-            stake.last_update_delegated_lamports = delegated_lamports;
-            U64ValueChange {
-                old,
-                new: delegated_lamports,
-            }
-        };
-
-        //update validator-list
-        self.state.validator_system.set(
-            &mut self
-                .validator_list
-                .to_account_info()
-                .data
-                .as_ref()
-                .borrow_mut(),
-            validator_index,
-            validator,
-        )?;
-
-        // set new sSOL price
-        let ssol_price_change = self.update_ssol_price()?;
-        // save stake record
-        self.state.stake_system.set(
-            &mut self.stake_list.to_account_info().data.as_ref().borrow_mut(),
-            stake_index,
-            stake,
-        )?;
-
-        assert_eq!(
-            self.state.available_reserve_balance + self.state.rent_exempt_for_token_acc,
-            self.reserve_pda.lamports()
-        );
-        emit!(UpdateActiveEvent {
-            state: self.state.key(),
-            epoch: self.clock.epoch,
-            stake_index,
-            stake_account: stake.stake_account,
-            validator_index,
-            validator_vote: validator.validator_account,
-            delegation_change,
-            delegation_growth_ssol_fees,
-            extra_lamports,
-            extra_ssol_fees,
-            validator_active_balance,
-            total_active_balance,
-            ssol_price_change,
-            reward_fee_used: self.state.reward_fee,
-            total_virtual_staked_lamports,
-            ssol_supply,
-        });
-        Ok(())
-    }
-}
-
-impl<'info> UpdateDeactivated<'info> {
     /// Compute rewards for a single deactivated stake-account
     /// take 1% protocol fee for treasury & add the rest to validator_system.total_balance
     /// update sSOL price accordingly
@@ -480,8 +273,7 @@ impl<'info> UpdateDeactivated<'info> {
         };
 
         // withdraw all to reserve (the stake account will be marked for deletion by the system)
-        self.common
-            .withdraw_to_reserve(self.stake_account.to_account_info().lamports())?;
+        self.withdraw_to_reserve(self.stake_account.to_account_info().lamports())?;
         // but send the rent-exempt lamports part to operational_sol_account for the future recreation of this slot's account
         transfer(
             CpiContext::new_with_signer(
@@ -517,9 +309,8 @@ impl<'info> UpdateDeactivated<'info> {
         let ssol_price_change = self.update_ssol_price()?;
 
         //remove deleted stake-account from our list
-        self.common.state.stake_system.remove(
+        self.state.stake_system.remove(
             &mut self
-                .common
                 .stake_list
                 .to_account_info()
                 .data

@@ -1,4 +1,3 @@
-
 import { Connection, sendAndConfirmTransaction, Signer } from "@solana/web3.js";
 import { program } from "../../config";
 import { InitParam } from "../../types";

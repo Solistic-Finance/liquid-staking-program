@@ -7,14 +7,15 @@ resolution = true
 skip-lint = false
 
 [programs.devnet]
-solistic_staking = "sStz8DdEKCeB5kiNcU634MWvxgPuikAxcE5YnNBsmc4"
+solistic_staking = "Sstkf2jUrQsoZ2Co1VwMksEyEqPTcQgxyiatpLrn74n"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "https://api.devnet.solana.com "
-wallet = "./id.json"
+# cluster = "https://mainnet.helius-rpc.com/?api-key=45889935-3d12-491a-b220-3cc87211f3d6"
+cluster = "https://api.devnet.solana.com"
+wallet = "/home/ubuntu/solistic/solistic-mainnet/.keys/AdMkcNdPXBKMofRFN71v6tyJtzdQ2s3x5Snv6DKk3GS2.json"
 
 [workspace]
 members = ["programs/solistic-staking"]

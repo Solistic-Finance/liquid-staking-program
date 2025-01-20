@@ -22,5 +22,19 @@ cp target/idl/solistic_staking.json simulation/targets/idl/solistic_staking.json
 cp target/types/solistic_staking.ts simulation/targets/types/solistic_staking.ts
 """
 
+[tasks.prerequisites]
+script = """
+solana-keygen new --outfile admin.json  
+solana-keygen new --outfile cranker.json 
+solana-keygen new --outfile lpMint.json 
+solana-keygen new --outfile operationalSolAccount.json 
+solana-keygen new --outfile solistic-buffer.json 
+solana-keygen new --outfile solistic-staking-program.json 
+solana-keygen new --outfile ssolMint.json 
+solana-keygen new --outfile stakeList.json 
+solana-keygen new --outfile stateAccount.json 
+solana-keygen new --outfile validatorsList.json
+"""
+
 [tasks.do_all]
 dependencies = ["deploy_program", "copy_files"]

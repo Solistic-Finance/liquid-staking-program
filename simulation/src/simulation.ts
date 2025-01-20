@@ -2,12 +2,12 @@ import { Connection, Keypair } from "@solana/web3.js";
 import { preRequisiteSetup } from "./instructions/prerequisite";
 import { BN } from "bn.js";
 import { initialize, addValidator} from "./instructions/baseInstructions/admin";
-import { depositExistingStakeAccount, depositNewStakeAccount, withdrawStakeAccount } from "./instructions/baseInstructions/users";
+import { deposit, depositExistingStakeAccount, depositNewStakeAccount, orderUnstake, withdrawStakeAccount } from "./instructions/baseInstructions/users";
 import { updateActive } from "./instructions/advanceInstructions/cranks";
 import { voteAccount } from "./voteAccounts";
 import { loadKeypairFromFile } from "./utils";
 import { InitializeDataParam, SSolInitParam, UpdateActiveParam} from "./types";
-import { DepositExistingStakeParam, DepositNewStakeParam, WithdrawStakeAccountParam } from "./types/basicInstructionTypes";
+import { DepositExistingStakeParam, DepositNewStakeParam, DepositParam, OrderUnstakeParam, WithdrawStakeAccountParam } from "./types/basicInstructionTypes";
 
 const rpcClient = "https://api.devnet.solana.com";
 
@@ -17,6 +17,7 @@ const anish = loadKeypairFromFile("../../.keys/anishAuthority.json");
 const bhargav = loadKeypairFromFile("../../.keys/solisticDevAdmin.json");
 const cranker = loadKeypairFromFile("../../.keys/cranker.json");
 const splitStakeAccount = loadKeypairFromFile("../../.keys/splitStakeAccount.json");
+const newTicketAccountKeypair = loadKeypairFromFile("../../.keys/newTicketAccount.json");
 
 console.log("admin : ", admin.publicKey.toBase58());
 console.log("anish : ", anish.publicKey.toBase58());
@@ -61,14 +62,14 @@ const simulate = async () => {
 
     const depositNewStakeAccountParam: DepositNewStakeParam = {
         validatorIndex: 0,
-        amount: 10000000000
+        amount: 10_000_000_000
     }
     let bhargavStakeAccount = loadKeypairFromFile("../../.keys/bhargavStakeAccount.json")
     await depositNewStakeAccount(connection, bhargav, bhargavStakeAccount, depositNewStakeAccountParam)
 
     const depositNewStakeAccountParam1: DepositNewStakeParam = {
         validatorIndex: 1,
-        amount: 5000000000
+        amount: 5_000_000_000
     }
     
     let bhargavStakeAccount1 = loadKeypairFromFile("../../.keys/bhargavStakeAccount1.json")
@@ -94,7 +95,17 @@ const simulate = async () => {
         splitStakeAccount: splitStakeAccount,
     }
     await withdrawStakeAccount(connection, cranker, bhargavStakeAccount, withdrawStakeAccountParam)
-    
+
+    const depositParam: DepositParam = {
+        amount: new BN(10 ** 9),
+    }
+    await deposit(connection, bhargav, depositParam)
+
+    const orderUnstakeParam: OrderUnstakeParam = {
+        ssolAmount: new BN(10 ** 9),
+        newTicketAccount: newTicketAccountKeypair,
+    }
+    await orderUnstake(connection, cranker, orderUnstakeParam)
 }
 
 simulate().then(() => {
