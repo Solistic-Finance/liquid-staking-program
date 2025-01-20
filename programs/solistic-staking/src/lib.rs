@@ -15,6 +15,18 @@ pub use state::State;
 
 declare_id!("Sstkf2jUrQsoZ2Co1VwMksEyEqPTcQgxyiatpLrn74n");
 
+
+#[cfg(not(feature = "no-entrypoint"))]
+solana_security_txt::security_txt! {
+    name: "solistic-staking",
+    project_url: "https://solistic.finance",
+    contacts: "https://docs.solistic.finance/",
+    policy: "https://docs.solistic.finance/",
+    source_code: "https://github.com/Solistic-Finance/liquid-staking-program",
+    preferred_languages: "en",
+    auditors: "https://docs.solistic.finance/solistic-staking/audit"
+}
+
 #[program]
 pub mod solistic_staking {
    

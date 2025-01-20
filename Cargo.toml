@@ -17,3 +17,4 @@ codegen-units = 1
 anchor-lang = "0.29.0"
 anchor-spl = { version = "0.29.0" , features = ["stake", "mint", "spl-token", "token", "metadata"]}
 mpl-token-metadata = { version = "3.2.3"}
+solana-security-txt = "1.1.1"
