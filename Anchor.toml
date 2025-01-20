@@ -6,16 +6,16 @@ solana_version = "1.18.25"
 resolution = true
 skip-lint = false
 
-[programs.devnet]
-solistic_staking = "Sstkf2jUrQsoZ2Co1VwMksEyEqPTcQgxyiatpLrn74n"
+[programs.mainnet]
+solistic_staking = "SStKUUWsgH8Ed1eXqN96tcwhLnAVQ5jtui3wkWcxqHL"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-# cluster = "https://mainnet.helius-rpc.com/?api-key=45889935-3d12-491a-b220-3cc87211f3d6"
-cluster = "https://api.devnet.solana.com"
-wallet = "/home/ubuntu/solistic/solistic-mainnet/.keys/AdMkcNdPXBKMofRFN71v6tyJtzdQ2s3x5Snv6DKk3GS2.json"
+cluster = "https://mainnet.helius-rpc.com/?api-key=xxxx"
+# cluster = "https://api.devnet.solana.com"
+wallet = "<path>"
 
 [workspace]
 members = ["programs/solistic-staking"]

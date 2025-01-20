@@ -13,18 +13,18 @@ use instructions::*;
 
 pub use state::State;
 
-declare_id!("Sstkf2jUrQsoZ2Co1VwMksEyEqPTcQgxyiatpLrn74n");
+declare_id!("SStKUUWsgH8Ed1eXqN96tcwhLnAVQ5jtui3wkWcxqHL");
 
 
 #[cfg(not(feature = "no-entrypoint"))]
 solana_security_txt::security_txt! {
     name: "solistic-staking",
     project_url: "https://solistic.finance",
-    contacts: "https://docs.solistic.finance/",
-    policy: "https://docs.solistic.finance/",
+    contacts: "https://linktr.ee/solisticfinance",
+    policy: "https://docs.solistic.finance/policy",
     source_code: "https://github.com/Solistic-Finance/liquid-staking-program",
     preferred_languages: "en",
-    auditors: "https://docs.solistic.finance/solistic-staking/audit"
+    auditors: "https://docs.solistic.finance/security/audits"
 }
 
 #[program]
