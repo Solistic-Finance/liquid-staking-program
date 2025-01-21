@@ -49,7 +49,7 @@ const simulate = async () => {
         pauseAuthority: admin.publicKey,
     };
     
-    // await initialize(connection, admin, initializeData, intParam)
+    await initialize(connection, admin, initializeData, intParam)
 
     // // deleteValidator from index 0
     // const addValidatorParam1 = {

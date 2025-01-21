@@ -76,8 +76,8 @@ export const initialize = async (
     console.log("Fee Payer:", admin.publicKey.toBase58());
     
     try { 
-        const simulationResult = await connection.simulateTransaction(tx);
-        console.log("Initialize: Simulation Result:", simulationResult);
+        // const simulationResult = await connection.simulateTransaction(tx);
+        // console.log("Initialize: Simulation Result:", simulationResult);
         
         // Get fresh blockhash right before sending
         tx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
@@ -85,7 +85,14 @@ export const initialize = async (
         tx.sign(admin, stateAccountKeypair, stakeListKeypair, validatorsListKeypair);
         
         const sig = await sendAndConfirmTransaction(
-            connection, tx, [], {skipPreflight: true});
+            connection, tx, [
+                admin,
+                stateAccountKeypair,
+                stakeListKeypair,
+                validatorsListKeypair
+            ], 
+            {skipPreflight: true}
+        );
         console.log("Initialize: Transaction Signature:", sig);
         const state = await program.account.state.fetch(stateAccount);
         console.log("State Account after Initialize:", state);
