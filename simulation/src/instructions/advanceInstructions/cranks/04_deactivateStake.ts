@@ -11,14 +11,15 @@ import {
 import { program } from "../../../config";
 import { DeactivateStakeParam } from "../../../types";
 import { 
-    stateAccount,
+    stateAccountKeypair,
     reservePda,
-    stakeList,
+    stakeListKeypair,
     stakeDepositAuthority,
-    validatorsList,
-} from "../../prerequisite";
+    validatorsListKeypair,
+    cranker,
+} from "../../../config";
 
-export const deactivateStake = async (connection: Connection, cranker: Signer, stakeAccount: PublicKey, deactivateStakeParam: DeactivateStakeParam) => {
+export const deactivateStake = async (connection: Connection, stakeAccount: PublicKey, deactivateStakeParam: DeactivateStakeParam) => {
     const {
         stakeIndex,
         validatorIndex,
@@ -27,10 +28,10 @@ export const deactivateStake = async (connection: Connection, cranker: Signer, s
 
     const tx = await program.methods.deactivateStake(stakeIndex, validatorIndex)
         .accounts({
-            state: stateAccount.publicKey,
+            state: stateAccountKeypair.publicKey,
             reservePda: reservePda,
-            validatorList: validatorsList.publicKey,
-            stakeList: stakeList.publicKey,
+            validatorList: validatorsListKeypair.publicKey,
+            stakeList: stakeListKeypair.publicKey,
             stakeAccount: stakeAccount,
             stakeDepositAuthority: stakeDepositAuthority,
             splitStakeAccount: splitStakeAccount.publicKey,
@@ -51,11 +52,13 @@ export const deactivateStake = async (connection: Connection, cranker: Signer, s
 
         // Send the transaction
         const sig = await sendAndConfirmTransaction(connection, tx, [cranker]);
-        console.log("Transaction Signature:", sig);
+        console.log("deactivateStake: Transaction Signature:", sig);
+        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        console.log("State Account after cranking deactivateStake:", state);
     } catch (error) {
         console.log("Error in executing deactivateStake ix:", error);
-        const state = await program.account.state.fetch(stateAccount.publicKey);
-        console.log("State Account:", state);
+        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        console.log("State Account after cranking deactivateStake:", state);
     }
 }
 

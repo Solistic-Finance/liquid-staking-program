@@ -15,38 +15,33 @@ import {
 import { 
     createAtaTx, 
     createMintTransaction,
-    loadKeypairFromFile,
 } from "../utils";
 import { SSolInitParam } from "../types";
 import { bs58 } from "@coral-xyz/anchor/dist/cjs/utils/bytes";
-import { connectionDevnet, payer } from "../config";
-
-export const contractAddr = new PublicKey(idl.metadata.address)
-export const stateAccount = loadKeypairFromFile("../../../.keys/programAccounts/stateAccount.json")
-export const stakeList = loadKeypairFromFile("../../../.keys/programAccounts/stakeList.json")
-export const validatorsList = loadKeypairFromFile("../../../.keys/programAccounts/validatorList.json")
-export const operationalSolAccount = loadKeypairFromFile("../../../.keys/programAccounts/operationalSolAccount.json")
-export const ssolMintKeypair = loadKeypairFromFile("../../../.keys/programAccounts/ssolMint.json")
-export const lpMintKeypair = loadKeypairFromFile("../../../.keys/programAccounts/lpMint.json")
-export const ssolMint = ssolMintKeypair.publicKey
-export const lpMint = lpMintKeypair.publicKey
-
-export const [authoritySsolAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("st_mint")], contractAddr)
-export const [authorityLpAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_mint")], contractAddr)
-export const [reservePda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("reserve")], contractAddr)
-export const [solLegPda] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_sol")], contractAddr)
-export const [authoritySSolLegAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("liq_st_sol_authority")], contractAddr);
-export const [stakeDepositAuthority] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("deposit")], contractAddr)
-export const [stakeWithdrawAuthority] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("withdraw")], contractAddr);
-export const treasurySsolAccount = getAssociatedTokenAddressSync(ssolMint, stateAccount.publicKey, true)
-export const sSolLeg = getAssociatedTokenAddressSync(ssolMint, authoritySSolLegAcc, true)
-    
+import { 
+    connectionDevnet as connection,
+    // connection, 
+    admin,
+    stateAccountKeypair,
+    stakeListKeypair,
+    validatorsListKeypair,
+    ssolMintKeypair,
+    lpMintKeypair,
+    authoritySsolAcc,
+    authorityLpAcc,
+    reservePda,
+    solLegPda,
+    authoritySSolLegAcc,
+    stakeDepositAuthority,
+    stakeWithdrawAuthority,
+    ssolMint,
+    lpMint,
+    treasurySsolAccount,
+    sSolLeg,
+    operationalSolAccountKeypair
+} from "../config";
 
 export const preRequisiteSetup = async (connection: Connection, payer: Signer): Promise<SSolInitParam> => {
-    // const payerSSolTokenAccount = getAssociatedTokenAddressSync(ssolMint, payer.publicKey)
-    // const payerLpTokenAccount = getAssociatedTokenAddressSync(lpMint, payer.publicKey)
-    // const burnSSolFrom = getAssociatedTokenAddressSync(ssolMint, payer.publicKey)
-
     const tx = new Transaction()
 
     const sSolMintTx = await createMintTransaction(connection, payer, authoritySsolAcc, null, 9, ssolMintKeypair)
@@ -55,15 +50,11 @@ export const preRequisiteSetup = async (connection: Connection, payer: Signer): 
     tx.add(sSolMintTx)
       .add(lpMintTx)
 
-    const treasurySSolAccountTx = await createAtaTx(connection, payer, ssolMint, stateAccount.publicKey)
+    const treasurySSolAccountTx = await createAtaTx(connection, payer, ssolMint, stateAccountKeypair.publicKey)
     const sSolLegTx = await createAtaTx(connection, payer, ssolMint, authoritySSolLegAcc, {}, TOKEN_PROGRAM_ID, ASSOCIATED_TOKEN_PROGRAM_ID, true)
-    // const payerSSolTokenAccountTx = await createAtaTx(connection, payer, ssolMint, payer.publicKey)
-    // const payerLpTokenAccountTx = await createAtaTx(connection, payer, lpMint, payer.publicKey)
 
     tx.add(treasurySSolAccountTx)
       .add(sSolLegTx)
-    //   .add(payerSSolTokenAccountTx)
-    //   .add(payerLpTokenAccountTx)
 
     if (await connection.getBalance(reservePda) != 2_039_280) {
         tx.add(
@@ -117,10 +108,10 @@ export const preRequisiteSetup = async (connection: Connection, payer: Signer): 
     }
 
     const returnValue: SSolInitParam = {
-        stateAccount: stateAccount.publicKey,
-        stakeList: stakeList.publicKey,
-        validatorList: validatorsList.publicKey,
-        operationalSolAccount: operationalSolAccount.publicKey,
+        stateAccount: stateAccountKeypair.publicKey,
+        stakeList: stakeListKeypair.publicKey,
+        validatorList: validatorsListKeypair.publicKey,
+        operationalSolAccount: operationalSolAccountKeypair.publicKey,
         authoritySSolAcc: authoritySsolAcc,
         authorityLpAcc: authorityLpAcc,
         reservePda: reservePda,
@@ -137,10 +128,10 @@ export const preRequisiteSetup = async (connection: Connection, payer: Signer): 
         // burnSsolFrom: burnSSolFrom,
     }
     
-    console.log("stateAccount:", stateAccount.publicKey.toBase58());
-    console.log("stakeList:", stakeList.publicKey.toBase58());
-    console.log("validatorsList:", validatorsList.publicKey.toBase58());
-    console.log("operationalSolAccount:", operationalSolAccount.publicKey.toBase58());
+    console.log("stateAccount:", stateAccountKeypair.publicKey.toBase58());
+    console.log("stakeList:", stakeListKeypair.publicKey.toBase58());
+    console.log("validatorsList:", validatorsListKeypair.publicKey.toBase58());
+    console.log("operationalSolAccount:", operationalSolAccountKeypair.publicKey.toBase58());
     console.log("authoritySSolAcc:", authoritySsolAcc.toBase58());
     console.log("authorityLpAcc:", authorityLpAcc.toBase58());
     console.log("reservePda:", reservePda.toBase58());
@@ -152,10 +143,7 @@ export const preRequisiteSetup = async (connection: Connection, payer: Signer): 
     console.log("lpMint:", lpMint.toBase58());
     console.log("treasurySsolAccount:", treasurySsolAccount.toBase58());
     console.log("sSolLeg:", sSolLeg.toBase58());
-    // console.log("payerSSolTokenAccount:", payerSSolTokenAccount.toBase58());
-    // console.log("payerLpTokenAccount:", payerLpTokenAccount.toBase58());
-    // console.log("burnSsolFrom:", burnSSolFrom.toBase58());
     
     return returnValue
 }
-preRequisiteSetup(connectionDevnet, payer)
+preRequisiteSetup(connection, admin)

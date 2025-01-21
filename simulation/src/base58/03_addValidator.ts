@@ -1,9 +1,9 @@
 
 import { Connection, PublicKey, sendAndConfirmTransaction, Signer } from "@solana/web3.js";
-import { connection, payer, program } from "../config";
+import { connection, admin, program } from "../config";
 import { AddValidatorParam } from "../types";
 import { bs58 } from "@coral-xyz/anchor/dist/cjs/utils/bytes";
-import { stateAccount, validatorsList } from "./00_prerequisite";
+import { stateAccountKeypair, validatorsListKeypair } from "../config";
 import { voteAccount } from "../voteAccounts";
 
 export const getAddValidatorTx = async (
@@ -16,14 +16,14 @@ export const getAddValidatorTx = async (
         voteAccount
     } = addValidatorParam
 
-    const [duplicationFlag] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("unique_validator"), voteAccount.toBuffer()], program.programId)
+    const [duplicationFlag] = PublicKey.findProgramAddressSync([stateAccountKeypair.publicKey.toBuffer(), Buffer.from("unique_validator"), voteAccount.toBuffer()], program.programId)
 
     const tx = await program.methods
         .addValidator(score)
         .accounts({
-            state: stateAccount.publicKey,
+            state: stateAccountKeypair.publicKey,
             managerAuthority: payer.publicKey,
-            validatorList: validatorsList.publicKey,
+            validatorList: validatorsListKeypair.publicKey,
             validatorVote: voteAccount,
             duplicationFlag: duplicationFlag,
             rentPayer: payer.publicKey,
@@ -49,13 +49,13 @@ export const getAddValidatorTx = async (
             ], 
             {skipPreflight: true});
         console.log("Add Validator: Transaction Signature:", sig);
-        const state = await program.account.state.fetch(stateAccount.publicKey);
+        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
         console.log("State Account after Add Validator:", state);
         return base58Tx
 
     } catch (error) {
         console.log("Error in executing add validator ix:", error);
-        const state = await program.account.state.fetch(stateAccount.publicKey);
+        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
         console.log("State Account after Add Validator:", state);
     }
 }
@@ -67,7 +67,7 @@ const addValidator = async () => {
         voteAccount: voteAccount[9]
     }
     
-    const tx = await getAddValidatorTx(connection, payer, addValidatorParam)
+    const tx = await getAddValidatorTx(connection, admin, addValidatorParam)
     console.log(tx)
 }
 

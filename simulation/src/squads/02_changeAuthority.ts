@@ -1,14 +1,24 @@
-import { sendAndConfirmTransaction } from "@solana/web3.js";
-import { connection, multisigPublicKey, payer, program } from "../config";
+import { sendAndConfirmTransaction, Signer } from "@solana/web3.js";
+import { 
+    connectionDevnet as connection, 
+    // connection, 
+    programDevnet as program,
+    // program,
+    multisigDevnetPublicKey as multisigPublicKey,
+    // multisigPublicKey, 
+    admin, 
+    stateAccountKeypair,
+    operationalSolAccountKeypair,
+    treasurySsolAccount
+} from "../config";
 import { ChangeAuthorityData } from "../types";
-import { operationalSolAccount, stateAccount, treasurySsolAccount } from "./00_prerequisite";
 
-export const getChangeAuthorityTransaction = async (changeAuthorityData: ChangeAuthorityData) => {
+export const getChangeAuthorityTransaction = async (changeAuthorityData: ChangeAuthorityData, payer: Signer) => {
     const tx = await program.methods
         //  @ts-ignore
         .changeAuthority(changeAuthorityData)
         .accounts({
-            state: stateAccount.publicKey,
+            state: stateAccountKeypair.publicKey,
             adminAuthority: payer.publicKey
         })
         .transaction()
@@ -32,17 +42,16 @@ export const getChangeAuthorityTransaction = async (changeAuthorityData: ChangeA
     }
 }
 
-// Example usage
 const changeAuthority = async () => {
     const changeAuthorityData: ChangeAuthorityData = {
         admin: multisigPublicKey,
         validatorManager: multisigPublicKey,
-        operationalSolAccount: operationalSolAccount.publicKey,
+        operationalSolAccount: operationalSolAccountKeypair.publicKey,
         treasurySsolAccount: treasurySsolAccount,
         pauseAuthority: multisigPublicKey
     };
 
-    await getChangeAuthorityTransaction(changeAuthorityData);
+    await getChangeAuthorityTransaction(changeAuthorityData, admin);
 }
 
 changeAuthority();

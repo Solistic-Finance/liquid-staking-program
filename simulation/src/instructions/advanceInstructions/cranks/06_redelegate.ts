@@ -11,14 +11,15 @@ import {
 import { program } from "../../../config";
 import { RedelegateParam } from "../../../types";
 import { 
-    stateAccount, 
-    validatorsList,
-    stakeList,
+    stateAccountKeypair, 
+    validatorsListKeypair,
+    stakeListKeypair,
     stakeDepositAuthority,
-    reservePda 
-} from "../../prerequisite";
+    reservePda,
+    cranker,
+} from "../../../config";
 
-export const redelegate = async (connection: Connection, cranker: Signer, stakeAccount: Keypair, mergeStakeParam: RedelegateParam) => {
+export const redelegate = async (connection: Connection, stakeAccount: Keypair, mergeStakeParam: RedelegateParam) => {
     const {
         stakeIndex,
         sourceValidatorIndex,
@@ -34,9 +35,9 @@ export const redelegate = async (connection: Connection, cranker: Signer, stakeA
         destValidatorIndex,
     )
         .accounts({
-            state: stateAccount.publicKey,
-            validatorList: validatorsList.publicKey,
-            stakeList: stakeList.publicKey,
+            state: stateAccountKeypair.publicKey,
+            validatorList: validatorsListKeypair.publicKey,
+            stakeList: stakeListKeypair.publicKey,
             stakeAccount: stakeAccount.publicKey,
             stakeDepositAuthority: stakeDepositAuthority,
             reservePda: reservePda,
@@ -65,11 +66,13 @@ export const redelegate = async (connection: Connection, cranker: Signer, stakeA
             splitStakeAccount,
             newRedelegateStakeAccount
         ]);
-        console.log("Transaction Signature:", sig);
+        console.log("redelegate: Transaction Signature:", sig);
+        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        console.log("State Account after cranking redelegate:", state);
     } catch (error) {
         console.log("Error in executing redelegate ix:", error);
-        const state = await program.account.state.fetch(stateAccount.publicKey);
-        console.log("State Account:", state);
+        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        console.log("State Account after cranking redelegate:", state);
     }
 }
 

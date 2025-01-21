@@ -33,6 +33,7 @@ export async function createAtaTx(
         programId,
         associatedTokenProgramId,
     );
+    console.log("associatedToken address of ", owner.toBase58(), "for mint ", mint.toBase58(), "is", associatedToken.toBase58());
 
     const transaction = new Transaction().add(
         createAssociatedTokenAccountInstruction(

@@ -1,29 +1,31 @@
 import { 
     sendAndConfirmTransaction,
+    Signer,
     SystemProgram,
     SYSVAR_CLOCK_PUBKEY, 
     SYSVAR_RENT_PUBKEY,
     TransactionMessage,
     VersionedTransaction, 
 } from "@solana/web3.js";
-import { multisigDevnetPublicKey as multisigPublicKey, payer, programDevnet as program, wallet } from "../config";
+import { 
+    connectionDevnet as connection,
+    multisigDevnetPublicKey as multisigPublicKey, 
+    programDevnet as program, 
+    admin, 
+    stateAccountKeypair,
+    stakeListKeypair,
+    validatorsListKeypair,
+} from "../config";
 import {  InitializeDataParam, SSolInitParam } from "../types";
 import bs58 from "bs58"; // For base58 encoding if needed explicitly
 import { BN } from "@coral-xyz/anchor";
-import { 
-    preRequisiteSetup, 
-    stateAccount as stateAccountKeypair, 
-    stakeList as stakeListKeypair, 
-    validatorsList as validatorsListKeypair 
-} from "./00_prerequisite";
-// import { connection } from "./config";
-import { connectionDevnet as connection } from "../config";
+import { preRequisiteSetup } from "./00_prerequisite";
 import * as multisig from "@sqds/multisig";
-const { Permission, Permissions } = multisig.types;
 
 export const getInitializeTransaction = async (
     initializeData : InitializeDataParam , 
-    initParam : SSolInitParam
+    initParam : SSolInitParam,
+    payer : Signer
 ) => {
 
     const {
@@ -49,11 +51,9 @@ export const getInitializeTransaction = async (
             validatorList: validatorList,
             operationalSolAccount: operationalSolAccount,
             treasurySsolAccount: treasurySsolAccount,
-            liqPool: {
-                lpMint: lpMint,
-                solLegPda: solLegPda,
-                ssolLeg: sSolLeg,
-            },
+            lpMint: lpMint,
+            solLegPda: solLegPda,
+            ssolLeg: sSolLeg,
             clock: SYSVAR_CLOCK_PUBKEY,
             rent: SYSVAR_RENT_PUBKEY,
         })
@@ -88,21 +88,8 @@ export const getInitializeTransaction = async (
       );
   
     tx.sign([payer, stateAccountKeypair, stakeListKeypair, validatorsListKeypair]);
-    // console.log("stateAccount:", stateAccount.toBase58());
-    // console.log("reservePda:", reservePda.toBase58());
-    // console.log("ssolMint:", ssolMint.toBase58());
-    // console.log("stakeList:", stakeList.toBase58());
-    // console.log("validatorList:", validatorList.toBase58());
-    // console.log("operationalSolAccount:", operationalSolAccount.toBase58());
-    // console.log("treasurySsolAccount:", treasurySsolAccount.toBase58());
-    // console.log("lpMint:", lpMint.toBase58());
-    // console.log("solLegPda:", solLegPda.toBase58());
-    // console.log("sSolLeg:", sSolLeg.toBase58());
     
-    const serialized = tx.serialize({
-        verifySignatures: false,
-        requireAllSignatures: false,
-    })
+    const serialized = tx.serialize()
 
     const bs58Tx = bs58.encode(serialized)
 
@@ -111,7 +98,6 @@ export const getInitializeTransaction = async (
     console.log("tx size : ", size);
 
     console.log("Fee Payer:", payer.publicKey.toBase58());
-    
     
     try { 
         // const simulationResult = await connection.simulateTransaction(tx);
@@ -142,9 +128,7 @@ export const getInitializeTransaction = async (
 }
 
 const initialize = async () => {
-    
-    
-    let intParam : SSolInitParam = await preRequisiteSetup(connection, payer)
+    let intParam : SSolInitParam = await preRequisiteSetup(connection, admin)
     const initializeData: InitializeDataParam = {
         adminAuthority: multisigPublicKey,
         validatorManagerAuthority: multisigPublicKey,
@@ -161,7 +145,7 @@ const initialize = async () => {
         slotsForStakeDelta: new BN(3000),
         pauseAuthority: multisigPublicKey,
     };
-    getInitializeTransaction(initializeData, intParam)
+    getInitializeTransaction(initializeData, intParam, admin)
 }
 
 initialize()

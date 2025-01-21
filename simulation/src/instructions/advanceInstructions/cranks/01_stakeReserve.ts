@@ -2,6 +2,7 @@
 import { 
     Connection, 
     Keypair, 
+    PublicKey, 
     sendAndConfirmTransaction, 
     Signer, 
     STAKE_CONFIG_ID, 
@@ -12,14 +13,15 @@ import {
 import { program } from "../../../config";
 import { StakeReserveParam } from "../../../types/advancedInstructionTypes";
 import { 
-    stateAccount, 
-    validatorsList,
-    stakeList,
+    stateAccountKeypair, 
+    validatorsListKeypair,
+    stakeListKeypair,
     reservePda,
-    stakeDepositAuthority
-} from "../../prerequisite";
+    stakeDepositAuthority,
+    cranker
+} from "../../../config";
 
-export const stakeReserve = async (connection: Connection, cranker: Signer, stakeAccount: Keypair, stakeReserveParam: StakeReserveParam) => {
+export const stakeReserve = async (connection: Connection, stakeAccount: PublicKey, stakeReserveParam: StakeReserveParam) => {
     const {
         validatorIndex,
         validatorVote
@@ -27,12 +29,12 @@ export const stakeReserve = async (connection: Connection, cranker: Signer, stak
     
     const tx = await program.methods.stakeReserve(validatorIndex)
         .accounts({
-            state: stateAccount.publicKey,
-            validatorList: validatorsList.publicKey,
-            stakeList: stakeList.publicKey,
+            state: stateAccountKeypair.publicKey,
+            validatorList: validatorsListKeypair.publicKey,
+            stakeList: stakeListKeypair.publicKey,
             validatorVote: validatorVote,
             reservePda: reservePda,
-            stakeAccount: stakeAccount.publicKey,           //  must be fresh one
+            stakeAccount: stakeAccount,
             stakeDepositAuthority: stakeDepositAuthority,
             rentPayer: cranker.publicKey,
             epochSchedule: SYSVAR_EPOCH_SCHEDULE_PUBKEY,
@@ -53,11 +55,11 @@ export const stakeReserve = async (connection: Connection, cranker: Signer, stak
         // Send the transaction
         const sig = await sendAndConfirmTransaction(connection, tx, [cranker]);
         console.log("stakeReserve: Transaction Signature:", sig);
-        const state = await program.account.state.fetch(stateAccount.publicKey);
+        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
         console.log("State Account after cranking stakeReserve:", state);
     } catch (error) {
         console.log("Error in executing stakeReserve ix:", error);
-        const state = await program.account.state.fetch(stateAccount.publicKey);
+        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
         console.log("State Account after cranking stakeReserve:", state);
     }
 

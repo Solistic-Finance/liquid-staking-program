@@ -11,35 +11,34 @@ import { program } from "../../../config";
 import { UpdateDeactivatedParam } from "../../../types";
 import { 
     authoritySsolAcc, 
-    operationalSolAccount, 
+    operationalSolAccountKeypair, 
     reservePda, 
     ssolMint, 
-    stakeList, 
+    stakeListKeypair, 
     stakeWithdrawAuthority, 
-    stateAccount, 
-    treasurySsolAccount 
-} from "../../prerequisite";
+    stateAccountKeypair, 
+    treasurySsolAccount,
+    cranker,
+} from "../../../config";
 
-export const updateDeactivated = async (connection: Connection, cranker: Signer, stakeAccount: PublicKey, updateDeactivatedParam: UpdateDeactivatedParam) => {
+export const updateDeactivated = async (connection: Connection, stakeAccount: PublicKey, updateDeactivatedParam: UpdateDeactivatedParam) => {
     const {
         stakeIndex,
     } = updateDeactivatedParam
 
     const tx = await program.methods.updateDeactivated(stakeIndex)
         .accounts({
-            common: {
-                state: stateAccount.publicKey,
-                stakeList: stakeList.publicKey,
-                stakeAccount: stakeAccount,
-                stakeWithdrawAuthority: stakeWithdrawAuthority,
-                reservePda: reservePda,
-                ssolMint: ssolMint,
-                ssolMintAuthority: authoritySsolAcc,
-                treasurySsolAccount: treasurySsolAccount,
-                stakeHistory: SYSVAR_STAKE_HISTORY_PUBKEY,
-                stakeProgram: StakeProgram.programId
-            },
-            operationalSolAccount: operationalSolAccount.publicKey,
+            state: stateAccountKeypair.publicKey,
+            stakeList: stakeListKeypair.publicKey,
+            stakeAccount: stakeAccount,
+            stakeWithdrawAuthority: stakeWithdrawAuthority,
+            reservePda: reservePda,
+            ssolMint: ssolMint,
+            ssolMintAuthority: authoritySsolAcc,
+            treasurySsolAccount: treasurySsolAccount,
+            operationalSolAccount: operationalSolAccountKeypair.publicKey,
+            stakeHistory: SYSVAR_STAKE_HISTORY_PUBKEY,
+            stakeProgram: StakeProgram.programId
         })
         .signers([cranker])
         .transaction()
@@ -53,11 +52,11 @@ export const updateDeactivated = async (connection: Connection, cranker: Signer,
         // Send the transaction
         const sig = await sendAndConfirmTransaction(connection, tx, [cranker]);
         console.log("updateDeactivated: Transaction Signature:", sig);
-        const state = await program.account.state.fetch(stateAccount.publicKey);
+        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
         console.log("State Account after cranking updateDeactivated:", state);
     } catch (error) {
         console.log("Error in executing updateDeactivated ix:", error);
-        const state = await program.account.state.fetch(stateAccount.publicKey);
+        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
         console.log("State Account after cranking updateDeactivated:", state);
     }
 }

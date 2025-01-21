@@ -10,15 +10,16 @@ import {
 import { MergeStakeParam } from "../../../types";
 import { program } from "../../../config";
 import { 
-    stateAccount,
-    stakeList,
-    validatorsList,
+    stateAccountKeypair,
+    stakeListKeypair,
+    validatorsListKeypair,
     stakeDepositAuthority,
     stakeWithdrawAuthority,
-    operationalSolAccount,
-} from "../../prerequisite";
+    operationalSolAccountKeypair,
+    cranker,
+} from "../../../config";
 
-export const mergeStakes = async (connection: Connection, cranker: Signer, stakeAccount: Keypair, mergeStakeParam: MergeStakeParam) => {
+export const mergeStakes = async (connection: Connection, stakeAccount: Keypair, mergeStakeParam: MergeStakeParam) => {
     const {
         destinationStakeIndex,
         sourceStakeIndex,
@@ -32,14 +33,14 @@ export const mergeStakes = async (connection: Connection, cranker: Signer, stake
         validatorIndex
     )
         .accounts({
-            state: stateAccount.publicKey,
-            stakeList: stakeList.publicKey,
-            validatorList: validatorsList.publicKey,
+            state: stateAccountKeypair.publicKey,
+            stakeList: stakeListKeypair.publicKey,
+            validatorList: validatorsListKeypair.publicKey,
             destinationStake: splitStakeAccount.publicKey,
             sourceStake: stakeAccount.publicKey,
             stakeDepositAuthority: stakeDepositAuthority,
             stakeWithdrawAuthority: stakeWithdrawAuthority,
-            operationalSolAccount: operationalSolAccount.publicKey,
+            operationalSolAccount: operationalSolAccountKeypair.publicKey,
             stakeHistory: SYSVAR_STAKE_HISTORY_PUBKEY,
             stakeProgram: StakeProgram.programId
         })
@@ -52,14 +53,16 @@ export const mergeStakes = async (connection: Connection, cranker: Signer, stake
     try {
         // Simulate the transaction to catch errors
         const simulationResult = await connection.simulateTransaction(tx);
-        console.log("Simulation Result:", simulationResult);
+        console.log("mergeStakes: Simulation Result:", simulationResult);
         // Send the transaction
         const sig = await sendAndConfirmTransaction(connection, tx, [cranker]);
-        console.log("Transaction Signature:", sig);
+        console.log("mergeStakes: Transaction Signature:", sig);
+        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        console.log("State Account after cranking mergeStakes:", state);
     } catch (error) {
         console.log("Error in executing mergeStake ix:", error);
-        const state = await program.account.state.fetch(stateAccount.publicKey);
-        console.log("State Account:", state);
+        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        console.log("State Account after cranking mergeStakes:", state);
     }
 }
 

@@ -12,15 +12,16 @@ import { UpdateActiveParam } from "../../../types";
 import { 
     stakeWithdrawAuthority, 
     reservePda, 
-    stakeList, 
-    stateAccount,
+    stakeListKeypair,
+    stateAccountKeypair,
     authoritySsolAcc,
     treasurySsolAccount,
-    validatorsList,
+    validatorsListKeypair,
     ssolMint,
-} from "../../prerequisite";
+    cranker,
+} from "../../../config";
 
-export const updateActive = async (connection: Connection, cranker: Signer, stakeAccount: PublicKey, updateActiveParam: UpdateActiveParam) => {
+export const updateActive = async (connection: Connection, stakeAccount: PublicKey, updateActiveParam: UpdateActiveParam) => {
     const {
         stakeIndex,
         validatorIndex
@@ -28,19 +29,17 @@ export const updateActive = async (connection: Connection, cranker: Signer, stak
 
     const tx = await program.methods.updateActive(stakeIndex, validatorIndex)
         .accounts({
-            common: {
-                state: stateAccount.publicKey,
-                stakeList: stakeList.publicKey,
-                stakeAccount: stakeAccount,
-                stakeWithdrawAuthority: stakeWithdrawAuthority,
-                reservePda: reservePda,
-                ssolMint: ssolMint,
-                ssolMintAuthority: authoritySsolAcc,
-                treasurySsolAccount: treasurySsolAccount,
-                stakeHistory: SYSVAR_STAKE_HISTORY_PUBKEY,
-                stakeProgram: StakeProgram.programId
-            },
-            validatorList: validatorsList.publicKey,
+            state: stateAccountKeypair.publicKey,
+            stakeList: stakeListKeypair.publicKey,
+            validatorList: validatorsListKeypair.publicKey,
+            stakeAccount: stakeAccount,
+            stakeWithdrawAuthority: stakeWithdrawAuthority,
+            reservePda: reservePda,
+            ssolMint: ssolMint,
+            ssolMintAuthority: authoritySsolAcc,
+            treasurySsolAccount: treasurySsolAccount,
+            stakeHistory: SYSVAR_STAKE_HISTORY_PUBKEY,
+            stakeProgram: StakeProgram.programId,
         })
         .signers([cranker])
         .transaction()
@@ -54,11 +53,11 @@ export const updateActive = async (connection: Connection, cranker: Signer, stak
         // Send the transaction
         const sig = await sendAndConfirmTransaction(connection, tx, [cranker]);
         console.log("updateActive: Transaction Signature:", sig);
-        const state = await program.account.state.fetch(stateAccount.publicKey);
+        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
         console.log("State Account after cranking updateActive:", state);
     } catch (error) {
         console.log("Error in executing updateActive ix:", error);
-        const state = await program.account.state.fetch(stateAccount.publicKey);
+        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
         console.log("State Account after cranking updateActive:", state);
     }
 }

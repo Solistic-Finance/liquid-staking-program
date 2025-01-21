@@ -1,14 +1,20 @@
 import { 
     Connection, 
-    PublicKey, 
     sendAndConfirmTransaction, 
     Signer, 
     SYSVAR_CLOCK_PUBKEY, 
     SYSVAR_RENT_PUBKEY 
 } from "@solana/web3.js";
-import { program } from "../../../config";
-import {  InitializeDataParam, SSolInitParam } from "../../../types";
-import { loadKeypairFromFile } from "../../../utils";
+import { 
+    program, 
+    stateAccountKeypair, 
+    stakeListKeypair, 
+    validatorsListKeypair 
+} from "../../../config";
+import { 
+    InitializeDataParam, 
+    SSolInitParam 
+} from "../../../types";
 
 export const initialize = async (
     connection: Connection, 
@@ -30,9 +36,6 @@ export const initialize = async (
         solLegPda,
     } = initParam
 
-    const stateAccountKeypair = loadKeypairFromFile("../../.keys/stateAccount1.json")
-    const stakeListKeypair = loadKeypairFromFile("../../.keys/stakeList1.json")
-    const validatorsListKeypair = loadKeypairFromFile("../../.keys/validatorsList1.json")
     const tx = await program.methods
         //  @ts-ignore
         .initialize(initializeData)
@@ -43,11 +46,9 @@ export const initialize = async (
             validatorList: validatorList,
             ssolMint: ssolMint,
             operationalSolAccount: operationalSolAccount,
-            liqPool: {
-                lpMint: lpMint,
-                solLegPda: solLegPda,
-                ssolLeg: sSolLeg,
-            },
+            lpMint: lpMint,
+            solLegPda: solLegPda,
+            ssolLeg: sSolLeg,
             treasurySsolAccount: treasurySsolAccount,
             clock: SYSVAR_CLOCK_PUBKEY,
             rent: SYSVAR_RENT_PUBKEY,

@@ -8,9 +8,16 @@ import {
     Transaction 
 } from "@solana/web3.js";
 import { getAssociatedTokenAddressSync } from "@solana/spl-token";
-import { contractAddr, program } from "../../../config";
+import { 
+    program, 
+    ssolMintKeypair, 
+    stateAccountKeypair, 
+    stakeListKeypair, 
+    validatorsListKeypair,
+    authoritySsolAcc
+} from "../../../config";
 import { voteAccount } from "../../../voteAccounts";
-import { createAtaTx, loadKeypairFromFile } from "../../../utils";
+import { createAtaTx } from "../../../utils";
 import { DepositExistingStakeParam } from "../../../types";
 
 export const depositExistingStakeAccount = async (
@@ -23,16 +30,11 @@ export const depositExistingStakeAccount = async (
         validatorIndex,
     } = depositExistingStakeParam;
 
-    const stateAccount = loadKeypairFromFile("../../.keys/stateAccount1.json")
-    const stakeList = loadKeypairFromFile("../../.keys/stakeList1.json")
-    const validatorsList = loadKeypairFromFile("../../.keys/validatorsList1.json")
-    const ssolMintKeypair = loadKeypairFromFile("../../.keys/ssolMint1.json")
-    const [authoritySsolAcc] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("st_mint")], contractAddr)
     const userSSolTokenAccount = getAssociatedTokenAddressSync(ssolMintKeypair.publicKey, user.publicKey)
 
     const validatorVote = voteAccount[validatorIndex];
 
-    const [duplicationFlag] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("unique_validator"), validatorVote.toBuffer()], program.programId)
+    const [duplicationFlag] = PublicKey.findProgramAddressSync([stateAccountKeypair.publicKey.toBuffer(), Buffer.from("unique_validator"), validatorVote.toBuffer()], program.programId)
     
     const tx = new Transaction()
     
@@ -46,9 +48,9 @@ export const depositExistingStakeAccount = async (
     tx.add(
         await program.methods.depositStakeAccount(validatorIndex)
             .accounts({
-                state: stateAccount.publicKey,
-                validatorList: validatorsList.publicKey,
-                stakeList: stakeList.publicKey,
+                state: stateAccountKeypair.publicKey,
+                validatorList: validatorsListKeypair.publicKey,
+                stakeList: stakeListKeypair.publicKey,
                 stakeAccount: stakeAccount,
                 stakeAuthority: user.publicKey,
                 duplicationFlag: duplicationFlag,      //  Double check
@@ -75,11 +77,11 @@ export const depositExistingStakeAccount = async (
         // Send the transaction
         const sig = await sendAndConfirmTransaction(connection, tx, [user], {skipPreflight: true});
         console.log("depositExistingStakeAccount: Transaction Signature:", sig);
-        const state = await program.account.state.fetch(stateAccount.publicKey);
+        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
         console.log("State Account after depositing from existing stake account:", state);
     } catch(error) {
         console.log("Error in depositing from existing stake account: ", error);
-        const state = await program.account.state.fetch(stateAccount.publicKey);
+        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
         console.log("State Account after depositing from existing stake account:", state);
     }
     

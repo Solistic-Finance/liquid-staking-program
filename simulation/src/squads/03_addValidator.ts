@@ -1,8 +1,16 @@
 
 import { Connection, PublicKey, Signer } from "@solana/web3.js";
-import { connection, multisigPublicKey, payer, program } from "../config";
+import { connectionDevnet as connection, 
+    // connection, 
+    programDevnet as program,
+    // program,
+    multisigDevnetPublicKey as multisigPublicKey,
+    // multisigPublicKey, 
+    admin,
+    stateAccountKeypair,
+    validatorsListKeypair
+} from "../config";
 import { AddValidatorParam } from "../types";
-import { stateAccount, validatorsList } from "./00_prerequisite";
 import { bs58 } from "@coral-xyz/anchor/dist/cjs/utils/bytes";
 
 export const getAddValidatorTx = async (
@@ -15,14 +23,14 @@ export const getAddValidatorTx = async (
         voteAccount
     } = addValidatorParam
 
-    const [duplicationFlag] = PublicKey.findProgramAddressSync([stateAccount.publicKey.toBuffer(), Buffer.from("unique_validator"), voteAccount.toBuffer()], program.programId)
+    const [duplicationFlag] = PublicKey.findProgramAddressSync([stateAccountKeypair.publicKey.toBuffer(), Buffer.from("unique_validator"), voteAccount.toBuffer()], program.programId)
 
     const tx = await program.methods
         .addValidator(score)
         .accounts({
-            state: stateAccount.publicKey,
+            state: stateAccountKeypair.publicKey,
             managerAuthority: multisigPublicKey,
-            validatorList: validatorsList.publicKey,
+            validatorList: validatorsListKeypair.publicKey,
             validatorVote: voteAccount,
             duplicationFlag: duplicationFlag,
             rentPayer: payer.publicKey,
@@ -43,7 +51,7 @@ const addValidator = async () => {
         voteAccount: new PublicKey("GREEDkgav1ox1jYyd9Anv6exLqKV2vYnxMw5prGwmNKc")
     }
     
-    const tx = await getAddValidatorTx(connection, payer, addValidatorParam)
+    const tx = await getAddValidatorTx(connection, admin, addValidatorParam)
     console.log(tx)
 }
 

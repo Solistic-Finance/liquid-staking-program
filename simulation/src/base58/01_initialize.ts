@@ -1,27 +1,29 @@
 import { 
     sendAndConfirmTransaction,
+    Signer,
     SYSVAR_CLOCK_PUBKEY, 
     SYSVAR_RENT_PUBKEY,
 } from "@solana/web3.js";
 import { 
-    payer, 
+    admin, 
     program, 
 } from "../config";
 import {  InitializeDataParam, SSolInitParam } from "../types";
 import bs58 from "bs58"; // For base58 encoding if needed explicitly
 import { BN } from "@coral-xyz/anchor";
 import { 
-    preRequisiteSetup, 
-    stateAccount as stateAccountKeypair, 
-    stakeList as stakeListKeypair, 
-    validatorsList as validatorsListKeypair 
-} from "./00_prerequisite";
-import { connection } from "../config";
-// import { connectionDevnet as connection } from "../config";
+    connectionDevnet as connection,
+    // connection,
+    stateAccountKeypair, 
+    stakeListKeypair, 
+    validatorsListKeypair 
+} from "../config";
+import { preRequisiteSetup } from "./00_prerequisite";
 
 export const getInitializeTransaction = async (
     initializeData : InitializeDataParam , 
-    initParam : SSolInitParam
+    initParam : SSolInitParam,
+    payer: Signer
 ) => {
 
     const {
@@ -47,11 +49,9 @@ export const getInitializeTransaction = async (
             validatorList: validatorList,
             operationalSolAccount: operationalSolAccount,
             treasurySsolAccount: treasurySsolAccount,
-            liqPool: {
-                lpMint: lpMint,
-                solLegPda: solLegPda,
-                ssolLeg: sSolLeg,
-            },
+            lpMint: lpMint,
+            solLegPda: solLegPda,
+            ssolLeg: sSolLeg,
             clock: SYSVAR_CLOCK_PUBKEY,
             rent: SYSVAR_RENT_PUBKEY,
         })
@@ -96,12 +96,10 @@ export const getInitializeTransaction = async (
 }
 
 const initialize = async () => {
-    
-    
-    let intParam : SSolInitParam = await preRequisiteSetup(connection, payer)
+    let intParam : SSolInitParam = await preRequisiteSetup(connection, admin)
     const initializeData: InitializeDataParam = {
-        adminAuthority: payer.publicKey,
-        validatorManagerAuthority: payer.publicKey,
+        adminAuthority: admin.publicKey,
+        validatorManagerAuthority: admin.publicKey,
         minStake: new BN(10000000), //0.01 SOL
         rewardsFee: { numerator: 1, denominator: 100 }, // 1%
         liqPool: {
@@ -113,9 +111,9 @@ const initialize = async () => {
         additionalStakeRecordSpace: 10,
         additionalValidatorRecordSpace: 10,
         slotsForStakeDelta: new BN(3000),
-        pauseAuthority: payer.publicKey,
+        pauseAuthority: admin.publicKey,
     };
-    getInitializeTransaction(initializeData, intParam)
+    getInitializeTransaction(initializeData, intParam, admin)
 }
 
 initialize()
