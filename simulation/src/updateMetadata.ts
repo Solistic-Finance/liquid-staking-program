@@ -4,7 +4,7 @@ import { update_ssol_token_metadata, update_lp_mint_token_metadata } from "./ins
 import { UpdateSsolTokenMetadata } from "./types/basic_instruction_types";
 import { UpdateLpMintTokenMetadata } from "./types/basic_instruction_types";
 
-export const _update_ssol_and_lp_mint_token_metadata = async () => {
+export const update_ssol_and_lp_mint_token_metadata = async () => {
     
     const updateSsolTokenMetadataData: UpdateSsolTokenMetadata = {
         stateAccount: stateAccountKeypair,
@@ -25,3 +25,5 @@ export const _update_ssol_and_lp_mint_token_metadata = async () => {
     }
     await update_lp_mint_token_metadata(connection, admin, updateLpMintTokenMetadataData)
 }
+
+update_ssol_and_lp_mint_token_metadata()

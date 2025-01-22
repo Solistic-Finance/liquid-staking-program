@@ -1,12 +1,10 @@
 
 import { Connection, PublicKey, sendAndConfirmTransaction, Signer, SystemProgram, SYSVAR_RENT_PUBKEY } from "@solana/web3.js";
-import { contractAddr, program } from "../../../config";
-import { ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import { contractAddr, program, TOKEN_METADATA_PROGRAM_ID } from "../../../config";
 import { UpdateSsolTokenMetadata } from "../../../types/basic_instruction_types";
 
-const TOKEN_METADATA_PROGRAM_ID = new PublicKey("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s");
 
-const update_ssol_token_metadata = async (connection: Connection, payer: Signer, updateMetadataParams: UpdateSsolTokenMetadata) => {
+export const update_ssol_token_metadata = async (connection: Connection, payer: Signer, updateMetadataParams: UpdateSsolTokenMetadata) => {
     const {
         stateAccount,
         ssolMint,
@@ -24,7 +22,6 @@ const update_ssol_token_metadata = async (connection: Connection, payer: Signer,
         TOKEN_METADATA_PROGRAM_ID
       );
     const tx = await program.methods
-        //  @ts-ignore
         .updateSsolTokenMetadata(name, symbol, uri)
         .accounts({
             payer: payer.publicKey,
@@ -47,9 +44,4 @@ const update_ssol_token_metadata = async (connection: Connection, payer: Signer,
 
     const sig = await sendAndConfirmTransaction(connection, tx, [payer]);
     console.log("Transaction Signature:", sig);
-
-}
-
-export {
-    update_ssol_token_metadata
 }
