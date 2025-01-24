@@ -2,9 +2,7 @@
 import { 
     Connection, 
     Keypair, 
-    PublicKey, 
     sendAndConfirmTransaction, 
-    Signer, 
     STAKE_CONFIG_ID, 
     StakeProgram, 
     SYSVAR_EPOCH_SCHEDULE_PUBKEY, 
@@ -18,10 +16,9 @@ import {
     stakeListKeypair,
     reservePda,
     stakeDepositAuthority,
-    cranker
 } from "../../../config";
 
-export const stakeReserve = async (connection: Connection, stakeAccount: PublicKey, stakeReserveParam: StakeReserveParam) => {
+export const stakeReserve = async (connection: Connection, cranker: Keypair, stakeAccount: Keypair, stakeReserveParam: StakeReserveParam) => {
     const {
         validatorIndex,
         validatorVote
@@ -34,7 +31,7 @@ export const stakeReserve = async (connection: Connection, stakeAccount: PublicK
             stakeList: stakeListKeypair.publicKey,
             validatorVote: validatorVote,
             reservePda: reservePda,
-            stakeAccount: stakeAccount,
+            stakeAccount: stakeAccount.publicKey,
             stakeDepositAuthority: stakeDepositAuthority,
             rentPayer: cranker.publicKey,
             epochSchedule: SYSVAR_EPOCH_SCHEDULE_PUBKEY,
@@ -53,7 +50,7 @@ export const stakeReserve = async (connection: Connection, stakeAccount: PublicK
         const simulationResult = await connection.simulateTransaction(tx);
         console.log("stakeReserve: Simulation Result:", simulationResult);
         // Send the transaction
-        const sig = await sendAndConfirmTransaction(connection, tx, [cranker]);
+        const sig = await sendAndConfirmTransaction(connection, tx, [cranker, stakeAccount]);
         console.log("stakeReserve: Transaction Signature:", sig);
         const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
         console.log("State Account after cranking stakeReserve:", state);
