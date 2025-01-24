@@ -8,7 +8,8 @@
   "license": "ISC",
   "scripts": {
     "dev": "ts-node src/simulation.ts >> simulation.log",
-    "update-metadata": "ts-node src/updateMetadata.ts"
+    "update-metadata": "ts-node src/updateMetadata.ts",
+    "add-validators": "ts-node src/addValidators.ts"
   },
   "dependencies": {
     "@coral-xyz/anchor": "^0.29.0",
