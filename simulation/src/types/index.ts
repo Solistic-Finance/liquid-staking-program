@@ -10,18 +10,6 @@ import {
     OrderUnstakeParam,
     ClaimParam,
     WithdrawStakeAccountParam,
-} from "./basicInstructionTypes"
-
-import {
-    StakeReserveParam,
-    UpdateActiveParam,
-    UpdateDeactivatedParam,
-    DeactivateStakeParam,
-    MergeStakeParam,
-    RedelegateParam,
-} from "./advancedInstructionTypes"
-
-import {
     ChangeAuthorityData,
     RemoveValidatorParam,
     SetValidatorScore,
@@ -31,14 +19,20 @@ import {
     RemoveLiquidityParam,
     ConfigLpParam,
     ConfigSolisticParam,
-} from "./basic_instruction_types"
+} from "./basicInstructionTypes"
 
 import {
+    StakeReserveParam,
+    UpdateActiveParam,
+    UpdateDeactivatedParam,
+    DeactivateStakeParam,
+    MergeStakeParam,
+    RedelegateParam,
     EmergencyUnstakeParam,
     PartialUnstakeParam,
     ReallocStakeListParam,
     ReallocValidatorListParam,
-} from "./advanced_instruction_types"
+} from "./advancedInstructionTypes"
 
 interface SSolInitParam {
     stateAccount: PublicKey,
@@ -56,9 +50,6 @@ interface SSolInitParam {
     lpMint: PublicKey,
     treasurySsolAccount: PublicKey,
     sSolLeg: PublicKey,
-    // payerSSolTokenAccount: PublicKey,
-    // payerLpTokenAccount: PublicKey,
-    // burnSsolFrom: PublicKey,
 }
 
 interface ParsedStakeAccountInfo {

@@ -10,7 +10,8 @@
     "dev": "ts-node src/simulation.ts >> simulation.log",
     "update-metadata": "ts-node src/updateMetadata.ts",
     "add-validators": "ts-node src/addValidators.ts",
-    "stake-reserve": "ts-node src/instructions/advanceInstructions/cranks/01_stakeReserve.ts"
+    "stake-reserve": "ts-node src/stakeReserve.ts",
+    "config-solistic": "ts-node src/configSolistic.ts"
   },
   "dependencies": {
     "@coral-xyz/anchor": "^0.29.0",

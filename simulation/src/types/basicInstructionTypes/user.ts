@@ -30,3 +30,15 @@ export interface WithdrawStakeAccountParam {
     beneficiary: PublicKey,
     splitStakeAccount: Keypair,
 }
+
+export interface LiquidUnstakeParam {
+    ssol_amount: BN
+}
+
+export interface AddLiquidityParam {
+    lamports: BN
+}
+
+export interface RemoveLiquidityParam {
+    tokens: BN
+}
