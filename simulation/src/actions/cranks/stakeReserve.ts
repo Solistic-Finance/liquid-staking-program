@@ -1,14 +1,14 @@
 import { 
     stakeReserve 
-} from "./instructions/advanceInstructions/cranks";
-import { voteAccount } from "./voteAccounts";
-import { StakeReserveParam } from "./types";
+} from "../../instructions/advanceInstructions/cranks";
+import { voteAccount } from "../../voteAccounts";
+import { StakeReserveParam } from "../../types";
 import { 
     // connectionDevnet as connection,
     connection, 
     admin, 
     cranker,
-} from "./config";
+} from "../../config";
 import { Keypair } from "@solana/web3.js";
 
 const crankStakeReserve = async () => {

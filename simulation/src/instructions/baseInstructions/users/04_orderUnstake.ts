@@ -7,7 +7,7 @@ import {
 import { getAssociatedTokenAddressSync } from "@solana/spl-token";
 import { program } from "../../../config";
 import { OrderUnstakeParam } from "../../../types";
-import { ssolMint, stateAccount } from "../../prerequisite";
+import { ssolMint, stateAccount } from "../../../config";
 
 export const orderUnstake = async (connection: Connection, user: Signer, orderUnstakeParam: OrderUnstakeParam) => {
 
@@ -20,7 +20,7 @@ export const orderUnstake = async (connection: Connection, user: Signer, orderUn
 
     const tx = await program.methods.orderUnstake(ssolAmount)
         .accounts({
-            state: stateAccount.publicKey,
+            state: stateAccount,
             ssolMint: ssolMint,
             burnSsolFrom: burnSSolFrom,
             burnSsolAuthority: user.publicKey,
@@ -37,11 +37,11 @@ export const orderUnstake = async (connection: Connection, user: Signer, orderUn
     tx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
 
     // Simulate the transaction to catch errors
-    const simulationResult = await connection.simulateTransaction(tx);
-    console.log("Simulation Result:", simulationResult);
+    // const simulationResult = await connection.simulateTransaction(tx);
+    // console.log("Simulation Result:", simulationResult);
 
     // Send the transaction
-    const sig = await sendAndConfirmTransaction(connection, tx, [user, newTicketAccount]);
+    const sig = await sendAndConfirmTransaction(connection, tx, [user, newTicketAccount], {skipPreflight: true});
     console.log("Transaction Signature:", sig);
 }
 //? Define the parameters for initializing the state

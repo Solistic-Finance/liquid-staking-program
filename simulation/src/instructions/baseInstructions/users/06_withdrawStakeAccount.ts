@@ -17,7 +17,7 @@ import {
     stakeList,
     stakeWithdrawAuthority,
     stakeDepositAuthority,
-} from "../../prerequisite";
+} from "../../../config";
 
 export const withdrawStakeAccount = async (connection: Connection, user: Signer, stakeAccount: Keypair, withdrawStakeAccountParam: WithdrawStakeAccountParam) => {
     const {
@@ -36,13 +36,13 @@ export const withdrawStakeAccount = async (connection: Connection, user: Signer,
         ssolAmount,
         beneficiary
     ).accounts({
-        state: stateAccount.publicKey,
+        state: stateAccount,
         ssolMint: ssolMint,
         burnSsolFrom: burnSSolFrom,
         burnSsolAuthority: user.publicKey,
         treasurySsolAccount: treasurySsolAccount,
-        validatorList: validatorsList.publicKey,
-        stakeList: stakeList.publicKey,
+        validatorList: validatorsList,
+        stakeList: stakeList,
         stakeWithdrawAuthority: stakeWithdrawAuthority,
         stakeDepositAuthority: stakeDepositAuthority,
         stakeAccount: stakeAccount.publicKey,
@@ -56,10 +56,10 @@ export const withdrawStakeAccount = async (connection: Connection, user: Signer,
     tx.feePayer = user.publicKey;
     tx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
     // Simulate the transaction to catch errors
-    const simulationResult = await connection.simulateTransaction(tx);
-    console.log("Simulation Result:", simulationResult);
+    // const simulationResult = await connection.simulateTransaction(tx);
+    // console.log("Simulation Result:", simulationResult);
     // Send the transaction
-    const sig = await sendAndConfirmTransaction(connection, tx, [user, splitStakeAccount]);
+    const sig = await sendAndConfirmTransaction(connection, tx, [user, splitStakeAccount], {skipPreflight: true});
     console.log("Transaction Signature:", sig);
 }
 

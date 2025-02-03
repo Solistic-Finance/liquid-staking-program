@@ -1,12 +1,12 @@
 
 import { Connection, sendAndConfirmTransaction, Signer } from "@solana/web3.js";
-import { program, stateAccountKeypair } from "../../../config";
+import { program, stateAccount } from "../../../config";
 import { ConfigSolisticParam } from "../../../types/";
 
 export const configSolistic = async (connection: Connection, admin: Signer, configSolisticParam: ConfigSolisticParam) => {
     const tx = await program.methods.configSolistic(configSolisticParam)
         .accounts({
-            state: stateAccountKeypair.publicKey,
+            state: stateAccount,
             adminAuthority: admin.publicKey,
         })
         .signers([admin])

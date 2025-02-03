@@ -6,7 +6,7 @@ import {
 } from "@solana/web3.js";
 import { program } from "../../../config";
 import { ClaimParam } from "../../../types";
-import { stateAccount, reservePda } from "../../prerequisite";
+import { stateAccount, reservePda } from "../../../config";
 
 export const claim = async (connection: Connection, user: Signer, claimParam: ClaimParam) => {
     const {
@@ -15,9 +15,9 @@ export const claim = async (connection: Connection, user: Signer, claimParam: Cl
 
     const tx = await program.methods.claim()
             .accounts({
-                state: stateAccount.publicKey,
+                state: stateAccount,
                 reservePda: reservePda,
-                ticketAccount: newTicketAccount.publicKey,
+                ticketAccount: newTicketAccount,
                 transferSolTo: user.publicKey,
             })
             .signers([user])
@@ -28,28 +28,10 @@ export const claim = async (connection: Connection, user: Signer, claimParam: Cl
         tx.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
 
         // Simulate the transaction to catch errors
-        const simulationResult = await connection.simulateTransaction(tx);
-        console.log("Simulation Result:", simulationResult);
+        // const simulationResult = await connection.simulateTransaction(tx);
+        // console.log("Simulation Result:", simulationResult);
 
         // Send the transaction
-        const sig = await sendAndConfirmTransaction(connection, tx, [user]);
+        const sig = await sendAndConfirmTransaction(connection, tx, [user], {skipPreflight: true});
         console.log("Transaction Signature:", sig);
 }
-
-//? Define the parameters for initializing the state
-// const initializeData : InitializeDataParam = {
-//     adminAuthority: authorityAcc.publicKey,
-//     validatorManagerAuthority: user.publicKey,
-//     minStake: new BN(10000000), // Example value
-//     rewardsFee: { numerator: 1, denominator: 100 }, // 1%
-//     liqPool: {
-//         lpLiquidityTarget: new BN(50000000000),
-//         lpMaxFee: { basisPoints: new BN(1) },
-//         lpMinFee: { basisPoints: new BN(1) },
-//         lpTreasuryCut: { basisPoints: new BN(1) },
-//     },
-//     additionalStakeRecordSpace: 3,
-//     additionalValidatorRecordSpace: 3,
-//     slotsForStakeDelta: new BN(3000),
-//     pauseAuthority: user.publicKey,
-// };

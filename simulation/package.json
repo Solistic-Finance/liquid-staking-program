@@ -7,11 +7,16 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "dev": "ts-node src/simulation.ts >> simulation.log",
-    "update-metadata": "ts-node src/updateMetadata.ts",
-    "add-validators": "ts-node src/addValidators.ts",
-    "stake-reserve": "ts-node src/stakeReserve.ts",
-    "config-solistic": "ts-node src/configSolistic.ts"
+    "prerequisite": "ts-node src/actions/admin/prerequisites/simulation.ts >> simulation.log",
+    "add-validators": "ts-node src/actions/admin/prerequisites/addValidators.ts",
+    "update-metadata": "ts-node src/actions/admin/prerequisites/updateMetadata.ts",
+    "config-solistic": "ts-node src/actions/admin/update/configSolistic.ts",
+    "stake-reserve": "ts-node src/actions/cranks/stakeReserve.ts",
+    "get-tickets": "ts-node src/actions/getters/getDelayedUnstakeTicketsOfUser.ts",
+    "get-all-tickets": "ts-node src/actions/getters/getAllDelayedUnstakeTickets.ts",
+    "deposit-sol": "ts-node src/actions/user/deposit.ts",
+    "claim-unstaked-ticket": "ts-node src/actions/user/claimUnstakedTicket.ts",
+    "delayed-unstake": "ts-node src/actions/user/delayedUnstake.ts"
   },
   "dependencies": {
     "@coral-xyz/anchor": "^0.29.0",

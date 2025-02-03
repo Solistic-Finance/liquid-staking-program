@@ -2,22 +2,22 @@ import {
     // connectionDevnet as connection,
     connection, 
     admin, 
-} from "./config";
+} from "../../../config";
 import { BN } from "@coral-xyz/anchor";
-import { ConfigSolisticParam } from "./types";
-import { configSolistic } from "./instructions/baseInstructions/admin/06_configSolistic";
+import { ConfigSolisticParam } from "../../../types";
+import { configSolistic } from "../../../instructions/baseInstructions/admin/06_configSolistic";
 
-const configSolisticParams = async () => {
+const configValidatorSystemParams = async () => {
     const configSolisticParam : ConfigSolisticParam = {
         rewardsFee: { basisPoints: 0 },
-        slotsForStakeDelta: new BN (400000),  //18_000 for marinade
+        slotsForStakeDelta: new BN (3000),  //18_000 for marinade
         minStake: new BN (10000000), //1_000_000_000 for marinade
         //extra stake delta runs 150 for marinade
         //extra stake delta runs 0 for solistic
         minDeposit: new BN (1),
         minWithdraw: new BN (1),
-        stakingSolCap: new BN("18446744073709551615"),
-        liquiditySolCap: new BN("18446744073709551615"),
+        stakingSolCap: new BN (18446744073709551615),
+        liquiditySolCap: new BN (18446744073709551615),
         // lpLiquidityTarget 50_000_000_000 for solistic
         // lpLiquidityTarget 21_000_000_000_000 for marinade
         // lpMaxFee 900 for marinade
@@ -37,8 +37,8 @@ const configSolisticParams = async () => {
     await configSolistic(connection, admin, configSolisticParam)
 }
 
-configSolisticParams().then(() => {
-    console.log("Config Solistic completed")
+configValidatorSystemParams().then(() => {
+    console.log("Config Validator System completed")
 }).catch((err) => {
-    console.log("Error in configSolistic : ", err)
+    console.log("Error in configValidatorSystem : ", err)
 })

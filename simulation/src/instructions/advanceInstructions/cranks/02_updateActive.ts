@@ -12,11 +12,11 @@ import { UpdateActiveParam } from "../../../types";
 import { 
     stakeWithdrawAuthority, 
     reservePda, 
-    stakeListKeypair,
-    stateAccountKeypair,
+    stakeList,
+    stateAccount,
     authoritySsolAcc,
     treasurySsolAccount,
-    validatorsListKeypair,
+    validatorsList,
     ssolMint,
     cranker,
 } from "../../../config";
@@ -29,9 +29,9 @@ export const updateActive = async (connection: Connection, stakeAccount: PublicK
 
     const tx = await program.methods.updateActive(stakeIndex, validatorIndex)
         .accounts({
-            state: stateAccountKeypair.publicKey,
-            stakeList: stakeListKeypair.publicKey,
-            validatorList: validatorsListKeypair.publicKey,
+            state: stateAccount,
+            stakeList: stakeList,
+            validatorList: validatorsList,
             stakeAccount: stakeAccount,
             stakeWithdrawAuthority: stakeWithdrawAuthority,
             reservePda: reservePda,
@@ -53,11 +53,11 @@ export const updateActive = async (connection: Connection, stakeAccount: PublicK
         // Send the transaction
         const sig = await sendAndConfirmTransaction(connection, tx, [cranker]);
         console.log("updateActive: Transaction Signature:", sig);
-        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        const state = await program.account.state.fetch(stateAccount);
         console.log("State Account after cranking updateActive:", state);
     } catch (error) {
         console.log("Error in executing updateActive ix:", error);
-        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        const state = await program.account.state.fetch(stateAccount);
         console.log("State Account after cranking updateActive:", state);
     }
 }

@@ -1,5 +1,5 @@
-import { connection, admin, stateAccountKeypair, ssolMint, lpMint } from "./config";
-import { update_ssol_token_metadata, update_lp_mint_token_metadata } from "./instructions/baseInstructions/admin";
+import { connection, admin, stateAccountKeypair, ssolMint, lpMint } from "../../../config";
+import { update_ssol_token_metadata, update_lp_mint_token_metadata } from "../../../instructions/baseInstructions/admin";
 import { UpdateSsolTokenMetadata } from "./types/basic_instruction_types";
 import { UpdateLpMintTokenMetadata } from "./types/basic_instruction_types";
 

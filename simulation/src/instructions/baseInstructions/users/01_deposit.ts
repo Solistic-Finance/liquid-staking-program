@@ -1,16 +1,14 @@
 
 import { 
     Connection, 
-    PublicKey, 
     sendAndConfirmTransaction, 
     Signer 
 } from "@solana/web3.js";
 import { getAssociatedTokenAddressSync } from "@solana/spl-token";
 import { 
-    contractAddr, 
     program, 
-    stateAccountKeypair, 
-    ssolMintKeypair,
+    stateAccount, 
+    ssolMint,
     authoritySsolAcc,
     authoritySSolLegAcc,
     solLegPda,
@@ -24,16 +22,12 @@ export const deposit = async (connection: Connection, user: Signer, depositParam
         amount 
     } = depositParam;
 
-    const [solLegPda] = PublicKey.findProgramAddressSync([stateAccountKeypair.publicKey.toBuffer(), Buffer.from("liq_sol")], contractAddr)
-    const [authoritySsolAcc] = PublicKey.findProgramAddressSync([stateAccountKeypair.publicKey.toBuffer(), Buffer.from("st_mint")], contractAddr)
-    const [authoritySSolLegAcc] = PublicKey.findProgramAddressSync([stateAccountKeypair.publicKey.toBuffer(), Buffer.from("liq_st_sol_authority")], contractAddr);
-    const [reservePda] = PublicKey.findProgramAddressSync([stateAccountKeypair.publicKey.toBuffer(), Buffer.from("reserve")], contractAddr)
-    const userSSolTokenAccount = getAssociatedTokenAddressSync(ssolMintKeypair.publicKey, user.publicKey)
+    const userSSolTokenAccount = getAssociatedTokenAddressSync(ssolMint, user.publicKey)
 
     const tx = await program.methods.deposit(amount)
         .accounts({
-            state: stateAccountKeypair.publicKey,
-            ssolMint: ssolMintKeypair.publicKey,
+            state: stateAccount,
+            ssolMint: ssolMint,
             liqPoolSolLegPda: solLegPda,
             liqPoolSsolLeg: sSolLeg,
             liqPoolSsolLegAuthority: authoritySSolLegAcc,
@@ -52,18 +46,16 @@ export const deposit = async (connection: Connection, user: Signer, depositParam
     
     try{
         // Simulate the transaction to catch errors
-        const simulationResult = await connection.simulateTransaction(tx);
-        console.log("deposit: Simulation Result:", simulationResult);
+        // const simulationResult = await connection.simulateTransaction(tx);
+        // console.log("deposit: Simulation Result:", simulationResult);
 
         // Send the transaction
-        const sig = await sendAndConfirmTransaction(connection, tx, [user]);
+        const sig = await sendAndConfirmTransaction(connection, tx, [user], {skipPreflight: true});
         console.log("deposit: Transaction Signature:", sig);
-        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        const state = await program.account.state.fetch(stateAccount);
         console.log("State Account after depositing to liquidity pool:", state);
     } catch(error) {
         console.log("Error in depositing to liquidity pool: ", error);
-        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
-        console.log("State Account after depositing to liquidity pool:", state);
     }
 }
 //? Define the parameters for initializing the state

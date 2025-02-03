@@ -1,34 +1,13 @@
 import { BN } from "bn.js";
-import { 
-    initialize, 
-    addValidator
-} from "./instructions/baseInstructions/admin";
-import { 
-    deposit, 
-    depositNewStakeAccount, 
-    orderUnstake, 
-    withdrawStakeAccount 
-} from "./instructions/baseInstructions/users";
-import { 
-    updateActive 
-} from "./instructions/advanceInstructions/cranks";
-import { voteAccount } from "./voteAccounts";
-import { 
-    InitializeDataParam, 
-    SSolInitParam, 
-    UpdateActiveParam,
-    DepositNewStakeParam,
-    DepositParam,
-    OrderUnstakeParam,
-    WithdrawStakeAccountParam
-} from "./types";
+import { initialize } from "../../../instructions/baseInstructions/admin";
+import { InitializeDataParam, SSolInitParam } from "../../../types";
 import { 
     connectionDevnet as connection,
     // connection, 
     admin, 
     cranker,
-} from "./config";
-import { preRequisiteSetup } from "./instructions/prerequisite";
+} from "../../../config";
+import { preRequisiteSetup } from "../../../instructions/prerequisite";
 
 const simulate = async () => {
     let intParam : SSolInitParam = await preRequisiteSetup(connection, admin)

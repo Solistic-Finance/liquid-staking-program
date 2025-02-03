@@ -1,7 +1,7 @@
 
 import { Connection, PublicKey, sendAndConfirmTransaction, Signer, SystemProgram, SYSVAR_RENT_PUBKEY } from "@solana/web3.js";
 import { contractAddr, program, TOKEN_METADATA_PROGRAM_ID } from "../../../config";
-import { UpdateSsolTokenMetadata } from "../../../types/basic_instruction_types";
+import { UpdateSsolTokenMetadata } from "../../../types/basicInstructionTypes";
 
 
 export const update_ssol_token_metadata = async (connection: Connection, payer: Signer, updateMetadataParams: UpdateSsolTokenMetadata) => {

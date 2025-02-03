@@ -11,9 +11,9 @@ import {
 import { program } from "../../../config";
 import { RedelegateParam } from "../../../types";
 import { 
-    stateAccountKeypair, 
-    validatorsListKeypair,
-    stakeListKeypair,
+    stateAccount, 
+    validatorsList,
+    stakeList,
     stakeDepositAuthority,
     reservePda,
     cranker,
@@ -35,9 +35,9 @@ export const redelegate = async (connection: Connection, stakeAccount: Keypair, 
         destValidatorIndex,
     )
         .accounts({
-            state: stateAccountKeypair.publicKey,
-            validatorList: validatorsListKeypair.publicKey,
-            stakeList: stakeListKeypair.publicKey,
+            state: stateAccount,
+            validatorList: validatorsList,
+            stakeList: stakeList,
             stakeAccount: stakeAccount.publicKey,
             stakeDepositAuthority: stakeDepositAuthority,
             reservePda: reservePda,
@@ -67,11 +67,11 @@ export const redelegate = async (connection: Connection, stakeAccount: Keypair, 
             newRedelegateStakeAccount
         ]);
         console.log("redelegate: Transaction Signature:", sig);
-        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        const state = await program.account.state.fetch(stateAccount);
         console.log("State Account after cranking redelegate:", state);
     } catch (error) {
         console.log("Error in executing redelegate ix:", error);
-        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        const state = await program.account.state.fetch(stateAccount);
         console.log("State Account after cranking redelegate:", state);
     }
 }

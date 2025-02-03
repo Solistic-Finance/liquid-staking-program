@@ -10,12 +10,12 @@ import {
 import { MergeStakeParam } from "../../../types";
 import { program } from "../../../config";
 import { 
-    stateAccountKeypair,
-    stakeListKeypair,
-    validatorsListKeypair,
+    stateAccount,
+    stakeList,
+    validatorsList,
     stakeDepositAuthority,
     stakeWithdrawAuthority,
-    operationalSolAccountKeypair,
+    operationalSolAccount,
     cranker,
 } from "../../../config";
 
@@ -33,14 +33,14 @@ export const mergeStakes = async (connection: Connection, stakeAccount: Keypair,
         validatorIndex
     )
         .accounts({
-            state: stateAccountKeypair.publicKey,
-            stakeList: stakeListKeypair.publicKey,
-            validatorList: validatorsListKeypair.publicKey,
+            state: stateAccount,
+            stakeList: stakeList,
+            validatorList: validatorsList,
             destinationStake: splitStakeAccount.publicKey,
             sourceStake: stakeAccount.publicKey,
             stakeDepositAuthority: stakeDepositAuthority,
             stakeWithdrawAuthority: stakeWithdrawAuthority,
-            operationalSolAccount: operationalSolAccountKeypair.publicKey,
+            operationalSolAccount: operationalSolAccount,
             stakeHistory: SYSVAR_STAKE_HISTORY_PUBKEY,
             stakeProgram: StakeProgram.programId
         })
@@ -57,11 +57,11 @@ export const mergeStakes = async (connection: Connection, stakeAccount: Keypair,
         // Send the transaction
         const sig = await sendAndConfirmTransaction(connection, tx, [cranker]);
         console.log("mergeStakes: Transaction Signature:", sig);
-        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        const state = await program.account.state.fetch(stateAccount);
         console.log("State Account after cranking mergeStakes:", state);
     } catch (error) {
         console.log("Error in executing mergeStake ix:", error);
-        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        const state = await program.account.state.fetch(stateAccount);
         console.log("State Account after cranking mergeStakes:", state);
     }
 }

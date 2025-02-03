@@ -1,10 +1,10 @@
-import { addValidator } from "./instructions/baseInstructions/admin";
-import { voteAccount } from "./voteAccounts";
+import { addValidator } from "../../../instructions/baseInstructions/admin";
+import { voteAccount } from "../../../voteAccounts";
 import { 
     // connectionDevnet as connection,
     connection, 
     admin, 
-} from "./config";
+} from "../../../config";
 
 const addValidators = async () => {
     const addValidatorParam1 = {

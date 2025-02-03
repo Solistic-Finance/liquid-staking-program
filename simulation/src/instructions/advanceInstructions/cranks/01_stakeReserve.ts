@@ -11,9 +11,9 @@ import {
 import { program } from "../../../config";
 import { StakeReserveParam } from "../../../types/advancedInstructionTypes";
 import { 
-    stateAccountKeypair, 
-    validatorsListKeypair,
-    stakeListKeypair,
+    stateAccount, 
+    validatorsList,
+    stakeList,
     reservePda,
     stakeDepositAuthority,
 } from "../../../config";
@@ -26,9 +26,9 @@ export const stakeReserve = async (connection: Connection, cranker: Keypair, sta
     
     const tx = await program.methods.stakeReserve(validatorIndex)
         .accounts({
-            state: stateAccountKeypair.publicKey,
-            validatorList: validatorsListKeypair.publicKey,
-            stakeList: stakeListKeypair.publicKey,
+            state: stateAccount,
+            validatorList: validatorsList,
+            stakeList: stakeList,
             validatorVote: validatorVote,
             reservePda: reservePda,
             stakeAccount: stakeAccount.publicKey,
@@ -52,11 +52,11 @@ export const stakeReserve = async (connection: Connection, cranker: Keypair, sta
         // Send the transaction
         const sig = await sendAndConfirmTransaction(connection, tx, [cranker, stakeAccount]);
         console.log("stakeReserve: Transaction Signature:", sig);
-        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        const state = await program.account.state.fetch(stateAccount);
         console.log("State Account after cranking stakeReserve:", state);
     } catch (error) {
         console.log("Error in executing stakeReserve ix:", error);
-        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        const state = await program.account.state.fetch(stateAccount);
         console.log("State Account after cranking stakeReserve:", state);
     }
 

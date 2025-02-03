@@ -7,9 +7,19 @@ import {
 } from "@solana/web3.js";
 import { 
     program, 
-    stateAccountKeypair, 
-    stakeListKeypair, 
-    validatorsListKeypair 
+    stateAccountKeypair,
+    stakeListKeypair,
+    validatorsListKeypair,
+    stateAccount, 
+    stakeList, 
+    validatorsList,
+    ssolMint,
+    lpMint,
+    operationalSolAccount,
+    reservePda,
+    solLegPda,
+    sSolLeg,
+    treasurySsolAccount,
 } from "../../../config";
 import { 
     InitializeDataParam, 
@@ -23,19 +33,6 @@ export const initialize = async (
     initParam : SSolInitParam
 ) => {
 
-    const {
-        stateAccount,
-        ssolMint,
-        stakeList,
-        validatorList,
-        operationalSolAccount,
-        treasurySsolAccount,
-        lpMint,
-        sSolLeg,
-        reservePda,
-        solLegPda,
-    } = initParam
-
     const tx = await program.methods
         //  @ts-ignore
         .initialize(initializeData)
@@ -43,7 +40,7 @@ export const initialize = async (
             state: stateAccount,
             reservePda: reservePda,
             stakeList: stakeList,
-            validatorList: validatorList,
+            validatorList: validatorsList,
             ssolMint: ssolMint,
             operationalSolAccount: operationalSolAccount,
             lpMint: lpMint,
@@ -64,7 +61,7 @@ export const initialize = async (
     console.log("reservePda:", reservePda.toBase58());
     console.log("ssolMint:", ssolMint.toBase58());
     console.log("stakeList:", stakeList.toBase58());
-    console.log("validatorList:", validatorList.toBase58());
+    console.log("validatorList:", validatorsList.toBase58());
     console.log("operationalSolAccount:", operationalSolAccount.toBase58());
     console.log("treasurySsolAccount:", treasurySsolAccount.toBase58());
     console.log("lpMint:", lpMint.toBase58());

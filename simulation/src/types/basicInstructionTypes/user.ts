@@ -20,7 +20,7 @@ export interface OrderUnstakeParam {
 }
 
 export interface ClaimParam {
-    newTicketAccount: Keypair,
+    newTicketAccount: PublicKey,
 }
 
 export interface WithdrawStakeAccountParam {

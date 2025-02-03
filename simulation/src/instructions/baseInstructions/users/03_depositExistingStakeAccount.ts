@@ -10,10 +10,10 @@ import {
 import { getAssociatedTokenAddressSync } from "@solana/spl-token";
 import { 
     program, 
-    ssolMintKeypair, 
-    stateAccountKeypair, 
-    stakeListKeypair, 
-    validatorsListKeypair,
+    ssolMint, 
+    stateAccount, 
+    stakeList, 
+    validatorsList,
     authoritySsolAcc
 } from "../../../config";
 import { voteAccount } from "../../../voteAccounts";
@@ -30,32 +30,32 @@ export const depositExistingStakeAccount = async (
         validatorIndex,
     } = depositExistingStakeParam;
 
-    const userSSolTokenAccount = getAssociatedTokenAddressSync(ssolMintKeypair.publicKey, user.publicKey)
+    const userSSolTokenAccount = getAssociatedTokenAddressSync(ssolMint, user.publicKey)
 
     const validatorVote = voteAccount[validatorIndex];
 
-    const [duplicationFlag] = PublicKey.findProgramAddressSync([stateAccountKeypair.publicKey.toBuffer(), Buffer.from("unique_validator"), validatorVote.toBuffer()], program.programId)
+    const [duplicationFlag] = PublicKey.findProgramAddressSync([stateAccount.toBuffer(), Buffer.from("unique_validator"), validatorVote.toBuffer()], program.programId)
     
     const tx = new Transaction()
     
     // check userSolTokenAccount is created or not by checking the lamports
     const usersSolTokenAccountInfo = await connection.getAccountInfo(userSSolTokenAccount);
     if(usersSolTokenAccountInfo?.lamports === 0) {
-        const userSSolTokenAccountTx = await createAtaTx(connection, user, ssolMintKeypair.publicKey, user.publicKey)
+        const userSSolTokenAccountTx = await createAtaTx(connection, user, ssolMint, user.publicKey)
         tx.add(userSSolTokenAccountTx)
     }
     
     tx.add(
         await program.methods.depositStakeAccount(validatorIndex)
             .accounts({
-                state: stateAccountKeypair.publicKey,
-                validatorList: validatorsListKeypair.publicKey,
-                stakeList: stakeListKeypair.publicKey,
+                state: stateAccount,
+                validatorList: validatorsList,
+                stakeList: stakeList,
                 stakeAccount: stakeAccount,
                 stakeAuthority: user.publicKey,
                 duplicationFlag: duplicationFlag,      //  Double check
                 rentPayer: user.publicKey,
-                ssolMint: ssolMintKeypair.publicKey,
+                ssolMint: ssolMint,
                 mintTo: userSSolTokenAccount,
                 ssolMintAuthority: authoritySsolAcc,
                 stakeProgram: StakeProgram.programId
@@ -72,16 +72,16 @@ export const depositExistingStakeAccount = async (
     
     try{
         // Simulate the transaction to catch errors
-        const simulationResult = await connection.simulateTransaction(tx);
-        console.log("depositExistingStakeAccount: Simulation Result:", simulationResult);
+        // const simulationResult = await connection.simulateTransaction(tx);
+        // console.log("depositExistingStakeAccount: Simulation Result:", simulationResult);
         // Send the transaction
         const sig = await sendAndConfirmTransaction(connection, tx, [user], {skipPreflight: true});
         console.log("depositExistingStakeAccount: Transaction Signature:", sig);
-        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        const state = await program.account.state.fetch(stateAccount);
         console.log("State Account after depositing from existing stake account:", state);
     } catch(error) {
         console.log("Error in depositing from existing stake account: ", error);
-        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        const state = await program.account.state.fetch(stateAccount);
         console.log("State Account after depositing from existing stake account:", state);
     }
     

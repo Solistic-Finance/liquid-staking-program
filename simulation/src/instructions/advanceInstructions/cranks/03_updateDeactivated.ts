@@ -11,12 +11,12 @@ import { program } from "../../../config";
 import { UpdateDeactivatedParam } from "../../../types";
 import { 
     authoritySsolAcc, 
-    operationalSolAccountKeypair, 
+    operationalSolAccount, 
     reservePda, 
     ssolMint, 
-    stakeListKeypair, 
+    stakeList, 
     stakeWithdrawAuthority, 
-    stateAccountKeypair, 
+    stateAccount, 
     treasurySsolAccount,
     cranker,
 } from "../../../config";
@@ -28,15 +28,15 @@ export const updateDeactivated = async (connection: Connection, stakeAccount: Pu
 
     const tx = await program.methods.updateDeactivated(stakeIndex)
         .accounts({
-            state: stateAccountKeypair.publicKey,
-            stakeList: stakeListKeypair.publicKey,
+            state: stateAccount,
+            stakeList: stakeList,
             stakeAccount: stakeAccount,
             stakeWithdrawAuthority: stakeWithdrawAuthority,
             reservePda: reservePda,
             ssolMint: ssolMint,
             ssolMintAuthority: authoritySsolAcc,
             treasurySsolAccount: treasurySsolAccount,
-            operationalSolAccount: operationalSolAccountKeypair.publicKey,
+            operationalSolAccount: operationalSolAccount,
             stakeHistory: SYSVAR_STAKE_HISTORY_PUBKEY,
             stakeProgram: StakeProgram.programId
         })
@@ -52,11 +52,11 @@ export const updateDeactivated = async (connection: Connection, stakeAccount: Pu
         // Send the transaction
         const sig = await sendAndConfirmTransaction(connection, tx, [cranker]);
         console.log("updateDeactivated: Transaction Signature:", sig);
-        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        const state = await program.account.state.fetch(stateAccount);
         console.log("State Account after cranking updateDeactivated:", state);
     } catch (error) {
         console.log("Error in executing updateDeactivated ix:", error);
-        const state = await program.account.state.fetch(stateAccountKeypair.publicKey);
+        const state = await program.account.state.fetch(stateAccount);
         console.log("State Account after cranking updateDeactivated:", state);
     }
 }
